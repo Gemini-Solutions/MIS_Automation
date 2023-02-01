@@ -1,0 +1,27 @@
+{
+  "environment": "prod",
+  "projectName": "Project-Name",
+  "gemjarSubID": "test_id",
+  "gemjarUserName": "Jewels-User-Name",
+  "reportLocation": "",
+  "gemjarToken": "Jewels-Bridge-Token",
+  "glueCode":"com.qa.projectName.StepDefinition",
+  "feature": "path of feature file",
+  "tagName": "want to run specific tags",
+  "scenario": "want to run specific scenarios by name",
+  "dev": {
+    "browserName": "firefox",
+    "launchUrl": "url",
+    "browserTimeout": 100
+  },
+  "prod": {
+    "browserName": "chrome",
+    "launchUrl": "url",
+    "browserTimeout": 100
+  },
+  "beta": {
+    "browserName": "chrome",
+    "launchUrl": "url",
+    "browserTimeout": 100
+  }
+}
