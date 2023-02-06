@@ -1,27 +1,28 @@
 {
-  "environment": "prod",
-  "projectName": "Project-Name",
+  "environment": "beta",
+  "projectName": "MIS",
   "gemjarSubID": "test_id",
-  "gemjarUserName": "Jewels-User-Name",
+  "gemjarUserName": "cgarg",
   "reportLocation": "",
-  "gemjarToken": "Jewels-Bridge-Token",
-  "glueCode":"com.qa.projectName.StepDefinition",
-  "feature": "path of feature file",
+  "gemjarToken": "4e7f018e-4cce-423e-9665-9ffb4009747b1675253154573",
+  "glueCode":"com.qa.MIS.StepDefinition",
+  "feature": "src/main/resources/features/.feature",
+  "jewelEntryUrl": "https://apis.gemecosystem.com/enter-point",
   "tagName": "want to run specific tags",
   "scenario": "want to run specific scenarios by name",
   "dev": {
     "browserName": "firefox",
-    "launchUrl": "url",
+    "launchUrl": "https://mymis.geminisolutions.com/",
     "browserTimeout": 100
   },
   "prod": {
     "browserName": "chrome",
-    "launchUrl": "url",
+    "launchUrl": "https://mymis.geminisolutions.com/",
     "browserTimeout": 100
   },
   "beta": {
     "browserName": "chrome",
-    "launchUrl": "url",
+    "launchUrl": "https://mymis.geminisolutions.com/",
     "browserTimeout": 100
   }
 }

@@ -1,4 +1,4 @@
-package com.qa.projectName.StepDefinition;
+package com.qa.MIS.StepDefinition;
 
 import com.gemini.generic.exception.GemException;
 import com.gemini.generic.ui.utils.DriverManager;
