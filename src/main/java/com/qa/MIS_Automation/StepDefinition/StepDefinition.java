@@ -38,7 +38,7 @@ public class StepDefinition {
     @Then("add new document tags icon is present and functional")
     public void add_new_document_tags_icon_is_present_and_functional() {
         DriverAction.click(Locators.addDocumentTag,"Add document Tag");
-        DriverAction.typeText(Locators.inputDocumentTag,"Test7");
+        DriverAction.typeText(Locators.inputDocumentTag,"Test12");
         DriverAction.click(Locators.saveDocumentTag,"Document Tag saved");
         String successMessage = DriverAction.getElementText(Locators.documentTagSuccessfullyAdded);
         System.out.println(successMessage);
