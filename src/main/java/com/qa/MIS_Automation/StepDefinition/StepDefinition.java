@@ -13,6 +13,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 
+import java.sql.Driver;
+
 public class StepDefinition {
 
     @Given("logged in successfully")
@@ -82,13 +84,13 @@ public class StepDefinition {
     @Then("selecting {string} and verifying the attendance")
     public void selecting_and_verifying_the_attendance(String month) throws InterruptedException {
         DriverAction.click(By.xpath("//li[text()='"+month+"'"+"]"));
-        Thread.sleep(5000);
-        System.out.println("entered");
+
 
     }
 
     @Then("right click functionality is working")
-    public void right_click_functionality_is_working() {
+    public void right_click_functionality_is_working() throws InterruptedException {
+        Thread.sleep(5000);
         DriverAction.rightClick(Locators.folder);
         if(!DriverAction.isExist(Locators.deleteFolder)){
             Assert.fail();
@@ -100,17 +102,15 @@ public class StepDefinition {
     public void navigating_to_view_documents_page_and_adding_an_invalid_document_type() throws InterruptedException {
         DriverAction.click(Locators.knowledgeBase,"Knowledge Base");
         DriverAction.click(Locators.viewDocuments,"View Documents");
-        //Action
-
         DriverAction.waitUntilElementAppear(Locators.folder,5);
-       // Actions builder = new Actions(DriverManager.getWebDriver());
-
-       // builder.moveToElement().contextClick().build().perform();
-        //DriverAction.click(Locators.folder);
         Thread.sleep(5000);
         DriverAction.rightClick(Locators.folder);
-        //DriverAction.rightClick()
         DriverAction.click(Locators.addDocument,"Add Document");
+        DriverAction.fileUpload(Locators.upload,"testinput.xlsx");
+        //DriverAction.typeText(Locators.upload,"src\\main\\resources\\testdocument.txt");
+        Thread.sleep(5000);
+
+
 
 
 

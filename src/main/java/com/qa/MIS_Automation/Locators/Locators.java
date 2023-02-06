@@ -31,7 +31,8 @@ public class Locators {
 
     public static By refresh = By.xpath("//img[@title='Refresh']");
 
-    public static By upload = By.xpath("//");
+    public static By upload = By.xpath("//input[@name='fileToUpload']");
+
 
 
 
