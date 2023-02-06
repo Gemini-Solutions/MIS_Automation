@@ -1,6 +1,6 @@
 
 {
-  "environment": "beta",
+  "environment": "prod",
   "projectName": "MIS",
   "gemjarSubID": "test_id",
   "gemjarUserName": "s.mishra",
