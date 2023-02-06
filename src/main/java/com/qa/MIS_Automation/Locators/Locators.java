@@ -1,0 +1,38 @@
+package com.qa.MIS_Automation.Locators;
+
+import org.openqa.selenium.By;
+
+public class Locators {
+    public static String mnth;
+    public static By username = By.xpath("//input[@id='username']");
+
+    public static By password = By.xpath("//input[@id='password']");
+    public static By signIn = By.xpath("//input[@value='Sign in']");
+    public static By closeSkills = By.id("btnskillsClose");
+    public static By knowledgeBase = By.xpath("//span[text()='Knowledge Base']");
+    public static By viewDocuments  = By.xpath("//span[text()='View Documents']");
+
+    public static By addDocumentTag = By.xpath("//img[@title='Add New Document Tag']");
+
+    public static By inputDocumentTag = By.id("txtTagName");
+
+    public static By saveDocumentTag = By.id("btnSaveDocumentTag");
+
+    public static By documentTagSuccessfullyAdded = By.xpath("//p[text()='Document tag Added Sucessfully']");
+
+    public static By okButton = By.xpath("//button[text()='OK']");
+
+    public static By documentTagWarningMessage = By.xpath("//p[text()='Please fill required field']");
+    public static By attendanceMonth = By.xpath("//span[@id='select2-selectduration-container']");
+    public static By folder = By.xpath("//a[text()='abc']");
+
+    public static By addDocument = By.xpath("//a[text()='Add New document']");
+    public static By deleteFolder = By.xpath("//a[text()='Delete']");
+
+    public static By refresh = By.xpath("//img[@title='Refresh']");
+
+    public static By upload = By.xpath("//");
+
+
+
+}
