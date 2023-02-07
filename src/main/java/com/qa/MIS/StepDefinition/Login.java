@@ -3,10 +3,15 @@ package com.qa.MIS.StepDefinition;
 import com.gemini.generic.reporting.GemTestReporter;
 import com.gemini.generic.reporting.STATUS;
 import com.gemini.generic.ui.utils.DriverAction;
+import com.gemini.generic.ui.utils.DriverManager;
 import com.qa.MIS.Locators.Locators;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class Login {
 
@@ -27,6 +32,7 @@ public class Login {
 
     @Then("Verify error message {string}")
     public void verifyErrorMessage(String errorMsg) {
+        DriverAction.waitSec(2);
         String actualErrorMsg = DriverAction.getElement(Locators.loginErrorMessage).getText();
         if (actualErrorMsg.equals(errorMsg))
             GemTestReporter.addTestStep("Error message", "Error message: " + actualErrorMsg, STATUS.PASS, DriverAction.takeSnapShot());
@@ -36,6 +42,7 @@ public class Login {
 
     @Then("Verify all the elements present on Login Page")
     public void verifyAllTheElementsPresentOnLoginPage() {
+
         WebElement uname = DriverAction.getElement(Locators.username);
         if (uname.isDisplayed())
             GemTestReporter.addTestStep("Username", "Verify Username field visible on Login Page", STATUS.PASS, DriverAction.takeSnapShot());
@@ -73,5 +80,35 @@ public class Login {
             GemTestReporter.addTestStep("LoginPage message", "User not able to see LoginPage message", STATUS.FAIL, DriverAction.takeSnapShot());
 
     }
+    @Then("Click on Login with SSO button")
+    public void clickOnLoginWithSSOButton() {
+        DriverAction.click(Locators.loginWithSSOButton);
+    }
+
+    @Then("Verify User is on {string} Page")
+    public void verifyUserIsOnPage(String page) {
+        String expectedURL = null;
+        switch (page) {
+            case "MIS Home":
+                expectedURL = "https://mymis.geminisolutions.com/Dashboard/Index";
+                break;
+            case "Sign IN":
+                expectedURL = "https://mymis.geminisolutions.com/";
+                break;
+        }
+        try {
+            DriverAction.click(Locators.closeButton);
+        } catch (Exception exception) {
+            new WebDriverWait(DriverManager.getWebDriver(), Duration.ofSeconds(20))
+                    .until(ExpectedConditions.urlToBe(expectedURL));
+            if (DriverAction.getCurrentURL().equals(expectedURL))
+                GemTestReporter.addTestStep("Verify page URL", "URL Matched.\n Expected URL-"
+                        + expectedURL + "\nActual URL -" + DriverAction.getCurrentURL(), STATUS.PASS, DriverAction.takeSnapShot());
+            else
+                GemTestReporter.addTestStep("Verify page URL", "URL doesn't Matched.\n Expected URL-"
+                        + expectedURL + "\nActual URL -" + DriverAction.getCurrentURL(), STATUS.FAIL, DriverAction.takeSnapShot());
+        }
+    }
+
 }
 
