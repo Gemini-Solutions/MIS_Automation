@@ -45,4 +45,6 @@ public class Locators {
     public static By updatePassword=By.xpath("//button[@id='btnChangePassword']");
 
     public static By passwordNotMatch=By.xpath("//span[@id='password_match']");
+
+    public static By applyLunch=By.xpath("//i[@class='fa fa-cutlery']");
 }

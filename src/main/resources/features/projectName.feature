@@ -35,7 +35,8 @@ Feature: MIS_Automation
         #And click on update password
         Then verify password not match
 
-
+       Scenario:user applies for lunch
+         When user click on apply lunch
 
 
 

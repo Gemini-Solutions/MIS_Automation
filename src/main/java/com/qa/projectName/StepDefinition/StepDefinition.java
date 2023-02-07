@@ -149,4 +149,11 @@ public class StepDefinition {
         DriverAction.click(popUpCloseButton,"close button");
         DriverAction.click(clickOnChangeDetails,"change details button");
     }
+
+    @When("user click on apply lunch")
+    public void userClickOnApplyLunch() {
+        DriverAction.click(popUpCloseButton,"close button");
+        DriverAction.click(applyLunch,"apply lunch");
+        DriverAction.waitSec(5);
+    }
 }
