@@ -37,6 +37,20 @@ Feature: MIS_Automation
 
        Scenario:user applies for lunch
          When user click on apply lunch
+         And user click on from date and click on select from date
+         And user click on till date and select till date
+         And click on location container
+         And select the location from the list
+         And click on add lunch button
+
+         Scenario: user applies for lunch for already applied date
+         When user click on apply lunch
+         And user click on from date and click on select from date
+         And user click on till date and select till date
+         And click on location container
+         And select the location from the list
+         And click on add lunch button
+           Then verify the warning message
 
 
 

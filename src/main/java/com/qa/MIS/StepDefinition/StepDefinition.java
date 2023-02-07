@@ -1,18 +1,13 @@
-package com.qa.projectName.StepDefinition;
+package com.qa.MIS.StepDefinition;
 
 import com.gemini.generic.reporting.GemTestReporter;
 import com.gemini.generic.reporting.STATUS;
 import com.gemini.generic.ui.utils.DriverAction;
-import com.gemini.generic.ui.utils.DriverManager;
-import com.qa.projectName.Locators.Locators;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.testng.Assert;
 
-import java.sql.Driver;
-
-import static com.qa.projectName.Locators.Locators.*;
+import static com.qa.MIS.Locators.Locators.*;
 
 public class StepDefinition {
 
@@ -153,7 +148,46 @@ public class StepDefinition {
     @When("user click on apply lunch")
     public void userClickOnApplyLunch() {
         DriverAction.click(popUpCloseButton,"close button");
+        DriverAction.waitSec(10);
         DriverAction.click(applyLunch,"apply lunch");
         DriverAction.waitSec(5);
+    }
+
+    @And("user click on from date and click on select from date")
+    public void userClickOnFromDate() {
+        DriverAction.click(fromDate,"from date");
+        DriverAction.click(selectFromDate,"select from date");
+    }
+
+    @And("user click on till date and select till date")
+    public void userClickOnTillDate() {
+        DriverAction.click(tillDate, "till date");
+        DriverAction.click(selectTillDate,"select till date");
+    }
+
+    @And("click on location container")
+    public void clickOnLocationContainer() {
+        DriverAction.click(locationContainer,"location container");
+    }
+
+    @And("select the location from the list")
+    public void selectTheLocationFromTheList() {
+        DriverAction.click(selectLocation,"select location");
+        DriverAction.waitSec(5);
+    }
+
+    @And("click on add lunch button")
+    public void clickOnAddLunchButton() {
+        DriverAction.click(addLunchButton,"add lunch button");
+    }
+
+    @Then("verify the warning message")
+    public void verifyTheWarningMessage() {
+        //DriverAction.click(warning,"warning alert message");
+        DriverAction.getElementText(warning);
+        String s = DriverAction.getElementText(warning);
+        if (s.equals("Warning")) {
+            GemTestReporter.addTestStep("warning", "You have already applied for these dates.", STATUS.PASS, DriverAction.takeSnapShot());
+        }
     }
 }
