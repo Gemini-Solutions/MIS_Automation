@@ -43,4 +43,18 @@ public class LeaveManagementLocators {
     public static By field_leaveTextArea(String field) {
         return By.xpath("//textarea[@id='" + field + "']");
     }
+
+    public static By field_leaveCalender(String field) {
+        return By.xpath("//input[@name='" + field + "']");
+    }
+
+    public static By heading_alertType = By.xpath("//div[contains(@class,'sweet-alert')]/h2");
+    public static By text_alertMessage = By.xpath("//div[contains(@class,'sweet-alert')]/p");
+    public static By datePicker_switchMonth = By.xpath("(//th[@class='datepicker-switch'])[1]");
+    public static By datePicker_month = By.xpath("//div[@class='datepicker-months']//span");
+    public static By datePicker_day = By.xpath("//div[@class='datepicker-days']//tbody//td[@class='day']");
+    //    public static By button_tooltip = By.xpath("//a[@data-trigger='hover']");
+    public static By button_tooltip = By.xpath("//i[@class='fa fa-info-circle']");
+    public static By message_tooltip = By.xpath("//div[@class='popover-content']");
+
 }

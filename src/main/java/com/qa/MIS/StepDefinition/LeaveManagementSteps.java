@@ -10,6 +10,8 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.cucumber.java.ht.Le;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -165,6 +167,11 @@ public class LeaveManagementSteps {
                         DriverAction.getAttributeName(LeaveManagementLocators.field_leaveTextArea(field),
                                 "class");
                 break;
+            case "calender":
+                classValue =
+                        DriverAction.getAttributeName(LeaveManagementLocators.field_leaveCalender(field),
+                                "class");
+                break;
         }
         if (classValue.contains("error-validation")) {
             GemTestReporter.addTestStep("Verifying Mandatory Fields",
@@ -183,5 +190,95 @@ public class LeaveManagementSteps {
     @Then("enter compOff reason {string} for {string} field")
     public void enterCompOffReasonForField(String message, String field) {
         DriverAction.typeText(LeaveManagementLocators.field_leaveTextArea(field), message, "reason");
+    }
+
+    @And("verify popup with message {string} and {string}")
+    public void verifyPopupWithMessageAnd(String alertType, String alertMessage) {
+        String expectedAlertType = DriverAction.getElementText(LeaveManagementLocators.heading_alertType);
+        String expectedAlertMessage = DriverAction.getElementText(LeaveManagementLocators.text_alertMessage);
+
+        if (expectedAlertType.equals(alertType)) {
+            GemTestReporter.addTestStep("Verifying Alert Type",
+                    "Alert Type matching passed.\nExpected Alert Type - " + expectedAlertType +
+                            "\nActual Alert Type - " + alertType, STATUS.PASS, DriverAction.takeSnapShot());
+        } else {
+            GemTestReporter.addTestStep("Verifying Alert Type",
+                    "Alert Type matching failed.\nExpected Alert Type - " + expectedAlertType +
+                            "\nActual Alert Type - " + alertType, STATUS.FAIL, DriverAction.takeSnapShot());
+        }
+        if (expectedAlertMessage.equals(alertMessage)) {
+            GemTestReporter.addTestStep("Verifying Alert Message",
+                    "Alert Message matching passed.\nExpected Alert Message - " + expectedAlertMessage +
+                            "\nActual Alert Message - " + alertMessage, STATUS.PASS, DriverAction.takeSnapShot());
+        } else {
+            GemTestReporter.addTestStep("Verifying Alert Message",
+                    "Alert Message matching failed.\nExpected Alert Message - " + expectedAlertMessage +
+                            "\nActual Alert Message - " + alertMessage, STATUS.FAIL,
+                    DriverAction.takeSnapShot());
+        }
+    }
+
+    @And("Verify auto populated {string} field for {string}")
+    public void verifyAutoPopulatedFieldFor(String fieldType, String field) {
+        String defaultText = null;
+        switch (fieldType) {
+            case "textField":
+                defaultText =
+                        DriverAction.getElementText(LeaveManagementLocators.field_leaveTextFields(field));
+                break;
+        }
+        if (!defaultText.equals(null)) {
+            GemTestReporter.addTestStep("Verifying Default Fields",
+                    field + "Fields having default values", STATUS.PASS, DriverAction.takeSnapShot());
+        } else {
+            GemTestReporter.addTestStep("Verifying Mandatory Fields",
+                    field + "Fields not having default values", STATUS.FAIL, DriverAction.takeSnapShot());
+        }
+    }
+
+    @Then("enter leave {string} for {string} field")
+    public void enterLeaveForField(String date, String field) {
+        String elementLabel = field.contains("FromDate") ? "From date" : "Till date";
+        // date format == mm/dd/yyyy
+        String[] dateArray = date.split("/");
+        DriverAction.click(LeaveManagementLocators.field_leaveCalender(field), elementLabel);
+        DriverAction.click(LeaveManagementLocators.datePicker_switchMonth);
+        List<WebElement> monthElements = DriverAction.getElements(LeaveManagementLocators.datePicker_month);
+        int monthNumber = Integer.parseInt(dateArray[0]);
+        DriverAction.click(monthElements.get(monthNumber - 1), "month");
+        List<WebElement> dayElements = DriverAction.getElements(LeaveManagementLocators.datePicker_day);
+        for (WebElement day : dayElements) {
+            if (DriverAction.getElementText(day).equals(dateArray[1])) {
+                DriverAction.click(day, "day");
+                break;
+            }
+        }
+
+    }
+
+    @And("click total working days tool tip")
+    public void clickTotalWorkingDaysToolTip() {
+        DriverAction.waitSec(5);
+//        new WebDriverWait(DriverManager.getWebDriver(), Duration.ofSeconds(20))
+//                .until(ExpectedConditions.elementToBeClickable(LeaveManagementLocators.button_tooltip));
+        DriverAction.click(LeaveManagementLocators.button_tooltip, "tooltip");
+    }
+
+    @And("verify tooltip message {string}")
+    public void verifyTooltipMessage(String message) {
+//        String expectedMessage = DriverAction.getAttributeName(LeaveManagementLocators.button_tooltip,
+//                "data-content");
+        DriverAction.waitSec(5);
+        String expectedMessage = DriverAction.getElementText(LeaveManagementLocators.message_tooltip);
+        if (expectedMessage.equals(message)) {
+            GemTestReporter.addTestStep("Verifying ToolTip Message",
+                    "ToolTip Message matching passed.\nExpected ToolTip Message - " + expectedMessage +
+                            "\nActual ToolTip Message - " + message, STATUS.PASS, DriverAction.takeSnapShot());
+        } else {
+            GemTestReporter.addTestStep("Verifying ToolTip Message",
+                    "ToolTip Message matching failed.\nExpected ToolTip Message - " + expectedMessage +
+                            "\nActual ToolTip Message - " + message, STATUS.FAIL, DriverAction.takeSnapShot());
+        }
+
     }
 }
