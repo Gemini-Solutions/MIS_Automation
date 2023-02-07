@@ -17,7 +17,7 @@ import static com.qa.projectName.Locators.Locators.*;
 public class StepDefinition {
 
    @When("^user click on url$")
-    public void user_click_on_url()
+    public void userClickOnUrl()
     {
        DriverAction.launchUrl("https://mymis.geminisolutions.com/");
     }
@@ -88,17 +88,17 @@ public class StepDefinition {
     }
         @And("^enter old password$")
         public void enterOldPassword() {
-            DriverAction.click(popUpCloseButton);
+            DriverAction.click(popUpCloseButton,"window close button");
             DriverAction.waitSec(3);
-            DriverAction.click(clickOnChangeDetails);
+            DriverAction.click(clickOnChangeDetails,"update details");
             DriverAction.waitSec(10);
-            DriverAction.click(changePassword);
+            DriverAction.click(changePassword,"change password");
             DriverAction.waitSec(7);
             DriverAction.typeText(enterOldPassword, "12345");
             DriverAction.typeText(newPassword, "Gemini123");
             DriverAction.waitSec(5);
             DriverAction.typeText(confirmPassword, "Gemini123");
-            DriverAction.click(updatePassword);
+            DriverAction.click(updatePassword, "update password");
             DriverAction.waitSec(10);
         }
         @And("^verify the the password is incorrect$")
@@ -110,29 +110,32 @@ public class StepDefinition {
             }
             DriverAction.click(okButton);
     }
-    @When("click on change password")
+    /*@When("click on change password")
     public void clickOnChangePassword() {
         DriverAction.waitSec(10);
-        DriverAction.click(changePassword);
+        DriverAction.click(changePassword,"change password button");
         DriverAction.waitSec(10);
-    }
+    }*/
 
     @And("enter new password and confirm password")
     public void enterNewPasswordAndConfirmPassword() {
-       DriverAction.click(popUpCloseButton);
-       DriverAction.click(clickOnChangeDetails);
-       DriverAction.typeText(newPassword,"Gemini");
-       DriverAction.typeText(confirmPassword,"Gemini123");
-       DriverAction.click(updatePassword);
+        DriverAction.click(popUpCloseButton,"close button");
+        DriverAction.click(clickOnChangeDetails,"change details button");
+        DriverAction.waitSec(3);
+        DriverAction.click(changePassword,"change password button");
+        DriverAction.waitSec(5);
+        DriverAction.typeText(newPassword,"Gemini");
+        DriverAction.typeText(confirmPassword,"Gemini123");
+        DriverAction.click(updatePassword,"update button");
 
     }
 
     @And("click on update password")
     public void clickOnUpdatePassword() {
-       DriverAction.click(updatePassword);
+       DriverAction.click(updatePassword,"update password button");
     }
 
-    @And("verify password not match")
+    @Then("verify password not match")
     public void verifyPasswordNotMatch() {
        DriverAction.click(passwordNotMatch);
         String sl=DriverAction.getElementText(passwordNotMatch);
@@ -140,4 +143,10 @@ public class StepDefinition {
         GemTestReporter.addTestStep("Password and confirm password does not match","Password and confirm password does not match", STATUS.PASS,DriverAction.takeSnapShot());
     }
 
+    @When("click on close button")
+    public void clickOnCloseButton() {
+
+        DriverAction.click(popUpCloseButton,"close button");
+        DriverAction.click(clickOnChangeDetails,"change details button");
+    }
 }

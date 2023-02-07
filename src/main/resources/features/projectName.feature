@@ -22,18 +22,18 @@ Feature: MIS_Automation
       Scenario:user enter invalid pincode
         When click on update address
         And enter pinCode
-        And verify invalid pincode
+        Then verify invalid pincode
 
         Scenario: user enters Incorrect Password
-          When click on change password
+          #When click on change password
           And enter old password
           Then verify the the password is incorrect
 
       Scenario: user enters Different Password in Confirm Password
-      When click on change password
+      #  When click on close button
         And enter new password and confirm password
-        And click on update password
-        And verify password not match
+        #And click on update password
+        Then verify password not match
 
 
 
