@@ -81,14 +81,23 @@ public class StepDefinition {
             GemTestReporter.addTestStep("warning", "warningText", STATUS.PASS, DriverAction.takeSnapShot());
         }
     }
+
+    @When("click on change password")
+    public void clickOnChangePassword() {
+        DriverAction.click(popUpCloseButton,"window close button");
+        DriverAction.waitSec(3);
+        DriverAction.click(clickOnChangeDetails,"update details");
+        DriverAction.waitSec(10);
+        DriverAction.click(changePassword,"change password");
+        DriverAction.waitSec(7);
+    }
         @And("^enter old password$")
         public void enterOldPassword() {
-            DriverAction.click(popUpCloseButton,"window close button");
+            /*DriverAction.click(popUpCloseButton,"window close button");
             DriverAction.waitSec(3);
             DriverAction.click(clickOnChangeDetails,"update details");
-            DriverAction.waitSec(10);
-            DriverAction.click(changePassword,"change password");
-            DriverAction.waitSec(7);
+            DriverAction.waitSec(10);*/
+
             DriverAction.typeText(enterOldPassword, "12345");
             DriverAction.typeText(newPassword, "Gemini123");
             DriverAction.waitSec(5);
@@ -112,9 +121,9 @@ public class StepDefinition {
         DriverAction.waitSec(10);
     }*/
 
-    @And("enter new password and confirm password")
+    @When("enter new password and confirm password")
     public void enterNewPasswordAndConfirmPassword() {
-        DriverAction.click(popUpCloseButton,"close button");
+       DriverAction.click(popUpCloseButton,"close button");
         DriverAction.click(clickOnChangeDetails,"change details button");
         DriverAction.waitSec(3);
         DriverAction.click(changePassword,"change password button");
@@ -176,7 +185,7 @@ public class StepDefinition {
         DriverAction.waitSec(5);
     }
 
-    @And("click on add lunch button")
+    @Then("click on add lunch button")
     public void clickOnAddLunchButton() {
         DriverAction.click(addLunchButton,"add lunch button");
     }
@@ -190,4 +199,6 @@ public class StepDefinition {
             GemTestReporter.addTestStep("warning", "You have already applied for these dates.", STATUS.PASS, DriverAction.takeSnapShot());
         }
     }
+
+
 }

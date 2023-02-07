@@ -25,14 +25,12 @@ Feature: MIS_Automation
         Then verify invalid pincode
 
         Scenario: user enters Incorrect Password
-          #When click on change password
+          When click on change password
           And enter old password
           Then verify the the password is incorrect
 
       Scenario: user enters Different Password in Confirm Password
-      #  When click on close button
-        And enter new password and confirm password
-        #And click on update password
+        When enter new password and confirm password
         Then verify password not match
 
        Scenario:user applies for lunch
@@ -41,7 +39,7 @@ Feature: MIS_Automation
          And user click on till date and select till date
          And click on location container
          And select the location from the list
-         And click on add lunch button
+         Then click on add lunch button
 
          Scenario: user applies for lunch for already applied date
          When user click on apply lunch
