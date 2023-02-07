@@ -4,7 +4,7 @@
   "gemjarSubID": "test_id",
   "gemjarUserName": "laxmi.sisode",
   "gemjarToken": "456e48c4-f23e-4215-a716-8be3000f90251675666947342",
-  "glueCode":"com.qa.AppraisalManagement.StepDefination",
+  "glueCode":"com.qa.MIS.StepDefination",
   "jewelEntryUrl": "https://apis.gemecosystem.com/enter-point",
   "reportLocation":"/tmp",
   "reportName": "mis_automationAM_report",
