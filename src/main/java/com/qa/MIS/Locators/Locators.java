@@ -1,5 +1,5 @@
 package com.qa.MIS.Locators;
-import groovyjarjarantlr4.v4.codegen.model.SrcOp;
+
 import org.openqa.selenium.By;
 
 public class Locators {
