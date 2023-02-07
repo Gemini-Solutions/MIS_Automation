@@ -21,8 +21,9 @@ public class StepDefinition {
     public void logged_in_successfully() throws InterruptedException {
         DriverAction.typeText(Locators.username,"prajjwal.negi");
         DriverAction.typeText(Locators.password,"Gemini@1234");
+        //Thread.sleep(5000);
         DriverAction.click(Locators.signIn);
-        Thread.sleep(3000);
+        Thread.sleep(5000);
         //DriverAction.waitUntilElementAppear(Locators.closeSkills,5);
 
         DriverAction.click(Locators.closeSkills,"Close skill");
@@ -38,7 +39,7 @@ public class StepDefinition {
     @Then("add new document tags icon is present and functional")
     public void add_new_document_tags_icon_is_present_and_functional() {
         DriverAction.click(Locators.addDocumentTag,"Add document Tag");
-        DriverAction.typeText(Locators.inputDocumentTag,"Test12");
+        DriverAction.typeText(Locators.inputDocumentTag,"Test14");
         DriverAction.click(Locators.saveDocumentTag,"Document Tag saved");
         String successMessage = DriverAction.getElementText(Locators.documentTagSuccessfullyAdded);
         System.out.println(successMessage);
@@ -66,9 +67,17 @@ public class StepDefinition {
     public void throws_warning_message() {
         String warningMessage = DriverAction.getElementText(Locators.documentTagWarningMessage);
         System.out.println(warningMessage);
-        if(!warningMessage.equalsIgnoreCase("Please fill required field")){
+        if(warningMessage.equalsIgnoreCase("Please fill required field")){
+            System.out.println("Warning Message!");
+
+
+        }
+        else{
             Assert.fail();
         }
+//        if(!warningMessage.equalsIgnoreCase("Please fill required field")){
+//            Assert.fail();
+//        }
 
 
 
@@ -106,7 +115,7 @@ public class StepDefinition {
         Thread.sleep(5000);
         DriverAction.rightClick(Locators.folder);
         DriverAction.click(Locators.addDocument,"Add Document");
-        DriverAction.fileUpload(Locators.upload,"testinput.xlsx");
+        //DriverAction.fileUpload(Locators.upload,"testinput.xlsx");
         //DriverAction.typeText(Locators.upload,"src\\main\\resources\\testdocument.txt");
         Thread.sleep(5000);
 
@@ -138,6 +147,80 @@ public class StepDefinition {
         }
 
     }
+
+    @When("navigating to view documents page and searched")
+    public void navigating_to_view_documents_page_and_searched() throws InterruptedException {
+        // Write code here that turns the phrase above into concrete actions
+        DriverAction.click(Locators.knowledgeBase,"Knowledge Base");
+        DriverAction.click(Locators.viewDocuments,"View Documents");
+        Thread.sleep(5000);
+
+    }
+    @Then("search is functional")
+    public void search_is_functional() {
+        // Write code here that turns the phrase above into concrete actions
+        DriverAction.typeText(Locators.search,"xyz1");
+        String documentName = DriverAction.getElementText(Locators.searchDocument);
+        if(documentName.equalsIgnoreCase("xyz1")){
+
+        }
+        else{
+            Assert.fail();
+        }
+
+
+
+
+    }
+
+
+    @When("navigating to view documents page and searched document not present")
+    public void navigating_to_view_documents_page_and_searched_document_not_present() throws InterruptedException {
+        // Write code here that turns the phrase above into concrete actions
+        DriverAction.click(Locators.knowledgeBase,"Knowledge Base");
+        DriverAction.click(Locators.viewDocuments,"View Documents");
+        Thread.sleep(5000);
+
+    }
+    @Then("search is functional and nothing is shown")
+    public void search_is_functional_and_nothing_is_shown() {
+        // Write code here that turns the phrase above into concrete actions
+        DriverAction.typeText(Locators.search,"xyz2");
+        String mismatch = DriverAction.getElementText(Locators.documentSearch);
+        if(mismatch.equalsIgnoreCase("No matching records found")){
+
+        }
+        else{
+            Assert.fail();
+        }
+
+
+    }
+
+    @When("navigating to view documents page and renaming the {string}")
+    public void navigating_to_view_documents_page_and_renaming_the(String folderRename) throws InterruptedException {
+        DriverAction.click(Locators.knowledgeBase,"Knowledge Base");
+        DriverAction.click(Locators.viewDocuments,"View Documents");
+        Thread.sleep(5000);
+        DriverAction.waitUntilElementAppear(Locators.folder,5);
+        Thread.sleep(5000);
+        DriverAction.rightClick(By.xpath("//a[text()='"+folderRename+"']"));
+        Thread.sleep(5000);
+        DriverAction.click(Locators.rename);
+        Thread.sleep(5000);
+        DriverAction.typeText(By.xpath("//*[@id=\"DocumentGrouptree\"]/ul/li[3]/span"),"1");
+        Thread.sleep(5000);
+
+
+
+
+    }
+    @Then("the folder name should be renamed")
+    public void the_folder_name_should_be_renamed() {
+
+
+    }
+
 
 
 

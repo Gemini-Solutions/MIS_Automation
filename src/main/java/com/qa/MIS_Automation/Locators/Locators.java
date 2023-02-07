@@ -3,12 +3,12 @@ package com.qa.MIS_Automation.Locators;
 import org.openqa.selenium.By;
 
 public class Locators {
-    public static String mnth;
     public static By username = By.xpath("//input[@id='username']");
 
     public static By password = By.xpath("//input[@id='password']");
-    public static By signIn = By.xpath("//input[@value='Sign in']");
+    public static By signIn = By.xpath("//input[@id='btnLogin']");
     public static By closeSkills = By.id("btnskillsClose");
+    //public static By closeSkills = By.className("close");
     public static By knowledgeBase = By.xpath("//span[text()='Knowledge Base']");
     public static By viewDocuments  = By.xpath("//span[text()='View Documents']");
 
@@ -32,6 +32,16 @@ public class Locators {
     public static By refresh = By.xpath("//img[@title='Refresh']");
 
     public static By upload = By.xpath("//input[@name='fileToUpload']");
+
+    public static By search = By.xpath("//input[@type='search']");
+
+    public static By searchDocument = By.xpath("//*[@id=\"tbldocumentGridViewList\"]/tbody/tr/td[2]");
+
+    public static By documentSearch = By.xpath("//*[@id=\"tbldocumentGridViewList\"]/tbody/tr/td");
+    public static By rename = By.xpath("//*[@id=\"myMenu\"]/li[4]/a");
+
+    public static By dropdown = By.className("form-control input-sm");
+
 
 
 
