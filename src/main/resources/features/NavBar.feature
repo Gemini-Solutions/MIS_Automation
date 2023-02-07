@@ -38,6 +38,7 @@ Examples: |URL|
         |Technology|Proficiency Level|Skill Type|Tech Experience|Total Work Exp|AlertType|Message|
         |Administration|Beginner         |Secondary |24             |2             |Success   | Skills has been saved successfully. |
 
+
   Scenario Outline: Verify Warning Message box when adding duplicate skills
     Then User click on Skills menu
     And User Enter all the details "<Technology>","<Proficiency Level>","<Skill Type>","<Tech Experience>","<Total Work Exp>"
