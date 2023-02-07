@@ -1,10 +1,10 @@
-package com.qa.projectName.StepDefinition;
+package com.qa.MIS.StepDefinition;
 
 import com.gemini.generic.exception.GemException;
 import com.gemini.generic.ui.utils.DriverManager;
 import io.cucumber.java.Before;
 
-public class Hook {
+public class MIS_AutomationHooks {
     @Before
     public void start() throws GemException {
         DriverManager.setUpBrowser();
