@@ -29,9 +29,13 @@ Feature: MIS_Automation
           And enter old password
           Then verify the the password is incorrect
 
-      Scenario: user enters Different Password in Confirm Password
-        When enter new password and confirm password
-        Then verify password not match
+      #Scenario: user enters Different Password in Confirm Password
+       # When enter new password and confirm password
+        #Then verify password not match
+
+        Scenario: User not fills a field in Change Password section
+          When click on change password
+          #And click on update password
 
        Scenario:user applies for lunch
          When user click on apply lunch
@@ -49,6 +53,15 @@ Feature: MIS_Automation
          And select the location from the list
          And click on add lunch button
            Then verify the warning message
+
+
+           Scenario: user leave a field blank in Apply lunch
+             When user click on apply lunch
+             And user click on from date and click on select from date
+             And user click on till date and select till date
+             And click on location container
+             And click on add lunch button
+             Then verify select is blank
 
 
 

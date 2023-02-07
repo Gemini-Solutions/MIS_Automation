@@ -121,9 +121,10 @@ public class StepDefinition {
         DriverAction.waitSec(10);
     }*/
 
-    @When("enter new password and confirm password")
+    @When("^enter new password and confirm password$")
     public void enterNewPasswordAndConfirmPassword() {
        DriverAction.click(popUpCloseButton,"close button");
+       DriverAction.waitSec(3);
         DriverAction.click(clickOnChangeDetails,"change details button");
         DriverAction.waitSec(3);
         DriverAction.click(changePassword,"change password button");
@@ -134,12 +135,12 @@ public class StepDefinition {
 
     }
 
-    @And("click on update password")
+    @And("^click on update password$")
     public void clickOnUpdatePassword() {
        DriverAction.click(updatePassword,"update password button");
     }
 
-    @Then("verify password not match")
+    @Then("^verify password not match$")
     public void verifyPasswordNotMatch() {
        DriverAction.click(passwordNotMatch);
         String sl=DriverAction.getElementText(passwordNotMatch);
@@ -147,14 +148,14 @@ public class StepDefinition {
         GemTestReporter.addTestStep("Password and confirm password does not match","Password and confirm password does not match", STATUS.PASS,DriverAction.takeSnapShot());
     }
 
-    @When("click on close button")
+    @When("^click on close button$")
     public void clickOnCloseButton() {
 
         DriverAction.click(popUpCloseButton,"close button");
         DriverAction.click(clickOnChangeDetails,"change details button");
     }
 
-    @When("user click on apply lunch")
+    @When("^user click on apply lunch$")
     public void userClickOnApplyLunch() {
         DriverAction.click(popUpCloseButton,"close button");
         DriverAction.waitSec(10);
@@ -162,35 +163,35 @@ public class StepDefinition {
         DriverAction.waitSec(5);
     }
 
-    @And("user click on from date and click on select from date")
+    @And("^user click on from date and click on select from date$")
     public void userClickOnFromDate() {
         DriverAction.click(fromDate,"from date");
         DriverAction.click(selectFromDate,"select from date");
     }
 
-    @And("user click on till date and select till date")
+    @And("^user click on till date and select till date$")
     public void userClickOnTillDate() {
         DriverAction.click(tillDate, "till date");
         DriverAction.click(selectTillDate,"select till date");
     }
 
-    @And("click on location container")
+    @And("^click on location container$")
     public void clickOnLocationContainer() {
         DriverAction.click(locationContainer,"location container");
     }
 
-    @And("select the location from the list")
+    @And("^select the location from the list$")
     public void selectTheLocationFromTheList() {
         DriverAction.click(selectLocation,"select location");
         DriverAction.waitSec(5);
     }
 
-    @Then("click on add lunch button")
+    @Then("^click on add lunch button$")
     public void clickOnAddLunchButton() {
         DriverAction.click(addLunchButton,"add lunch button");
     }
 
-    @Then("verify the warning message")
+    @Then("^verify the warning message$")
     public void verifyTheWarningMessage() {
         //DriverAction.click(warning,"warning alert message");
         DriverAction.getElementText(warning);
@@ -201,4 +202,24 @@ public class StepDefinition {
     }
 
 
+    @Then("^verify select is blank$")
+    public void verifySelectIsBlank() {
+       DriverAction.getElementText(locationContainer);
+        String s=DriverAction.getElementText(locationContainer);
+        if(s.equals("Select")){
+            GemTestReporter.addTestStep("Select is blank", "Select is blank", STATUS.PASS, DriverAction.takeSnapShot());
+        }
+
+        }
+
+    @Then("^verify the old password is blank$")
+    public void verifyTheOldPasswordIsBlank() {
+        DriverAction.getElementText(enterOldPassword);
+        String sb=DriverAction.getElementText(enterOldPassword);
+        if(sb.equals("old password")){
+            GemTestReporter.addTestStep("old password is blank","Old password is blank",STATUS.PASS,DriverAction.takeSnapShot());
+        }
+
+    }
 }
+

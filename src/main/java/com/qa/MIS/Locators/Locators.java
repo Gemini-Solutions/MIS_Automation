@@ -61,5 +61,7 @@ public class Locators {
     public static By selectLocation=By.xpath("//li[text()='Canaan Tower']");
 
     public static By addLunchButton=By.xpath("//button[@id='BtnsaveDateforLunch']");
+
+
 }
 
