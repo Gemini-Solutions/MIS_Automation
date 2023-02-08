@@ -2,6 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All TestCases" data-provider-thread-count="1">
     <test verbose="2" name="TickerTape">
+        <parameter name="tagName" value="@Auto"/>
         <classes>
             <class name="com.gemini.generic.bdd.GemJarCucumberBase"/>
         </classes>
