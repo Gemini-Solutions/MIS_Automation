@@ -20,7 +20,7 @@ public class Locators {
     public static By LNSA_END_DATE = By.xpath("//span[@id='endDate']");
     public static By LNSA_SUBMIT_BUTTON = By.xpath("//button[@id = 'btnReasonPop']");
     public static By LNSA_OK_BUTTON = By.xpath("//button[text() = 'OK']");
-    public static By LNSA_WARNING_MSG = By.xpath("//p[contains(text(), 'date.')]");
-    public static String LNSA_WEEK_SELECT = "//input[contains(@id,'selectAll')]";
+    public static By LNSA_WEEK_SELECT = By.xpath("//input[contains(@id,'selectAll')]");
+    public static By LNSA_WARNING_POP = By.xpath("//h2[text() = 'Warning']");
 
 }
