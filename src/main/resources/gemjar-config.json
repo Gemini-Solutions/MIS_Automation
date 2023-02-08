@@ -2,11 +2,19 @@
   "environment": "prod",
   "projectName": "MIS",
   "gemjarSubID": "test_id",
-  "gemjarUserName": "pnegi",
-  "reportLocation": "",
-  "gemjarToken": "c885b724-e0dc-4df7-a731-0a4ec30e06a21675254028174",
+
   "glueCode":"com.qa.MIS_Automation.StepDefinition",
   "jewelEntryUrl": "https://apis.gemecosystem.com/enter-point",
+
+  "gemjarUserName": "divya.madan",
+  "jewelEntryUrl": "https://apis.gemecosystem.com/enter-point",
+  "reportLocation": "MIS_Automation Report",
+  "gemjarToken": "6a025bfd-9746-42b5-ab34-1e80a28c83771675343532723",
+  "glueCode":"com.qa.MIS.StepDefination",
+  "feature": "",
+  "tagName": "",
+  "scenario": "",
+
   "dev": {
     "browserName": "firefox",
     "launchUrl": "https://mymis.geminisolutions.com/",
