@@ -11,6 +11,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.cucumber.java.ht.Le;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -19,19 +20,29 @@ import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Stack;
 
 import static org.testng.Assert.assertEquals;
 
 public class LeaveManagementSteps {
+
+    static int halfDayLeaveCount = 0;
+    static String totalWorkingDaysBeforeApplyingHalfDay = null;
 
     @Given("User is logged into MIS using username and password")
     public void userIsLoggedIntoMISUsingUsernameAndPassword(DataTable credTable) {
         List<Map<String, String>> credentials = credTable.asMaps(String.class, String.class);
         String username = credentials.get(0).get("username");
         String password = credentials.get(0).get("password");
-        DriverAction.typeText(LeaveManagementLocators.input_loginUsername, username, "username");
-        DriverAction.typeText(LeaveManagementLocators.input_loginPassword, password, "password");
-        DriverAction.click(LeaveManagementLocators.button_SignIn, "sign in");
+        if (DriverAction.isExist(LeaveManagementLocators.input_loginUsername)) {
+            DriverAction.typeText(LeaveManagementLocators.input_loginUsername, username, "username");
+        }
+        if (DriverAction.isExist(LeaveManagementLocators.input_loginPassword)) {
+            DriverAction.typeText(LeaveManagementLocators.input_loginPassword, password, "password");
+        }
+        if (DriverAction.isExist(LeaveManagementLocators.button_SignIn)) {
+            DriverAction.click(LeaveManagementLocators.button_SignIn, "sign in");
+        }
     }
 
     @When("User is on MIS Home Page")
@@ -52,10 +63,16 @@ public class LeaveManagementSteps {
 
     @And("User clicks on {string} sub tab of {string} tab in MIS")
     public void userClicksOnSubTabOfTabInMIS(String childTab, String parentTab) {
-        DriverAction.waitSec(2);
-        DriverAction.click(LeaveManagementLocators.menu_parentTabs(parentTab), parentTab);
-        DriverAction.waitSec(2);
-        DriverAction.click(LeaveManagementLocators.menu_childTabs(childTab), childTab);
+//        DriverAction.waitUntilElementAppear(By.xpath("//h3[@class='panel-title']"), 10);
+        DriverAction.waitSec(3);
+        DriverAction.waitUntilElementAppear(LeaveManagementLocators.menu_parentTabs(parentTab), 10);
+        if (DriverAction.isExist(LeaveManagementLocators.menu_parentTabs(parentTab))) {
+            DriverAction.click(LeaveManagementLocators.menu_parentTabs(parentTab), parentTab);
+        }
+        DriverAction.waitUntilElementAppear(LeaveManagementLocators.menu_parentTabs(parentTab), 10);
+        if (DriverAction.isExist(LeaveManagementLocators.menu_childTabs(childTab))) {
+            DriverAction.click(LeaveManagementLocators.menu_childTabs(childTab), childTab);
+        }
     }
 
     @And("Verify {string} of {string} tab")
@@ -79,8 +96,11 @@ public class LeaveManagementSteps {
         DriverAction.click(LeaveManagementLocators.navigation_tabs(tabs), tabs);
     }
 
-    @And("Verify {string} displays")
-    public void verifyDisplays(String tab) {
+    @And("Verify {string} is displayed")
+    public void verifyTabIsDisplayed(String tab) {
+//        new WebDriverWait(DriverManager.getWebDriver(), Duration.ofSeconds(20))
+//                .until(ExpectedConditions.attributeContains(LeaveManagementLocators.navigation_ActiveTab(tab),
+//                        "aria-expanded", "true"));
         DriverAction.waitSec(2);
         List<String> expectedFields = null;
         String id = null;
@@ -124,7 +144,11 @@ public class LeaveManagementSteps {
 
     @Then("User clicks on submit button for {string}")
     public void userClicksOnSubmitButtonFor(String tab) {
+//        new WebDriverWait(DriverManager.getWebDriver(), Duration.ofSeconds(20))
+//                .until(ExpectedConditions.attributeContains(LeaveManagementLocators.navigation_ActiveTab(tab),
+//                        "aria-expanded", "true"));
         DriverAction.waitSec(2);
+
         String id = null;
 
         switch (tab) {
@@ -144,8 +168,9 @@ public class LeaveManagementSteps {
                 id = "tabApplyOuting";
                 break;
         }
-
-        DriverAction.click(LeaveManagementLocators.button_leaveSubmit(id), "Submit");
+        if (DriverAction.isExist(LeaveManagementLocators.button_leaveSubmit(id))) {
+            DriverAction.click(LeaveManagementLocators.button_leaveSubmit(id), "Submit");
+        }
     }
 
     @And("Verify mandatory {string} field for {string}")
@@ -182,17 +207,21 @@ public class LeaveManagementSteps {
         }
     }
 
-    @Then("select compOff date {int} for {string} field")
+    @Then("Select compOff date {int} for {string} field")
     public void selectCompOffDateDateIndexFromDateField(Integer index, String field) {
-        DriverAction.dropDown(LeaveManagementLocators.field_leaveDropDown(field), index);
+        if (DriverAction.isExist(LeaveManagementLocators.field_leaveDropDown(field))) {
+            DriverAction.dropDown(LeaveManagementLocators.field_leaveDropDown(field), index);
+        }
     }
 
-    @Then("enter compOff reason {string} for {string} field")
+    @Then("Enter compOff reason {string} for {string} field")
     public void enterCompOffReasonForField(String message, String field) {
-        DriverAction.typeText(LeaveManagementLocators.field_leaveTextArea(field), message, "reason");
+        if (DriverAction.isExist(LeaveManagementLocators.field_leaveTextArea(field))) {
+            DriverAction.typeText(LeaveManagementLocators.field_leaveTextArea(field), message, "reason");
+        }
     }
 
-    @And("verify popup with message {string} and {string}")
+    @And("Verify popup with message {string} and {string}")
     public void verifyPopupWithMessageAnd(String alertType, String alertMessage) {
         String expectedAlertType = DriverAction.getElementText(LeaveManagementLocators.heading_alertType);
         String expectedAlertMessage = DriverAction.getElementText(LeaveManagementLocators.text_alertMessage);
@@ -221,6 +250,7 @@ public class LeaveManagementSteps {
     @And("Verify auto populated {string} field for {string}")
     public void verifyAutoPopulatedFieldFor(String fieldType, String field) {
         String defaultText = null;
+        // TODO - If
         switch (fieldType) {
             case "textField":
                 defaultText =
@@ -236,17 +266,25 @@ public class LeaveManagementSteps {
         }
     }
 
-    @Then("enter leave {string} for {string} field")
+    @Then("Enter leave {string} for {string} field")
     public void enterLeaveForField(String date, String field) {
         String elementLabel = field.contains("FromDate") ? "From date" : "Till date";
         // date format == mm/dd/yyyy
         String[] dateArray = date.split("/");
-        DriverAction.click(LeaveManagementLocators.field_leaveCalender(field), elementLabel);
-        DriverAction.click(LeaveManagementLocators.datePicker_switchMonth);
+        if (DriverAction.isExist(LeaveManagementLocators.field_leaveCalender(field))) {
+            DriverAction.click(LeaveManagementLocators.field_leaveCalender(field), elementLabel);
+        }
+
+        if (DriverAction.isExist(LeaveManagementLocators.datePicker_switchMonth)) {
+            DriverAction.click(LeaveManagementLocators.datePicker_switchMonth);
+        }
+
         List<WebElement> monthElements = DriverAction.getElements(LeaveManagementLocators.datePicker_month);
         int monthNumber = Integer.parseInt(dateArray[0]);
+
         DriverAction.click(monthElements.get(monthNumber - 1), "month");
         List<WebElement> dayElements = DriverAction.getElements(LeaveManagementLocators.datePicker_day);
+
         for (WebElement day : dayElements) {
             if (DriverAction.getElementText(day).equals(dateArray[1])) {
                 DriverAction.click(day, "day");
@@ -256,15 +294,17 @@ public class LeaveManagementSteps {
 
     }
 
-    @And("click total working days tool tip")
+    @And("Click total working days tool tip")
     public void clickTotalWorkingDaysToolTip() {
         DriverAction.waitSec(5);
 //        new WebDriverWait(DriverManager.getWebDriver(), Duration.ofSeconds(20))
 //                .until(ExpectedConditions.elementToBeClickable(LeaveManagementLocators.button_tooltip));
-        DriverAction.click(LeaveManagementLocators.button_tooltip, "tooltip");
+        if (DriverAction.isExist(LeaveManagementLocators.button_tooltip)) {
+            DriverAction.click(LeaveManagementLocators.button_tooltip, "tooltip");
+        }
     }
 
-    @And("verify tooltip message {string}")
+    @And("Verify tooltip message {string}")
     public void verifyTooltipMessage(String message) {
 //        String expectedMessage = DriverAction.getAttributeName(LeaveManagementLocators.button_tooltip,
 //                "data-content");
@@ -279,6 +319,72 @@ public class LeaveManagementSteps {
                     "ToolTip Message matching failed.\nExpected ToolTip Message - " + expectedMessage +
                             "\nActual ToolTip Message - " + message, STATUS.FAIL, DriverAction.takeSnapShot());
         }
+    }
 
+    @And("Select half day leave for {string}")
+    public void SelectHalfDayLeaveFor(String halfDayOptions) {
+        String[] options = halfDayOptions.split(",");
+        halfDayLeaveCount = options.length;
+        DriverAction.waitSec(2);
+        totalWorkingDaysBeforeApplyingHalfDay = DriverAction.getElementText(LeaveManagementLocators.label_totalWorkingDays);
+        for (String opt : options) {
+            String elementLabel = (opt.trim()).equals("isLeaveFirstHalfDay") ? "FirstHalfDay" : "LastHalfDay";
+            DriverAction.click(LeaveManagementLocators.checkbox_halfDayLeaveOption(opt.trim()), elementLabel);
+        }
+
+    }
+
+    @And("Verify effective total working days")
+    public void verifyEffectiveTotalWorkingDays() {
+        String totalWorkingDaysAfterApplyingHalfDay =
+                DriverAction.getElementText(LeaveManagementLocators.label_totalWorkingDays);
+        Object effectiveWorkingDays =
+                Integer.parseInt(totalWorkingDaysBeforeApplyingHalfDay) - (0.5 * halfDayLeaveCount);
+
+        String actualWorkingDays = null;
+        if (halfDayLeaveCount == 1) {
+            double wd = Integer.parseInt(totalWorkingDaysBeforeApplyingHalfDay) - 0.5;
+            actualWorkingDays = Double.toString(wd);
+        } else {
+            int wd = Integer.parseInt(totalWorkingDaysBeforeApplyingHalfDay) - 1;
+            actualWorkingDays = Integer.toString(wd);
+        }
+
+        if (actualWorkingDays.equals(totalWorkingDaysAfterApplyingHalfDay)) {
+            GemTestReporter.addTestStep("Verifying Total Working Days",
+                    "Total Working Days matching passed.\nExpected Total Working Days - " +
+                            totalWorkingDaysAfterApplyingHalfDay + "\nActual Total Working Days - " +
+                            actualWorkingDays, STATUS.PASS, DriverAction.takeSnapShot());
+        } else {
+            GemTestReporter.addTestStep("Verifying Total Working Days",
+                    "Total Working Days matching failed.\nExpected Total Working Days - " +
+                            totalWorkingDaysAfterApplyingHalfDay + "\nActual Total Working Days - " +
+                            actualWorkingDays, STATUS.FAIL, DriverAction.takeSnapShot());
+        }
+    }
+
+    @And("Select leave type {string} for {string} field")
+    public void selectLeaveTypeForField(String options, String field) {
+        if (DriverAction.isExist(LeaveManagementLocators.field_leaveDropDown(field))) {
+            DriverAction.dropDown(LeaveManagementLocators.field_leaveDropDown(field), options);
+        }
+    }
+
+    @And("Enter leave reason {string} for {string} field")
+    public void enterLeaveReasonForField(String message, String field) {
+        DriverAction.waitSec(1);
+        if (DriverAction.isExist(LeaveManagementLocators.field_leaveTextArea(field))) {
+            DriverAction.typeText(LeaveManagementLocators.field_leaveTextArea(field), message, "reason");
+        }
+    }
+
+    @And("Select availability for {string} field")
+    public void selectAvailabilityForField(String field) {
+        String[] availability = field.split(",");
+        for (String aval : availability) {
+            if (DriverAction.isExist(LeaveManagementLocators.field_leaveCheckBox(aval.trim()))) {
+                DriverAction.click(LeaveManagementLocators.field_leaveCheckBox(aval.trim()), aval);
+            }
+        }
     }
 }

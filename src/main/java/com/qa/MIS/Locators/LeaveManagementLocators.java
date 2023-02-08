@@ -23,6 +23,10 @@ public class LeaveManagementLocators {
         return By.xpath("//ul[@class='nav']/li//span[text()='" + tab + "']");
     }
 
+    public static By navigation_ActiveTab(String tab) {
+        return By.xpath("//ul[@class='nav']/li//span[text()='" + tab + "']/..");
+    }
+
     public static By title_LeaveFields(String tab) {
         return By.xpath("//div[@id='" + tab + "']/section/div/div/div[not(contains" +
                 "(@style,'none'))]//label");
@@ -48,6 +52,10 @@ public class LeaveManagementLocators {
         return By.xpath("//input[@name='" + field + "']");
     }
 
+    public static By field_leaveCheckBox(String field) {
+        return By.xpath("//input[@id='" + field + "']");
+    }
+
     public static By heading_alertType = By.xpath("//div[contains(@class,'sweet-alert')]/h2");
     public static By text_alertMessage = By.xpath("//div[contains(@class,'sweet-alert')]/p");
     public static By datePicker_switchMonth = By.xpath("(//th[@class='datepicker-switch'])[1]");
@@ -56,5 +64,10 @@ public class LeaveManagementLocators {
     //    public static By button_tooltip = By.xpath("//a[@data-trigger='hover']");
     public static By button_tooltip = By.xpath("//i[@class='fa fa-info-circle']");
     public static By message_tooltip = By.xpath("//div[@class='popover-content']");
+    public static By label_totalWorkingDays = By.xpath("//span[@id='leaveWorkingDays']");
+
+    public static By checkbox_halfDayLeaveOption(String option) {
+        return By.xpath("//input[@id='" + option + "']");
+    }
 
 }
