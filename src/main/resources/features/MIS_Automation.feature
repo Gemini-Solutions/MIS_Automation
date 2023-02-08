@@ -27,18 +27,26 @@ Feature: MIS_Automation
         And enter pinCode
         Then verify invalid pincode
 
-        Scenario: user enters Incorrect Password
+  Scenario: user leaves Pin Code field blank
+    When click on update address
+    And click on pincode
+    Then verify pincode is blank
+
+  Scenario: user enters Incorrect Password
           When click on change password
           And enter old password
           Then verify the the password is incorrect
 
-      #Scenario: user enters Different Password in Confirm Password
-       # When enter new password and confirm password
-        #Then verify password not match
+      Scenario: user enters Different Password in Confirm Password
+        When enter new password and confirm password
+        Then verify password not match
 
         Scenario: User not fills a field in Change Password section
           When click on change password
-          #And click on update password
+          And click on update password
+          Then verify password is blank
+
+
 
        Scenario:user applies for lunch
          When user click on apply lunch
@@ -65,6 +73,9 @@ Feature: MIS_Automation
              And click on location container
              And click on add lunch button
              Then verify select is blank
+
+
+
 
 
 
