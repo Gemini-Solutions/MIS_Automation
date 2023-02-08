@@ -15,10 +15,10 @@ public class StepDefinition {
 
     @Given("logged in successfully")
     public void logged_in_successfully() throws InterruptedException {
-        DriverAction.typeText(Locators.username,"prajjwal.negi");
-        DriverAction.typeText(Locators.password,"Gemini@1234");
+        DriverAction.typeText(Locators.usernameByXpath,"prajjwal.negi");
+        DriverAction.typeText(Locators.passwordByXpath,"Gemini@1234");
         //Thread.sleep(5000);
-        DriverAction.click(Locators.signIn);
+        DriverAction.click(Locators.signInByXpath);
         Thread.sleep(5000);
         //DriverAction.waitUntilElementAppear(Locators.closeSkills,5);
 
