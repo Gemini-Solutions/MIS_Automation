@@ -7,6 +7,8 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+import java.sql.Driver;
+
 import static com.qa.MIS.Locators.Locators.*;
 
 public class StepDefinition {
@@ -37,9 +39,9 @@ public class StepDefinition {
 
     @When("^user update mobile and extension number$")
     public void clickOnMobile(){
-       DriverAction.click(popUpCloseButton);
-       DriverAction.waitSec(7);
-       DriverAction.click(clickOnChangeDetails);
+      // DriverAction.click(popUpCloseButton);
+      DriverAction.waitSec(7);
+       DriverAction.click(clickOnChangeDetails,"change details button");
        DriverAction.waitSec(7);
     }
 
@@ -50,17 +52,20 @@ public class StepDefinition {
     }
     @When("^click on update$")
     public void clickOnUpdate(){
+        DriverAction.waitUntilElementAppear(clickOnUpdate,1);
        DriverAction.click(clickOnUpdate);
-       DriverAction.waitSec(10);
+       DriverAction.waitSec(5);
     }
 
     @When("^click on update address$")
     public void clickOnUpdateAdd(){
-       DriverAction.click(popUpCloseButton);
-       DriverAction.click(clickOnChangeDetails);
-       DriverAction.waitSec(10);
-       DriverAction.click(clickOnUpdateAdd);
-       DriverAction.waitSec(10);
+     //  DriverAction.waitUntilElementAppear(clickOnChangeDetails,2);
+      // DriverAction.click(popUpCloseButton);
+       DriverAction.click(clickOnChangeDetails,"change details");
+       DriverAction.waitSec(3);
+        DriverAction.waitUntilElementAppear(clickOnUpdateAdd,2);
+        DriverAction.click(clickOnUpdateAdd,"update address button");
+       //DriverAction.waitSec(10);
     }
 
     @When("^enter pinCode$")
@@ -68,13 +73,13 @@ public class StepDefinition {
     {
         DriverAction.typeText(enterPincode,"121");
         DriverAction.waitSec(10);
-        DriverAction.click(updateButtonAdd);
+        DriverAction.click(updateButtonAdd,"update button in add tab");
         DriverAction.waitSec(7);
     }
 
     @And("^verify invalid pincode$")
     public void enterInvalidPincode() {
-
+        DriverAction.waitUntilElementAppear(invalidPincode,1);
         DriverAction.getElementText(invalidPincode);
         String s = DriverAction.getElementText(warning);
         if (s.equals("Warning")) {
@@ -84,8 +89,8 @@ public class StepDefinition {
 
     @When("click on change password")
     public void clickOnChangePassword() {
-        DriverAction.click(popUpCloseButton,"window close button");
-        DriverAction.waitSec(3);
+       // DriverAction.click(popUpCloseButton,"window close button");
+      //  DriverAction.waitSec(3);
         DriverAction.click(clickOnChangeDetails,"update details");
         DriverAction.waitSec(10);
         DriverAction.click(changePassword,"change password");
@@ -123,8 +128,8 @@ public class StepDefinition {
 
     @When("^enter new password and confirm password$")
     public void enterNewPasswordAndConfirmPassword() {
-       DriverAction.click(popUpCloseButton,"close button");
-       DriverAction.waitSec(3);
+   //    DriverAction.click(popUpCloseButton,"close button");
+      // DriverAction.waitSec(3);
         DriverAction.click(clickOnChangeDetails,"change details button");
         DriverAction.waitSec(3);
         DriverAction.click(changePassword,"change password button");
@@ -148,17 +153,17 @@ public class StepDefinition {
         GemTestReporter.addTestStep("Password and confirm password does not match","Password and confirm password does not match", STATUS.PASS,DriverAction.takeSnapShot());
     }
 
-    @When("^click on close button$")
+    @Then("^click on close button$")
     public void clickOnCloseButton() {
-
+     DriverAction.waitUntilElementAppear(popUpCloseButton,1);
         DriverAction.click(popUpCloseButton,"close button");
-        DriverAction.click(clickOnChangeDetails,"change details button");
+       // DriverAction.click(clickOnChangeDetails,"change details button");
     }
 
     @When("^user click on apply lunch$")
     public void userClickOnApplyLunch() {
-        DriverAction.click(popUpCloseButton,"close button");
-        DriverAction.waitSec(10);
+     //   DriverAction.click(popUpCloseButton,"close button");
+    //    DriverAction.waitSec(10);
         DriverAction.click(applyLunch,"apply lunch");
         DriverAction.waitSec(5);
     }
@@ -219,6 +224,17 @@ public class StepDefinition {
         if(sb.equals("old password")){
             GemTestReporter.addTestStep("old password is blank","Old password is blank",STATUS.PASS,DriverAction.takeSnapShot());
         }
+
+    }
+
+    @When("enter address in the update address tab")
+    public void enterAddressInTheUpdateAddressTab() {
+        DriverAction.click(clickOnChangeDetails,"change details button");
+        DriverAction.click(clickOnUpdateAdd,"update add button");
+        //DriverAction.waitSec(3);
+        DriverAction.typeText(enterPincode,"121");
+        DriverAction.click(updateButtonAdd);
+
 
     }
 }

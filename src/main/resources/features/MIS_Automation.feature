@@ -12,12 +12,15 @@ Feature: MIS_Automation
     And Enter username
     And Enter Password
     Then click on SignIn button
+    Then click on close button
 
     Scenario: click on mobile details
-      When user update mobile and extension number
-      And Enter mobile number and ext number
+      When Enter mobile number and ext number
      # Then click on update
 
+    ##  Scenario: user enter invalid pincode
+        ##Given user click on url
+      ##  When enter address in the update address tab
 
       Scenario:user enter invalid pincode
         When click on update address
