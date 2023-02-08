@@ -10,6 +10,9 @@ public class Locators {
     public static By Password = By.id("password");
     public static By Signbutton = By.id("btnLogin");
 
+    public static By Location = By.xpath("//div[text()='Canaan Tower']");
+
+    public static By Dashboardheading = By.xpath("//span[text()='Dashboard']");
     public static By SkillPopup = By.id("mypopupUpdateSkills");
     public static By PopupClosebutton = By.xpath("//div[@id='mypopupUpdateSkills']//button[@class='close']");
 
@@ -19,7 +22,7 @@ public class Locators {
 
     public static By Sidebar = By.tagName("nav");
 
-    public static  By Profilemenu = By.id("dd-user-menu");
+    public static  By Profilemenu = By.xpath("//div[contains(@class,'user-menu')]");
 
     public static By UpdateProfileOption = By.id("updateProfile");
 
@@ -43,6 +46,7 @@ public class Locators {
 
     public static By SkillsOption = By.id("skills");
 
+    public static By Setting = By.id("dashBoardSettings");
 //    public static By selectoption(String field) {
 //        return By.xpath("//div[@id='UpdateSkills']//label[text()='" + field + "']/../..//select");
 //    }
@@ -68,7 +72,15 @@ public class Locators {
     public static By text_alertMessage = By.xpath("//div[contains(@class,'sweet-alert')]/p");
 
     public static By changeADPassword = By.xpath("//a[text()='Change AD Password']");
+    public static By Logout = By.xpath("//a[text()='Logout']");
 
+    public static By loginForm = By.xpath("//form[contains(@class,'login-form')]");
+
+     public static By Cardcheckbox(String card){
+        return By.xpath("//tbody[@id='divdashboardvisit']/tr/td[text()='"+card+"']]/..//input[@type='checkbox']");
+    }
+
+    public static By updateDashboardbtn = By.id("btnSaveSetting");
 }
 
 
