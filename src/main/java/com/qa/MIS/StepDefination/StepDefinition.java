@@ -4,6 +4,7 @@ import com.gemini.generic.reporting.GemTestReporter;
 import com.gemini.generic.reporting.STATUS;
 import com.gemini.generic.ui.utils.DriverAction;
 import com.qa.MIS.Locators.Locator;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -198,6 +199,20 @@ public class StepDefinition {
     @Then("Verify warning popup appears when KPI-KRA fields are left empty")
     public void verify_warning_popup_appears_when_kpi_kra_fields_are_left_empty() {
 
+
+    }
+
+    @And("Verify My Goal tab")
+    public void verify_my_goa_tab() {
+        String tabTitle = DriverAction.getElementText(Locator.tabMyGoal);
+        if (tabTitle.equalsIgnoreCase("My Goal"))
+            status = STATUS.PASS;
+        else
+            status = STATUS.FAIL;
+    }
+
+    @Then("Verify Add new KPI-KRA mapping button")
+    public void verify_Add_New_KPIKRA_Mapping_Button() {
 
     }
 }
