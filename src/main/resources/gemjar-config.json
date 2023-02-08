@@ -8,6 +8,8 @@
   "jewelEntryUrl": "https://apis.gemecosystem.com/enter-point",
   "tagName": "@Auto",
   "feature": "src/main/resources/features",
+  "username": "touqeer.subhani",
+  "password": "Gemini@123",
   "reportLocation": "",
   "dev": {
     "browserName": "chrome",
