@@ -1,20 +1,14 @@
-package com.qa.MIS_Automation.StepDefinition;
+package com.qa.MIS.StepDefinition;
 
 import com.gemini.generic.ui.utils.DriverAction;
-import com.gemini.generic.ui.utils.DriverManager;
-import com.qa.MIS_Automation.Locators.Locators;
+import com.qa.MIS.Locators.Locators;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
-
-import java.sql.Driver;
 
 public class StepDefinition {
     static WebElement el;

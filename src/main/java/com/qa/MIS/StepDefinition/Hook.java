@@ -1,6 +1,5 @@
-package com.qa.MIS_Automation.StepDefinition;
+package com.qa.MIS.StepDefinition;
 
-import com.gemini.generic.exception.GemException;
 import com.gemini.generic.ui.utils.DriverAction;
 import com.gemini.generic.ui.utils.DriverManager;
 import com.gemini.generic.utils.GemJarGlobalVar;

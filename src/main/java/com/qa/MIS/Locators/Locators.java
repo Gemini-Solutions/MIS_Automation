@@ -1,4 +1,4 @@
-package com.qa.MIS_Automation.Locators;
+package com.qa.MIS.Locators;
 
 import org.openqa.selenium.By;
 
