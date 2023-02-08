@@ -2,12 +2,18 @@
   "environment": "prod",
   "projectName": "MIS",
   "gemjarSubID": "test_id",
-  "gemjarUserName": "laxmi.sisode",
-  "gemjarToken": "456e48c4-f23e-4215-a716-8be3000f90251675666947342",
-  "glueCode":"com.qa.MIS.StepDefination",
+  
   "jewelEntryUrl": "https://apis.gemecosystem.com/enter-point",
-  "reportLocation":"/tmp",
-  "reportName": "mis_automationAM_report",
+
+  "gemjarUserName": "divya.madan",
+  "jewelEntryUrl": "https://apis.gemecosystem.com/enter-point",
+  "reportLocation": "MIS_Automation Report",
+  "gemjarToken": "6a025bfd-9746-42b5-ab34-1e80a28c83771675343532723",
+  "glueCode":"com.qa.MIS.StepDefination",
+  "feature": "",
+  "tagName": "",
+  "scenario": "",
+
   "dev": {
     "browserName": "firefox",
     "launchUrl": "https://mymis.geminisolutions.com/",
@@ -16,6 +22,13 @@
   "prod": {
     "browserName": "chrome",
     "launchUrl": "https://mymis.geminisolutions.com/",
+
+    "browserTimeout": 100
+  },
+  "beta": {
+    "browserName": "chrome",
+    "launchUrl": "https://mymis.geminisolutions.com/",
+
     "browserTimeout": 100
   }
 }
