@@ -11,11 +11,13 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 import java.sql.Driver;
 
 public class StepDefinition {
+    static WebElement el;
 
     @Given("logged in successfully")
     public void logged_in_successfully() throws InterruptedException {
@@ -217,9 +219,95 @@ public class StepDefinition {
     }
     @Then("the folder name should be renamed")
     public void the_folder_name_should_be_renamed() {
+        //System.out.println("1");
 
 
     }
+
+    @When("navigating to view documents page and selecting {string} from dropdown")
+    public void navigating_to_view_documents_page_and_selecting_from_dropdown(String string) throws InterruptedException {
+        // Write code here that turns the phrase above into concrete actions
+        DriverAction.click(Locators.knowledgeBase,"Knowledge Base");
+        DriverAction.click(Locators.viewDocuments,"View Documents");
+        Thread.sleep(5000);
+        WebElement el = DriverAction.getElement(Locators.dropdown);
+        Select list = new Select(el);
+        list.selectByValue(string);
+        Thread.sleep(5000);
+
+
+
+
+
+    }
+    @Then("dropdown is functional")
+    public void dropdown_is_functional() throws InterruptedException {
+        // Write code here that turns the phrase above into concrete actions
+
+
+    }
+
+    @When("navigating to view document and {string} is selected")
+    public void navigating_to_view_document_and_is_selected(String string) throws InterruptedException {
+        DriverAction.click(Locators.knowledgeBase,"Knowledge Base");
+        DriverAction.click(Locators.viewDocuments,"View Documents");
+        Thread.sleep(5000);
+        DriverAction.waitUntilElementAppear(Locators.folder,5);
+        Thread.sleep(5000);
+        DriverAction.rightClick(By.xpath("//a[text()='"+string+"']"));
+        Thread.sleep(5000);
+        DriverAction.click(Locators.delete);
+
+
+    }
+    @Then("folder is deleted")
+    public void folder_is_deleted() {
+
+    }
+
+
+    @When("navigating to view document and {string} is selected and {string} is selected")
+    public void navigating_to_view_document_and_is_selected_and_is_selected(String string, String string2) throws InterruptedException {
+        DriverAction.click(Locators.knowledgeBase,"Knowledge Base");
+        DriverAction.click(Locators.viewDocuments,"View Documents");
+        Thread.sleep(5000);
+        DriverAction.waitUntilElementAppear(Locators.folder,5);
+        Thread.sleep(5000);
+        DriverAction.click(By.xpath("//a[text()='"+string+"']"));
+        Thread.sleep(5000);
+        DriverAction.rightClick(By.xpath("//a[text()='"+string2+"']"));
+        Thread.sleep(5000);
+        DriverAction.click(Locators.delete);
+    }
+    @Then("sub folder is deleted")
+    public void sub_folder_is_deleted() {
+
+    }
+
+    @When("navigating to view document and title sort applied")
+    public void navigating_to_view_document_and_title_sort_applied() throws InterruptedException {
+        DriverAction.click(Locators.knowledgeBase,"Knowledge Base");
+        DriverAction.click(Locators.viewDocuments,"View Documents");
+        Thread.sleep(5000);
+        DriverAction.waitUntilElementAppear(Locators.folder,5);
+        Thread.sleep(5000);
+        DriverAction.click(Locators.titleSort);
+        DriverAction.click(Locators.titleSort);
+        Thread.sleep(5000);
+        if(DriverAction.getElementText(Locators.sortValue).equalsIgnoreCase("zyx")){
+            System.out.println("SUCCESS");
+        }else{
+            Assert.fail();
+        }
+
+    }
+    @Then("list is sorted according to title")
+    public void list_is_sorted_according_to_title() {
+
+    }
+
+
+
 
 
 

@@ -40,10 +40,13 @@ public class Locators {
     public static By documentSearch = By.xpath("//*[@id=\"tbldocumentGridViewList\"]/tbody/tr/td");
     public static By rename = By.xpath("//*[@id=\"myMenu\"]/li[4]/a");
 
-    public static By dropdown = By.className("form-control input-sm");
 
+    public static By dropdown = By.xpath("//*[@id=\"tbldocumentGridViewList_length\"]/label/select");
 
+    public static By delete = By.xpath("//a[text()='Delete']");
 
+    public static By titleSort = By.xpath("//*[@id=\"tbldocumentGridViewList\"]/thead/tr/th[2]");
 
+    public static By sortValue = By.xpath("//*[@id=\"tbldocumentGridViewList\"]/tbody/tr[1]/td[2]");
 
 }

@@ -51,6 +51,42 @@ Feature: MIS Automation
       | folder |
       |New Folder|
 
+    Scenario Outline: Dropdown functionality
+      Given logged in successfully
+      When navigating to view documents page and selecting "<value>" from dropdown
+      Then dropdown is functional
+      Examples:
+        | value |
+        |25|
+
+      Scenario Outline: Delete folder
+        Given logged in successfully
+        When navigating to view document and "<folderToBeDeleted>" is selected
+        Then folder is deleted
+        Examples:
+          | folderToBeDeleted |
+          |New folder 1|
+
+        Scenario Outline: Delete subfolder
+          Given logged in successfully
+          When navigating to view document and "<folderToClick>" is selected and "<subFolderToBeDeleted>" is selected
+          Then sub folder is deleted
+          Examples:
+            | folderToClick | subFolderToBeDeleted |
+            |abcd|abcd1|
+
+  Scenario: Sorting title functionality
+    Given logged in successfully
+    When navigating to view document and title sort applied
+    Then list is sorted according to title
+
+
+
+
+
+
+
+
 
 
 
