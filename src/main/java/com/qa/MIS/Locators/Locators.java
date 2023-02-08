@@ -3,10 +3,10 @@ package com.qa.MIS.Locators;
 import org.openqa.selenium.By;
 
 public class Locators {
-    public static By username = By.xpath("//input[@id='username']");
+    public static By usernameByXpath = By.xpath("//input[@id='username']");
 
-    public static By password = By.xpath("//input[@id='password']");
-    public static By signIn = By.xpath("//input[@id='btnLogin']");
+    public static By passwordByXpath = By.xpath("//input[@id='password']");
+    public static By signInByXpath = By.xpath("//input[@id='btnLogin']");
     public static By closeSkills = By.id("btnskillsClose");
     //public static By closeSkills = By.className("close");
     public static By knowledgeBase = By.xpath("//span[text()='Knowledge Base']");
