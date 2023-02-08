@@ -12,4 +12,9 @@ public class Locators {
     public static By loginMsg = By.xpath("//div[@class='loginMsgDiv']");
     public static By loginErrorMessage = By.xpath("//span[@class='message']");
     public static By closeButton = By.xpath("//div[@id='skillsSettings']//button[@class='close']");
+    public static By forgotPasswordMessage = By.xpath("//span[@class='message']");
+    public static By successMessage = By.xpath("//p[@class='lead text-muted '] ");
+    public static By profileOption=By.xpath("//button[@id='dd-user-menu']");
+    public static By logOutButton=By.xpath("//span[@class='font-icon glyphicon glyphicon-log-out']");
+
 }

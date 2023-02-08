@@ -5,8 +5,10 @@ import com.gemini.generic.reporting.STATUS;
 import com.gemini.generic.ui.utils.DriverAction;
 import com.gemini.generic.ui.utils.DriverManager;
 import com.qa.MIS.Locators.Locators;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -14,30 +16,39 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class Login {
-
-    @Given("Enter username {string}")
-    public void enterUsername(String uname) {
-        DriverAction.typeText(Locators.username, uname);
+    @When("User enters {string} as {string}")
+    public void userEntersAs(String field, String text) {
+        if(field.equals("username")){
+            DriverAction.typeText(Locators.username, text);
+        }
+        if(field.equals("password"))
+        {
+            DriverAction.typeText(Locators.password, text);
+        }
     }
 
-    @Then("Click on Sign In Button")
+    @And("Click on Sign In Button")
     public void clickOnSignInButton() {
-        DriverAction.click(Locators.signInButton);
-    }
-
-    @Given("Enter password {string}")
-    public void enterPassword(String password) {
-        DriverAction.typeText(Locators.password, password);
+        try {
+            DriverAction.click(Locators.signInButton);
+            //DriverAction.waitUntilElementAppear(Locators.closeButton,5);
+            GemTestReporter.addTestStep("Sign In", "User click on Sign In button", STATUS.PASS, DriverAction.takeSnapShot());
+        }
+        catch (Exception exception) {
+            GemTestReporter.addTestStep("Sign In", "User not able to click on Sign In button", STATUS.FAIL, DriverAction.takeSnapShot());
+        }
     }
 
     @Then("Verify error message {string}")
     public void verifyErrorMessage(String errorMsg) {
         DriverAction.waitSec(2);
         String actualErrorMsg = DriverAction.getElement(Locators.loginErrorMessage).getText();
-        if (actualErrorMsg.equals(errorMsg))
-            GemTestReporter.addTestStep("Error message", "Error message: " + actualErrorMsg, STATUS.PASS, DriverAction.takeSnapShot());
-        else
+        try {
+            if (actualErrorMsg.equals(errorMsg))
+                GemTestReporter.addTestStep("Error message", "Error message: " + actualErrorMsg, STATUS.PASS, DriverAction.takeSnapShot());
+        } catch (Exception exception) {
             GemTestReporter.addTestStep("Error message", "Error message: " + actualErrorMsg, STATUS.FAIL, DriverAction.takeSnapShot());
+        }
     }
 
     @Then("Verify all the elements present on Login Page")
@@ -82,7 +93,14 @@ public class Login {
     }
     @Then("Click on Login with SSO button")
     public void clickOnLoginWithSSOButton() {
+        try
+        {
         DriverAction.click(Locators.loginWithSSOButton);
+        GemTestReporter.addTestStep("Login with SSO", "User clicks on Login with SSO Successfully", STATUS.PASS, DriverAction.takeSnapShot());
+        }
+        catch (Exception exception) {
+        GemTestReporter.addTestStep("Login with SSO", "User not able to click on Login with SSO", STATUS.FAIL, DriverAction.takeSnapShot());
+        }
     }
 
     @Then("Verify User is on {string} Page")
@@ -91,22 +109,87 @@ public class Login {
         switch (page) {
             case "MIS Home":
                 expectedURL = "https://mymis.geminisolutions.com/Dashboard/Index";
+                new WebDriverWait(DriverManager.getWebDriver(), Duration.ofSeconds(20))
+                        .until(ExpectedConditions.presenceOfElementLocated(Locators.closeButton));
+                DriverAction.click(Locators.closeButton);
                 break;
             case "Sign IN":
                 expectedURL = "https://mymis.geminisolutions.com/";
                 break;
+            case "Login":
+                expectedURL = "https://mymis.geminisolutions.com/Account/Login";
         }
-        try {
-            DriverAction.click(Locators.closeButton);
-        } catch (Exception exception) {
-            new WebDriverWait(DriverManager.getWebDriver(), Duration.ofSeconds(20))
+        new WebDriverWait(DriverManager.getWebDriver(), Duration.ofSeconds(20))
                     .until(ExpectedConditions.urlToBe(expectedURL));
+        try {
             if (DriverAction.getCurrentURL().equals(expectedURL))
                 GemTestReporter.addTestStep("Verify page URL", "URL Matched.\n Expected URL-"
                         + expectedURL + "\nActual URL -" + DriverAction.getCurrentURL(), STATUS.PASS, DriverAction.takeSnapShot());
-            else
-                GemTestReporter.addTestStep("Verify page URL", "URL doesn't Matched.\n Expected URL-"
-                        + expectedURL + "\nActual URL -" + DriverAction.getCurrentURL(), STATUS.FAIL, DriverAction.takeSnapShot());
+        }
+        catch (Exception exception)
+        {
+            GemTestReporter.addTestStep("Verify page URL", "URL doesn't Matched.\n Expected URL-"
+                    + expectedURL + "\nActual URL -" + DriverAction.getCurrentURL(), STATUS.FAIL, DriverAction.takeSnapShot());
+        }
+    }
+    @Given("User Click on Forget Password link")
+    public void userClickOnForgetPasswordLink() {
+        try {
+            DriverAction.click(Locators.forgotPasswordButton);
+            GemTestReporter.addTestStep("Forgot Password", "User clicks on Forgot Password Successfully", STATUS.PASS, DriverAction.takeSnapShot());
+        }
+        catch (Exception exception) {
+        GemTestReporter.addTestStep("Forgot Password", "User not able to click on ForgotPassword Password", STATUS.FAIL, DriverAction.takeSnapShot());
+        }
+    }
+
+    @Then("Click on Reset Password button")
+    public void clickOnResetPasswordButton() {
+        try
+        {
+        DriverAction.click(Locators.signInButton);
+        GemTestReporter.addTestStep("Reset Password", "User clicks on Reset Password Successfully", STATUS.PASS, DriverAction.takeSnapShot());
+        DriverAction.waitSec(2);
+        }
+        catch (Exception exception) {
+        GemTestReporter.addTestStep("Reset Password", "User not able to click on Reset Password", STATUS.FAIL, DriverAction.takeSnapShot());
+        }
+    }
+
+    @Then("Verify the {string} on the screen")
+    public void verifyTheOnTheScreen(String expectedMsg) {
+        DriverAction.waitSec(2);
+        String actualMsg = DriverAction.getElement(Locators.forgotPasswordMessage).getText();
+        try {
+            if (actualMsg.equals(expectedMsg))
+                GemTestReporter.addTestStep("Error message", "Error message: " + actualMsg, STATUS.PASS, DriverAction.takeSnapShot());
+        }
+        catch (Exception exception) {
+            GemTestReporter.addTestStep("Error message", "Error message: " + actualMsg, STATUS.FAIL, DriverAction.takeSnapShot());
+        }
+    }
+
+    @Then("Verify the Success {string}")
+    public void verifyTheSuccess(String expectedMsg) {
+        String actualMsg = DriverAction.getElement(Locators.successMessage).getText();
+        try {
+            if (actualMsg.equals(expectedMsg))
+                GemTestReporter.addTestStep("Success message", "Success message: " + actualMsg, STATUS.PASS, DriverAction.takeSnapShot());
+        }
+         catch (Exception exception)
+         {
+             GemTestReporter.addTestStep("Success message", "Success message: " + actualMsg, STATUS.FAIL, DriverAction.takeSnapShot());
+         }
+    }
+
+    @Then("Click on Logout button")
+    public void clickOnLogoutButton() {
+        try {
+            DriverAction.click(Locators.profileOption);
+            DriverAction.click(Locators.logOutButton);
+            GemTestReporter.addTestStep("Logout", "User Logout Successfully", STATUS.PASS, DriverAction.takeSnapShot());
+        } catch (Exception exception) {
+            GemTestReporter.addTestStep("Logout", "User not able to Logout", STATUS.FAIL, DriverAction.takeSnapShot());
         }
     }
 
