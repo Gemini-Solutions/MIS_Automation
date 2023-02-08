@@ -134,7 +134,7 @@ Feature: MIS_Automation
     Then User clicks on yesBtn
 
     Examples:
-      | parentTab | childTab | 
+      | parentTab | childTab |
       | Forms     | My Form  |
 
   Scenario Outline: User downloads from My Forms page

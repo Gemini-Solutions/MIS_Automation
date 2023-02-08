@@ -129,28 +129,22 @@ Feature: MIS_Automation
 
   Scenario Outline: User hover over and clicks on deactivate Button
     Given  User clicks on the "<parentTab>" and "<childTab>"
-#          When User clicks on upload btn
-#          When User Upload the desired document "<formType>"
-#          And User clicks on save btn
     When User clicks on active form
     And User hovers and clicks on deactivate Btn
     Then User clicks on yesBtn
 
     Examples:
-      | parentTab | childTab | formType                |
-      | Forms     | My Form  | Loyalty Redemption Form |
+      | parentTab | childTab |
+      | Forms     | My Form  |
 
   Scenario Outline: User downloads from My Forms page
     Given  User clicks on the "<parentTab>" and "<childTab>"
-#    When User clicks on upload btn
-#    When User Upload the desired document "<formType>"
-#    And User clicks on save btn
     When User clicks on active form
     Then User hovers and clicks on download Btn
 
     Examples:
-      | parentTab | childTab | formType                |
-      | Forms     | My Form  | Loyalty Redemption Form |
+      | parentTab | childTab |
+      | Forms     | My Form  |
 
   Scenario Outline: User uploads the already existing form
     Given  User clicks on the "<parentTab>" and "<childTab>"
@@ -162,4 +156,4 @@ Feature: MIS_Automation
 
     Examples:
       | parentTab | childTab | formType                | element |
-      | Forms     | My Form  | Loyalty Redemption Form |         |
+      | Forms     | My Form  | Loyalty Redemption Form |  File with same name already exists       |
