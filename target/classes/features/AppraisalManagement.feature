@@ -1,10 +1,9 @@
 Feature: AppraisalManagement
 
 
-
   Background: These steps are common for every scenario
     Given Launch MIS Url https://mymis.geminisolutions.com/
-    Then Enter Username laxmi.sisode and password Gemini#123
+    Then Enter Username laxmi.sisode and password R2VtaW5pIzEyMw==
     Then User clicks on Sign-in button
     Then Login will be successful and homepage will be displayed.
 
