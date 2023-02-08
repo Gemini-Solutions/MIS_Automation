@@ -2,8 +2,7 @@
   "environment": "prod",
   "projectName": "MIS",
   "gemjarSubID": "test_id",
-
-  "glueCode":"com.qa.MIS_Automation.StepDefinition",
+  
   "jewelEntryUrl": "https://apis.gemecosystem.com/enter-point",
 
   "gemjarUserName": "divya.madan",
@@ -23,11 +22,13 @@
   "prod": {
     "browserName": "chrome",
     "launchUrl": "https://mymis.geminisolutions.com/",
+
     "browserTimeout": 100
   },
   "beta": {
     "browserName": "chrome",
     "launchUrl": "https://mymis.geminisolutions.com/",
+
     "browserTimeout": 100
   }
 }
