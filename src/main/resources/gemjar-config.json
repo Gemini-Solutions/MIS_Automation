@@ -2,12 +2,7 @@
 {
   "environment": "beta",
   "projectName": "MIS",
-  "gemjarSubID": "test_id",
-  "gemjarUserName": "s.mishra",
-  "gemjarToken": "1e6ef986-fa77-432a-9ed4-93bd8795ab021675316840722",
-  "glueCode":"com.qa.MIS_Automation.StepDefinations",
-  "reportLocation":"/tmp",
-  "jewelEntryUrl": "https://apis.gemecosystem.com/enter-point",
+
   "dev": {
     "browserName": "firefox",
     "launchUrl": "https://mymis.geminisolutions.com/",

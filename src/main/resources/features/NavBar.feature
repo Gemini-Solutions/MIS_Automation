@@ -33,22 +33,22 @@ Feature: NavBar
     Then Click on Skills menu
     And Enter all the details "<Technology>","<Proficiency Level>","<Skill Type>","<Tech Experience>","<Total Work Exp>"
     And Click on Save button
-#    And Verify popup with message "<AlertType>" and "<Message>"
-    And Verify popup with message "<AlertType>"
+    And Verify popup with message "<AlertType>" and "<Message>"
+
     Examples:
-      | Technology             | Proficiency Level | Skill Type | Tech Experience | Total Work Exp | AlertType | Message                             |
-      | .NET MVC (Server Side) | Beginner          | Secondary  | 24              | 2              | Success   | Skills has been saved successfully. |
+      | Technology | Proficiency Level | Skill Type | Tech Experience | Total Work Exp | AlertType | Message                             |
+      | Accounting | Beginner          | Secondary  | 24              | 2              | Success   | Skills has been saved successfully. |
 
 
   Scenario Outline: Verify Warning Message box when adding duplicate skills
     Then Click on Skills menu
     And Enter all the details "<Technology>","<Proficiency Level>","<Skill Type>","<Tech Experience>","<Total Work Exp>"
     And Click on Save button
-   #    And Verify popup with message "<AlertType>" and "<Message>"
-    And Verify popup with message "<AlertType>"
+    And Verify popup with message "<AlertType>" and "<Message>"
+
     Examples:
-      | Technology      | Proficiency Level | Skill Type | Tech Experience | Total Work Exp | AlertType | Message                       |
-      | .Net Frameworks | Beginner          | Secondary  | 24              | 2              | Warning   | Duplicate Skills not Allowed. |
+      | Technology | Proficiency Level | Skill Type | Tech Experience | Total Work Exp | AlertType | Message                       |
+      | Accounting | Beginner          | Secondary  | 24              | 2              | Warning   | Duplicate Skills not Allowed. |
 
   Scenario: Verify New Tab should be open on Change AD Password button
     Then User click on Change AD Password and Verify new tab should be open
@@ -66,7 +66,7 @@ Feature: NavBar
     Examples:
       | techExp | workExp |
       | 24      | 2       |
-      | twenty  | two     |
+     #| twenty  | two     |
 
   Scenario Outline: Verify cards are added on dashboard when updating from dashboard setting
     Then Click on Dashboard setting

@@ -10,6 +10,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -27,13 +28,18 @@ public class StepDefinition {
             DriverAction.waitSec(5);
             if (DriverAction.isExist(Locators.Username)) {
                 DriverAction.typeText(Locators.Username, Username, "username");
+            } else {
+                GemTestReporter.addTestStep("Username", "Username field is not present", STATUS.FAIL, DriverAction.takeSnapShot());
             }
             if (DriverAction.isExist(Locators.Password)) {
                 DriverAction.typeText(Locators.Password, Password, "password");
+            } else {
+                GemTestReporter.addTestStep("Password", "Password field is not present", STATUS.FAIL, DriverAction.takeSnapShot());
             }
 
         } catch (Exception e) {
-            GemTestReporter.addTestStep("EXCEPTION ERROR", "Getting failed while entering credentials", STATUS.FAIL);
+
+            GemTestReporter.addTestStep("EXCEPTION ERROR", "Getting exception while entering credentials", STATUS.FAIL, DriverAction.takeSnapShot());
         }
     }
 
@@ -42,6 +48,8 @@ public class StepDefinition {
 
         if (DriverAction.isExist(Locators.Signbutton)) {
             DriverAction.click(Locators.Signbutton, "sign in");
+        } else {
+            GemTestReporter.addTestStep("SignIn", "SignIn button is not present", STATUS.FAIL, DriverAction.takeSnapShot());
         }
 
     }
@@ -55,6 +63,8 @@ public class StepDefinition {
         if (DriverAction.isExist(Locators.Location) && DriverAction.isExist(Locators.Dashboardheading)) {
             GemTestReporter.addTestStep("MIS Homepage", "User is on homepage of MIS", STATUS.PASS, DriverAction.takeSnapShot());
         } else {
+            GemTestReporter.addTestStep("MIS Homepage", "User is not on homepage of MIS", STATUS.FAIL, DriverAction.takeSnapShot());
+
         }
     }
 
@@ -79,7 +89,20 @@ public class StepDefinition {
                 } else {
                     GemTestReporter.addTestStep("Toggle button clickability", "Toggle button is not clickable", STATUS.FAIL, DriverAction.takeSnapShot());
                 }
+            } else {
+                DriverAction.click(toggle, "toggle");
+                DriverAction.waitSec(5);
+                sidebarclass = menu.getAttribute("class");
+
+                if (sidebarclass.equalsIgnoreCase("side-menu jspScrollable")) {
+                    GemTestReporter.addTestStep("Toggle button clickability", "Toggle button is clickable", STATUS.PASS, DriverAction.takeSnapShot());
+                } else {
+                    GemTestReporter.addTestStep("Toggle button clickability", "Toggle button is not clickable", STATUS.FAIL, DriverAction.takeSnapShot());
+                }
             }
+
+        } else {
+            GemTestReporter.addTestStep("Toggle button", "Toggle button is not present", STATUS.FAIL, DriverAction.takeSnapShot());
 
         }
     }
@@ -89,11 +112,15 @@ public class StepDefinition {
         DriverAction.waitSec(5);
         if (DriverAction.isExist(Locators.Profilemenu)) {
             DriverAction.click(Locators.Profilemenu, "ProfileMenu");
+        } else {
+            GemTestReporter.addTestStep("Profilemenu", "Profilemenu button is not present", STATUS.FAIL, DriverAction.takeSnapShot());
         }
 
         DriverAction.waitUntilElementAppear(Locators.UpdateProfileOption, 5);
-        if (DriverAction.isExist(Locators.Profilemenu)) {
+        if (DriverAction.isExist(Locators.UpdateProfileOption)) {
             DriverAction.click(Locators.UpdateProfileOption, "UpdateProfile");
+        } else {
+            GemTestReporter.addTestStep("Update Profile", "Update Profile button is not present", STATUS.FAIL, DriverAction.takeSnapShot());
         }
 
         DriverAction.waitUntilElementAppear(Locators.UpdateProfileSection, 10);
@@ -104,13 +131,14 @@ public class StepDefinition {
     public void clickSave() {
         if (DriverAction.isExist(Locators.skillSavebtn)) {
             DriverAction.click(Locators.skillSavebtn, "Save button");
+        } else {
+            GemTestReporter.addTestStep("Save button", "Save button is not present", STATUS.FAIL, DriverAction.takeSnapShot());
         }
     }
 
     @And("^Verify all the (.*) and (.*) are present")
     public void verifyFields(String Fields, String Buttons) {
         String[] Sections = Fields.split(";");
-
         String[] Tabs;
         int flag = 0;
         String Field = "";
@@ -154,30 +182,26 @@ public class StepDefinition {
                     }
                 }
                 if (flag == 1) {
-                    // GemTestReporter.addTestStep("verify all the fields", "" + expectedAlertType + ", STATUS.FAIL,DriverAction.takeSnapShot());
-
+                    GemTestReporter.addTestStep("verify all the fields", "All fields are present", STATUS.PASS, DriverAction.takeSnapShot());
                 } else {
-                    GemTestReporter.addTestStep("verify all the fields", " " + Field + " " + "Field" + " " + "is not present", STATUS.FAIL, DriverAction.takeSnapShot());
+                    GemTestReporter.addTestStep("verify all the fields", Field + " Field " + "is not present", STATUS.FAIL, DriverAction.takeSnapShot());
                 }
 
             }
 
         } catch (Exception exception) {
-            GemTestReporter.addTestStep("verify all the fields", " " + Field + " " + "Field" + " " + "is not present", STATUS.FAIL, DriverAction.takeSnapShot());
 
+            GemTestReporter.addTestStep("verify all the fields", Field + " Field " + "is not present", STATUS.FAIL, DriverAction.takeSnapShot());
         }
-
-
     }
 
     @Then("Click on Gemini logo")
     public void clickLogo() {
-
         DriverAction.waitSec(5);
         if (DriverAction.isExist(Locators.SiteLogo)) {
-
             DriverAction.click(Locators.SiteLogo, "SiteLogo");
-
+        } else {
+            GemTestReporter.addTestStep("Site Logo", "Site logo is not present", STATUS.FAIL, DriverAction.takeSnapShot());
         }
     }
 
@@ -186,11 +210,14 @@ public class StepDefinition {
         DriverAction.waitSec(5);
         if (DriverAction.isExist(Locators.Profilemenu)) {
             DriverAction.click(Locators.Profilemenu, "ProfileMenu");
+        } else {
+            GemTestReporter.addTestStep("Profile Menu", "Profile Menu is not present", STATUS.FAIL, DriverAction.takeSnapShot());
         }
         DriverAction.waitUntilElementAppear(Locators.SkillsOption, 5);
         if (DriverAction.isExist(Locators.SkillsOption)) {
             DriverAction.click(Locators.SkillsOption, "Skills");
-
+        } else {
+            GemTestReporter.addTestStep("Skills option", "Skills option is not present", STATUS.FAIL, DriverAction.takeSnapShot());
         }
         DriverAction.waitUntilElementAppear(Locators.SkillPopup, 10);
     }
@@ -201,29 +228,41 @@ public class StepDefinition {
         DriverAction.waitSec(5);
         if (DriverAction.isExist(Locators.technologySelect)) {
             DriverAction.click(Locators.technologySelect, "Techology Select");
+        } else {
+            GemTestReporter.addTestStep("Technology Select", "Technology Select is not present", STATUS.FAIL, DriverAction.takeSnapShot());
         }
         DriverAction.waitUntilElementAppear(Locators.technologyOption(Technology), 5);
         WebElement option = DriverAction.getElement(Locators.technologyOption(Technology));
         if (DriverAction.isExist(Locators.technologyOption(Technology))) {
             DriverAction.click(option, "option");
+        } else {
+            GemTestReporter.addTestStep("Technology option", Technology + " is not present", STATUS.FAIL, DriverAction.takeSnapShot());
         }
         DriverAction.waitUntilElementAppear(Locators.proficiencySelect, 5);
         if (DriverAction.isExist(Locators.proficiencySelect)) {
             DriverAction.dropDown(Locators.proficiencySelect, 1);
+        } else {
+            GemTestReporter.addTestStep("Proficiency Select", "Proficiency Select is not present", STATUS.FAIL, DriverAction.takeSnapShot());
         }
         DriverAction.waitUntilElementAppear(Locators.skillSelect, 5);
         if (DriverAction.isExist(Locators.skillSelect)) {
             DriverAction.dropDown(Locators.skillSelect, 1);
+        } else {
+            GemTestReporter.addTestStep("skill Select", "Skill Select is not present", STATUS.FAIL, DriverAction.takeSnapShot());
         }
         DriverAction.waitUntilElementAppear(Locators.techExperience, 5);
         if (DriverAction.isExist(Locators.techExperience)) {
             DriverAction.typeText(Locators.techExperience, TechExperience, "Tech Experience");
 
+        } else {
+            GemTestReporter.addTestStep("Tech Experience", "Tech Experience field is not present", STATUS.FAIL, DriverAction.takeSnapShot());
         }
         DriverAction.waitUntilElementAppear(Locators.totalExperience, 5);
         if (DriverAction.isExist(Locators.totalExperience)) {
             DriverAction.typeText(Locators.totalExperience, TotalWorkExp, "Total Work Experience");
             DriverAction.waitSec(2);
+        } else {
+            GemTestReporter.addTestStep("Total Experience", "Total Experience field is not present", STATUS.FAIL, DriverAction.takeSnapShot());
         }
 
     }
@@ -232,6 +271,8 @@ public class StepDefinition {
     public void clickClose() {
         if (DriverAction.isExist(Locators.skillClosebtn)) {
             DriverAction.click(Locators.skillClosebtn, "Close button");
+        } else {
+            GemTestReporter.addTestStep("Skill Close button", "Skill Close button is not present", STATUS.FAIL, DriverAction.takeSnapShot());
         }
         WebElement popup = DriverAction.getElement(Locators.SkillPopup);
         if (!popup.isDisplayed()) {
@@ -242,37 +283,30 @@ public class StepDefinition {
 
     }
 
-    @And("Verify popup with message {string}")
-    public void verifyMessage(String alertType) {
+    @And("Verify popup with message {string} and {string}")
+    public void verifyMessage(String alertType, String alertMessage) {
         String expectedAlertType = DriverAction.getElementText(Locators.heading_alertType);
+        String expectedAlertMessage = DriverAction.getElementText(Locators.text_alertMessage);
         if (expectedAlertType.equals(alertType)) {
-            GemTestReporter.addTestStep("Verifying Alert Type", "Alert Type matching passed.\nExpected Alert Type - " + expectedAlertType + "\nActual Alert Type - " + alertType, STATUS.PASS, DriverAction.takeSnapShot());
+            GemTestReporter.addTestStep("Verifying Alert Type", "Alert Type matched.", STATUS.PASS, DriverAction.takeSnapShot());
         } else {
-            GemTestReporter.addTestStep("Verifying Alert Type", "Alert Type matching failed.\nExpected Alert Type - " + expectedAlertType + "\nActual Alert Type - " + alertType, STATUS.FAIL, DriverAction.takeSnapShot());
+            GemTestReporter.addTestStep("Verifying Alert Type", "Alert Type not matched", STATUS.FAIL, DriverAction.takeSnapShot());
+        }
+        if (expectedAlertMessage.equals(alertMessage)) {
+            GemTestReporter.addTestStep("Verifying Alert Message", "Alert Message matched.", STATUS.PASS, DriverAction.takeSnapShot());
+        } else {
+            GemTestReporter.addTestStep("Verifying Alert Message", "Alert Message not matched.", STATUS.FAIL, DriverAction.takeSnapShot());
+
         }
     }
-//    @And("Verify popup with message {string} and {string}")
-//    public void verifyMessage(String alertType, String alertMessage) {
-//        String expectedAlertType = DriverAction.getElementText(Locators.heading_alertType);
-//        String expectedAlertMessage = DriverAction.getElementText(Locators.text_alertMessage);
-//        if (expectedAlertType.equals(alertType)) {
-//            GemTestReporter.addTestStep("Verifying Alert Type", "Alert Type matching passed.\nExpected Alert Type - " + expectedAlertType + "\nActual Alert Type - " + alertType, STATUS.PASS, DriverAction.takeSnapShot());
-//        } else {
-//            GemTestReporter.addTestStep("Verifying Alert Type", "Alert Type matching failed.\nExpected Alert Type - " + expectedAlertType + "\nActual Alert Type - " + alertType, STATUS.FAIL, DriverAction.takeSnapShot());
-//        }
-//        if (expectedAlertMessage.equals(alertMessage)) {
-//            GemTestReporter.addTestStep("Verifying Alert Message", "Alert Message matching passed.\nExpected Alert Message - " + expectedAlertMessage + "\nActual Alert Message - " + alertMessage, STATUS.PASS, DriverAction.takeSnapShot());
-//        } else {
-//            GemTestReporter.addTestStep("Verifying Alert Message", "Alert Message matching failed.\nExpected Alert Message - " + expectedAlertMessage + "\nActual Alert Message - " + alertMessage, STATUS.FAIL, DriverAction.takeSnapShot());
-//
-//        }
-//    }
 
     @Then("User click on Change AD Password and Verify new tab should be open")
     public void clickADPassword() {
         int tabCount = DriverAction.getWindowHandles().size();
         if (DriverAction.isExist(Locators.changeADPassword)) {
             DriverAction.click(Locators.changeADPassword, "AD Password");
+        } else {
+            GemTestReporter.addTestStep("Change ADPassword button", "Change ADPassword button is not present", STATUS.FAIL, DriverAction.takeSnapShot());
         }
 
         DriverAction.waitSec(5);
@@ -289,13 +323,16 @@ public class StepDefinition {
         DriverAction.waitSec(5);
         if (DriverAction.isExist(Locators.Profilemenu)) {
             DriverAction.click(Locators.Profilemenu, "AD Password");
+        } else {
+            GemTestReporter.addTestStep("Profile Menu", "Profile Menu is not present", STATUS.FAIL, DriverAction.takeSnapShot());
         }
 
         DriverAction.waitUntilElementAppear(Locators.Logout, 10);
         if (DriverAction.isExist(Locators.Logout)) {
-            DriverAction.click(Locators.Logout, "AD Password");
+            DriverAction.click(Locators.Logout, "LogOut");
+        } else {
+            GemTestReporter.addTestStep("Logout", "Logout button is not present", STATUS.FAIL, DriverAction.takeSnapShot());
         }
-
 
     }
 
@@ -316,20 +353,21 @@ public class StepDefinition {
         if (DriverAction.isExist(Locators.techExperience)) {
             DriverAction.typeText(Locators.techExperience, TechExperience, "Tech Experience");
 
+        } else {
+            GemTestReporter.addTestStep("Tech Experience", "Tech Experience field is not present", STATUS.FAIL, DriverAction.takeSnapShot());
         }
 
     }
 
     @And("Verify experience{string} of TechExperience")
     public void verifyExperienceOfTechExperience(String TechExperience) {
-        String experience = DriverAction.getElementText(Locators.techExperience);
-
+        JavascriptExecutor js = (JavascriptExecutor) DriverManager.getWebDriver();
+        WebElement element = DriverAction.getElement(Locators.techExperience);
+        String experience = js.executeScript("arguments[0].value;", element).toString();
         if (experience.equalsIgnoreCase(TechExperience) && !experience.matches("[a-zA-Z]")) {
             GemTestReporter.addTestStep("verify Tech Experience field", "Tech Experience is accepting Integer value only", STATUS.PASS, DriverAction.takeSnapShot());
-
         } else {
             GemTestReporter.addTestStep("verify Tech Experience field", "Tech Experience is accepting all type of value", STATUS.PASS, DriverAction.takeSnapShot());
-
         }
     }
 
@@ -339,19 +377,19 @@ public class StepDefinition {
         if (DriverAction.isExist(Locators.totalExperience)) {
             DriverAction.typeText(Locators.totalExperience, TotalWorkExp, "Total Work Experience");
             DriverAction.waitSec(2);
+        } else {
+            GemTestReporter.addTestStep("Total Experience", "Total Experience field is not present", STATUS.FAIL, DriverAction.takeSnapShot());
         }
     }
 
     @And("Verify workExperience {string} of workExpField")
     public void verifyWorkExperienceOfWorkExpField(String TotalExperience) {
-        String experience = DriverAction.getElementText(Locators.totalExperience);
+        WebElement element = DriverAction.getElement(Locators.totalExperience);
+        String experience = element.getText();
         if (experience.equalsIgnoreCase(TotalExperience) && !experience.matches("[a-zA-Z]")) {
-
             GemTestReporter.addTestStep("verify Total Experience field", "Total Experience is accepting Integer value only", STATUS.PASS, DriverAction.takeSnapShot());
-
         } else {
             GemTestReporter.addTestStep("verify Total Experience field", "Total Experience is accepting all type of value", STATUS.FAIL, DriverAction.takeSnapShot());
-
         }
     }
 
@@ -361,10 +399,14 @@ public class StepDefinition {
         DriverAction.waitSec(5);
         if (DriverAction.isExist(Locators.Profilemenu)) {
             DriverAction.click(Locators.Profilemenu, "ProfileMenu");
+        } else {
+            GemTestReporter.addTestStep("Profile Menu", "Profile Menu is not present", STATUS.FAIL, DriverAction.takeSnapShot());
         }
         if (DriverAction.isExist(Locators.Setting)) {
             DriverAction.click(Locators.Setting, " Dashboard Setting");
             DriverAction.waitSec(2);
+        } else {
+            GemTestReporter.addTestStep("Dashboard Setting", "Dashboard Setting is not present", STATUS.FAIL, DriverAction.takeSnapShot());
         }
 
 
@@ -379,15 +421,16 @@ public class StepDefinition {
             if (DriverAction.isExist(Locators.Cardcheckbox(card))) {
                 DriverAction.click(cardCheckbox, cardCheckbox.getText());
                 DriverAction.waitSec(2);
+            } else {
+                GemTestReporter.addTestStep("Card checkbox", "Card Checkbox is not present", STATUS.FAIL, DriverAction.takeSnapShot());
             }
-
         }
         if (DriverAction.isExist(Locators.updateDashboardbtn)) {
             DriverAction.click(Locators.updateDashboardbtn, "Update Button");
             DriverAction.waitSec(2);
+        } else {
+            GemTestReporter.addTestStep("Update Dashboard button", "Update Dashboard button is not present", STATUS.FAIL, DriverAction.takeSnapShot());
         }
-
-//
     }
 
 
@@ -396,10 +439,8 @@ public class StepDefinition {
         DriverAction.waitUntilElementAppear(Locators.settingDashboard, 5);
         if (DriverAction.isExist(Locators.settingDashboard)) {
             GemTestReporter.addTestStep("verify Dashboard Setting Table", "Dashboard table is visible after click on Dashboard Setting", STATUS.PASS, DriverAction.takeSnapShot());
-
         } else {
             GemTestReporter.addTestStep("verify Dashboard Setting Table", "Dashboard table is not visible after click on Dashboard Setting", STATUS.FAIL, DriverAction.takeSnapShot());
-
         }
     }
 
@@ -411,9 +452,9 @@ public class StepDefinition {
             List<WebElement> element = DriverAction.getElements(Locators.DashboardCheckbox);
             for (WebElement checkbox : element) {
                 DriverAction.click(checkbox);
-
             }
-
+        } else {
+            GemTestReporter.addTestStep("Setting Dashboard", "Setting Dashboard is not present", STATUS.FAIL, DriverAction.takeSnapShot());
         }
     }
 
@@ -421,6 +462,8 @@ public class StepDefinition {
     public void clickOnUpdateButton() {
         if (DriverAction.isExist(Locators.DashboardUpdatebtn)) {
             DriverAction.click(Locators.DashboardUpdatebtn, "Dashboard Update button");
+        } else {
+            GemTestReporter.addTestStep("Dashboard Update button", "Dashboard Update button is not present", STATUS.FAIL, DriverAction.takeSnapShot());
         }
     }
 
