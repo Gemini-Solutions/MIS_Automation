@@ -3,13 +3,9 @@
   "projectName": "MIS",
   "gemjarSubID": "test_id",
   "gemjarUserName": "cgarg",
-  "reportLocation": "",
   "gemjarToken": "4e7f018e-4cce-423e-9665-9ffb4009747b1675253154573",
   "glueCode":"com.qa.MIS.StepDefinition",
-  "feature": "src/main/resources/features/.feature",
   "jewelEntryUrl": "https://apis.gemecosystem.com/enter-point",
-  "tagName": "want to run specific tags",
-  "scenario": "want to run specific scenarios by name",
   "dev": {
     "browserName": "firefox",
     "launchUrl": "https://mymis.geminisolutions.com/",

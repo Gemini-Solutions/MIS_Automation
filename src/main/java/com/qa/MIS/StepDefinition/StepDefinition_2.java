@@ -1,4 +1,4 @@
-package com.qa.MIS.StepDefination;
+package com.qa.MIS.StepDefinition;
 
 import com.gemini.generic.reporting.GemTestReporter;
 import com.gemini.generic.reporting.STATUS;
@@ -20,8 +20,8 @@ import java.util.Date;
 import java.util.List;
 
 
-public class StepDefinition {
-    Logger logger = LoggerFactory.getLogger(StepDefinition.class);
+public class StepDefinition_2 {
+    Logger logger = LoggerFactory.getLogger(StepDefinition_2.class);
     public String mainWindowHandle = null;
     Boolean output = false;
     STATUS status;
