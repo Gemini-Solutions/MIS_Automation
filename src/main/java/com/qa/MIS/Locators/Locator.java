@@ -38,6 +38,7 @@ public class Locator {
     public static By KPISuccessOK = By.xpath("//button[@class='confirm btn btn-lg btn-primary' and contains(text(),'OK')]");
 
     // Verify searches
+
     public static By btnSearch = By.xpath("//input[@type='search']");
     public static By tableRowCount = By.xpath("//tbody//tr[@role='row']");
     public static By searchEntriesCount = By.xpath("//div[@id='tblSelfGoalList_info']");

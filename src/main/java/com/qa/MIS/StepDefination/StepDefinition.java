@@ -205,6 +205,7 @@ public class StepDefinition {
             DriverAction.click(Locator.btnSubmit);
             DriverAction.waitSec(2);
             status = STATUS.PASS;
+
         }
     }
 
