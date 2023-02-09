@@ -16,7 +16,7 @@ public class StepDefinition {
     @Given("logged in successfully")
     public void logged_in_successfully() throws InterruptedException {
         DriverAction.typeText(Locators.usernameByXpath,"prajjwal.negi");
-        DriverAction.typeText(Locators.passwordByXpath,"Gemini@1234");
+        DriverAction.typeText(Locators.passwordByXpath,"Gemini@123");
         //Thread.sleep(5000);
         DriverAction.click(Locators.signInByXpath);
         Thread.sleep(5000);
@@ -110,8 +110,10 @@ public class StepDefinition {
         DriverAction.waitUntilElementAppear(Locators.folder,5);
         Thread.sleep(5000);
         DriverAction.rightClick(Locators.folder);
+        Thread.sleep(5000);
         DriverAction.click(Locators.addDocument,"Add Document");
-        //DriverAction.fileUpload(Locators.upload,"testinput.xlsx");
+        Thread.sleep(5000);
+        DriverAction.fileUpload(Locators.upload,"C:\\Users\\Prajjwal\\MISAutomaiton2\\MIS_Automation\\src\\main\\resources\\testdocument.txt");
         //DriverAction.typeText(Locators.upload,"src\\main\\resources\\testdocument.txt");
         Thread.sleep(5000);
 
@@ -123,6 +125,12 @@ public class StepDefinition {
     }
     @Then("invalid document type warning should be displayed")
     public void invalid_document_type_warning_should_be_displayed() {
+        if(DriverAction.getElementText(Locators.invalidDoc).equalsIgnoreCase("Invalid file selected. supported extensions are .xlsx,.xls,.pdf")){
+            System.out.println("SUCCESS");
+        }
+        else{
+            Assert.fail();
+        }
 
 
     }
@@ -155,9 +163,9 @@ public class StepDefinition {
     @Then("search is functional")
     public void search_is_functional() {
         // Write code here that turns the phrase above into concrete actions
-        DriverAction.typeText(Locators.search,"xyz1");
+        DriverAction.typeText(Locators.search,"xyz");
         String documentName = DriverAction.getElementText(Locators.searchDocument);
-        if(documentName.equalsIgnoreCase("xyz1")){
+        if(documentName.equalsIgnoreCase("xyz")){
 
         }
         else{
@@ -299,6 +307,139 @@ public class StepDefinition {
     public void list_is_sorted_according_to_title() {
 
     }
+
+    @When("navigating to view document and date sort applied")
+    public void navigating_to_view_document_and_date_sort_applied() throws InterruptedException {
+        DriverAction.click(Locators.knowledgeBase,"Knowledge Base");
+        DriverAction.click(Locators.viewDocuments,"View Documents");
+        Thread.sleep(5000);
+        DriverAction.waitUntilElementAppear(Locators.folder,5);
+        Thread.sleep(5000);
+        DriverAction.click(Locators.titleSort);
+        DriverAction.click(Locators.titleSort);
+        Thread.sleep(5000);
+
+    }
+    @Then("list is sorted according to date")
+    public void list_is_sorted_according_to_date() {
+
+    }
+
+    @When("navigating to view document and adding folder")
+    public void navigating_to_view_document_and_adding_folder() throws InterruptedException {
+        DriverAction.click(Locators.knowledgeBase,"Knowledge Base");
+        DriverAction.click(Locators.viewDocuments,"View Documents");
+        Thread.sleep(5000);
+        DriverAction.waitUntilElementAppear(Locators.folder,5);
+        Thread.sleep(5000);
+
+        DriverAction.click(Locators.addFolder);
+        Thread.sleep(5000);
+        DriverAction.click(Locators.saveFolder);
+
+
+    }
+    @Then("folder is added successfully")
+    public void folder_is_added_successfully() throws InterruptedException {
+
+
+    }
+
+    @When("navigating to view document and adding subfolder to {string}")
+    public void navigating_to_view_document_and_adding_subfolder_to(String string) throws InterruptedException {
+        // Write code here that turns the phrase above into concrete actions
+        DriverAction.click(Locators.knowledgeBase,"Knowledge Base");
+        DriverAction.click(Locators.viewDocuments,"View Documents");
+        Thread.sleep(5000);
+        DriverAction.waitUntilElementAppear(Locators.folder,5);
+        Thread.sleep(5000);
+        DriverAction.rightClick(By.xpath("//a[text()='"+string+"']"));
+        Thread.sleep(5000);
+        DriverAction.click(By.xpath("//*[@id=\"myMenu\"]/li[1]/a"));
+        Thread.sleep(5000);
+        DriverAction.click(Locators.saveFolder);
+
+
+
+    }
+    @Then("sub folder is added successfully")
+    public void sub_folder_is_added_successfully() {
+
+    }
+
+    @When("navigating to view document and adding folder with duplicate name")
+    public void navigating_to_view_document_and_adding_folder_with_duplicate_name() throws InterruptedException {
+        DriverAction.click(Locators.knowledgeBase,"Knowledge Base");
+        DriverAction.click(Locators.viewDocuments,"View Documents");
+        Thread.sleep(5000);
+        DriverAction.waitUntilElementAppear(Locators.folder,5);
+        Thread.sleep(5000);
+
+        DriverAction.click(Locators.addFolder);
+        Thread.sleep(5000);
+        DriverAction.click(Locators.saveFolder);
+
+    }
+    @Then("warning is given for duplicate name")
+    public void warning_is_given_for_duplicate_name() {
+
+    }
+
+    @When("navigating to view document and adding subfolder with duplicate name to {string}")
+    public void navigating_to_view_document_and_adding_subfolder_with_duplicate_name_to(String string) throws InterruptedException {
+        DriverAction.click(Locators.knowledgeBase,"Knowledge Base");
+        DriverAction.click(Locators.viewDocuments,"View Documents");
+        Thread.sleep(5000);
+        DriverAction.waitUntilElementAppear(Locators.folder,5);
+        Thread.sleep(5000);
+        DriverAction.rightClick(By.xpath("//a[text()='"+string+"']"));
+        Thread.sleep(5000);
+        DriverAction.click(By.xpath("//*[@id=\"myMenu\"]/li[1]/a"));
+        Thread.sleep(5000);
+        DriverAction.click(Locators.saveFolder);
+    }
+    @Then("warning is given for duplicate subfolder")
+    public void warning_is_given_for_duplicate_subfolder() {
+        // Write code here that turns the phrase above into concrete actions
+
+    }
+
+    @When("navigating to view documents page and adding an valid document type")
+    public void navigating_to_view_documents_page_and_adding_an_valid_document_type() throws InterruptedException {
+        DriverAction.click(Locators.knowledgeBase,"Knowledge Base");
+        DriverAction.click(Locators.viewDocuments,"View Documents");
+        DriverAction.waitUntilElementAppear(Locators.folder,5);
+        Thread.sleep(5000);
+        DriverAction.rightClick(Locators.folder);
+        Thread.sleep(5000);
+        DriverAction.click(Locators.addDocument,"Add Document");
+        Thread.sleep(5000);
+        DriverAction.fileUpload(Locators.upload,"C:\\Users\\Prajjwal\\MISAutomaiton2\\MIS_Automation\\src\\main\\resources\\testdocument.xlsx");
+        //DriverAction.typeText(Locators.upload,"src\\main\\resources\\testdocument.txt");
+        Thread.sleep(5000);
+
+
+
+    }
+    @Then("document is added successfully")
+    public void document_is_added_successfully() throws InterruptedException {
+//        DriverAction.typeText(Locators.titleById,"xyz1");
+//        Thread.sleep(5000);
+//        DriverAction.typeText(Locators.titleDescriptionById,"Sample1");
+//        Thread.sleep(5000);
+//        DriverAction.click(Locators.tagClick);
+//        Thread.sleep(5000);
+//        DriverAction.click(Locators.tag);
+//        Thread.sleep(5000);
+//        DriverAction.click(By.xpath("//*[@id=\"select2-txtDocumentTags-result-592a-2\"]"));
+//        Thread.sleep(5000);
+//       // DriverAction.typeText(By.xpath("//*[@id=\"mypopupWindowAddNewDocumentModal\"]/div/div/div[2]/div[4]/div/div[2]/span/span[1]/span/ul"), "Test 1");
+//        DriverAction.click(Locators.addDocumentTag);
+
+    }
+
+
+
 
 
 

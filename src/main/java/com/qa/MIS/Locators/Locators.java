@@ -13,7 +13,8 @@ public class Locators {
     public static By viewDocuments  = By.xpath("//span[text()='View Documents']");
 
     public static By addDocumentTag = By.xpath("//img[@title='Add New Document Tag']");
-
+    public static By addFolder = By.xpath("//*[@id=\"img2\"]");
+    public static By saveFolder = By.id("btnSaveGroup");
     public static By inputDocumentTag = By.id("txtTagName");
 
     public static By saveDocumentTag = By.id("btnSaveDocumentTag");
@@ -32,6 +33,7 @@ public class Locators {
     public static By refresh = By.xpath("//img[@title='Refresh']");
 
     public static By upload = By.xpath("//input[@name='fileToUpload']");
+    public static By invalidDoc = By.xpath("//p[text()='Invalid file selected. supported extensions are .xlsx,.xls,.pdf']");
 
     public static By search = By.xpath("//input[@type='search']");
 
@@ -48,5 +50,11 @@ public class Locators {
     public static By titleSort = By.xpath("//*[@id=\"tbldocumentGridViewList\"]/thead/tr/th[2]");
 
     public static By sortValue = By.xpath("//*[@id=\"tbldocumentGridViewList\"]/tbody/tr[1]/td[2]");
+
+    public static By dateSort = By.xpath("//*[@id=\"tbldocumentGridViewList\"]/thead/tr/th[4]");
+    public static By titleById = By.id("txtDescription");
+    public static By titleDescriptionById = By.id("txtFileDiscription");
+    public static By tagClick = By.xpath("//*[@id=\"mypopupWindowAddNewDocumentModal\"]/div/div/div[2]/div[4]/div/div[2]/span/span[1]/span/ul");
+    public static By tag = By.xpath("//*[@id=\"select2-txtDocumentTags-result-6efv-30035\"]");
 
 }

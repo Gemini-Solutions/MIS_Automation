@@ -80,6 +80,50 @@ Feature: MIS Automation
     When navigating to view document and title sort applied
     Then list is sorted according to title
 
+  Scenario: Sorting date functionality
+    Given logged in successfully
+    When navigating to view document and date sort applied
+    Then list is sorted according to date
+
+    Scenario: Adding folder
+      Given logged in successfully
+      When navigating to view document and adding folder
+      Then folder is added successfully
+
+  Scenario Outline: Adding sub folder
+    Given logged in successfully
+    When navigating to view document and adding subfolder to "<folderName>"
+    Then sub folder is added successfully
+    Examples:
+      | folderName |
+      |abcd|
+
+
+  Scenario: duplicate folder check
+      Given logged in successfully
+      When navigating to view document and adding folder with duplicate name
+      Then warning is given for duplicate name
+
+      Scenario Outline: duplicate subfolder check
+        Given logged in successfully
+        When navigating to view document and adding subfolder with duplicate name to "<folderName>"
+        Then warning is given for duplicate subfolder
+        Examples:
+          | folderName |
+          |abcd|
+
+  Scenario: Adding an valid document
+    Given logged in successfully
+    When navigating to view documents page and adding an valid document type
+    Then document is added successfully
+
+
+
+
+
+
+
+
 
 
 
