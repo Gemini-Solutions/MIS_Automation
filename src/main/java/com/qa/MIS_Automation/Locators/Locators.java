@@ -6,7 +6,7 @@ public class Locators {
     public static By userName = By.xpath("//input[@type='text' and @id='username']");
     public static By password = By.xpath("//input[@type='password' and @id='password']");
     public static By bttnSignUp = By.xpath("//input[@type='button' and @id='btnLogin']");
-    public static By skillBtn=By.xpath("//select[@id=\"ddlSkillType\"]");
+    public static By skillTypeBtn=By.xpath("//select[@id=\"ddlSkillType\"]");
     public static By geminiLogo=By.xpath("//img[@src='/img/GeminiLogo-Small-Black.png']");
     public static By leaveManagement = By.xpath("//span[contains(text(),'Leave Management')]");
     public static By closeBtn = By.xpath("//button[@id='btnskillsClose']");
@@ -50,4 +50,17 @@ public class Locators {
     public static By yesBtn= By.xpath("//button[@class=\"confirm btn btn-lg btn-danger\"]");
     public static By downloadBtn=By.xpath("//button[@data-original-title=\"Download\"]");
     public static By errorMsg =By.xpath("//p[contains(text(),'File with same name already exists')]");
+    public static By userImg=By.xpath("//img[@id=\"userImage\"]");
+    public static By skillsBtn=By.xpath("//a[@id=\"skills\"]");
+    public static By technologyDropDown=By.xpath("//span[@id=\"select2-ddlSkills-container\"]");
+    public static By selectTechnology(String technology){
+
+        return By.xpath("//li[contains(text(),'"+technology+"')]");
+    }
+    public static By professionalDropDown=By.xpath("//select[@id=\"ddlSkillLevel\"]");
+    public static By techExperienceDropDown=By.xpath("//input[@id=\"expinMonths\"]");
+    public static By totalExperienceDropDown=By.xpath("//input[@id=\"TotalExp\"]");
+    public static By skillSaveBtn=By.xpath("//button[@id=\"btnSaveSkills\"]");
+
+
 }
