@@ -52,6 +52,10 @@ public class LeaveManagementLocators {
         return By.xpath("//input[@name='" + field + "']");
     }
 
+    public static By field_outingCalender(String field) {
+        return By.xpath("//input[@id='" + field + "']");
+    }
+
     public static By field_leaveCheckBox(String field) {
         return By.xpath("//input[@id='" + field + "']");
     }
