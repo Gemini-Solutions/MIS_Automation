@@ -359,8 +359,7 @@ public class StepDefinition {
     @And("User hovers and clicks on download button")
     public void userHoversAndClicksOnDownloadBtn() {
         if (DriverAction.isExist(Locators.downloadBtn)) {
-            DriverAction.waitUntilElementAppear(Locators.downloadBtn, 8);
-            DriverAction.waitUntilElementAppear(Locators.downloadBtn,8);
+            DriverAction.waitSec(5);
             DriverAction.click(Locators.downloadBtn);
         } else {
             GemTestReporter.addTestStep("User Clicks on Download Button", "Click is Unsuccessful", STATUS.FAIL);
