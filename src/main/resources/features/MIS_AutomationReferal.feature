@@ -8,5 +8,6 @@ Feature: MIS_AutomationReferal
     Then click on close button
 
     Scenario: Verify if dashboard page is loaded properly and JD window is visible
-      When Dashboard page is loaded properly
-      And
+      When verify dashboard page is loaded properly
+      And click on JD window
+
