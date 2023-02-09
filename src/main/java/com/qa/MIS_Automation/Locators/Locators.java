@@ -6,6 +6,7 @@ public class Locators {
     public static By userName = By.xpath("//input[@type='text' and @id='username']");
     public static By password = By.xpath("//input[@type='password' and @id='password']");
     public static By bttnSignUp = By.xpath("//input[@type='button' and @id='btnLogin']");
+    public static By skillBtn=By.xpath("//select[@id=\"ddlSkillType\"]");
     public static By geminiLogo=By.xpath("//img[@src='/img/GeminiLogo-Small-Black.png']");
     public static By leaveManagement = By.xpath("//span[contains(text(),'Leave Management')]");
     public static By closeBtn = By.xpath("//button[@id='btnskillsClose']");

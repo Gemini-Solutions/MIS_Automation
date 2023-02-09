@@ -5,7 +5,7 @@ Feature: MIS_Automation
     And User enters Password as "Gemini@123"
     When User clicks on sign in
     And User Verifies Landing Page
-    Then User clicks on closeBtn
+    Then User clicks on closeButton
 
 
   Scenario Outline: Open View Forms Page
@@ -17,10 +17,10 @@ Feature: MIS_Automation
       | parentTab | childTab  | firstElement | secondElement |
       | Forms     | View Form | View Forms   | Form Name     |
 
-  Scenario Outline: User checks the  presence of Previous and Next Btn
+  Scenario Outline: User checks the  presence of Previous and Next Button
     Given User clicks on tab "<parent Tab>" and "<child Tab>"
-    Then User verifies the presence of "<buttonOne>" Btn
-    And User verifies the presence of "<buttonTwo>" Btn
+    Then User verifies the presence of "<buttonOne>" Button
+    And User verifies the presence of "<buttonTwo>" Button
     Examples:
       | parent Tab | child Tab | buttonOne | buttonTwo |
       | Forms      | View Form | Previous  | Next      |
@@ -82,33 +82,33 @@ Feature: MIS_Automation
 
   Scenario Outline:User Uploads correct File
     Given  User clicks on the "<parentTab>" and "<childTab>"
-    When User clicks on upload btn
-    When User Upload the desired document "<formType>"
-    Then User clicks on save btn
+    When User clicks on upload button
+    When User Uploads the desired document "<formType>" from "<path>"
+    Then User clicks on save button
     Examples:
-      | parentTab | childTab | formType                |
-      | Forms     | My Form  | Loyalty Redemption Form |
+      | parentTab | childTab | formType                | path |
+      | Forms     | My Form  | Loyalty Redemption Form | C:\Users\sh.singh9\Desktop\MIS_Automation\MIS_Automation\src\main\resources\Loyalty Redemption Form.pdf     |
 
   Scenario Outline: User uploads incorrect File
     Given  User clicks on the "<parentTab>" and "<childTab>"
-    When User clicks on upload btn
-    And User Upload the undesired document "<formType>"
+    When User clicks on upload button
+    And User Uploads the undesired document "<formType>" from "<path>"
     When  Verify the "<warningMsg>"
-    Then User clicks on okbtn
+    Then User clicks on ok button
     Examples:
-      | parentTab | childTab | formType                | warningMsg                                                      |
-      | Forms     | My Form  | Loyalty Redemption Form | Invalid file selected. Supported extensions are .xlsx,.xls,.pdf |
+      | parentTab | childTab | formType                | warningMsg                                                      | path |
+      | Forms     | My Form  | Loyalty Redemption Form | Invalid file selected. Supported extensions are .xlsx,.xls,.pdf |  C:\Users\sh.singh9\Desktop\MIS GemJar\MIS_Automation_GemJar - Final\src\main\resources\17 may.docx    |
 
   Scenario Outline:User uploads file and selects number of entries
     Given  User clicks on the "<parentTab>" and "<childTab>"
-    When User clicks on upload btn
-    When User Upload the desired document "<formType>"
-    And User clicks on save btn
+    When User clicks on upload button
+    When User Uploads the desired document "<formType>" from "<path>"
+    And User clicks on save button
     Then User selects the entries as "<element>"
 
     Examples:
-      | parentTab | childTab | formType                | element |
-      | Forms     | My Form  | Loyalty Redemption Form | 25      |
+      | parentTab | childTab | formType                | element | path |
+      | Forms     | My Form  | Loyalty Redemption Form | 25      |  C:\Users\sh.singh9\Desktop\MIS_Automation\MIS_Automation\src\main\resources\Loyalty Redemption Form.pdf    |
 
   Scenario Outline: User enters valid value in My forms search field
     Given  User clicks on the "<parentTab>" and "<childTab>"
@@ -130,8 +130,8 @@ Feature: MIS_Automation
   Scenario Outline: User hover over and clicks on deactivate Button
     Given  User clicks on the "<parentTab>" and "<childTab>"
     When User clicks on active form
-    And User hovers and clicks on deactivate Btn
-    Then User clicks on yesBtn
+    And User hovers and clicks on deactivate button
+    Then User clicks on yes button
 
     Examples:
       | parentTab | childTab |
@@ -140,20 +140,20 @@ Feature: MIS_Automation
   Scenario Outline: User downloads from My Forms page
     Given  User clicks on the "<parentTab>" and "<childTab>"
     When User clicks on active form
-    Then User hovers and clicks on download Btn
+    Then User hovers and clicks on download button
 
     Examples:
       | parentTab | childTab |
       | Forms     | My Form  |
 
-  Scenario Outline: User uploads the already existing form
+  Scenario Outline: User uploads the File with same name
     Given  User clicks on the "<parentTab>" and "<childTab>"
-    When User clicks on upload btn
-    When User Upload the desired document "<formType>"
-    And  User clicks on save btn
+    When User clicks on upload button
+    When User Uploads the desired document "<formType>" from "<path>"
+    And  User clicks on save button
     When User validates the error message as "<element>"
-    Then User clicks on okbtn
+    Then User clicks on ok button
 
     Examples:
-      | parentTab | childTab | formType                | element |
-      | Forms     | My Form  | Loyalty Redemption Form |  File with same name already exists       |
+      | parentTab | childTab | formType                | element | path |
+      | Forms     | My Form  | Loyalty Redemption Form |  File with same name already exists       | C:\Users\sh.singh9\Desktop\MIS_Automation\MIS_Automation\src\main\resources\Loyalty Redemption Form.pdf|
