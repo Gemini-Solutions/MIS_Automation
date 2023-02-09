@@ -121,5 +121,9 @@ public class Locators {
 
     public static By addLunchButton=By.xpath("//button[@id='BtnsaveDateforLunch']");
 
+    public static By dashboardVisible=By.xpath("//span[text()='Dashboard']");
+
+    public static By JdWindow=By.xpath("//section[@id='Referrals']");
+
 
 }
