@@ -14,7 +14,7 @@ Feature: NavBar
 
     Examples:
       | Fields                                                                                                                                                            | Buttons      |
-      | Update Profile:Mobile number,Extn. number;Update Address:Country,State,City,Pin code,Permanent Address;Change Password:Old Password,New Password,Confirm Password | Update,Close |
+      | Update Profile:Mobile number,Extn. number;Update Address:Country,State,City,Pin code,Address;Change Password:Old Password,New Password,Confirm Password | Update,Close |
 
   Scenario: Verify user redirect to landing page when clicking on Gemini logo
     Then Click on Gemini logo
