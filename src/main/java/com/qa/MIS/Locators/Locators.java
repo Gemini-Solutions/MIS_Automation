@@ -81,6 +81,11 @@ public class Locators {
     }
 
     public static By updateDashboardbtn = By.id("btnSaveSetting");
+
+     public static By settingDashboard = By.id("DashBoardSettings");
+     public static By DashboardCheckbox = By.xpath("//div[@id='DashBoardSettings']//input[@type='checkbox']");
+
+     public static By DashboardUpdatebtn= By.id("btnSaveSetting");
 }
 
 
