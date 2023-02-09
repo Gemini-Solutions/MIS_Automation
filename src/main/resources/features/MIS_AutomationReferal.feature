@@ -9,5 +9,9 @@ Feature: MIS_AutomationReferal
 
     Scenario: Verify if dashboard page is loaded properly and JD window is visible
       When verify dashboard page is loaded properly
-      And click on JD window
+      And verify JD window is visible
+
+      Scenario: Validation of referral creation
+        When user click on referral action
+
 

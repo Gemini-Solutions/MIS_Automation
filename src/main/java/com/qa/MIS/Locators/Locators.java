@@ -123,7 +123,9 @@ public class Locators {
 
     public static By dashboardVisible=By.xpath("//span[text()='Dashboard']");
 
-    public static By JdWindow=By.xpath("//section[@id='Referrals']");
+    public static By VerifyJdWindow=By.xpath("//section[@id='Referrals']");
+
+    public static By referralAction=By.xpath("//button[@title='Refer']");
 
 
 }
