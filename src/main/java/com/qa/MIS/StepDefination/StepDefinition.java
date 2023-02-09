@@ -9,10 +9,13 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.commons.codec.binary.Base64;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.swing.*;
+import java.sql.Driver;
 import java.text.SimpleDateFormat;
 import java.time.Year;
 import java.util.Calendar;
@@ -25,7 +28,7 @@ public class StepDefinition {
     public String mainWindowHandle = null;
     Boolean output = false;
     STATUS status;
-
+    String totalEntries = null;
 
     @Given("^Launch MIS Url (.+)$")
     public void launch_MIS_Url(String url) {
@@ -160,48 +163,6 @@ public class StepDefinition {
         //  GemTestReporter.addTestStep("Verify link for list of KRAs and KPIs", "List of KRAs and KPIs link is clicked", status, DriverAction.takeSnapShot());
     }
 
-    @Then("Add new KPI-KRA mapping in add goal window")
-    public void add_new_kpi_kra_mapping_in_add_goal_window() {
-        DriverAction.waitUntilElementAppear(Locator.btnAddNewKRAKPIMapping, 2);
-        DriverAction.click(Locator.btnAddNewKRAKPIMapping);
-        DriverAction.waitUntilElementAppear(Locator.titleAddGoal, 2);
-        String title = DriverAction.getElementText(Locator.titleAddGoal);
-        if (title.equalsIgnoreCase("Add goal"))
-            status = STATUS.PASS;
-        //  GemTestReporter.addTestStep("Verify title for Add goal window", "Title matched", status, DriverAction.takeSnapShot());
-
-        DriverAction.click(Locator.drpdownGoalType);
-        List<WebElement> lstKRA = DriverAction.getElements(Locator.kRAList);
-        lstKRA.get(2).click();
-        DriverAction.typeText(Locator.txtKRA, "TestKRA");
-    }
-
-    @Then("validate add KPI button")
-    public void validate_add_kpi_button() {
-        DriverAction.waitUntilElementAppear(Locator.btnAddKPI, 2);
-        DriverAction.click(Locator.btnAddKPI);
-        if (DriverAction.getElement(Locator.txtKPIDescription).isDisplayed()) {
-            DriverAction.typeText(Locator.txtKPIDescription, "TestKPI");
-            status = STATUS.PASS;
-        } else
-            status = STATUS.FAIL;
-        //    GemTestReporter.addTestStep("Validate add KPI button", "KPA button is present and clickable", status, DriverAction.takeSnapShot());
-        DriverAction.waitUntilElementAppear(Locator.btnSubmit, 2);
-        if (DriverAction.getElement(Locator.btnSubmit).isDisplayed()) {
-            DriverAction.click(Locator.btnSubmit);
-            status = STATUS.PASS;
-        }
-        DriverAction.waitUntilElementAppear(Locator.btnAddKPI, 2);
-        DriverAction.click(Locator.KPISuccessOK);
-        //  GemTestReporter.addTestStep("Add new KPI-KRA mapping in add goal window", "New KPI-KRA mapping in add goal window added", status, DriverAction.takeSnapShot());
-    }
-
-    @Then("Verify warning popup appears when KPI-KRA fields are left empty")
-    public void verify_warning_popup_appears_when_kpi_kra_fields_are_left_empty() {
-
-
-    }
-
     @And("Verify My Goal tab")
     public void verify_my_goa_tab() {
         String tabTitle = DriverAction.getElementText(Locator.tabMyGoal);
@@ -213,6 +174,150 @@ public class StepDefinition {
 
     @Then("Verify Add new KPI-KRA mapping button")
     public void verify_Add_New_KPIKRA_Mapping_Button() {
+        output = false;
+        output = DriverAction.getElement(Locator.btnAddNewKRAKPIMapping).isEnabled();
+        if (output) {
+            DriverAction.click(Locator.btnAddNewKRAKPIMapping);
+            status = STATUS.PASS;
+        } else
+            status = STATUS.FAIL;
+    }
 
+    @Given("Click on Add new KPI-KRA mapping button")
+    public void click_On_Add_New_KPIKRA_MappingButton() {
+        DriverAction.waitUntilElementAppear(Locator.btnAddNewKRAKPIMapping, 2);
+        DriverAction.click(Locator.btnAddNewKRAKPIMapping);
+    }
+
+    @Then("Verify Add goal window is open")
+    public void verify_Add_Goal_Window_Is_Open() {
+        // DriverAction.waitUntilElementAppear(Locator.addGoalsWindow, 2);
+        //DriverAction.click(Locator.addGoalsWindow);
+
+
+    }
+
+    @Then("Click on submit button")
+    public void click_On_Submit_Button() {
+        DriverAction.waitUntilElementAppear(Locator.btnSubmit, 2);
+        if (DriverAction.getElement(Locator.btnSubmit).isDisplayed() && DriverAction.getElement(Locator.btnSubmit).isEnabled()) {
+            DriverAction.waitSec(1);
+            DriverAction.click(Locator.btnSubmit);
+            DriverAction.waitSec(2);
+            status = STATUS.PASS;
+        }
+    }
+
+    @Then("Click on close button")
+    public void click_On_Close_Button() {
+        DriverAction.waitUntilElementAppear(Locator.btnClose, 2);
+        DriverAction.getElement(Locator.btnClose).isEnabled();
+        DriverAction.waitSec(2);
+        DriverAction.click(Locator.btnClose);
+        DriverAction.waitSec(1);
+    }
+
+    @Then("Check validation for KRA textbox")
+    public void check_Validation_For_KRA_Textbox() {
+        DriverAction.waitUntilElementAppear(Locator.txtKRA, 2);
+        DriverAction.getElement(Locator.txtKRA).isEnabled();
+        //cssvalue code to be written
+    }
+
+    @Then("Validate and click add KPI button")
+    public void validate_And_Click_Add_KPI_Button() {
+        DriverAction.waitUntilElementAppear(Locator.btnAddKPI, 2);
+        DriverAction.click(Locator.btnAddKPI);
+        if (DriverAction.getElement(Locator.txtKPIDescription).isDisplayed()) {
+            DriverAction.typeText(Locator.txtKPIDescription, "TestKPI");
+            status = STATUS.PASS;
+        } else
+            status = STATUS.FAIL;
+        //    GemTestReporter.addTestStep("Validate add KPI button", "KPA button is present and clickable", status, DriverAction.takeSnapShot());
+    }
+
+    @Then("Check validation for KPA textbox")
+    public void check_Validation_For_KPA_Textbox() {
+        DriverAction.waitUntilElementAppear(Locator.txtKPIDescription, 2);
+        DriverAction.getElement(Locator.txtKPIDescription).isEnabled();
+        //css value code to be write
+    }
+
+    @And("Enter KRA in textbox")
+    public void enter_KRA_In_Textbox() {
+        DriverAction.waitUntilElementAppear(Locator.txtKRA, 2);
+        DriverAction.typeText(Locator.txtKRA, "TestKRA");
+
+    }
+
+    @And("Enter KPI description in text box")
+    public void enter_KPI_Description_In_TextBox() {
+        DriverAction.waitUntilElementAppear(Locator.txtKPIDescription, 2);
+        DriverAction.typeText(Locator.txtKPIDescription, "TestKPIDescription");
+    }
+
+    @Then("Verify Success Popup appeared on screen and click on Ok button")
+    public void verify_Success_Popup_Appeared_On_Screen_And_Click_On_OkButton() {
+
+        DriverAction.waitUntilElementAppear(Locator.KPISuccessOK, 2);
+        DriverAction.click(Locator.KPISuccessOK);
+        //  GemTestReporter.addTestStep("Add new KPI-KRA mapping in add goal window", "New KPI-KRA mapping in add goal window added", status, DriverAction.takeSnapShot());
+    }
+
+    @And("Check validation for empty Goal type Dropdown")
+    public void check_Validation_For_Empty_Goal_Type_Dropdown() {
+        DriverAction.waitUntilElementAppear(Locator.popupWarning, 2);
+        if (DriverAction.getElementText(Locator.popupWarning).equalsIgnoreCase("Warning")) {
+            DriverAction.click(Locator.btnOKWarning);
+            status = STATUS.PASS;
+            //DriverAction.click(Locator.KPISuccessOK);
+        } else
+            status = STATUS.FAIL;
+    }
+
+    @Then("Select any one option from Goal Type Dropdown")
+    public void select_Any_One_Option_From_Goal_Type_Dropdown() {
+        DriverAction.click(Locator.drpdownGoalType);
+        List<WebElement> lstKRA = DriverAction.getElements(Locator.kRAList);
+        lstKRA.get(0).click();
+    }
+
+
+    @Then("Click on close button of newly added KPI")
+    public void click_On_Close_Button_Of_Newly_Added_KPI() {
+        List<WebElement> btnClose = DriverAction.getElements(Locator.btnCloseKPI);
+        btnClose.get(btnClose.size() - 1).click();
+    }
+
+    @When("Verify search entries count at bottom")
+    public void verify_Search_Entries_Count_At_Bottom() {
+        DriverAction.waitSec(2);
+        totalEntries = DriverAction.getElementText(Locator.searchEntriesCount);
+        status=STATUS.PASS;
+        GemTestReporter.addTestStep("Verify search entries count at bottom", "Search entries count at bottom: " , STATUS.PASS, DriverAction.takeSnapShot());
+    }
+
+    @Given("Type text in searchbox and verify search results")
+    public void type_Text_In_Searchbox_And_Verify_Search_Results() {
+        DriverAction.waitUntilElementAppear(Locator.btnSearch, 2);
+        Boolean bool = DriverAction.getElement(Locator.btnSearch).isEnabled();
+        DriverAction.typeText(Locator.btnSearch, "Behavioural");
+        String searchEntries = DriverAction.getElementText(Locator.searchEntriesCount);
+        if (!searchEntries.equalsIgnoreCase(totalEntries))
+            status = STATUS.PASS;
+        else
+            status = STATUS.FAIL;
+    }
+
+
+    @Then("Clear text and verify original count at the bottom of the table")
+    public void clear_Text_And_Verify_Original_Count_At_The_Bottom_Of_The_Table() {
+        DriverAction.waitUntilElementAppear(Locator.btnSearch, 2);
+        DriverAction.clearText(Locator.btnSearch);
+        String entriesClearSearch = DriverAction.getElementText(Locator.searchEntriesCount);
+        if (entriesClearSearch.equalsIgnoreCase(totalEntries))
+            status = STATUS.PASS;
+        else
+            status = STATUS.FAIL;
     }
 }

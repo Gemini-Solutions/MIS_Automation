@@ -7,7 +7,11 @@
   "glueCode":"com.qa.MIS.StepDefination",
   "jewelEntryUrl": "https://apis.gemecosystem.com/enter-point",
   "reportLocation":"/tmp",
-  "reportName": "mis_automationAM_report",
+  "reportName":"MIS_Regression",
+  "emailReport": "null",
+  "emailTO": "false",
+  "emailCC": "",
+  "emailBCC": "",
   "dev": {
     "browserName": "firefox",
     "launchUrl": "https://mymis.geminisolutions.com/",
