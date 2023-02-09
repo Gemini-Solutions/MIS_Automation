@@ -13,7 +13,7 @@ Feature: NavBar
     And Verify all the <Fields> and <Buttons> are present
 
     Examples:
-      | Fields                                                                                                                                                  | Buttons      |
+      | Fields                                                                                                                                                            | Buttons      |
       | Update Profile:Mobile number,Extn. number;Update Address:Country,State,City,Pin code,Permanent Address;Change Password:Old Password,New Password,Confirm Password | Update,Close |
 
   Scenario: Verify user redirect to landing page when clicking on Gemini logo

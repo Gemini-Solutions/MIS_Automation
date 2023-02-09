@@ -157,13 +157,13 @@ public class StepDefinition {
                     // GemTestReporter.addTestStep("verify all the fields", "" + expectedAlertType + ", STATUS.FAIL,DriverAction.takeSnapShot());
 
                 } else {
-                    GemTestReporter.addTestStep("verify all the fields", " "+Field +" "+"Field"+" "+ "is not present", STATUS.FAIL, DriverAction.takeSnapShot());
+                    GemTestReporter.addTestStep("verify all the fields", " " + Field + " " + "Field" + " " + "is not present", STATUS.FAIL, DriverAction.takeSnapShot());
                 }
 
             }
 
         } catch (Exception exception) {
-            GemTestReporter.addTestStep("verify all the fields", " "+Field +" "+"Field"+" "+ "is not present", STATUS.FAIL, DriverAction.takeSnapShot());
+            GemTestReporter.addTestStep("verify all the fields", " " + Field + " " + "Field" + " " + "is not present", STATUS.FAIL, DriverAction.takeSnapShot());
 
         }
 
@@ -426,14 +426,14 @@ public class StepDefinition {
 
     //@And("Verify {string} card is shown on the dashboard")
     //public void verifyCardIsShownOnTheDashboard(String isCardPresent) {
-       // switch (isCardPresent) {
-          //  case "no":
-                // impl
-              //  break;
-           // case "all":
-                // impl
-               // break;
-       // }
-  //  }
+    // switch (isCardPresent) {
+    //  case "no":
+    // impl
+    //  break;
+    // case "all":
+    // impl
+    // break;
+    // }
+    //  }
 }
 
