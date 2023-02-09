@@ -1,11 +1,19 @@
+package com.qa.MIS.StepDefinition;
+
 
 
 import com.gemini.generic.reporting.GemTestReporter;
 import com.gemini.generic.reporting.STATUS;
 import com.gemini.generic.ui.utils.DriverAction;
+import com.qa.MIS.Locators.Locators;
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
 import static com.qa.MIS.Locators.Locators.*;
 
@@ -298,19 +306,6 @@ public class StepDefinition {
     public void list_is_sorted_according_to_title() {
 
     }
-
-
-
-
-
-
-
-
-
-
-
-}
-
    @When("^user click on url$")
     public void userClickOnUrl()
     {

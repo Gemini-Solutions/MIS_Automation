@@ -4,6 +4,19 @@ import org.openqa.selenium.By;
 
 public class Locators {
 
+    public static By username = By.id("username");
+    public static By password = By.id("password");
+    public static By signInButton = By.id("btnLogin");
+    public static By forgotPasswordButton = By.id("lnkForgotPassword");
+    public static By loginWithSSOButton = By.xpath("//button[@class='btn btn-rounded ssobtn']");
+    public static By loginMsg = By.xpath("//div[@class='loginMsgDiv']");
+    public static By loginErrorMessage = By.xpath("//span[@class='message']");
+    public static By closeButton = By.xpath("//div[@id='skillsSettings']//button[@class='close']");
+    public static By forgotPasswordMessage = By.xpath("//span[@class='message']");
+    public static By successMessage = By.xpath("//p[@class='lead text-muted '] ");
+    public static By profileOption=By.xpath("//button[@id='dd-user-menu']");
+    public static By logOutButton=By.xpath("//span[@class='font-icon glyphicon glyphicon-log-out']");
+
     public static By usernameByXpath = By.xpath("//input[@id='username']");
 
     public static By passwordByXpath = By.xpath("//input[@id='password']");
@@ -34,7 +47,7 @@ public class Locators {
 
     public static By upload = By.xpath("//input[@name='fileToUpload']");
 
-    
+
 
     public static By searchDocument = By.xpath("//*[@id=\"tbldocumentGridViewList\"]/tbody/tr/td[2]");
 
@@ -50,14 +63,11 @@ public class Locators {
 
     public static By sortValue = By.xpath("//*[@id=\"tbldocumentGridViewList\"]/tbody/tr[1]/td[2]");
 
-}
-
-
     public static By search = By.xpath("//input[@type='search']");
 
     public static By userName = By.id("username");
 
-    public static By password = By.id("password");
+
 
     public static By signIn = By.id("btnLogin");
 
@@ -79,7 +89,7 @@ public class Locators {
 
     public static By warning = By.xpath("//h2[text()=\"Warning\"]");
 
-    public static By okButton=By.xpath("//button[text()='OK']");
+
 
     public static By warningText= By.xpath("//p[text()=\"Pin code should only be 6 digits.\"]");
     public static By invalidPincode = By.xpath("//div[@class='sweet-alert  showSweetAlert visible']");
@@ -113,5 +123,3 @@ public class Locators {
 
 
 }
-
-
