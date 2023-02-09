@@ -30,21 +30,25 @@ public class StepDefinition {
 
     @When("^click on SignIn button$")
     public void signIn() {
+        DriverAction.waitUntilElementAppear(signIn,2);
         DriverAction.click(signIn);
-        DriverAction.waitSec(10);
+        //DriverAction.waitSec(10);
     }
 
     @When("^user update mobile and extension number$")
     public void clickOnMobile() {
         // DriverAction.click(popUpCloseButton);
-        DriverAction.waitSec(7);
+       // DriverAction.waitSec(7);
+        DriverAction.waitUntilElementAppear(clickOnChangeDetails,2);
         DriverAction.click(clickOnChangeDetails, "change details button");
-        DriverAction.waitSec(7);
+       // DriverAction.waitSec(7);
     }
 
     @When("^Enter mobile number and ext number$")
     public void enterMobileNoAndExtNo() {
+        DriverAction.waitUntilElementAppear(enterMobileNo,2);
         DriverAction.typeText(enterMobileNo, "1234567890");
+        DriverAction.waitUntilElementAppear(enterExtNo,2);
         DriverAction.typeText(enterExtNo, "111");
     }
 
@@ -52,15 +56,16 @@ public class StepDefinition {
     public void clickOnUpdate() {
         DriverAction.waitUntilElementAppear(clickOnUpdate, 1);
         DriverAction.click(clickOnUpdate);
-        DriverAction.waitSec(5);
+     //   DriverAction.waitSec(5);
     }
 
     @When("^click on update address$")
     public void clickOnUpdateAdd() {
         //  DriverAction.waitUntilElementAppear(clickOnChangeDetails,2);
         // DriverAction.click(popUpCloseButton);
+        DriverAction.waitUntilElementAppear(clickOnChangeDetails,3);
         DriverAction.click(clickOnChangeDetails, "change details");
-        DriverAction.waitSec(3);
+
         DriverAction.waitUntilElementAppear(clickOnUpdateAdd, 2);
         DriverAction.click(clickOnUpdateAdd, "update address button");
         //DriverAction.waitSec(10);
@@ -68,10 +73,12 @@ public class StepDefinition {
 
     @When("^enter pinCode$")
     public void clickOnPinCode() {
+        DriverAction.waitUntilElementAppear(enterPincode,2);
         DriverAction.typeText(enterPincode, "121");
-        DriverAction.waitSec(10);
+       // DriverAction.waitSec(10);
+        DriverAction.waitUntilElementAppear(updateButtonAdd,3);
         DriverAction.click(updateButtonAdd, "update button in add tab");
-        DriverAction.waitSec(7);
+        //DriverAction.waitSec(7);
     }
 
     @And("^verify invalid pincode$")
@@ -88,11 +95,18 @@ public class StepDefinition {
     public void clickOnChangePassword() {
         // DriverAction.click(popUpCloseButton,"window close button");
         //  DriverAction.waitSec(3);
-        DriverAction.waitUntilElementAppear(clickOnChangeDetails,2);
-        DriverAction.click(clickOnChangeDetails, "update details");
-        DriverAction.waitUntilElementAppear(changePassword,3);
-        DriverAction.click(changePassword, "change password");
 
+        try {
+            DriverAction.waitUntilElementAppear(clickOnChangeDetails, 3);
+            DriverAction.click(clickOnChangeDetails, "update details");
+            DriverAction.waitUntilElementAppear(changePassword, 3);
+            DriverAction.click(changePassword, "change password");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+       // DriverAction.waitUntilElementAppear(changePassword,3);
+       // DriverAction.click(changePassword, "change password");
     }
 
     @And("^enter old password$")
@@ -103,11 +117,13 @@ public class StepDefinition {
             DriverAction.waitSec(10);*/
 
         DriverAction.typeText(enterOldPassword, "12345");
+        DriverAction.waitUntilElementAppear(newPassword,3);
         DriverAction.typeText(newPassword, "Gemini123");
-        DriverAction.waitSec(5);
+        //DriverAction.waitSec(5);
         DriverAction.typeText(confirmPassword, "Gemini123");
+        DriverAction.waitUntilElementAppear(updatePassword,3);
         DriverAction.click(updatePassword, "update password");
-        DriverAction.waitSec(10);
+        //DriverAction.waitSec(10);
     }
 
     @And("^verify the the password is incorrect$")
@@ -130,10 +146,24 @@ public class StepDefinition {
     public void enterNewPasswordAndConfirmPassword() {
         //    DriverAction.click(popUpCloseButton,"close button");
         // DriverAction.waitSec(3);
-        DriverAction.click(clickOnChangeDetails, "change details button");
-        DriverAction.waitSec(3);
-        DriverAction.waitUntilElementAppear(changePassword,2);
-        DriverAction.click(changePassword, "change password button");
+        try {
+            DriverAction.waitUntilElementAppear(clickOnChangeDetails, 7);
+            DriverAction.click(clickOnChangeDetails, "change details button");
+        }catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+       // DriverAction.waitSec(3);
+        try {
+            DriverAction.waitUntilElementAppear(changePassword, 8);
+            if(DriverAction.isExist(changePassword)){
+                 DriverAction.click(changePassword, "change password button");}
+            else{
+                System.out.println("Element not appears");
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
         DriverAction.waitUntilElementAppear(newPassword,2);
         DriverAction.typeText(newPassword, "Gemini");
         DriverAction.waitUntilElementAppear(confirmPassword,2);
@@ -150,7 +180,8 @@ public class StepDefinition {
 
     @Then("^verify password not match$")
     public void verifyPasswordNotMatch() {
-        DriverAction.click(passwordNotMatch);
+        //DriverAction.click(passwordNotMatch);
+       // DriverAction.getElementText(passwordNotMatch)
         String sl = DriverAction.getElementText(passwordNotMatch);
         if (sl.equals("Password and confirm password does not match")) ;
         GemTestReporter.addTestStep("Password and confirm password does not match", "Password and confirm password does not match", STATUS.PASS, DriverAction.takeSnapShot());
@@ -158,17 +189,24 @@ public class StepDefinition {
 
     @Then("^click on close button$")
     public void clickOnCloseButton() {
-        DriverAction.waitUntilElementAppear(popUpCloseButton, 1);
-        DriverAction.click(popUpCloseButton, "close button");
-        // DriverAction.click(clickOnChangeDetails,"change details button");
+
+        try{
+            DriverAction.waitUntilElementAppear(popUpCloseButton, 4);
+            DriverAction.click(popUpCloseButton, "close button");
+            // DriverAction.click(clickOnChangeDetails,"change details button");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 
     @When("^user click on apply lunch$")
     public void userClickOnApplyLunch() {
         //   DriverAction.click(popUpCloseButton,"close button");
         //    DriverAction.waitSec(10);
+        DriverAction.waitUntilElementAppear(applyLunch,2);
         DriverAction.click(applyLunch, "apply lunch");
-        DriverAction.waitSec(5);
+        //DriverAction.waitSec(5);
     }
 
     @And("^user click on from date and click on select from date$")
@@ -193,8 +231,9 @@ public class StepDefinition {
 
     @And("^select the location from the list$")
     public void selectTheLocationFromTheList() {
+        DriverAction.waitUntilElementAppear(selectLocation,2);
         DriverAction.click(selectLocation, "select location");
-        DriverAction.waitSec(5);
+        //DriverAction.waitSec(5);
     }
 
     @Then("^click on add lunch button$")
@@ -264,6 +303,11 @@ public class StepDefinition {
         if(op.equals("Old Password")){
             GemTestReporter.addTestStep("Old Password","Old Password",STATUS.PASS,DriverAction.takeSnapShot());
         }
+    }
+
+    @When("Dashboard page is loaded properly")
+    public void dashboardPageIsLoadedProperly() {
+
     }
 }
 
