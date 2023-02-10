@@ -1,4 +1,4 @@
-package com.qa.MIS.StepDefinition;
+package com.qa.MIS.stepdefinitions;
 
 import com.gemini.generic.ui.utils.DriverAction;
 import com.gemini.generic.ui.utils.DriverManager;

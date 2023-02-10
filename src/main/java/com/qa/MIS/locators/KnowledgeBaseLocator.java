@@ -1,8 +1,8 @@
-package com.qa.MIS.Locators;
+package com.qa.MIS.locators;
 
 import org.openqa.selenium.By;
 
-public class Locators {
+public class KnowledgeBaseLocator {
     public static By usernameByXpath = By.xpath("//input[@id='username']");
 
     public static By passwordByXpath = By.xpath("//input[@id='password']");
