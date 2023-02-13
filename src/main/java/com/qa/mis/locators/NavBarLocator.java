@@ -20,7 +20,7 @@ public class NavBarLocator {
 
     public static By Sidebar = By.tagName("nav");
 
-    public static  By Profilemenu = By.xpath("//div[contains(@class,'user-menu')]");
+    public static By Profilemenu = By.xpath("//div[contains(@class,'user-menu')]");
 
     public static By UpdateProfileOption = By.id("updateProfile");
 

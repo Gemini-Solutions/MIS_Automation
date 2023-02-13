@@ -36,7 +36,7 @@ Feature: NavBar
     And Verify popup with message "<AlertType>" and "<Message>"
 
     Examples:
-      | Technology | Proficiency Level | Skill Type | Tech Experience | Total Work Exp | AlertType | Message                             |
+      | Technology        | Proficiency Level | Skill Type | Tech Experience | Total Work Exp | AlertType | Message                             |
       | .NET(Server Side) | Beginner          | Secondary  | 24              | 2              | Success   | Skills has been saved successfully. |
 
 
@@ -68,20 +68,20 @@ Feature: NavBar
       | 24      | 2       |
       | twenty  | two     |
 
- Scenario: Verify cards are added on dashboard when updating from dashboard setting
+  Scenario: Verify cards are added on dashboard when updating from dashboard setting
     Then Click on Dashboard setting
-   And Verify Dashboard setting table is visible on the current screen
-   Then Verify all check boxes are uncheck
+    And Verify Dashboard setting table is visible on the current screen
+    Then Verify all check boxes are uncheck
     And Click on Update button
-   And Verify "no" card is shown on the dashboard
+    And Verify "no" card is shown on the dashboard
 
 
- Scenario: Verify all cards re appear when checked from dashboard setting
-   Then Click on Dashboard setting
-   And Verify Dashboard setting table is visible on the current screen
-   Then Verify all check boxes are check
-   And Click on Update button
-   And Verify "all" card is shown on the dashboard
+  Scenario: Verify all cards re appear when checked from dashboard setting
+    Then Click on Dashboard setting
+    And Verify Dashboard setting table is visible on the current screen
+    Then Verify all check boxes are check
+    And Click on Update button
+    And Verify "all" card is shown on the dashboard
 
 
 
