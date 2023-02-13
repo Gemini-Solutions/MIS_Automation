@@ -12,9 +12,6 @@ public class NavBarLocator {
 
     public static By Dashboardheading = By.xpath("//span[text()='Dashboard']");
     public static By SkillPopup = By.id("mypopupUpdateSkills");
-    public static By PopupClosebutton = By.xpath("//div[@id='mypopupUpdateSkills']//button[@class='close']");
-
-    public  static By UserSection = By.className("widget-user");
 
     public static By Togglebtn = By.className("toggle-menu");
 
@@ -45,18 +42,13 @@ public class NavBarLocator {
     public static By SkillsOption = By.id("skills");
 
     public static By Setting = By.id("dashBoardSettings");
-    //    public static By selectoption(String field) {
-//        return By.xpath("//div[@id='UpdateSkills']//label[text()='" + field + "']/../..//select");
-//    }
+
     public  static  By technologySelect= By.xpath("//span[@id='select2-ddlSkills-container']");
     public static By technologyOption(String option){
         return By.xpath("//span[@class='select2-results']//li[text()='"+option+"']");
     }
     public  static  By proficiencySelect= By.xpath("//div[@id='UpdateSkills']//label[text()='Proficiency Level']/../..//select");
     public  static  By skillSelect= By.xpath("//div[@id='UpdateSkills']//label[text()='Skill Type']/../..//select");
-    public static By selectOption(String option) {
-        return By.xpath("//select/option[text()='\" + option + \"']");
-    }
     public static By techExperience = By.id("expinMonths");
 
     public static By totalExperience = By.id("TotalExp");
@@ -74,12 +66,6 @@ public class NavBarLocator {
 
     public static By loginForm = By.xpath("//form[contains(@class,'login-form')]");
 
-    public static By Cardcheckbox(String card){
-        return By.xpath("//tbody[@id='divdashboardvisit']/tr/td[text()='"+card+"']]/..//input[@type='checkbox']");
-    }
-    public static By checkboxs =By.xpath("//tbody[@id='divdashboardvisit']//input[@type='checkbox']");
-
-    public static By updateDashboardbtn = By.id("btnSaveSetting");
 
     public static By DashboardPopup = By.id("DashBoardSettings");
     public static By DashboardCheckbox = By.xpath("//div[@id='DashBoardSettings']//input[@type='checkbox']");

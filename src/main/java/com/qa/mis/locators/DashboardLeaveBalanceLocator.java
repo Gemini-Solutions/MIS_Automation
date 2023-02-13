@@ -8,6 +8,5 @@ public class DashboardLeaveBalanceLocator {
     public static By linkleaveBalanceType = By.xpath("//div[@id='tblLeaveBalance']//table//tr/td[text()='WFH']/../td[2]/a");
     public static By linkleavePopup = By.xpath("//div[@id='myLeavePopup']//div[@class='modal-dialog']");
 
-    public static By leaveHistoryHeading = By.xpath("//h4[@id=\"modalTitle\"][text()='Leaves History']");
-    public static By leavesRecords = By.id("tblLeaveGrid_info");
+
 }
