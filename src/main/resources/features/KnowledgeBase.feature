@@ -1,4 +1,4 @@
-Feature: MIS Automation
+Feature: MIS  Automation
 
   Scenario: Add new document tags icon present and functional in view documents in knowledge base
     Given logged in successfully

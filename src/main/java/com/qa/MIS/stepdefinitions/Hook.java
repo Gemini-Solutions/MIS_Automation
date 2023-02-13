@@ -11,7 +11,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 public class Hook {
     @Before
     public void start()  {
-            ChromeOptions options = new ChromeOptions();
+             ChromeOptions options = new ChromeOptions();
             //options.addArguments("--window-size=1920,1080");
             options.addArguments("--disable-gpu");
             options.addArguments("--disable-extensions");

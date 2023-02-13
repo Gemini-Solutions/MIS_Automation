@@ -24,7 +24,7 @@ public class KnowledgeBaseSteps {
         if (DriverAction.isExist(KnowledgeBaseLocator.usernameByXpath)) {
             DriverAction.typeText(KnowledgeBaseLocator.usernameByXpath, "prajjwal.negi");
         } else {
-            GemTestReporter.addTestStep("Username", "Username field is not present", STATUS.FAIL, DriverAction.takeSnapShot());
+             GemTestReporter.addTestStep("Username", "Username field is not present", STATUS.FAIL, DriverAction.takeSnapShot());
         }
         if (DriverAction.isExist(KnowledgeBaseLocator.passwordByXpath)) {
             DriverAction.typeText(KnowledgeBaseLocator.passwordByXpath, "Gemini@123");

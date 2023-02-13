@@ -3,7 +3,7 @@ package com.qa.MIS.locators;
 import org.openqa.selenium.By;
 
 public class KnowledgeBaseLocator {
-    public static By usernameByXpath = By.xpath("//input[@id='username']");
+     public static By usernameByXpath = By.xpath("//input[@id='username']");
 
     public static By passwordByXpath = By.xpath("//input[@id='password']");
     public static By signInByXpath = By.xpath("//input[@id='btnLogin']");
