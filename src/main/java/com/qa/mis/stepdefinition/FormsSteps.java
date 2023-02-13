@@ -12,7 +12,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
 public class FormsSteps {
-    @Given("User enters Username as {string}")
+    @Given("User enters username as {string}")
     public void userEntersUsernameAs(String userName) {
         if (DriverAction.isExist(FormsLocator.userName)) {
             DriverAction.typeText(FormsLocator.userName, userName);
@@ -21,7 +21,7 @@ public class FormsSteps {
         }
     }
 
-    @And("User enters Password as {string}")
+    @And("User enters password as {string}")
     public void userEntersPasswordAs(String password) {
         if (DriverAction.isExist(FormsLocator.password)) {
             DriverAction.typeText(FormsLocator.password, password);
@@ -41,7 +41,7 @@ public class FormsSteps {
         }
     }
 
-    @And("User Verifies Landing Page")
+    @And("User verifies landing page")
     public void userVerifiesLandingPage() {
         if (DriverAction.isExist(FormsLocator.geminiLogo)) {
             DriverAction.setImplicitTimeOut(6);
@@ -53,7 +53,7 @@ public class FormsSteps {
         }
     }
 
-    @Then("User clicks on closeButton")
+    @Then("User clicks on close button")
     public void userClicksOnCloseBtn() {
         try {
             DriverAction.waitUntilElementAppear(FormsLocator.skillTypeBtn, 7);
@@ -112,7 +112,7 @@ public class FormsSteps {
         }
     }
 
-    @Then("User Clicks on {string}")
+    @Then("User clicks on {string}")
     public void userClicksOn(String accounts) {
         try {
             DriverAction.waitUntilElementAppear(FormsLocator.accounts, 6);
@@ -240,7 +240,7 @@ public class FormsSteps {
         }
     }
 
-    @When("User Uploads the desired document {string} from {string}")
+    @When("User uploads the desired document {string} from {string}")
     public void userUploadTheDesiredDocument(String formType, String path) {
         try {
             DriverAction.waitSec(3);
@@ -267,7 +267,7 @@ public class FormsSteps {
     }
 
 
-    @And("User Uploads the undesired document {string} from {string}")
+    @And("User uploads the undesired document {string} from {string}")
     public void userUploadTheUndesiredDocument(String formType, String path) {
         try {
             DriverAction.waitSec(2);
