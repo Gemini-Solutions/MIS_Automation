@@ -5,30 +5,57 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bff68af5-9825-41b2-8e70-b02a3aa37d82" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MIS_Automation_AM.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/qa/mis/locators/ApplyToAnyCardLocator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/qa/mis/locators/LoginLocator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/qa/mis/stepdefinition/ApplyToAnyCardSteps.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/qa/mis/stepdefinition/LoginSteps.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/features/ApplyToAnyCard.feature" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/features/Login.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/MIS_Automation.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/MIS_Automation.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qa/mis/locators/DashboardLeaveBalanceLocator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qa/mis/locators/DashboardLeaveBalanceLocator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qa/mis/locators/NavBarLocator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qa/mis/locators/NavBarLocator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qa/mis/stepdefinition/DashboardLeaveBalanceSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qa/mis/stepdefinition/DashboardLeaveBalanceSteps.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qa/mis/locators/FormsLocator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qa/mis/stepdefinition/FormsSteps.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/17 may.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Loyalty Redemption Form.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/features/Forms.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MIS_Automation_AM.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Report/13-Feb-2023/09-59-05/GemjarTestReport.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Report/13-Feb-2023/10-00-45/GemjarTestReport.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Report/13-Feb-2023/10-00-45/SS/SS1676262650203.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Report/13-Feb-2023/10-00-45/SS/SS1676262650574.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Report/13-Feb-2023/10-00-45/SS/SS1676262650971.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Report/13-Feb-2023/10-00-45/SS/SS1676262651231.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Report/13-Feb-2023/10-00-45/SS/SS1676262656490.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Report/13-Feb-2023/10-00-45/SS/SS1676262656740.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Report/13-Feb-2023/10-00-45/SS/SS1676262656961.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Report/13-Feb-2023/10-00-45/SS/SS1676262659719.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Report/13-Feb-2023/10-00-45/SS/SS1676262665017.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Report/13-Feb-2023/10-03-24/GemjarTestReport.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Report/13-Feb-2023/10-05-18/GemjarTestReport.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Report/13-Feb-2023/10-14-54/GemjarTestReport.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Report/13-Feb-2023/10-17-52/GemjarTestReport.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Report/13-Feb-2023/10-20-23/SS/SS1676263828399.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Report/13-Feb-2023/10-20-23/SS/SS1676263828680.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Report/13-Feb-2023/10-20-23/SS/SS1676263829055.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Report/13-Feb-2023/10-20-23/SS/SS1676263829337.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Report/13-Feb-2023/10-20-23/SS/SS1676263837517.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Report/13-Feb-2023/10-20-23/SS/SS1676263840709.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Report/13-Feb-2023/10-20-23/SS/SS1676263843844.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/qa/mis/stepdefinition/Hook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qa/mis/stepdefinition/Hook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/features/projectName.feature" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/gemjar-config.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gemjar-config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/testng.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/testng.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qa/mis/stepdefinition/LoginSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qa/mis/stepdefinition/LoginSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/17 may.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Loyalty Redemption Form.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/qa/mis/locators/DashboardLeaveBalanceLocator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/qa/mis/locators/FormsLocator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/qa/mis/locators/MySkillsLocator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/qa/mis/locators/NavBarLocator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/qa/mis/stepdefinition/DashboardLeaveBalanceSteps.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/qa/mis/stepdefinition/FormsSteps.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/qa/mis/stepdefinition/Hook.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/qa/mis/stepdefinition/MySkillsSteps.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/qa/mis/stepdefinition/NavBarSteps.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/features/AccountsPortal.feature" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/features/DashboardLeaveBalance.feature" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/features/MySkills.feature" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/features/NavBar.feature" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/features/projectName.feature" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/gemjar-config.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/testng.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
