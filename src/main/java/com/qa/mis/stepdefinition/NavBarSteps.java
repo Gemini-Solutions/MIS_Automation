@@ -55,8 +55,6 @@ public class NavBarSteps {
 
     @Then("User should be navigated to MIS homepage")
     public void navigateMisHomepage() {
-        // DriverAction.waitSec(5);
-
         WebDriverWait wait = new WebDriverWait(DriverManager.getWebDriver(), 20);
         wait.until(ExpectedConditions.presenceOfElementLocated(NavBarLocator.Location));
         if (DriverAction.isExist(NavBarLocator.Location) && DriverAction.isExist(NavBarLocator.Dashboardheading)) {
@@ -83,7 +81,7 @@ public class NavBarSteps {
                 DriverAction.waitSec(5);
                 sidebarclass = menu.getAttribute("class");
 
-                if (sidebarclass.equalsIgnoreCase("side-menu")||sidebarclass.equalsIgnoreCase("side-menu jspScrollable")) {
+                if (sidebarclass.equalsIgnoreCase("side-menu") || sidebarclass.equalsIgnoreCase("side-menu jspScrollable")) {
                     GemTestReporter.addTestStep("Toggle button clickability", "Toggle button is clickable", STATUS.PASS, DriverAction.takeSnapShot());
                 } else {
                     GemTestReporter.addTestStep("Toggle button clickability", "Toggle button is not clickable", STATUS.FAIL, DriverAction.takeSnapShot());
@@ -213,7 +211,7 @@ public class NavBarSteps {
 
     @And("Enter all the details {string},{string},{string},{string},{string}")
     public void enterDetails(String Technology, String ProficiencyLevel, String SkillType, String TechExperience, String TotalWorkExp) {
-        //  DriverAction.waitUntilElementAppear(Locators.technologySelect, 5);
+
         DriverAction.waitSec(5);
         if (DriverAction.isExist(NavBarLocator.technologySelect)) {
             DriverAction.click(NavBarLocator.technologySelect, "Techology Select");
@@ -407,34 +405,6 @@ public class NavBarSteps {
 
     }
 
-//    @And("Uncheck (.*) and click on update")
-//    public void updateDashboard(String Cards) {
-//
-//        String[] WidgetName = Cards.split(",");
-//        List<String> widg = Arrays.asList(WidgetName);
-//
-//        List<WebElement> options = DriverAction.getElements(Locators.checkboxs);
-//
-//
-//
-//
-//        for (String card : WidgetName) {
-//            WebElement cardCheckbox = DriverAction.getElement(Locators.Cardcheckbox(card.trim()));
-//            if (cardCheckbox.isSelected()) {
-//                DriverAction.click(cardCheckbox, cardCheckbox.getText());
-//            }
-//            JavascriptExecutor js = (JavascriptExecutor) DriverManager.getWebDriver();
-//            js.executeScript()
-//        }
-//        if (DriverAction.isExist(Locators.updateDashboardbtn)) {
-//            DriverAction.click(Locators.updateDashboardbtn, "Update Button");
-//            DriverAction.waitSec(2);
-//        } else {
-//            GemTestReporter.addTestStep("Update Dashboard button", "Update Dashboard button is not present", STATUS.FAIL, DriverAction.takeSnapShot());
-//        }
-//    }
-
-
     @And("Verify Dashboard setting table is visible on the current screen")
     public void verifyDashboardSettingTable() {
         DriverAction.waitUntilElementAppear(NavBarLocator.DashboardPopup, 5);
@@ -453,7 +423,7 @@ public class NavBarSteps {
             List<WebElement> element = DriverAction.getElements(NavBarLocator.DashboardCheckbox);
             for (WebElement checkbox : element) {
                 if (checkbox.isSelected()) {
-                    //cardnumber++;
+
                     DriverAction.click(checkbox);
                 }
             }
@@ -490,7 +460,7 @@ public class NavBarSteps {
             case "all":
                 Cardpanel = DriverAction.getElements(NavBarLocator.Cardname);
 
-                if (Cardpanel.size() ==cardnumber-1) {
+                if (Cardpanel.size() == cardnumber - 1) {
                     GemTestReporter.addTestStep("checked all the widget ", "All the cards are reappear", STATUS.PASS, DriverAction.takeSnapShot());
                 } else {
                     GemTestReporter.addTestStep("checked all the widget ", "All the cards are not reappear", STATUS.FAIL, DriverAction.takeSnapShot());
@@ -508,7 +478,7 @@ public class NavBarSteps {
                 if (!checkbox.isSelected()) {
                     DriverAction.click(checkbox);
                     cardnumber++;
-                }else{
+                } else {
                     cardnumber++;
 
                 }

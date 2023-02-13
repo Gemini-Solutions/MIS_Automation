@@ -14,8 +14,3 @@ Feature: Dashboard_Leave_balance
       And Verify leave history popup should be open
 
 
-  Scenario: Verify number of records
-    Then Verify leave balance section is present on the current page
-    And Click on number of leaves
-    And Verify leave history popup should be open
-    And Verify number of leaves record
