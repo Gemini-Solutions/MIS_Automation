@@ -2,13 +2,17 @@
   "environment": "beta",
   "projectName": "MIS",
   "gemjarSubID": "test_id",
-  "gemjarUserName": "singh.shruti",
-  "gemjarToken": "6e7b7c20-5929-40cc-b300-97faf4f1997b1675252725681",
-  "glueCode":"com.qa.mis.stepdefinition",
+  "gemjarUserName": "cgarg",
+  "gemjarToken": "4e7f018e-4cce-423e-9665-9ffb4009747b1675253154573",
   "jewelEntryUrl": "https://apis.gemecosystem.com/enter-point",
-  "reportLocation":"",
-  "dev": {
-    "browserName": "firefox",
+  "glueCode": "com.qa.mis.stepdefinition",
+  "reportName": "MIS_Regression",
+  "emailReport": "false",
+  "emailTO": "",
+  "emailCC": "",
+  "emailBCC": "",
+  "beta": {
+    "browserName": "chrome",
     "launchUrl": "https://mymis.geminisolutions.com/",
     "browserTimeout": 100
   },
