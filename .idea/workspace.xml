@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bff68af5-9825-41b2-8e70-b02a3aa37d82" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/qa/mis/locators/FormsLocator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/qa/mis/stepdefinition/FormsSteps.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/17 may.docx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Loyalty Redemption Form.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/features/Forms.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MIS_Automation_AM.iml" beforeDir="false" />
+    <list default="true" id="bff68af5-9825-41b2-8e70-b02a3aa37d82" name="Changes" comment="commit changes">
       <change beforePath="$PROJECT_DIR$/Report/13-Feb-2023/09-59-05/GemjarTestReport.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Report/13-Feb-2023/10-00-45/GemjarTestReport.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Report/13-Feb-2023/10-00-45/SS/SS1676262650203.png" beforeDir="false" />
@@ -36,8 +27,7 @@
       <change beforePath="$PROJECT_DIR$/Report/13-Feb-2023/10-20-23/SS/SS1676263837517.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Report/13-Feb-2023/10-20-23/SS/SS1676263840709.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Report/13-Feb-2023/10-20-23/SS/SS1676263843844.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qa/mis/stepdefinition/Hook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qa/mis/stepdefinition/Hook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qa/mis/stepdefinition/LoginSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qa/mis/stepdefinition/LoginSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/features/Login.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/features/Login.feature" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/17 may.docx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Loyalty Redemption Form.pdf" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/qa/mis/locators/DashboardLeaveBalanceLocator.class" beforeDir="false" />
@@ -248,6 +238,14 @@
       <option name="presentableId" value="Default" />
       <updated>1675953385761</updated>
     </task>
+    <task id="LOCAL-00001" summary="commit changes">
+      <created>1676295224628</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1676295224628</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -272,5 +270,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="commit changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit changes" />
   </component>
 </project>

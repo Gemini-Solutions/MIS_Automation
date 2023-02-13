@@ -16,6 +16,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class LoginSteps {
+
     @When("User enters {string} as {string}")
     public void userEntersAs(String field, String text) {
         if(field.equals("username")){
