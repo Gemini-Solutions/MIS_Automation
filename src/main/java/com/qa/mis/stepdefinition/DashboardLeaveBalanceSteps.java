@@ -17,10 +17,10 @@ import java.time.Duration;
 public class DashboardLeaveBalanceSteps {
     String leaveCount;
 
-    public void presenceOfElement(String elementXpath) {
+    public void presenceOfElement(By elementXpath) {
         WebDriverWait wait = new WebDriverWait(DriverManager.getWebDriver(), 20);
 
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(elementXpath)));
+        wait.until(ExpectedConditions.presenceOfElementLocated(elementXpath));
 
     }
 
@@ -28,7 +28,8 @@ public class DashboardLeaveBalanceSteps {
     public void verifySection() {
         DriverAction.waitSec(5);
         DriverAction.scrollIntoView(DashboardLeaveBalanceLocator.leaveBalanceSection);
-        presenceOfElement("//h3[@class='panel-title'][text()='Leave Balance']");
+
+        presenceOfElement(DashboardLeaveBalanceLocator.leaveheading);
         if (DriverAction.isExist(DashboardLeaveBalanceLocator.leaveheading)) {
             GemTestReporter.addTestStep("Verify Leave Section", "Leave Section is present on the current page", STATUS.PASS, DriverAction.takeSnapShot());
         } else {
@@ -54,7 +55,7 @@ public class DashboardLeaveBalanceSteps {
     public void verifyLeaveHistoryPopupShouldBeOpen() {
 
         By locator = DashboardLeaveBalanceLocator.linkleavePopup;
-        presenceOfElement("//div[@id='myLeavePopup']//div[@class='modal-dialog']");
+        presenceOfElement(DashboardLeaveBalanceLocator.linkleavePopup);
         if (DriverAction.isExist(DashboardLeaveBalanceLocator.linkleavePopup)) {
             DriverAction.click(DashboardLeaveBalanceLocator.linkleavePopup, "Leave history Popup is present");
         } else {
