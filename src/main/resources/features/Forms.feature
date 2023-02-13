@@ -11,23 +11,23 @@ Feature: Forms Automation
   Scenario Outline: Open view forms page
 
     When User clicks on tab "<parentTab>" and "<childTab>"
-    Then User verifies element "<firstElement>"
-    And User verifies element "<secondElement>"
+    And User verifies element "<firstElement>"
+    Then User verifies element "<secondElement>"
     Examples:
       | parentTab | childTab  | firstElement | secondElement |
       | Forms     | View Form | View Forms   | Form Name     |
 
-  Scenario Outline: User checks the  presence of previous and next Button
+  Scenario Outline: User checks the  presence of previous and next button
     When User clicks on tab "<parent Tab>" and "<child Tab>"
-    Then User verifies the presence of "<buttonOne>" Button
-    And User verifies the presence of "<buttonTwo>" Button
+    And User verifies the presence of "<buttonOne>" Button
+    Then User verifies the presence of "<buttonTwo>" Button
     Examples:
       | parent Tab | child Tab | buttonOne | buttonTwo |
       | Forms      | View Form | Previous  | Next      |
 
   Scenario Outline: User selects a department
     When User clicks on tab "<parentTab>" and "<childTab>"
-    When User clicks on department
+    And  User clicks on department
     Then User clicks on "<desiredDepartment>"
     Examples:
       | parentTab | childTab  | desiredDepartment |
@@ -42,7 +42,7 @@ Feature: Forms Automation
 
   Scenario Outline:  User enters valid value in search field
     When User clicks on tab "<parentTab>" and "<childTab>"
-    When User search field and enters value "<value>"
+    And User search field and enters value "<value>"
     Then User verifies the value "<element>"
     Examples:
       | parentTab | childTab  | value    | element            |
@@ -50,7 +50,7 @@ Feature: Forms Automation
 
   Scenario Outline: User enters invalid value in search field
     When User clicks on tab "<parentTab>" and "<childTab>"
-    When User search field and enters invalid value "<value>"
+    And User search field and enters invalid value "<value>"
     Then User verifies the invalid value "<element>"
     Examples:
       | parentTab | childTab  | value | element                   |
@@ -58,7 +58,7 @@ Feature: Forms Automation
 
   Scenario Outline:User clicks on eye button to view policy
     When  User clicks on tab "<parentTab>" and "<childTab>"
-    When  User clicks on eye button
+    And  User clicks on eye button
     Then User views policy
     Examples:
       | parentTab | childTab  |
@@ -82,33 +82,33 @@ Feature: Forms Automation
 
   Scenario Outline:User uploads correct File
     When  User clicks on the "<parentTab>" and "<childTab>"
-    When User clicks on upload button
-    When User uploads the desired document "<formType>" from "<path>"
+    And User clicks on upload button
+    And User uploads the desired document "<formType>" from "<path>"
     Then User clicks on save button
     Examples:
-      | parentTab | childTab | formType                | path |
-      | Forms     | My Form  | Loyalty Redemption Form | C:\Users\sh.singh9\Desktop\MIS_Automation\MIS_Automation\src\main\resources\Loyalty Redemption Form.pdf     |
+      | parentTab | childTab | formType                | path                                                                                                    |
+      | Forms     | My Form  | Loyalty Redemption Form | C:\Users\sh.singh9\Desktop\MIS_Automation\MIS_Automation\src\main\resources\Loyalty Redemption Form.pdf |
 
-  Scenario Outline: User uploads incorrect File
+  Scenario Outline: User uploads incorrect file
     When  User clicks on the "<parentTab>" and "<childTab>"
-    When User clicks on upload button
+    And User clicks on upload button
     And User uploads the undesired document "<formType>" from "<path>"
-    When  Verify the "<warningMsg>"
+    And  Verify the "<warningMsg>"
     Then User clicks on ok button
     Examples:
-      | parentTab | childTab | formType                | warningMsg                                                      | path |
-      | Forms     | My Form  | Loyalty Redemption Form | Invalid file selected. Supported extensions are .xlsx,.xls,.pdf |  C:\Users\sh.singh9\Desktop\MIS GemJar\MIS_Automation_GemJar - Final\src\main\resources\17 may.docx    |
+      | parentTab | childTab | formType                | warningMsg                                                      | path                                                                                               |
+      | Forms     | My Form  | Loyalty Redemption Form | Invalid file selected. Supported extensions are .xlsx,.xls,.pdf | C:\Users\sh.singh9\Desktop\MIS GemJar\MIS_Automation_GemJar - Final\src\main\resources\17 may.docx |
 
   Scenario Outline:User uploads file and selects number of entries
     When  User clicks on the "<parentTab>" and "<childTab>"
-    When User clicks on upload button
-    When User uploads the desired document "<formType>" from "<path>"
+    And User clicks on upload button
+    And User uploads the desired document "<formType>" from "<path>"
     And User clicks on save button
     Then User selects the entries as "<element>"
 
     Examples:
-      | parentTab | childTab | formType                | element | path |
-      | Forms     | My Form  | Loyalty Redemption Form | 25      |  C:\Users\sh.singh9\Desktop\MIS_Automation\MIS_Automation\src\main\resources\Loyalty Redemption Form.pdf    |
+      | parentTab | childTab | formType                | element | path                                                                                                    |
+      | Forms     | My Form  | Loyalty Redemption Form | 25      | C:\Users\sh.singh9\Desktop\MIS_Automation\MIS_Automation\src\main\resources\Loyalty Redemption Form.pdf |
 
   Scenario Outline: User enters valid value in my forms search field
     When  User clicks on the "<parentTab>" and "<childTab>"
@@ -120,7 +120,7 @@ Feature: Forms Automation
 
   Scenario Outline: User enters invalid value in My forms search field
     When  User clicks on the "<parentTab>" and "<childTab>"
-    Then User enters invalid value in My forms search field as "<value>"
+    And User enters invalid value in My forms search field as "<value>"
     Then User verifies the invalid value "<element>"
 
     Examples:
@@ -146,14 +146,14 @@ Feature: Forms Automation
 
   Scenario Outline: User uploads the file with same name
     When  User clicks on the "<parentTab>" and "<childTab>"
-    When User clicks on upload button
-    When User uploads the desired document "<formType>" from "<path>"
+    And User clicks on upload button
+    And User uploads the desired document "<formType>" from "<path>"
     And  User clicks on save button
-    When User validates the error message as "<element>"
+    And User validates the error message as "<element>"
     Then User clicks on ok button
 
     Examples:
-      | parentTab | childTab | formType                | element | path |
-      | Forms     | My Form  | Loyalty Redemption Form |  File with same name already exists       | C:\Users\sh.singh9\Desktop\MIS_Automation\MIS_Automation\src\main\resources\Loyalty Redemption Form.pdf|
+      | parentTab | childTab | formType                | element                            | path                                                                                                    |
+      | Forms     | My Form  | Loyalty Redemption Form | File with same name already exists | C:\Users\sh.singh9\Desktop\MIS_Automation\MIS_Automation\src\main\resources\Loyalty Redemption Form.pdf |
 
 
