@@ -1,4 +1,4 @@
-package com.qa.mis.stepDefinition;
+package com.qa.mis.stepdefinition;
 
 import com.gemini.generic.reporting.GemTestReporter;
 import com.gemini.generic.reporting.STATUS;
