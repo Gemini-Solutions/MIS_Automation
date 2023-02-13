@@ -112,7 +112,7 @@ public class FormsSteps {
         }
     }
 
-    @Then("User Clicks on {string}")
+    @Then("User clicks on {string}")
     public void userClicksOn(String accounts) {
         try {
             DriverAction.waitUntilElementAppear(FormsLocator.accounts, 6);
@@ -240,7 +240,7 @@ public class FormsSteps {
         }
     }
 
-    @When("User Uploads the desired document {string} from {string}")
+    @When("User uploads the desired document {string} from {string}")
     public void userUploadTheDesiredDocument(String formType, String path) {
         try {
             DriverAction.waitSec(3);
@@ -267,7 +267,7 @@ public class FormsSteps {
     }
 
 
-    @And("User Uploads the undesired document {string} from {string}")
+    @And("User uploads the undesired document {string} from {string}")
     public void userUploadTheUndesiredDocument(String formType, String path) {
         try {
             DriverAction.waitSec(2);

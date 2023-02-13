@@ -28,7 +28,7 @@ Feature: Forms Automation
   Scenario Outline: User selects a department
     When User clicks on tab "<parentTab>" and "<childTab>"
     When User clicks on department
-    Then User Clicks on "<desiredDepartment>"
+    Then User clicks on "<desiredDepartment>"
     Examples:
       | parentTab | childTab  | desiredDepartment |
       | Forms     | View Form | Accounts          |
@@ -83,7 +83,7 @@ Feature: Forms Automation
   Scenario Outline:User uploads correct File
     When  User clicks on the "<parentTab>" and "<childTab>"
     When User clicks on upload button
-    When User Uploads the desired document "<formType>" from "<path>"
+    When User uploads the desired document "<formType>" from "<path>"
     Then User clicks on save button
     Examples:
       | parentTab | childTab | formType                | path |
@@ -92,7 +92,7 @@ Feature: Forms Automation
   Scenario Outline: User uploads incorrect File
     When  User clicks on the "<parentTab>" and "<childTab>"
     When User clicks on upload button
-    And User Uploads the undesired document "<formType>" from "<path>"
+    And User uploads the undesired document "<formType>" from "<path>"
     When  Verify the "<warningMsg>"
     Then User clicks on ok button
     Examples:
@@ -102,7 +102,7 @@ Feature: Forms Automation
   Scenario Outline:User uploads file and selects number of entries
     When  User clicks on the "<parentTab>" and "<childTab>"
     When User clicks on upload button
-    When User Uploads the desired document "<formType>" from "<path>"
+    When User uploads the desired document "<formType>" from "<path>"
     And User clicks on save button
     Then User selects the entries as "<element>"
 
@@ -147,7 +147,7 @@ Feature: Forms Automation
   Scenario Outline: User uploads the file with same name
     When  User clicks on the "<parentTab>" and "<childTab>"
     When User clicks on upload button
-    When User Uploads the desired document "<formType>" from "<path>"
+    When User uploads the desired document "<formType>" from "<path>"
     And  User clicks on save button
     When User validates the error message as "<element>"
     Then User clicks on ok button
