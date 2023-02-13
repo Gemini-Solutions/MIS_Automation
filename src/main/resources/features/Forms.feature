@@ -1,4 +1,4 @@
-Feature: MIS_Automation
+Feature: Forms Automation
 
   Background: User is on  Login Page
     Given User enters Username as "shruti.singh"
@@ -127,20 +127,17 @@ Feature: MIS_Automation
       | parentTab | childTab | value | element                   |
       | Forms     | My Form  | QA    | No matching records found |
 
-  Scenario Outline: User hover over and clicks on deactivate Button
+  Scenario Outline: User downloads from My Forms page
     Given  User clicks on the "<parentTab>" and "<childTab>"
-    When User clicks on active form
-    And User hovers and clicks on deactivate button
-    Then User clicks on yes button
+    Then User hovers and clicks on download button
 
     Examples:
       | parentTab | childTab |
       | Forms     | My Form  |
-
-  Scenario Outline: User downloads from My Forms page
+  Scenario Outline: User hover over and clicks on deactivate Button
     Given  User clicks on the "<parentTab>" and "<childTab>"
-    When User clicks on active form
-    Then User hovers and clicks on download button
+    And User hovers and clicks on deactivate button
+    Then User clicks on yes button
 
     Examples:
       | parentTab | childTab |
@@ -157,3 +154,5 @@ Feature: MIS_Automation
     Examples:
       | parentTab | childTab | formType                | element | path |
       | Forms     | My Form  | Loyalty Redemption Form |  File with same name already exists       | C:\Users\sh.singh9\Desktop\MIS_Automation\MIS_Automation\src\main\resources\Loyalty Redemption Form.pdf|
+
+
