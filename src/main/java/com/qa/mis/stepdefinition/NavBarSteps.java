@@ -1,38 +1,37 @@
-package com.qa.MIS.StepDefinition;
+package com.qa.mis.stepdefinition;
 
 import com.gemini.generic.reporting.GemTestReporter;
 import com.gemini.generic.reporting.STATUS;
 import com.gemini.generic.ui.utils.DriverAction;
 import com.gemini.generic.ui.utils.DriverManager;
-import com.qa.MIS.Locators.Locators;
+import com.qa.mis.locators.NavBarLocator;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StepDefinition {
+public class NavBarSteps {
+
+    static int cardnumber = 0;
 
     @Given("^User should be on MIS login page and enter (.*) and (.*)$")
     public void enterUserCredentials(String Username, String Password) {
         try {
             DriverAction.waitSec(5);
-            if (DriverAction.isExist(Locators.Username)) {
-                DriverAction.typeText(Locators.Username, Username, "username");
+            if (DriverAction.isExist(NavBarLocator.Username)) {
+                DriverAction.typeText(NavBarLocator.Username, Username, "username");
             } else {
                 GemTestReporter.addTestStep("Username", "Username field is not present", STATUS.FAIL, DriverAction.takeSnapShot());
             }
-            if (DriverAction.isExist(Locators.Password)) {
-                DriverAction.typeText(Locators.Password, Password, "password");
+            if (DriverAction.isExist(NavBarLocator.Password)) {
+                DriverAction.typeText(NavBarLocator.Password, Password, "password");
             } else {
                 GemTestReporter.addTestStep("Password", "Password field is not present", STATUS.FAIL, DriverAction.takeSnapShot());
             }
@@ -46,8 +45,8 @@ public class StepDefinition {
     @When("Click on submit button")
     public void submitButton() {
 
-        if (DriverAction.isExist(Locators.Signbutton)) {
-            DriverAction.click(Locators.Signbutton, "sign in");
+        if (DriverAction.isExist(NavBarLocator.Signbutton)) {
+            DriverAction.click(NavBarLocator.Signbutton, "sign in");
         } else {
             GemTestReporter.addTestStep("SignIn", "SignIn button is not present", STATUS.FAIL, DriverAction.takeSnapShot());
         }
@@ -59,8 +58,8 @@ public class StepDefinition {
         // DriverAction.waitSec(5);
 
         WebDriverWait wait = new WebDriverWait(DriverManager.getWebDriver(), 20);
-        wait.until(ExpectedConditions.presenceOfElementLocated(Locators.Location));
-        if (DriverAction.isExist(Locators.Location) && DriverAction.isExist(Locators.Dashboardheading)) {
+        wait.until(ExpectedConditions.presenceOfElementLocated(NavBarLocator.Location));
+        if (DriverAction.isExist(NavBarLocator.Location) && DriverAction.isExist(NavBarLocator.Dashboardheading)) {
             GemTestReporter.addTestStep("MIS Homepage", "User is on homepage of MIS", STATUS.PASS, DriverAction.takeSnapShot());
         } else {
             GemTestReporter.addTestStep("MIS Homepage", "User is not on homepage of MIS", STATUS.FAIL, DriverAction.takeSnapShot());
@@ -74,27 +73,17 @@ public class StepDefinition {
         String sidebarclass = "";
 
         DriverAction.waitSec(5);
-        WebElement toggle = DriverAction.getElement(Locators.Togglebtn);
-        WebElement menu = DriverAction.getElement(Locators.Sidebar);
+        WebElement toggle = DriverAction.getElement(NavBarLocator.Togglebtn);
+        WebElement menu = DriverAction.getElement(NavBarLocator.Sidebar);
         sidebarclass = menu.getAttribute("class");
         if (toggle.isDisplayed()) {
 
-            if (sidebarclass.equalsIgnoreCase("side-menu jspScrollable")) {
+            if (sidebarclass.equalsIgnoreCase("side-menu jspScrollable") || sidebarclass.equalsIgnoreCase("side-menu")) {
                 DriverAction.click(toggle, "toggle");
                 DriverAction.waitSec(5);
                 sidebarclass = menu.getAttribute("class");
 
-                if (sidebarclass.equalsIgnoreCase("side-menu")) {
-                    GemTestReporter.addTestStep("Toggle button clickability", "Toggle button is clickable", STATUS.PASS, DriverAction.takeSnapShot());
-                } else {
-                    GemTestReporter.addTestStep("Toggle button clickability", "Toggle button is not clickable", STATUS.FAIL, DriverAction.takeSnapShot());
-                }
-            } else {
-                DriverAction.click(toggle, "toggle");
-                DriverAction.waitSec(5);
-                sidebarclass = menu.getAttribute("class");
-
-                if (sidebarclass.equalsIgnoreCase("side-menu jspScrollable")) {
+                if (sidebarclass.equalsIgnoreCase("side-menu")||sidebarclass.equalsIgnoreCase("side-menu jspScrollable")) {
                     GemTestReporter.addTestStep("Toggle button clickability", "Toggle button is clickable", STATUS.PASS, DriverAction.takeSnapShot());
                 } else {
                     GemTestReporter.addTestStep("Toggle button clickability", "Toggle button is not clickable", STATUS.FAIL, DriverAction.takeSnapShot());
@@ -110,27 +99,27 @@ public class StepDefinition {
     @Then("Click on Profile menu")
     public void clickProfileMenu() {
         DriverAction.waitSec(5);
-        if (DriverAction.isExist(Locators.Profilemenu)) {
-            DriverAction.click(Locators.Profilemenu, "ProfileMenu");
+        if (DriverAction.isExist(NavBarLocator.Profilemenu)) {
+            DriverAction.click(NavBarLocator.Profilemenu, "ProfileMenu");
         } else {
             GemTestReporter.addTestStep("Profilemenu", "Profilemenu button is not present", STATUS.FAIL, DriverAction.takeSnapShot());
         }
 
-        DriverAction.waitUntilElementAppear(Locators.UpdateProfileOption, 5);
-        if (DriverAction.isExist(Locators.UpdateProfileOption)) {
-            DriverAction.click(Locators.UpdateProfileOption, "UpdateProfile");
+        DriverAction.waitUntilElementAppear(NavBarLocator.UpdateProfileOption, 5);
+        if (DriverAction.isExist(NavBarLocator.UpdateProfileOption)) {
+            DriverAction.click(NavBarLocator.UpdateProfileOption, "UpdateProfile");
         } else {
             GemTestReporter.addTestStep("Update Profile", "Update Profile button is not present", STATUS.FAIL, DriverAction.takeSnapShot());
         }
 
-        DriverAction.waitUntilElementAppear(Locators.UpdateProfileSection, 10);
+        DriverAction.waitUntilElementAppear(NavBarLocator.UpdateProfileSection, 10);
 
     }
 
     @And("Click on Save button")
     public void clickSave() {
-        if (DriverAction.isExist(Locators.skillSavebtn)) {
-            DriverAction.click(Locators.skillSavebtn, "Save button");
+        if (DriverAction.isExist(NavBarLocator.skillSavebtn)) {
+            DriverAction.click(NavBarLocator.skillSavebtn, "Save button");
         } else {
             GemTestReporter.addTestStep("Save button", "Save button is not present", STATUS.FAIL, DriverAction.takeSnapShot());
         }
@@ -150,14 +139,14 @@ public class StepDefinition {
                 String[] fields = Tabs[1].split(",");
 
                 if (!tabname.equals("Update Profile")) {
-                    DriverAction.click(Locators.navigation_tabs(tabname), tabname);
+                    DriverAction.click(NavBarLocator.navigation_tabs(tabname), tabname);
                 }
                 DriverAction.waitSec(5);
 
                 for (int j = 0; j < fields.length; j++) {
 
                     Field = fields[j];
-                    WebElement field = DriverAction.getElement(Locators.fields(fields[j]));
+                    WebElement field = DriverAction.getElement(NavBarLocator.fields(fields[j]));
 
                     if (field.isDisplayed()) {
                         flag = 1;
@@ -170,7 +159,7 @@ public class StepDefinition {
                 String[] buttons = Buttons.split(",");
                 for (String button : buttons) {
                     Field = button;
-                    WebElement btn = DriverAction.getElement(Locators.buttons(button));
+                    WebElement btn = DriverAction.getElement(NavBarLocator.buttons(button));
 
                     if (btn.isDisplayed()) {
                         flag = 1;
@@ -198,8 +187,8 @@ public class StepDefinition {
     @Then("Click on Gemini logo")
     public void clickLogo() {
         DriverAction.waitSec(5);
-        if (DriverAction.isExist(Locators.SiteLogo)) {
-            DriverAction.click(Locators.SiteLogo, "SiteLogo");
+        if (DriverAction.isExist(NavBarLocator.SiteLogo)) {
+            DriverAction.click(NavBarLocator.SiteLogo, "SiteLogo");
         } else {
             GemTestReporter.addTestStep("Site Logo", "Site logo is not present", STATUS.FAIL, DriverAction.takeSnapShot());
         }
@@ -208,58 +197,58 @@ public class StepDefinition {
     @Then("Click on Skills menu")
     public void clickSkill() {
         DriverAction.waitSec(5);
-        if (DriverAction.isExist(Locators.Profilemenu)) {
-            DriverAction.click(Locators.Profilemenu, "ProfileMenu");
+        if (DriverAction.isExist(NavBarLocator.Profilemenu)) {
+            DriverAction.click(NavBarLocator.Profilemenu, "ProfileMenu");
         } else {
             GemTestReporter.addTestStep("Profile Menu", "Profile Menu is not present", STATUS.FAIL, DriverAction.takeSnapShot());
         }
-        DriverAction.waitUntilElementAppear(Locators.SkillsOption, 5);
-        if (DriverAction.isExist(Locators.SkillsOption)) {
-            DriverAction.click(Locators.SkillsOption, "Skills");
+        DriverAction.waitUntilElementAppear(NavBarLocator.SkillsOption, 5);
+        if (DriverAction.isExist(NavBarLocator.SkillsOption)) {
+            DriverAction.click(NavBarLocator.SkillsOption, "Skills");
         } else {
             GemTestReporter.addTestStep("Skills option", "Skills option is not present", STATUS.FAIL, DriverAction.takeSnapShot());
         }
-        DriverAction.waitUntilElementAppear(Locators.SkillPopup, 10);
+        DriverAction.waitUntilElementAppear(NavBarLocator.SkillPopup, 10);
     }
 
     @And("Enter all the details {string},{string},{string},{string},{string}")
     public void enterDetails(String Technology, String ProficiencyLevel, String SkillType, String TechExperience, String TotalWorkExp) {
         //  DriverAction.waitUntilElementAppear(Locators.technologySelect, 5);
         DriverAction.waitSec(5);
-        if (DriverAction.isExist(Locators.technologySelect)) {
-            DriverAction.click(Locators.technologySelect, "Techology Select");
+        if (DriverAction.isExist(NavBarLocator.technologySelect)) {
+            DriverAction.click(NavBarLocator.technologySelect, "Techology Select");
         } else {
             GemTestReporter.addTestStep("Technology Select", "Technology Select is not present", STATUS.FAIL, DriverAction.takeSnapShot());
         }
-        DriverAction.waitUntilElementAppear(Locators.technologyOption(Technology), 5);
-        WebElement option = DriverAction.getElement(Locators.technologyOption(Technology));
-        if (DriverAction.isExist(Locators.technologyOption(Technology))) {
+        DriverAction.waitUntilElementAppear(NavBarLocator.technologyOption(Technology), 5);
+        WebElement option = DriverAction.getElement(NavBarLocator.technologyOption(Technology));
+        if (DriverAction.isExist(NavBarLocator.technologyOption(Technology))) {
             DriverAction.click(option, "option");
         } else {
             GemTestReporter.addTestStep("Technology option", Technology + " is not present", STATUS.FAIL, DriverAction.takeSnapShot());
         }
-        DriverAction.waitUntilElementAppear(Locators.proficiencySelect, 5);
-        if (DriverAction.isExist(Locators.proficiencySelect)) {
-            DriverAction.dropDown(Locators.proficiencySelect, 1);
+        DriverAction.waitUntilElementAppear(NavBarLocator.proficiencySelect, 5);
+        if (DriverAction.isExist(NavBarLocator.proficiencySelect)) {
+            DriverAction.dropDown(NavBarLocator.proficiencySelect, 1);
         } else {
             GemTestReporter.addTestStep("Proficiency Select", "Proficiency Select is not present", STATUS.FAIL, DriverAction.takeSnapShot());
         }
-        DriverAction.waitUntilElementAppear(Locators.skillSelect, 5);
-        if (DriverAction.isExist(Locators.skillSelect)) {
-            DriverAction.dropDown(Locators.skillSelect, 1);
+        DriverAction.waitUntilElementAppear(NavBarLocator.skillSelect, 5);
+        if (DriverAction.isExist(NavBarLocator.skillSelect)) {
+            DriverAction.dropDown(NavBarLocator.skillSelect, 1);
         } else {
             GemTestReporter.addTestStep("skill Select", "Skill Select is not present", STATUS.FAIL, DriverAction.takeSnapShot());
         }
-        DriverAction.waitUntilElementAppear(Locators.techExperience, 5);
-        if (DriverAction.isExist(Locators.techExperience)) {
-            DriverAction.typeText(Locators.techExperience, TechExperience, "Tech Experience");
+        DriverAction.waitUntilElementAppear(NavBarLocator.techExperience, 5);
+        if (DriverAction.isExist(NavBarLocator.techExperience)) {
+            DriverAction.typeText(NavBarLocator.techExperience, TechExperience, "Tech Experience");
 
         } else {
             GemTestReporter.addTestStep("Tech Experience", "Tech Experience field is not present", STATUS.FAIL, DriverAction.takeSnapShot());
         }
-        DriverAction.waitUntilElementAppear(Locators.totalExperience, 5);
-        if (DriverAction.isExist(Locators.totalExperience)) {
-            DriverAction.typeText(Locators.totalExperience, TotalWorkExp, "Total Work Experience");
+        DriverAction.waitUntilElementAppear(NavBarLocator.totalExperience, 5);
+        if (DriverAction.isExist(NavBarLocator.totalExperience)) {
+            DriverAction.typeText(NavBarLocator.totalExperience, TotalWorkExp, "Total Work Experience");
             DriverAction.waitSec(2);
         } else {
             GemTestReporter.addTestStep("Total Experience", "Total Experience field is not present", STATUS.FAIL, DriverAction.takeSnapShot());
@@ -269,12 +258,12 @@ public class StepDefinition {
 
     @And("Click on close button")
     public void clickClose() {
-        if (DriverAction.isExist(Locators.skillClosebtn)) {
-            DriverAction.click(Locators.skillClosebtn, "Close button");
+        if (DriverAction.isExist(NavBarLocator.skillClosebtn)) {
+            DriverAction.click(NavBarLocator.skillClosebtn, "Close button");
         } else {
             GemTestReporter.addTestStep("Skill Close button", "Skill Close button is not present", STATUS.FAIL, DriverAction.takeSnapShot());
         }
-        WebElement popup = DriverAction.getElement(Locators.SkillPopup);
+        WebElement popup = DriverAction.getElement(NavBarLocator.SkillPopup);
         if (!popup.isDisplayed()) {
             GemTestReporter.addTestStep("Click on Close button", "After click on close button ,Skill popup is closed", STATUS.PASS, DriverAction.takeSnapShot());
         } else {
@@ -285,8 +274,8 @@ public class StepDefinition {
 
     @And("Verify popup with message {string} and {string}")
     public void verifyMessage(String alertType, String alertMessage) {
-        String expectedAlertType = DriverAction.getElementText(Locators.heading_alertType);
-        String expectedAlertMessage = DriverAction.getElementText(Locators.text_alertMessage);
+        String expectedAlertType = DriverAction.getElementText(NavBarLocator.heading_alertType);
+        String expectedAlertMessage = DriverAction.getElementText(NavBarLocator.text_alertMessage);
         if (expectedAlertType.equals(alertType)) {
             GemTestReporter.addTestStep("Verifying Alert Type", "Alert Type matched.", STATUS.PASS, DriverAction.takeSnapShot());
         } else {
@@ -303,8 +292,9 @@ public class StepDefinition {
     @Then("User click on Change AD Password and Verify new tab should be open")
     public void clickADPassword() {
         int tabCount = DriverAction.getWindowHandles().size();
-        if (DriverAction.isExist(Locators.changeADPassword)) {
-            DriverAction.click(Locators.changeADPassword, "AD Password");
+        DriverAction.waitSec(5);
+        if (DriverAction.isExist(NavBarLocator.changeADPassword)) {
+            DriverAction.click(NavBarLocator.changeADPassword, "AD Password");
         } else {
             GemTestReporter.addTestStep("Change ADPassword button", "Change ADPassword button is not present", STATUS.FAIL, DriverAction.takeSnapShot());
         }
@@ -321,15 +311,15 @@ public class StepDefinition {
     @Then("Click on Logout menu")
     public void clickOnLogoutMenu() {
         DriverAction.waitSec(5);
-        if (DriverAction.isExist(Locators.Profilemenu)) {
-            DriverAction.click(Locators.Profilemenu, "AD Password");
+        if (DriverAction.isExist(NavBarLocator.Profilemenu)) {
+            DriverAction.click(NavBarLocator.Profilemenu, "AD Password");
         } else {
             GemTestReporter.addTestStep("Profile Menu", "Profile Menu is not present", STATUS.FAIL, DriverAction.takeSnapShot());
         }
 
-        DriverAction.waitUntilElementAppear(Locators.Logout, 10);
-        if (DriverAction.isExist(Locators.Logout)) {
-            DriverAction.click(Locators.Logout, "LogOut");
+        DriverAction.waitUntilElementAppear(NavBarLocator.Logout, 10);
+        if (DriverAction.isExist(NavBarLocator.Logout)) {
+            DriverAction.click(NavBarLocator.Logout, "LogOut");
         } else {
             GemTestReporter.addTestStep("Logout", "Logout button is not present", STATUS.FAIL, DriverAction.takeSnapShot());
         }
@@ -338,8 +328,8 @@ public class StepDefinition {
 
     @And("User navigate to login page")
     public void loginPageNavigation() {
-        DriverAction.waitUntilElementAppear(Locators.loginForm, 10);
-        if (DriverAction.isExist(Locators.loginForm)) {
+        DriverAction.waitUntilElementAppear(NavBarLocator.loginForm, 10);
+        if (DriverAction.isExist(NavBarLocator.loginForm)) {
             GemTestReporter.addTestStep("verify navigation to login page", "login page is open after click on logout", STATUS.PASS, DriverAction.takeSnapShot());
         } else {
             GemTestReporter.addTestStep("verify navigation to login page", "login page is not open after click on logout", STATUS.PASS, DriverAction.takeSnapShot());
@@ -349,9 +339,9 @@ public class StepDefinition {
     @And("Enter experience{string} in TechExperience")
     public void enterExperienceInTechExperience(String TechExperience) {
         DriverAction.waitSec(5);
-        DriverAction.waitUntilElementAppear(Locators.techExperience, 5);
-        if (DriverAction.isExist(Locators.techExperience)) {
-            DriverAction.typeText(Locators.techExperience, TechExperience, "Tech Experience");
+        DriverAction.waitUntilElementAppear(NavBarLocator.techExperience, 5);
+        if (DriverAction.isExist(NavBarLocator.techExperience)) {
+            DriverAction.typeText(NavBarLocator.techExperience, TechExperience, "Tech Experience");
 
         } else {
             GemTestReporter.addTestStep("Tech Experience", "Tech Experience field is not present", STATUS.FAIL, DriverAction.takeSnapShot());
@@ -362,20 +352,22 @@ public class StepDefinition {
     @And("Verify experience{string} of TechExperience")
     public void verifyExperienceOfTechExperience(String TechExperience) {
         JavascriptExecutor js = (JavascriptExecutor) DriverManager.getWebDriver();
-        WebElement element = DriverAction.getElement(Locators.techExperience);
-        String experience = js.executeScript("arguments[0].value;", element).toString();
-        if (experience.equalsIgnoreCase(TechExperience) && !experience.matches("[a-zA-Z]")) {
+        WebElement element = DriverAction.getElement(NavBarLocator.techExperience);
+        String experience = js.executeScript("return arguments[0].value;", element).toString();
+
+        if (experience.matches("[0-9]+") || experience.isEmpty()) {
             GemTestReporter.addTestStep("verify Tech Experience field", "Tech Experience is accepting Integer value only", STATUS.PASS, DriverAction.takeSnapShot());
         } else {
-            GemTestReporter.addTestStep("verify Tech Experience field", "Tech Experience is accepting all type of value", STATUS.PASS, DriverAction.takeSnapShot());
+            GemTestReporter.addTestStep("verify Tech Experience field", "Tech Experience is accepting all type of value", STATUS.FAIL, DriverAction.takeSnapShot());
+
         }
     }
 
     @Then("Enter workExperience {string} in workExpField")
     public void enterWorkExperienceInWorkExpField(String TotalWorkExp) {
-        DriverAction.waitUntilElementAppear(Locators.totalExperience, 5);
-        if (DriverAction.isExist(Locators.totalExperience)) {
-            DriverAction.typeText(Locators.totalExperience, TotalWorkExp, "Total Work Experience");
+        DriverAction.waitUntilElementAppear(NavBarLocator.totalExperience, 5);
+        if (DriverAction.isExist(NavBarLocator.totalExperience)) {
+            DriverAction.typeText(NavBarLocator.totalExperience, TotalWorkExp, "Total Work Experience");
             DriverAction.waitSec(2);
         } else {
             GemTestReporter.addTestStep("Total Experience", "Total Experience field is not present", STATUS.FAIL, DriverAction.takeSnapShot());
@@ -384,9 +376,12 @@ public class StepDefinition {
 
     @And("Verify workExperience {string} of workExpField")
     public void verifyWorkExperienceOfWorkExpField(String TotalExperience) {
-        WebElement element = DriverAction.getElement(Locators.totalExperience);
-        String experience = element.getText();
-        if (experience.equalsIgnoreCase(TotalExperience) && !experience.matches("[a-zA-Z]")) {
+        JavascriptExecutor js = (JavascriptExecutor) DriverManager.getWebDriver();
+        WebElement element = DriverAction.getElement(NavBarLocator.totalExperience);
+        String experience = js.executeScript("return arguments[0].value;", element).toString();
+
+
+        if (experience.matches("[0-9]+") || experience.isEmpty()) {
             GemTestReporter.addTestStep("verify Total Experience field", "Total Experience is accepting Integer value only", STATUS.PASS, DriverAction.takeSnapShot());
         } else {
             GemTestReporter.addTestStep("verify Total Experience field", "Total Experience is accepting all type of value", STATUS.FAIL, DriverAction.takeSnapShot());
@@ -397,13 +392,13 @@ public class StepDefinition {
     @Then("Click on Dashboard setting")
     public void clickDashboard() {
         DriverAction.waitSec(5);
-        if (DriverAction.isExist(Locators.Profilemenu)) {
-            DriverAction.click(Locators.Profilemenu, "ProfileMenu");
+        if (DriverAction.isExist(NavBarLocator.Profilemenu)) {
+            DriverAction.click(NavBarLocator.Profilemenu, "ProfileMenu");
         } else {
             GemTestReporter.addTestStep("Profile Menu", "Profile Menu is not present", STATUS.FAIL, DriverAction.takeSnapShot());
         }
-        if (DriverAction.isExist(Locators.Setting)) {
-            DriverAction.click(Locators.Setting, " Dashboard Setting");
+        if (DriverAction.isExist(NavBarLocator.Setting)) {
+            DriverAction.click(NavBarLocator.Setting, " Dashboard Setting");
             DriverAction.waitSec(2);
         } else {
             GemTestReporter.addTestStep("Dashboard Setting", "Dashboard Setting is not present", STATUS.FAIL, DriverAction.takeSnapShot());
@@ -412,32 +407,38 @@ public class StepDefinition {
 
     }
 
-    @And("Uncheck (.*) and click on update")
-    public void updateDashboard(String Cards) {
-
-        String[] WidgetName = Cards.split(",");
-        for (String card : WidgetName) {
-            WebElement cardCheckbox = DriverAction.getElement(Locators.Cardcheckbox(card));
-            if (DriverAction.isExist(Locators.Cardcheckbox(card))) {
-                DriverAction.click(cardCheckbox, cardCheckbox.getText());
-                DriverAction.waitSec(2);
-            } else {
-                GemTestReporter.addTestStep("Card checkbox", "Card Checkbox is not present", STATUS.FAIL, DriverAction.takeSnapShot());
-            }
-        }
-        if (DriverAction.isExist(Locators.updateDashboardbtn)) {
-            DriverAction.click(Locators.updateDashboardbtn, "Update Button");
-            DriverAction.waitSec(2);
-        } else {
-            GemTestReporter.addTestStep("Update Dashboard button", "Update Dashboard button is not present", STATUS.FAIL, DriverAction.takeSnapShot());
-        }
-    }
+//    @And("Uncheck (.*) and click on update")
+//    public void updateDashboard(String Cards) {
+//
+//        String[] WidgetName = Cards.split(",");
+//        List<String> widg = Arrays.asList(WidgetName);
+//
+//        List<WebElement> options = DriverAction.getElements(Locators.checkboxs);
+//
+//
+//
+//
+//        for (String card : WidgetName) {
+//            WebElement cardCheckbox = DriverAction.getElement(Locators.Cardcheckbox(card.trim()));
+//            if (cardCheckbox.isSelected()) {
+//                DriverAction.click(cardCheckbox, cardCheckbox.getText());
+//            }
+//            JavascriptExecutor js = (JavascriptExecutor) DriverManager.getWebDriver();
+//            js.executeScript()
+//        }
+//        if (DriverAction.isExist(Locators.updateDashboardbtn)) {
+//            DriverAction.click(Locators.updateDashboardbtn, "Update Button");
+//            DriverAction.waitSec(2);
+//        } else {
+//            GemTestReporter.addTestStep("Update Dashboard button", "Update Dashboard button is not present", STATUS.FAIL, DriverAction.takeSnapShot());
+//        }
+//    }
 
 
     @And("Verify Dashboard setting table is visible on the current screen")
     public void verifyDashboardSettingTable() {
-        DriverAction.waitUntilElementAppear(Locators.settingDashboard, 5);
-        if (DriverAction.isExist(Locators.settingDashboard)) {
+        DriverAction.waitUntilElementAppear(NavBarLocator.DashboardPopup, 5);
+        if (DriverAction.isExist(NavBarLocator.DashboardPopup)) {
             GemTestReporter.addTestStep("verify Dashboard Setting Table", "Dashboard table is visible after click on Dashboard Setting", STATUS.PASS, DriverAction.takeSnapShot());
         } else {
             GemTestReporter.addTestStep("verify Dashboard Setting Table", "Dashboard table is not visible after click on Dashboard Setting", STATUS.FAIL, DriverAction.takeSnapShot());
@@ -447,36 +448,88 @@ public class StepDefinition {
 
     @Then("Verify all check boxes are uncheck")
     public void verifyAllCheckBoxesAreUncheck() {
-        DriverAction.waitUntilElementAppear(Locators.settingDashboard, 5);
-        if (DriverAction.isExist(Locators.settingDashboard)) {
-            List<WebElement> element = DriverAction.getElements(Locators.DashboardCheckbox);
+        DriverAction.waitUntilElementAppear(NavBarLocator.DashboardPopup, 10);
+        if (DriverAction.isExist(NavBarLocator.DashboardPopup)) {
+            List<WebElement> element = DriverAction.getElements(NavBarLocator.DashboardCheckbox);
             for (WebElement checkbox : element) {
-                DriverAction.click(checkbox);
+                if (checkbox.isSelected()) {
+                    //cardnumber++;
+                    DriverAction.click(checkbox);
+                }
             }
+            GemTestReporter.addTestStep("Verify all check boxes ", "All check boxes are unchecked ", STATUS.PASS, DriverAction.takeSnapShot());
+
         } else {
-            GemTestReporter.addTestStep("Setting Dashboard", "Setting Dashboard is not present", STATUS.FAIL, DriverAction.takeSnapShot());
+            GemTestReporter.addTestStep("Verify all check boxes ", "Dashboard table is not visible after click on Dashboard Setting", STATUS.FAIL, DriverAction.takeSnapShot());
         }
     }
 
     @And("Click on Update button")
     public void clickOnUpdateButton() {
-        if (DriverAction.isExist(Locators.DashboardUpdatebtn)) {
-            DriverAction.click(Locators.DashboardUpdatebtn, "Dashboard Update button");
+        if (DriverAction.isExist(NavBarLocator.DashboardUpdatebtn)) {
+            DriverAction.click(NavBarLocator.DashboardUpdatebtn, "Dashboard Update button");
         } else {
             GemTestReporter.addTestStep("Dashboard Update button", "Dashboard Update button is not present", STATUS.FAIL, DriverAction.takeSnapShot());
         }
     }
 
-    //@And("Verify {string} card is shown on the dashboard")
-    //public void verifyCardIsShownOnTheDashboard(String isCardPresent) {
-    // switch (isCardPresent) {
-    //  case "no":
-    // impl
-    //  break;
-    // case "all":
-    // impl
-    // break;
-    // }
-    //  }
+    @And("Verify {string} card is shown on the dashboard")
+    public void verifyCardIsShownOnTheDashboard(String isCardPresent) {
+        DriverAction.waitSec(5);
+        List<WebElement> Cardpanel = null;
+        switch (isCardPresent) {
+            case "no":
+                Cardpanel = DriverAction.getElements(NavBarLocator.Cardname);
+                if (Cardpanel.size() == 0) {
+                    GemTestReporter.addTestStep("Unchecked all the widget ", "Dashboard setting is updated", STATUS.PASS, DriverAction.takeSnapShot());
+                } else {
+                    GemTestReporter.addTestStep("Unchecked all the widget ", "Dashboard setting is not updated", STATUS.FAIL, DriverAction.takeSnapShot());
+
+                }
+                break;
+            case "all":
+                Cardpanel = DriverAction.getElements(NavBarLocator.Cardname);
+
+                if (Cardpanel.size() ==cardnumber-1) {
+                    GemTestReporter.addTestStep("checked all the widget ", "All the cards are reappear", STATUS.PASS, DriverAction.takeSnapShot());
+                } else {
+                    GemTestReporter.addTestStep("checked all the widget ", "All the cards are not reappear", STATUS.FAIL, DriverAction.takeSnapShot());
+                }
+                break;
+        }
+    }
+
+    @Then("Verify all check boxes are check")
+    public void verifyAllCheckBoxesAreCheck() {
+        DriverAction.waitUntilElementAppear(NavBarLocator.DashboardPopup, 10);
+        if (DriverAction.isExist(NavBarLocator.DashboardPopup)) {
+            List<WebElement> element = DriverAction.getElements(NavBarLocator.DashboardCheckbox);
+            for (WebElement checkbox : element) {
+                if (!checkbox.isSelected()) {
+                    DriverAction.click(checkbox);
+                    cardnumber++;
+                }else{
+                    cardnumber++;
+
+                }
+            }
+            GemTestReporter.addTestStep("Verify all check boxes ", "All check boxes are checked ", STATUS.PASS, DriverAction.takeSnapShot());
+
+
+        } else {
+            GemTestReporter.addTestStep("verify Dashboard Setting Table", "Dashboard table is not visible after click on Dashboard Setting", STATUS.FAIL, DriverAction.takeSnapShot());
+        }
+
+    }
+
+    @Then("Verify <widget> card are not present in Dashboard")
+    public void verifyWidgetCardAreNotPresentInDashboard(String Card) {
+        List<WebElement> Cardpanel = DriverAction.getElements(NavBarLocator.Cardname);
+
+        for (WebElement card : Cardpanel) {
+
+
+        }
+    }
 }
 

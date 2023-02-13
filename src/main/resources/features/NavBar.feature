@@ -13,7 +13,7 @@ Feature: NavBar
     And Verify all the <Fields> and <Buttons> are present
 
     Examples:
-      | Fields                                                                                                                                                            | Buttons      |
+      | Fields                                                                                                                                                  | Buttons      |
       | Update Profile:Mobile number,Extn. number;Update Address:Country,State,City,Pin code,Address;Change Password:Old Password,New Password,Confirm Password | Update,Close |
 
   Scenario: Verify user redirect to landing page when clicking on Gemini logo
@@ -37,7 +37,7 @@ Feature: NavBar
 
     Examples:
       | Technology | Proficiency Level | Skill Type | Tech Experience | Total Work Exp | AlertType | Message                             |
-      | Accounting | Beginner          | Secondary  | 24              | 2              | Success   | Skills has been saved successfully. |
+      | .NET(Server Side) | Beginner          | Secondary  | 24              | 2              | Success   | Skills has been saved successfully. |
 
 
   Scenario Outline: Verify Warning Message box when adding duplicate skills
@@ -66,20 +66,22 @@ Feature: NavBar
     Examples:
       | techExp | workExp |
       | 24      | 2       |
-     #| twenty  | two     |
+      | twenty  | two     |
 
-  Scenario Outline: Verify cards are added on dashboard when updating from dashboard setting
+ Scenario: Verify cards are added on dashboard when updating from dashboard setting
     Then Click on Dashboard setting
-    And Verify Dashboard setting table is visible on the current screen
-    Then Verify all check boxes are uncheck
+   And Verify Dashboard setting table is visible on the current screen
+   Then Verify all check boxes are uncheck
     And Click on Update button
-    #And Verify "no" card is shown on the dashboard
-#    And Verify "all" card is shown on the dashboard
+   And Verify "no" card is shown on the dashboard
 
 
-    Examples:
-      | Cards                                      |
-      | Cab Request,Referral,Holiday,Leave Balance |
+ Scenario: Verify all cards re appear when checked from dashboard setting
+   Then Click on Dashboard setting
+   And Verify Dashboard setting table is visible on the current screen
+   Then Verify all check boxes are check
+   And Click on Update button
+   And Verify "all" card is shown on the dashboard
 
 
 

@@ -1,10 +1,8 @@
-package com.qa.MIS.Locators;
+package com.qa.mis.locators;
 
 import org.openqa.selenium.By;
 
-import java.security.PublicKey;
-
-public class Locators {
+public class NavBarLocator {
 
     public static By Username = By.id("username");
     public static By Password = By.id("password");
@@ -47,14 +45,14 @@ public class Locators {
     public static By SkillsOption = By.id("skills");
 
     public static By Setting = By.id("dashBoardSettings");
-//    public static By selectoption(String field) {
+    //    public static By selectoption(String field) {
 //        return By.xpath("//div[@id='UpdateSkills']//label[text()='" + field + "']/../..//select");
 //    }
     public  static  By technologySelect= By.xpath("//span[@id='select2-ddlSkills-container']");
-     public static By technologyOption(String option){
-         return By.xpath("//span[@class='select2-results']//li[text()='"+option+"']");
-     }
-     public  static  By proficiencySelect= By.xpath("//div[@id='UpdateSkills']//label[text()='Proficiency Level']/../..//select");
+    public static By technologyOption(String option){
+        return By.xpath("//span[@class='select2-results']//li[text()='"+option+"']");
+    }
+    public  static  By proficiencySelect= By.xpath("//div[@id='UpdateSkills']//label[text()='Proficiency Level']/../..//select");
     public  static  By skillSelect= By.xpath("//div[@id='UpdateSkills']//label[text()='Skill Type']/../..//select");
     public static By selectOption(String option) {
         return By.xpath("//select/option[text()='\" + option + \"']");
@@ -76,16 +74,19 @@ public class Locators {
 
     public static By loginForm = By.xpath("//form[contains(@class,'login-form')]");
 
-     public static By Cardcheckbox(String card){
+    public static By Cardcheckbox(String card){
         return By.xpath("//tbody[@id='divdashboardvisit']/tr/td[text()='"+card+"']]/..//input[@type='checkbox']");
     }
+    public static By checkboxs =By.xpath("//tbody[@id='divdashboardvisit']//input[@type='checkbox']");
 
     public static By updateDashboardbtn = By.id("btnSaveSetting");
 
-     public static By settingDashboard = By.id("DashBoardSettings");
-     public static By DashboardCheckbox = By.xpath("//div[@id='DashBoardSettings']//input[@type='checkbox']");
+    public static By DashboardPopup = By.id("DashBoardSettings");
+    public static By DashboardCheckbox = By.xpath("//div[@id='DashBoardSettings']//input[@type='checkbox']");
 
-     public static By DashboardUpdatebtn= By.id("btnSaveSetting");
+    public static By DashboardUpdatebtn= By.id("btnSaveSetting");
+    public static By Cardname = By.className("panel-title");
+
 }
 
 
