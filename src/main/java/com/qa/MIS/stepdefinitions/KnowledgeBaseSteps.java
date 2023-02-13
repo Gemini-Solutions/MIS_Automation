@@ -1,5 +1,7 @@
 package com.qa.MIS.stepdefinitions;
 
+import com.gemini.generic.reporting.GemTestReporter;
+import com.gemini.generic.reporting.STATUS;
 import com.gemini.generic.ui.utils.DriverAction;
 import com.qa.MIS.locators.KnowledgeBaseLocator;
 import io.cucumber.java.en.Given;
@@ -15,20 +17,32 @@ public class KnowledgeBaseSteps {
 
     @Given("logged in successfully")
     public void logged_in_successfully() throws InterruptedException {
-        DriverAction.typeText(KnowledgeBaseLocator.usernameByXpath,"prajjwal.negi");
-        DriverAction.typeText(KnowledgeBaseLocator.passwordByXpath,"Gemini@123");
+        //DriverAction.typeText(KnowledgeBaseLocator.usernameByXpath,"prajjwal.negi");
+        //DriverAction.typeText(KnowledgeBaseLocator.passwordByXpath,"Gemini@123");
         //Thread.sleep(5000);
+        DriverAction.waitSec(5);
+        if (DriverAction.isExist(KnowledgeBaseLocator.usernameByXpath)) {
+            DriverAction.typeText(KnowledgeBaseLocator.usernameByXpath, "prajjwal.negi");
+        } else {
+            GemTestReporter.addTestStep("Username", "Username field is not present", STATUS.FAIL, DriverAction.takeSnapShot());
+        }
+        if (DriverAction.isExist(KnowledgeBaseLocator.passwordByXpath)) {
+            DriverAction.typeText(KnowledgeBaseLocator.passwordByXpath, "Gemini@123");
+        } else {
+            GemTestReporter.addTestStep("Password", "Password field is not present", STATUS.FAIL, DriverAction.takeSnapShot());
+        }
         DriverAction.click(KnowledgeBaseLocator.signInByXpath);
         Thread.sleep(5000);
-        //DriverAction.waitUntilElementAppear(Locators.closeSkills,5);
+        DriverAction.waitUntilElementAppear(KnowledgeBaseLocator.closeSkills,5);
 
         DriverAction.click(KnowledgeBaseLocator.closeSkills,"Close skill");
     }
     @When("navigating to view documents page")
-    public void navigating_to_view_documents_page() {
+    public void navigating_to_view_documents_page() throws InterruptedException {
 
         DriverAction.click(KnowledgeBaseLocator.knowledgeBase,"Knowledge Base");
         DriverAction.click(KnowledgeBaseLocator.viewDocuments,"View Documents");
+        Thread.sleep(5000);
 
 
     }
@@ -48,10 +62,11 @@ public class KnowledgeBaseSteps {
     }
 
     @When("navigating to view documents page adding empty document tag")
-    public void navigating_to_view_documents_page_adding_empty_document_tag() {
+    public void navigating_to_view_documents_page_adding_empty_document_tag() throws InterruptedException {
         DriverAction.click(KnowledgeBaseLocator.closeSkills,"Close skill");
         DriverAction.click(KnowledgeBaseLocator.knowledgeBase,"Knowledge Base");
         DriverAction.click(KnowledgeBaseLocator.viewDocuments,"View Documents");
+        Thread.sleep(5000);
         DriverAction.click(KnowledgeBaseLocator.addDocumentTag,"Add document Tag");
         DriverAction.typeText(KnowledgeBaseLocator.inputDocumentTag,"");
         DriverAction.click(KnowledgeBaseLocator.saveDocumentTag,"Document Tag saved");
