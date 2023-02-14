@@ -1,21 +1,17 @@
-package com.qa.MIS.StepDefinition;
+package com.qa.mis.stepdefinition;
 
 import com.gemini.generic.reporting.GemTestReporter;
 import com.gemini.generic.reporting.STATUS;
 import com.gemini.generic.ui.utils.DriverAction;
 import com.gemini.generic.ui.utils.DriverManager;
-import com.qa.MIS.Locators.LeaveManagementLocators;
+import com.qa.mis.locators.LeaveManagementLocator;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.cucumber.java.ht.Le;
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -23,7 +19,6 @@ import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.Stack;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.fail;
@@ -38,20 +33,20 @@ public class LeaveManagementSteps {
         List<Map<String, String>> credentials = credTable.asMaps(String.class, String.class);
         String username = credentials.get(0).get("username");
         String password = credentials.get(0).get("password");
-        if (DriverAction.isExist(LeaveManagementLocators.input_loginUsername)) {
-            DriverAction.typeText(LeaveManagementLocators.input_loginUsername, username, "username");
+        if (DriverAction.isExist(LeaveManagementLocator.input_loginUsername)) {
+            DriverAction.typeText(LeaveManagementLocator.input_loginUsername, username, "username");
         } else {
             GemTestReporter.addTestStep("Error Occur", "Fail to enter text in username", STATUS.FAIL,
                     DriverAction.takeSnapShot());
         }
-        if (DriverAction.isExist(LeaveManagementLocators.input_loginPassword)) {
-            DriverAction.typeText(LeaveManagementLocators.input_loginPassword, password, "password");
+        if (DriverAction.isExist(LeaveManagementLocator.input_loginPassword)) {
+            DriverAction.typeText(LeaveManagementLocator.input_loginPassword, password, "password");
         } else {
             GemTestReporter.addTestStep("Error Occur", "Fail to enter text in password", STATUS.FAIL,
                     DriverAction.takeSnapShot());
         }
-        if (DriverAction.isExist(LeaveManagementLocators.button_SignIn)) {
-            DriverAction.click(LeaveManagementLocators.button_SignIn, "sign in");
+        if (DriverAction.isExist(LeaveManagementLocator.button_SignIn)) {
+            DriverAction.click(LeaveManagementLocator.button_SignIn, "sign in");
         } else {
             GemTestReporter.addTestStep("Error Occur", "Fail to click on Login", STATUS.FAIL,
                     DriverAction.takeSnapShot());
@@ -79,16 +74,16 @@ public class LeaveManagementSteps {
 //        DriverAction.waitUntilElementAppear(By.xpath("//h3[@class='panel-title']"), 10);
 
         DriverAction.waitSec(3);
-        DriverAction.waitUntilElementAppear(LeaveManagementLocators.menu_parentTabs(parentTab), 10);
-        if (DriverAction.isExist(LeaveManagementLocators.menu_parentTabs(parentTab))) {
-            DriverAction.click(LeaveManagementLocators.menu_parentTabs(parentTab), parentTab);
+        DriverAction.waitUntilElementAppear(LeaveManagementLocator.menu_parentTabs(parentTab), 10);
+        if (DriverAction.isExist(LeaveManagementLocator.menu_parentTabs(parentTab))) {
+            DriverAction.click(LeaveManagementLocator.menu_parentTabs(parentTab), parentTab);
         } else {
             GemTestReporter.addTestStep("Error Occur", "Fail to click on " + parentTab, STATUS.FAIL,
                     DriverAction.takeSnapShot());
         }
-        DriverAction.waitUntilElementAppear(LeaveManagementLocators.menu_parentTabs(parentTab), 10);
-        if (DriverAction.isExist(LeaveManagementLocators.menu_childTabs(childTab))) {
-            DriverAction.click(LeaveManagementLocators.menu_childTabs(childTab), childTab);
+        DriverAction.waitUntilElementAppear(LeaveManagementLocator.menu_parentTabs(parentTab), 10);
+        if (DriverAction.isExist(LeaveManagementLocator.menu_childTabs(childTab))) {
+            DriverAction.click(LeaveManagementLocator.menu_childTabs(childTab), childTab);
         } else {
             GemTestReporter.addTestStep("Error Occur", "Fail to click on " + childTab, STATUS.FAIL,
                     DriverAction.takeSnapShot());
@@ -98,8 +93,8 @@ public class LeaveManagementSteps {
 
     @And("Verify {string} of {string} tab")
     public void verifyOfTab(String expectedHeading, String childTab) {
-        DriverAction.waitUntilElementAppear(LeaveManagementLocators.heading_Page, 10);
-        String actualHeading = DriverAction.getElementText(LeaveManagementLocators.heading_Page);
+        DriverAction.waitUntilElementAppear(LeaveManagementLocator.heading_Page, 10);
+        String actualHeading = DriverAction.getElementText(LeaveManagementLocator.heading_Page);
         if (actualHeading.equals(expectedHeading)) {
             GemTestReporter.addTestStep("Verifying Heading",
                     "Heading matching passed.\nExpected Heading - " + expectedHeading +
@@ -117,7 +112,7 @@ public class LeaveManagementSteps {
         if (tabs.equals("Out Duty/Tour")) {
             tabs = " Out Duty/Tour";
         }
-        DriverAction.click(LeaveManagementLocators.navigation_tabs(tabs), tabs);
+        DriverAction.click(LeaveManagementLocator.navigation_tabs(tabs), tabs);
 
     }
 
@@ -153,7 +148,7 @@ public class LeaveManagementSteps {
         }
 
         List<String> actualFields =
-                DriverAction.getElementsText(LeaveManagementLocators.title_LeaveFields(id));
+                DriverAction.getElementsText(LeaveManagementLocator.title_LeaveFields(id));
         if (actualFields.equals(expectedFields)) {
             GemTestReporter.addTestStep("Verifying Fields",
                     "Fields matching passed.\nExpected Fields - " + expectedFields +
@@ -186,8 +181,8 @@ public class LeaveManagementSteps {
                 id = "tabLWPChangeRequest";
                 break;
         }
-        if (DriverAction.isExist(LeaveManagementLocators.button_leaveSubmit(id))) {
-            DriverAction.click(LeaveManagementLocators.button_leaveSubmit(id), "Submit");
+        if (DriverAction.isExist(LeaveManagementLocator.button_leaveSubmit(id))) {
+            DriverAction.click(LeaveManagementLocator.button_leaveSubmit(id), "Submit");
         } else {
             GemTestReporter.addTestStep("Error Occur", "Fail to click on submit", STATUS.FAIL,
                     DriverAction.takeSnapShot());
@@ -200,27 +195,27 @@ public class LeaveManagementSteps {
         switch (fieldType) {
             case "dropdown":
                 classValue =
-                        DriverAction.getAttributeName(LeaveManagementLocators.field_leaveDropDown(field),
+                        DriverAction.getAttributeName(LeaveManagementLocator.field_leaveDropDown(field),
                                 "class");
                 break;
             case "textField":
                 classValue =
-                        DriverAction.getAttributeName(LeaveManagementLocators.field_leaveTextFields(field),
+                        DriverAction.getAttributeName(LeaveManagementLocator.field_leaveTextFields(field),
                                 "class");
                 break;
             case "textArea":
                 classValue =
-                        DriverAction.getAttributeName(LeaveManagementLocators.field_leaveTextArea(field),
+                        DriverAction.getAttributeName(LeaveManagementLocator.field_leaveTextArea(field),
                                 "class");
                 break;
-            case "calender":
+            case "calendar":
                 classValue =
-                        DriverAction.getAttributeName(LeaveManagementLocators.field_leaveCalender(field),
+                        DriverAction.getAttributeName(LeaveManagementLocator.field_leaveCalendar(field),
                                 "class");
                 break;
-            case "outingCalender":
+            case "outingCalendar":
                 classValue =
-                        DriverAction.getAttributeName(LeaveManagementLocators.field_outingCalender(field),
+                        DriverAction.getAttributeName(LeaveManagementLocator.field_outingCalendar(field),
                                 "class");
         }
         if (classValue.contains("error-validation")) {
@@ -234,8 +229,8 @@ public class LeaveManagementSteps {
 
     @Then("Select compOff date {int} for {string} field")
     public void selectCompOffDateDateIndexFromDateField(Integer index, String field) {
-        if (DriverAction.isExist(LeaveManagementLocators.field_leaveDropDown(field))) {
-            DriverAction.dropDown(LeaveManagementLocators.field_leaveDropDown(field), index);
+        if (DriverAction.isExist(LeaveManagementLocator.field_leaveDropDown(field))) {
+            DriverAction.dropDown(LeaveManagementLocator.field_leaveDropDown(field), index);
         } else {
             GemTestReporter.addTestStep("Error Occur", "Fail to click on dropdown", STATUS.FAIL,
                     DriverAction.takeSnapShot());
@@ -244,8 +239,8 @@ public class LeaveManagementSteps {
 
     @Then("Enter compOff reason {string} for {string} field")
     public void enterCompOffReasonForField(String message, String field) {
-        if (DriverAction.isExist(LeaveManagementLocators.field_leaveTextArea(field))) {
-            DriverAction.typeText(LeaveManagementLocators.field_leaveTextArea(field), message, "reason");
+        if (DriverAction.isExist(LeaveManagementLocator.field_leaveTextArea(field))) {
+            DriverAction.typeText(LeaveManagementLocator.field_leaveTextArea(field), message, "reason");
         } else {
             GemTestReporter.addTestStep("Error Occur", "Fail to click on dropdown", STATUS.FAIL,
                     DriverAction.takeSnapShot());
@@ -254,8 +249,8 @@ public class LeaveManagementSteps {
 
     @And("Verify popup with message {string} and {string}")
     public void verifyPopupWithMessageAnd(String alertType, String alertMessage) {
-        String expectedAlertType = DriverAction.getElementText(LeaveManagementLocators.heading_alertType);
-        String expectedAlertMessage = DriverAction.getElementText(LeaveManagementLocators.text_alertMessage);
+        String expectedAlertType = DriverAction.getElementText(LeaveManagementLocator.heading_alertType);
+        String expectedAlertMessage = DriverAction.getElementText(LeaveManagementLocator.text_alertMessage);
 
         if (expectedAlertType.equals(alertType)) {
             GemTestReporter.addTestStep("Verifying Alert Type",
@@ -284,7 +279,7 @@ public class LeaveManagementSteps {
         switch (fieldType) {
             case "textField":
                 defaultText =
-                        DriverAction.getElementText(LeaveManagementLocators.field_leaveTextFields(field));
+                        DriverAction.getElementText(LeaveManagementLocator.field_leaveTextFields(field));
                 break;
         }
         if (!defaultText.equals(null)) {
@@ -301,15 +296,23 @@ public class LeaveManagementSteps {
         String elementLabel = field.contains("FromDate") ? "From date" : "Till date";
         // date format == mm/dd/yyyy
         String[] dateArray = date.split("/");
-        DriverAction.click(LeaveManagementLocators.field_leaveCalender(field), elementLabel);
-
-        DriverAction.click(LeaveManagementLocators.datePicker_switchMonth);
-
-        List<WebElement> monthElements = DriverAction.getElements(LeaveManagementLocators.datePicker_month);
+        if (DriverAction.isExist(LeaveManagementLocator.field_leaveCalendar(field))) {
+            DriverAction.click(LeaveManagementLocator.field_leaveCalendar(field), elementLabel);
+        } else {
+            GemTestReporter.addTestStep("Error Occur", "Fail to click on calendar", STATUS.FAIL,
+                    DriverAction.takeSnapShot());
+        }
+        if (DriverAction.isExist(LeaveManagementLocator.datePicker_switchMonth)) {
+            DriverAction.click(LeaveManagementLocator.datePicker_switchMonth);
+        } else {
+            GemTestReporter.addTestStep("Error Occur", "Fail to click on calendar", STATUS.FAIL,
+                    DriverAction.takeSnapShot());
+        }
+        List<WebElement> monthElements = DriverAction.getElements(LeaveManagementLocator.datePicker_month);
         int monthNumber = Integer.parseInt(dateArray[0]);
 
         DriverAction.click(monthElements.get(monthNumber - 1), "month");
-        List<WebElement> dayElements = DriverAction.getElements(LeaveManagementLocators.datePicker_day);
+        List<WebElement> dayElements = DriverAction.getElements(LeaveManagementLocator.datePicker_day);
 
         for (WebElement day : dayElements) {
             if (DriverAction.getElementText(day).equals(dateArray[1])) {
@@ -325,11 +328,11 @@ public class LeaveManagementSteps {
         DriverAction.waitSec(5);
 //        new WebDriverWait(DriverManager.getWebDriver(), Duration.ofSeconds(20))
 //                .until(ExpectedConditions.elementToBeClickable(LeaveManagementLocators.button_tooltip));
-        if (DriverAction.isExist(LeaveManagementLocators.button_tooltip)) {
+        if (DriverAction.isExist(LeaveManagementLocator.button_tooltip)) {
 //            DriverAction.click(LeaveManagementLocators.button_tooltip, "tooltip");
             JavascriptExecutor js = (JavascriptExecutor) DriverManager.getWebDriver();
             js.executeScript("arguments[0].click();",
-                    DriverAction.getElement(LeaveManagementLocators.button_tooltip));
+                    DriverAction.getElement(LeaveManagementLocator.button_tooltip));
             GemTestReporter.addTestStep("clicked on tool tip", "Pass", STATUS.PASS);
         } else {
             GemTestReporter.addTestStep("Fail to click on tool tip", "Fail", STATUS.FAIL);
@@ -341,7 +344,7 @@ public class LeaveManagementSteps {
 //        String expectedMessage = DriverAction.getAttributeName(LeaveManagementLocators.button_tooltip,
 //                "data-content");
         DriverAction.waitSec(5);
-        String expectedMessage = DriverAction.getElementText(LeaveManagementLocators.message_tooltip);
+        String expectedMessage = DriverAction.getElementText(LeaveManagementLocator.message_tooltip);
         if (expectedMessage.equals(message)) {
             GemTestReporter.addTestStep("Verifying ToolTip Message",
                     "ToolTip Message matching passed.\nExpected ToolTip Message - " + expectedMessage +
@@ -358,10 +361,10 @@ public class LeaveManagementSteps {
         String[] options = halfDayOptions.split(",");
         halfDayLeaveCount = options.length;
         DriverAction.waitSec(2);
-        totalWorkingDaysBeforeApplyingHalfDay = DriverAction.getElementText(LeaveManagementLocators.label_totalWorkingDays);
+        totalWorkingDaysBeforeApplyingHalfDay = DriverAction.getElementText(LeaveManagementLocator.label_totalWorkingDays);
         for (String opt : options) {
             String elementLabel = (opt.trim()).equals("isLeaveFirstHalfDay") ? "FirstHalfDay" : "LastHalfDay";
-            DriverAction.click(LeaveManagementLocators.checkbox_halfDayLeaveOption(opt.trim()), elementLabel);
+            DriverAction.click(LeaveManagementLocator.checkbox_halfDayLeaveOption(opt.trim()), elementLabel);
         }
 
     }
@@ -369,7 +372,7 @@ public class LeaveManagementSteps {
     @And("Verify effective total working days")
     public void verifyEffectiveTotalWorkingDays() {
         String totalWorkingDaysAfterApplyingHalfDay =
-                DriverAction.getElementText(LeaveManagementLocators.label_totalWorkingDays);
+                DriverAction.getElementText(LeaveManagementLocator.label_totalWorkingDays);
 
         String actualWorkingDays = null;
         if (halfDayLeaveCount == 1) {
@@ -395,9 +398,9 @@ public class LeaveManagementSteps {
 
     @And("Select leave type {int} for {string} field")
     public void selectLeaveTypeForField(int options, String field) {
-        DriverAction.waitUntilElementAppear(LeaveManagementLocators.field_leaveDropDown(field), 20);
-        if (DriverAction.isExist(LeaveManagementLocators.field_leaveDropDown(field))) {
-            DriverAction.dropDown(LeaveManagementLocators.field_leaveDropDown(field), options);
+        DriverAction.waitUntilElementAppear(LeaveManagementLocator.field_leaveDropDown(field), 20);
+        if (DriverAction.isExist(LeaveManagementLocator.field_leaveDropDown(field))) {
+            DriverAction.dropDown(LeaveManagementLocator.field_leaveDropDown(field), options);
         } else {
             GemTestReporter.addTestStep("Error Occur", "Fail to click on dropdown", STATUS.FAIL,
                     DriverAction.takeSnapShot());
@@ -407,8 +410,8 @@ public class LeaveManagementSteps {
     @And("Enter leave reason {string} for {string} field")
     public void enterLeaveReasonForField(String message, String field) {
         DriverAction.waitSec(1);
-        if (DriverAction.isExist(LeaveManagementLocators.field_leaveTextArea(field))) {
-            DriverAction.typeText(LeaveManagementLocators.field_leaveTextArea(field), message, "reason");
+        if (DriverAction.isExist(LeaveManagementLocator.field_leaveTextArea(field))) {
+            DriverAction.typeText(LeaveManagementLocator.field_leaveTextArea(field), message, "reason");
         } else {
             GemTestReporter.addTestStep("Error Occur", "Fail to type text in reason", STATUS.FAIL,
                     DriverAction.takeSnapShot());
@@ -419,8 +422,8 @@ public class LeaveManagementSteps {
     public void selectAvailabilityForField(String field) {
         String[] availability = field.split(",");
         for (String aval : availability) {
-            if (DriverAction.isExist(LeaveManagementLocators.field_leaveCheckBox(aval.trim()))) {
-                DriverAction.click(LeaveManagementLocators.field_leaveCheckBox(aval.trim()), aval);
+            if (DriverAction.isExist(LeaveManagementLocator.field_leaveCheckBox(aval.trim()))) {
+                DriverAction.click(LeaveManagementLocator.field_leaveCheckBox(aval.trim()), aval);
             } else {
                 GemTestReporter.addTestStep("Error Occur", "Fail to click availability", STATUS.FAIL,
                         DriverAction.takeSnapShot());
@@ -433,15 +436,15 @@ public class LeaveManagementSteps {
         String elementLabel = field.contains("FromDate") ? "From date" : "Till date";
         // date format == mm/dd/yyyy
         String[] dateArray = date.split("/");
-        DriverAction.click(LeaveManagementLocators.field_outingCalender(field), elementLabel);
+        DriverAction.click(LeaveManagementLocator.field_outingCalendar(field), elementLabel);
 
-        DriverAction.click(LeaveManagementLocators.datePicker_switchMonth);
+        DriverAction.click(LeaveManagementLocator.datePicker_switchMonth);
 
-        List<WebElement> monthElements = DriverAction.getElements(LeaveManagementLocators.datePicker_month);
+        List<WebElement> monthElements = DriverAction.getElements(LeaveManagementLocator.datePicker_month);
         int monthNumber = Integer.parseInt(dateArray[0]);
 
         DriverAction.click(monthElements.get(monthNumber - 1), "month");
-        List<WebElement> dayElements = DriverAction.getElements(LeaveManagementLocators.datePicker_day);
+        List<WebElement> dayElements = DriverAction.getElements(LeaveManagementLocator.datePicker_day);
 
         for (WebElement day : dayElements) {
             if (DriverAction.getElementText(day).equals(dateArray[1])) {

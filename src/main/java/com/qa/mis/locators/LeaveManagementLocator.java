@@ -1,8 +1,8 @@
-package com.qa.MIS.Locators;
+package com.qa.mis.locators;
 
 import org.openqa.selenium.By;
 
-public class LeaveManagementLocators {
+public class LeaveManagementLocator {
 
     public static By input_loginUsername = By.xpath("//input[@id='username']");
     public static By input_loginPassword = By.xpath("//input[@id='password']");
@@ -48,11 +48,11 @@ public class LeaveManagementLocators {
         return By.xpath("//textarea[@id='" + field + "']");
     }
 
-    public static By field_leaveCalender(String field) {
+    public static By field_leaveCalendar(String field) {
         return By.xpath("//input[@name='" + field + "']");
     }
 
-    public static By field_outingCalender(String field) {
+    public static By field_outingCalendar(String field) {
         return By.xpath("//input[@id='" + field + "']");
     }
 

@@ -9,7 +9,7 @@ Feature: MIS - Leave Management
   # CompOff
   @CompOff
   Scenario Outline: Navigate to Leave Management > Comp Off tab
-    When User clicks on "<childTab>" sub tab of "<parentTab>" tab in MIS
+    Then User clicks on "<childTab>" sub tab of "<parentTab>" tab in MIS
     And Verify "<heading>" of "<childTab>" tab
     And User clicks on "<tab>" Tab
     And Verify "<tab>" is displayed
@@ -74,7 +74,7 @@ Feature: MIS - Leave Management
   # Leave
   @Leave
   Scenario Outline: Navigate to Leave Management > Apply tab
-    When User clicks on "<childTab>" sub tab of "<parentTab>" tab in MIS
+    Then User clicks on "<childTab>" sub tab of "<parentTab>" tab in MIS
     And Verify "<heading>" of "<childTab>" tab
     And User clicks on "<tab>" Tab
     And Verify "<tab>" is displayed
@@ -85,7 +85,7 @@ Feature: MIS - Leave Management
 
   @Leave
   Scenario Outline: Verify fields are Auto Populated by default on Leave tab
-    When User clicks on "<childTab>" sub tab of "<parentTab>" tab in MIS
+    Then User clicks on "<childTab>" sub tab of "<parentTab>" tab in MIS
     And Verify "<heading>" of "<childTab>" tab
     And User clicks on "<tab>" Tab
     And Verify "<tab>" is displayed
@@ -105,8 +105,8 @@ Feature: MIS - Leave Management
     And Verify auto populated "textField" field for "<primaryContact>"
     And Verify auto populated "textField" field for "<otherContact>"
     Then User clicks on submit button for "<tab>"
-    And Verify mandatory "calender" field for "<fromDate>"
-    And Verify mandatory "calender" field for "<tillDate>"
+    And Verify mandatory "calendar" field for "<fromDate>"
+    And Verify mandatory "calendar" field for "<tillDate>"
     And Verify mandatory "textArea" field for "<reason>"
 
     Examples:
@@ -173,7 +173,7 @@ Feature: MIS - Leave Management
 
   @Leave
   Scenario Outline: Enter reason for leave
-    When User clicks on "<childTab>" sub tab of "<parentTab>" tab in MIS
+    Then User clicks on "<childTab>" sub tab of "<parentTab>" tab in MIS
     And Verify "<heading>" of "<childTab>" tab
     And User clicks on "<tab>" Tab
     And Verify "<tab>" is displayed
@@ -185,7 +185,7 @@ Feature: MIS - Leave Management
 
   @Leave
   Scenario Outline: Choose Availability for Leave
-    When User clicks on "<childTab>" sub tab of "<parentTab>" tab in MIS
+    Then User clicks on "<childTab>" sub tab of "<parentTab>" tab in MIS
     And Verify "<heading>" of "<childTab>" tab
     And User clicks on "<tab>" Tab
     And Verify "<tab>" is displayed
@@ -216,7 +216,7 @@ Feature: MIS - Leave Management
     # LWP Change Request
   @LWP
   Scenario Outline: Navigate to Leave Management > LWP Change Request tab
-    When User clicks on "<childTab>" sub tab of "<parentTab>" tab in MIS
+    Then User clicks on "<childTab>" sub tab of "<parentTab>" tab in MIS
     And Verify "<heading>" of "<childTab>" tab
     And User clicks on "<tab>" Tab
     And Verify "<tab>" is displayed
@@ -243,7 +243,7 @@ Feature: MIS - Leave Management
 #     Out Duty/Tour
   @OutDuty
   Scenario Outline: Navigate to Leave Management > Out of Duty/Tour tab
-    When User clicks on "<childTab>" sub tab of "<parentTab>" tab in MIS
+    Then User clicks on "<childTab>" sub tab of "<parentTab>" tab in MIS
     And Verify "<heading>" of "<childTab>" tab
     And User clicks on "<tab>" Tab
     And Verify "<tab>" is displayed
@@ -259,8 +259,8 @@ Feature: MIS - Leave Management
     And User clicks on "<tab>" Tab
     And Verify "<tab>" is displayed
     Then User clicks on submit button for "<tab>"
-    And Verify mandatory "outingCalender" field for "<fromDate>"
-    And Verify mandatory "outingCalender" field for "<toDate>"
+    And Verify mandatory "outingCalendar" field for "<fromDate>"
+    And Verify mandatory "outingCalendar" field for "<toDate>"
     And Verify mandatory "dropdown" field for "<type>"
     And Verify mandatory "textArea" field for "<reason>"
 

@@ -7,7 +7,7 @@
   "tagName": "@CompOff",
   "gemjarToken": "259351c4-1137-4377-b56f-5f2ac3e0db301675253783077X",
   "jewelEntryUrl": "https://apis.gemecosystem.com/enter-point",
-  "glueCode":"com.qa.MIS.StepDefinition",
+  "glueCode":"com.qa.mis.stepdefinition",
   "feature": "src/main/resources/features/LeaveManagement.feature",
   "scenario": "",
   "dev": {
