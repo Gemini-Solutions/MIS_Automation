@@ -427,4 +427,27 @@ public class LeaveManagementSteps {
             }
         }
     }
+
+    @Then("Enter outing {string} for {string} field")
+    public void enterOutingForField(String date, String field) {
+        String elementLabel = field.contains("FromDate") ? "From date" : "Till date";
+        // date format == mm/dd/yyyy
+        String[] dateArray = date.split("/");
+        DriverAction.click(LeaveManagementLocators.field_outingCalender(field), elementLabel);
+
+        DriverAction.click(LeaveManagementLocators.datePicker_switchMonth);
+
+        List<WebElement> monthElements = DriverAction.getElements(LeaveManagementLocators.datePicker_month);
+        int monthNumber = Integer.parseInt(dateArray[0]);
+
+        DriverAction.click(monthElements.get(monthNumber - 1), "month");
+        List<WebElement> dayElements = DriverAction.getElements(LeaveManagementLocators.datePicker_day);
+
+        for (WebElement day : dayElements) {
+            if (DriverAction.getElementText(day).equals(dateArray[1])) {
+                DriverAction.click(day, "day");
+                break;
+            }
+        }
+    }
 }

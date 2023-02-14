@@ -267,3 +267,16 @@ Feature: MIS - Leave Management
     Examples:
       | parentTab        | childTab | tab           | heading                                                  | fromDate       | toDate         | type       | reason       |
       | Leave Management | Apply    | Out Duty/Tour | Apply Leave / WFH / Comp Off / Out Duty / Change Request | outingFromDate | outingTillDate | outingType | outingReason |
+
+  @OutDuty
+  Scenario Outline: Select Out Duty From and Till Leave date from Calendar
+    When User clicks on "<childTab>" sub tab of "<parentTab>" tab in MIS
+    And Verify "<heading>" of "<childTab>" tab
+    And User clicks on "<tab>" Tab
+    And Verify "<tab>" is displayed
+    Then Enter outing "<fromDate>" for "<fromDateField>" field
+    Then Enter outing "<toDate>" for "<toDateField>" field
+
+    Examples:
+      | parentTab        | childTab | tab           | heading                                                | fromDate   | toDate     | fromDateField  | toDateField    |
+      | Leave Management | Apply    | Out Duty/Tour | Apply Leave / WFH / Comp Off / Out Duty / Change Request | 03/10/2023 | 04/10/2023 | outingFromDate | outingTillDate |
