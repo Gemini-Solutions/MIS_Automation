@@ -291,7 +291,6 @@ public class FormsSteps {
 
         } catch (Exception e) {
             GemTestReporter.addTestStep("User verifies the warning message", "Click is Unsuccessful", STATUS.FAIL);
-
         }
     }
 

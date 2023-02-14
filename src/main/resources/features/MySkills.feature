@@ -4,10 +4,10 @@ Feature: MySkills Automation
     When User enters username as "shruti.singh"
     And User enters password as "Gemini@123"
     And User clicks on sign in
-    And User Verifies Landing Page
+    And User verifies landing page
 #    Then User clicks on closeButton
 
-  Scenario Outline: Verify my skills are updating with Valid Data
+   Scenario Outline: Verify my skills are updating with Valid Data
     When User clicks on user image button
     And User clicks on skills button
     And User clicks on technology dropdown

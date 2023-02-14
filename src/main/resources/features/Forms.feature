@@ -80,7 +80,7 @@ Feature: Forms Automation
       | parentTab | childTab |
       | Forms     | My Form  |
 
-  Scenario Outline:User uploads correct File
+   Scenario Outline:User uploads correct File
     When  User clicks on the "<parentTab>" and "<childTab>"
     And User clicks on upload button
     And User uploads the desired document "<formType>" from "<path>"

@@ -15,7 +15,7 @@ public class MySkillsSteps {
     @Then("Skills are updated with {string}")
     public void verifyTheSkillsAreUpdatedWith(String mySkills) {
         try {
-            DriverAction.waitUntilElementAppear(MySkillsLocator.mySkill(mySkills), 3);
+             DriverAction.waitUntilElementAppear(MySkillsLocator.mySkill(mySkills), 3);
             DriverAction.click(MySkillsLocator.mySkill(mySkills));
         } catch (Exception e) {
             GemTestReporter.addTestStep("Skills are updated with valid data", "Skills not updated", STATUS.FAIL);

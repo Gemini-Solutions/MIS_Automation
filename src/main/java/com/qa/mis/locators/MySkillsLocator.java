@@ -21,6 +21,7 @@ public class MySkillsLocator {
 
     public static By skillsUpdated=By.xpath("//section[@id='SkillSet']");
 
+
     public static By mySkill(String mySkills) {
 
         return By.xpath("//a[contains(text(),'" + mySkills + "')]");
