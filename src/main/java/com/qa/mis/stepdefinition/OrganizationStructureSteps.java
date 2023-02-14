@@ -20,7 +20,6 @@ public class OrganizationStructureSteps {
         } else
             GemTestReporter.addTestStep("Element not found", "Organization Module not clicked", STATUS.FAIL, DriverAction.takeSnapShot());
     }
-
     @When("^Entered employee name (.+) in search field")
     public void Entered_employee_name_in_search_field(String empname) {
         if (DriverAction.isExist(OrgStructureLocator.searchtab)) {
