@@ -1,7 +1,7 @@
 Feature: Automation of MIS Portal functionality
 
   Background: Login to MIS
-    Given Login to MIS with Username tushar.chauhan and password Gemini@123
+    Given Login to MIS with Username tushar.chauhan and password R2VtaW5pQDEyMw==
     When Click on Signin button
     Then Validate login successful
 

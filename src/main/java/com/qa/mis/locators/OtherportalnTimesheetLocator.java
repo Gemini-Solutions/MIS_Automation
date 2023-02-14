@@ -2,8 +2,7 @@ package com.qa.mis.locators;
 
 import org.openqa.selenium.By;
 
-public class Locator {
-
+public class OtherportalnTimesheetLocator {
     public static By lgnusernm=By.id("username");
     public static By lgnpwd=By.id("password");
     public static By sgnupbtn=By.id("btnLogin");
