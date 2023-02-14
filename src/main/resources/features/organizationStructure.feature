@@ -5,10 +5,13 @@ Feature: Organization Structure Module Scenarios
     When Click on Signin button
     Then Validate login successful
 
- Scenario Outline: Search for Employee with Designation
-   Given Navigate to Organization Structure
-   When Entered employee name <empname> in search field
-   Then Validate availability of Employee <empname> and Designation <designation>
-   Examples:
-     | empname             | designation|
-     | Tushar Chauhan      |  Software Engineer -L2 |
+  Scenario Outline: Search for Employee with Designation
+    Given Navigate to Organization Structure
+    When Entered employee name <empname> in search field
+    Then Validate availability of Employee <empname> and Designation <designation>
+    Examples:
+      | empname        | designation             |
+      | Tushar Chauhan | Software Engineer L2    |
+      | Vishar Malik   | Chief Executive Officer |
+      | Hritik Roshan  | Software Engineer L2    |
+      | Hritik Roshan  | Software Engineer L1    |
