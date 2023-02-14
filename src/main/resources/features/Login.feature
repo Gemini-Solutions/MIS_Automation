@@ -41,7 +41,6 @@ Feature: Login
     Examples:
       | uname | password | errormessage                                                         |
       | abc   | Gemini   | The username or password you entered is not valid. Please try again. |
-
   Scenario: User Login to the Application via SSO
     When Click on Login with SSO button
     Then Verify User is on "MIS Home" Page

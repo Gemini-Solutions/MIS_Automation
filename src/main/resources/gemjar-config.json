@@ -2,24 +2,21 @@
   "environment": "beta",
   "projectName": "MIS",
   "gemjarSubID": "test_id",
-  "gemjarUserName": "Jewels-User-Name",
-  "reportLocation": "",
-  "gemjarToken": "Jewels-Bridge-Token",
-  "glueCode":"com.qa.projectName.StepDefinition",
-  "feature": "path of feature file",
-  "tagName": "want to run specific tags",
-  "scenario": "want to run specific scenarios by name",
-  "dev": {
-    "browserName": "firefox",
-    "launchUrl": "https://mymis.geminisolutions.com/",
-    "browserTimeout": 100
-  },
-  "prod": {
+  "gemjarUserName": "divya.madan",
+  "gemjarToken": "d7bcb817-ba64-4b3d-8519-ad530aa4d5041676271588454",
+  "jewelEntryUrl": "https://apis.gemecosystem.com/enter-point",
+  "glueCode": "com.qa.mis.stepdefinition",
+  "reportName": "MIS_Regression",
+  "emailReport": "false",
+  "emailTO": "",
+  "emailCC": "",
+  "emailBCC": "",
+  "beta": {
     "browserName": "chrome",
     "launchUrl": "https://mymis.geminisolutions.com/",
     "browserTimeout": 100
   },
-  "beta": {
+  "prod": {
     "browserName": "chrome",
     "launchUrl": "https://mymis.geminisolutions.com/",
     "browserTimeout": 100
