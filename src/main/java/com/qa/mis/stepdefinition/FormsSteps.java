@@ -12,6 +12,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
 public class FormsSteps {
+    public static String dirPath=System.getProperty("user.dir");
     @Given("User enters username as {string}")
     public void userEntersUsernameAs(String userName) {
         if (DriverAction.isExist(FormsLocator.userName)) {
@@ -246,8 +247,9 @@ public class FormsSteps {
             DriverAction.waitSec(3);
             DriverAction.click(FormsLocator.formTypeDropDown);
             DriverAction.click(FormsLocator.formType(formType));
-            DriverAction.waitUntilElementAppear(FormsLocator.chooseFile, 7);
-            DriverAction.fileUpload(FormsLocator.chooseFile, path);
+//            DriverAction.waitUntilElementAppear(FormsLocator.chooseFile, 7);
+            DriverAction.waitSec(4);
+            DriverAction.fileUpload(FormsLocator.chooseFile, dirPath+path);
             DriverAction.setImplicitTimeOut(7);
         } catch (Exception e) {
             GemTestReporter.addTestStep("User uploads the document", "Upload is Unsuccessful", STATUS.FAIL);
@@ -274,7 +276,7 @@ public class FormsSteps {
             DriverAction.click(FormsLocator.formTypeDropDown);
             DriverAction.waitUntilElementAppear(FormsLocator.formType(formType), 5);
             DriverAction.click(FormsLocator.formType(formType));
-            DriverAction.fileUpload(FormsLocator.chooseFile, path);
+            DriverAction.fileUpload(FormsLocator.chooseFile, dirPath+path);
             DriverAction.setImplicitTimeOut(7);
         } catch (Exception e) {
             GemTestReporter.addTestStep("User uploads invalid document", "Upload is Unsuccessful", STATUS.FAIL);
@@ -304,7 +306,7 @@ public class FormsSteps {
         }
     }
 
-    @Then("User enters valid value in My forms search field as {string}")
+    @Then("User enters valid value in my forms search field as {string}")
     public void userEntersValidValueInMyFormsSearchFieldAs(String Loyalty) {
         try {
             DriverAction.typeText(FormsLocator.searchBtn, Loyalty + Keys.ENTER);

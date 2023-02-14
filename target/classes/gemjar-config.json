@@ -1,5 +1,5 @@
 {
-  "environment": "prod",
+  "environment": "beta",
   "projectName": "MIS",
   "gemjarSubID": "test_id",
   "gemjarUserName": "singh.shruti",
@@ -7,8 +7,8 @@
   "glueCode":"com.qa.mis.stepdefinition",
   "jewelEntryUrl": "https://apis.gemecosystem.com/enter-point",
   "reportLocation":"",
-  "dev": {
-    "browserName": "firefox",
+  "beta": {
+    "browserName": "chrome",
     "launchUrl": "https://mymis.geminisolutions.com/",
     "browserTimeout": 100
   },
