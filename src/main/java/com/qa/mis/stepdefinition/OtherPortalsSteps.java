@@ -4,7 +4,7 @@ import com.gemini.generic.reporting.GemTestReporter;
 import com.gemini.generic.reporting.STATUS;
 import com.gemini.generic.ui.utils.DriverAction;
 import com.gemini.generic.ui.utils.DriverManager;
-import com.qa.mis.locators.Locator;
+import com.qa.mis.locators.OtherPortalnTimesheetLocator;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -27,13 +27,13 @@ public class OtherPortalsSteps {
     public void login_to_mis_with_username_and_password(String user, String pass) {
         try {
             DriverAction.waitSec(5);
-            if (DriverAction.isExist(Locator.lgnusernm)) {
-                DriverAction.typeText(Locator.lgnusernm, user, "username");
+            if (DriverAction.isExist(OtherPortalnTimesheetLocator.lgnusernm)) {
+                DriverAction.typeText(OtherPortalnTimesheetLocator.lgnusernm, user, "username");
             } else {
                 GemTestReporter.addTestStep("Username", "Username field is not present", STATUS.FAIL, DriverAction.takeSnapShot());
             }
-            if (DriverAction.isExist(Locator.lgnpwd)) {
-                DriverAction.typeText(Locator.lgnpwd, pass, "password");
+            if (DriverAction.isExist(OtherPortalnTimesheetLocator.lgnpwd)) {
+                DriverAction.typeText(OtherPortalnTimesheetLocator.lgnpwd, pass, "password");
             } else {
                 GemTestReporter.addTestStep("Password", "Password field is not present", STATUS.FAIL, DriverAction.takeSnapShot());
             }
@@ -46,8 +46,8 @@ public class OtherPortalsSteps {
 
     @When("Click on Signin button")
     public void click_on_signin_button() {
-        if (DriverAction.isExist(Locator.sgnupbtn)) {
-            DriverAction.click(Locator.sgnupbtn, "sign in");
+        if (DriverAction.isExist(OtherPortalnTimesheetLocator.sgnupbtn)) {
+            DriverAction.click(OtherPortalnTimesheetLocator.sgnupbtn, "sign in");
         } else {
             GemTestReporter.addTestStep("SignIn", "SignIn button is not present", STATUS.FAIL, DriverAction.takeSnapShot());
         }
@@ -56,8 +56,8 @@ public class OtherPortalsSteps {
     @Then("Validate login successful")
     public void validate_login_successful() {
         WebDriverWait wait = new WebDriverWait(DriverManager.getWebDriver(), 20);
-        wait.until(ExpectedConditions.presenceOfElementLocated(Locator.Location));
-        if (DriverAction.isExist(Locator.Location) && DriverAction.isExist(Locator.Dashboardheading)) {
+        wait.until(ExpectedConditions.presenceOfElementLocated(OtherPortalnTimesheetLocator.Location));
+        if (DriverAction.isExist(OtherPortalnTimesheetLocator.Location) && DriverAction.isExist(OtherPortalnTimesheetLocator.Dashboardheading)) {
             GemTestReporter.addTestStep("MIS Homepage", "User is on homepage of MIS", STATUS.PASS, DriverAction.takeSnapShot());
         } else {
             GemTestReporter.addTestStep("MIS Homepage", "User is not on homepage of MIS", STATUS.FAIL, DriverAction.takeSnapShot());
@@ -68,14 +68,14 @@ public class OtherPortalsSteps {
 
     @Given("Click on Other Portals")
     public void clickOnOtherPortals() {
-        DriverAction.click(Locator.otherPortal);
+        DriverAction.click(OtherPortalnTimesheetLocator.otherPortal);
     }
 
     @When("^Select portal (.+) from dropdown")
     public void selectPortalPortalFromDropdown(String portal) {
         int flag = 0;
-       //DriverAction.scrollIntoView(By.xpath("//div[@class='jspPane']//child::span[text()='Service Desk']"));
-        List<WebElement> portalList = DriverAction.getElements(Locator.otherPortalList);
+        //DriverAction.scrollIntoView(By.xpath("//div[@class='jspPane']//child::span[text()='Service Desk']"));
+        List<WebElement> portalList = DriverAction.getElements(OtherPortalnTimesheetLocator.otherPortalList);
         DriverAction.waitSec(4);
 
         for (int i = 0; i < portalList.size(); i++) {
@@ -87,44 +87,44 @@ public class OtherPortalsSteps {
                 break;
             }
         }
-            if (flag == 1) {
-                GemTestReporter.addTestStep("Portal found", "Portal value is " + portal + ".", STATUS.PASS, DriverAction.takeSnapShot());
-            } else {
-                GemTestReporter.addTestStep("Portal not found", "Portal value is invalid. Kindly check", STATUS.FAIL, DriverAction.takeSnapShot());
-            }
-
+        if (flag == 1) {
+            GemTestReporter.addTestStep("Portal found", "Portal value is " + portal + ".", STATUS.PASS, DriverAction.takeSnapShot());
+        } else {
+            GemTestReporter.addTestStep("Portal not found", "Portal value is invalid. Kindly check", STATUS.FAIL, DriverAction.takeSnapShot());
         }
 
-        @Then("^Validate Navigation to portal URL (.+) (.+)")
-        public void validateNavigationToPortalURLUrl (String expectedURL, String portal){
-            try {
-                // To handle parent window
-                WebDriver driver = DriverManager.getWebDriver();
-                String MainWindow = driver.getWindowHandle();
-                // To handle child window
-                Set<String> s1 = driver.getWindowHandles();
+    }
 
-                Iterator<String> i1 = s1.iterator();
-                int flag=0;
-                while (i1.hasNext()) {
-                    i1.next();
-                    String ChildWindow = i1.next();
-                    driver.switchTo().window(ChildWindow);
-                    DriverAction.waitSec(4);
-                    String actualURL = driver.getCurrentUrl();
-                    if (actualURL.equals(expectedURL)) {
-                        flag = 1;
-                    }
+    @Then("^Validate Navigation to portal URL (.+) (.+)")
+    public void validateNavigationToPortalURLUrl(String expectedURL, String portal) {
+        try {
+            // To handle parent window
+            WebDriver driver = DriverManager.getWebDriver();
+            String MainWindow = driver.getWindowHandle();
+            // To handle child window
+            Set<String> s1 = driver.getWindowHandles();
+
+            Iterator<String> i1 = s1.iterator();
+            int flag = 0;
+            while (i1.hasNext()) {
+                i1.next();
+                String ChildWindow = i1.next();
+                driver.switchTo().window(ChildWindow);
+                DriverAction.waitSec(4);
+                String actualURL = driver.getCurrentUrl();
+                if (actualURL.equals(expectedURL)) {
+                    flag = 1;
                 }
-
-                if (flag==1) {
-                    GemTestReporter.addTestStep("Navigater to " + portal + " portal", "Successfully Navigated", STATUS.PASS);
-                } else
-                    GemTestReporter.addTestStep("Navigation Failed", "URL Mismatched", STATUS.FAIL);
-            } catch (Exception e) {
-                logger.info("An exception occurred!", e);
-                GemTestReporter.addTestStep("EXCEPTION ERROR", "Getting Exception ", STATUS.FAIL, DriverAction.takeSnapShot());
             }
+
+            if (flag == 1) {
+                GemTestReporter.addTestStep("Navigater to " + portal + " portal", "Successfully Navigated", STATUS.PASS);
+            } else
+                GemTestReporter.addTestStep("Navigation Failed", "URL Mismatched", STATUS.FAIL);
+        } catch (Exception e) {
+            logger.info("An exception occurred!", e);
+            GemTestReporter.addTestStep("EXCEPTION ERROR", "Getting Exception ", STATUS.FAIL, DriverAction.takeSnapShot());
         }
     }
+}
 

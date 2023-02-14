@@ -65,7 +65,7 @@ Feature: MIS - Leave Management
     Then Select compOff date <dateIndex> for "<date>" field
     Then Enter compOff reason "<reasonMessage>" for "<reason>" field
     Then User clicks on submit button for "<tab>"
-    And Verify popup with message "<alertType>" and "<successMessage>"
+    And Verify popup alert with message "<alertType>" and "<successMessage>"
 
     Examples:
       | parentTab        | childTab | tab      | heading                                                  | dateIndex | date        | reasonMessage         | reason        | alertType | successMessage                 |
@@ -278,5 +278,70 @@ Feature: MIS - Leave Management
     Then Enter outing "<toDate>" for "<toDateField>" field
 
     Examples:
-      | parentTab        | childTab | tab           | heading                                                | fromDate   | toDate     | fromDateField  | toDateField    |
+      | parentTab        | childTab | tab           | heading                                                  | fromDate   | toDate     | fromDateField  | toDateField    |
       | Leave Management | Apply    | Out Duty/Tour | Apply Leave / WFH / Comp Off / Out Duty / Change Request | 03/10/2023 | 04/10/2023 | outingFromDate | outingTillDate |
+
+  @OutDuty
+  Scenario Outline: Select type for Out Duty
+    When User clicks on "<childTab>" sub tab of "<parentTab>" tab in MIS
+    And Verify "<heading>" of "<childTab>" tab
+    And User clicks on "<tab>" Tab
+    And Verify "<tab>" is displayed
+    Then Select outing type "<outingOption>" for "<outingType>" field
+
+    Examples:
+      | parentTab        | childTab | tab           | heading                                                  | outingOption          | outingType |
+      | Leave Management | Apply    | Out Duty/Tour | Apply Leave / WFH / Comp Off / Out Duty / Change Request | Tour (Overseas Visit) | outingType |
+
+  @OutDuty
+  Scenario Outline: Select Reason for Out Duty
+    When User clicks on "<childTab>" sub tab of "<parentTab>" tab in MIS
+    And Verify "<heading>" of "<childTab>" tab
+    And User clicks on "<tab>" Tab
+    And Verify "<tab>" is displayed
+    Then Enter outing reason "<reasonMessage>" for "<reason>" field
+
+    Examples:
+      | parentTab        | childTab | tab           | heading                                                  | reasonMessage | reason       |
+      | Leave Management | Apply    | Out Duty/Tour | Apply Leave / WFH / Comp Off / Out Duty / Change Request | Outing Reason | outingReason |
+
+  @OutDuty
+  Scenario Outline: Enter Primary Contact Number for Out Duty
+    When User clicks on "<childTab>" sub tab of "<parentTab>" tab in MIS
+    And Verify "<heading>" of "<childTab>" tab
+    And User clicks on "<tab>" Tab
+    And Verify "<tab>" is displayed
+    Then Enter outing contact no "<primaryContactNo>" for "<primaryContact>" field
+
+    Examples:
+      | parentTab        | childTab | tab           | heading                                                  | primaryContactNo | primaryContact      |
+      | Leave Management | Apply    | Out Duty/Tour | Apply Leave / WFH / Comp Off / Out Duty / Change Request | 9878787678       | outingContactNumber |
+
+  @OutDuty
+  Scenario Outline: Enter Data and Click on Submit for Out of Duty tab
+    When User clicks on "<childTab>" sub tab of "<parentTab>" tab in MIS
+    And Verify "<heading>" of "<childTab>" tab
+    And User clicks on "<tab>" Tab
+    And Verify "<tab>" is displayed
+    Then Enter outing "<fromDate>" for "<fromDateField>" field
+    Then Enter outing "<toDate>" for "<toDateField>" field
+    Then Select outing type "<outingOption>" for "<outingType>" field
+    And Enter outing reason "<reasonMessage>" for "<reason>" field
+    And Enter outing contact no "<primaryContactNo>" for "<primaryContact>" field
+    And Enter outing contact no "<otherContactNo>" for "<otherContact>" field
+    Then User clicks on submit button for "<tab>"
+    And Verify popup alert with message "<alertType>" and "<successMessage>"
+
+    Examples:
+      | parentTab        | childTab | tab           | heading                                                  | fromDate   | fromDateField  | toDate     | toDateField    | outingOption          | outingType | reasonMessage | reason       | primaryContactNo | primaryContact      | otherContactNo | otherContact           | alertType | successMessage                                       |
+      | Leave Management | Apply    | Out Duty/Tour | Apply Leave / WFH / Comp Off / Out Duty / Change Request | 03/10/2023 | outingFromDate | 04/10/2023 | outingTillDate | Tour (Overseas Visit) | outingType | Outing Reason | outingReason | 9878787678       | outingContactNumber | 9878787678     | outingAltContactNumber | Success   | Out Duty/Tour request has been applied successfully. |
+
+  Scenario Outline: Navigate to Leave Management > WFH tab
+    Then User clicks on "<childTab>" sub tab of "<parentTab>" tab in MIS
+    And Verify "<heading>" of "<childTab>" tab
+    And User clicks on "<tab>" Tab
+    And Verify "<tab>" is displayed
+
+    Examples:
+      | parentTab        | childTab | tab            | heading                                                  |
+      | Leave Management | Apply    | Work From Home | Apply Leave / WFH / Comp Off / Out Duty / Change Request |

@@ -3,7 +3,7 @@ package com.qa.mis.stepdefinition;
 import com.gemini.generic.reporting.GemTestReporter;
 import com.gemini.generic.reporting.STATUS;
 import com.gemini.generic.ui.utils.DriverAction;
-import com.qa.mis.locators.Locator;
+import com.qa.mis.locators.OtherPortalnTimesheetLocator;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import org.slf4j.Logger;
@@ -19,7 +19,7 @@ public class TimesheetSteps {
 
     @Given("Click on Timesheet")
     public void Click_on_Timesheet() {
-        DriverAction.click(Locator.timesheetbtn);
+        DriverAction.click(OtherPortalnTimesheetLocator.timesheetbtn);
     }
 
     @When("^Click on Timesheet option as (.+)")
@@ -27,7 +27,7 @@ public class TimesheetSteps {
         String url = "";
 
         if (timesheet.equals("Configure Timesheet")) {
-            DriverAction.click(Locator.configutetimesheet);
+            DriverAction.click(OtherPortalnTimesheetLocator.configutetimesheet);
             DriverAction.waitSec(2);
             url = DriverAction.getCurrentURL();
             if (url.equals(configureTimesheetURL)) {
@@ -36,7 +36,7 @@ public class TimesheetSteps {
                 GemTestReporter.addTestStep("Navigation Unsuccessful", "Navigation to Configure Timesheet tab failed", STATUS.PASS, DriverAction.takeSnapShot());
 
         } else if (timesheet.equals("Create Timesheet")) {
-            DriverAction.click(Locator.createtimesheet);
+            DriverAction.click(OtherPortalnTimesheetLocator.createtimesheet);
             DriverAction.waitSec(2);
             url = DriverAction.getCurrentURL();
             if (url.equals(createTimesheetURL)) {
@@ -46,7 +46,7 @@ public class TimesheetSteps {
 
 
         } else if (timesheet.equals("Manage Task Template")) {
-            DriverAction.click(Locator.managetaskTemplate);
+            DriverAction.click(OtherPortalnTimesheetLocator.managetaskTemplate);
             DriverAction.waitSec(2);
             url = DriverAction.getCurrentURL();
             if (url.equals(manageTemplateURL)) {

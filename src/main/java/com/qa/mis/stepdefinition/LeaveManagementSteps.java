@@ -247,7 +247,7 @@ public class LeaveManagementSteps {
         }
     }
 
-    @And("Verify popup with message {string} and {string}")
+    @And("Verify popup alert with message {string} and {string}")
     public void verifyPopupWithMessageAnd(String alertType, String alertMessage) {
         String expectedAlertType = DriverAction.getElementText(LeaveManagementLocator.heading_alertType);
         String expectedAlertMessage = DriverAction.getElementText(LeaveManagementLocator.text_alertMessage);
@@ -451,6 +451,38 @@ public class LeaveManagementSteps {
                 DriverAction.click(day, "day");
                 break;
             }
+        }
+    }
+
+    @Then("Select outing type {string} for {string} field")
+    public void selectOutingTypeForField(String option, String field) {
+        if (DriverAction.isExist(LeaveManagementLocator.field_leaveDropDown(field))) {
+            DriverAction.dropDown(LeaveManagementLocator.field_leaveDropDown(field), option);
+        } else {
+            GemTestReporter.addTestStep("Error Occur", "Fail to click on dropdown", STATUS.FAIL,
+                    DriverAction.takeSnapShot());
+        }
+    }
+
+    @Then("Enter outing reason {string} for {string} field")
+    public void enterOutingReasonForField(String message, String field) {
+        if (DriverAction.isExist(LeaveManagementLocator.field_leaveTextArea(field))) {
+            DriverAction.typeText(LeaveManagementLocator.field_leaveTextArea(field), message, "outing " +
+                    "reason");
+        } else {
+            GemTestReporter.addTestStep("Error Occur", "Fail to type text in reason", STATUS.FAIL,
+                    DriverAction.takeSnapShot());
+        }
+    }
+
+    @Then("Enter outing contact no {string} for {string} field")
+    public void enterOutingContactNoForField(String number, String field) {
+        if (DriverAction.isExist(LeaveManagementLocator.field_leaveTextFields(field))) {
+            DriverAction.typeText(LeaveManagementLocator.field_leaveTextFields(field), number, "primary " +
+                    "contact number");
+        } else {
+            GemTestReporter.addTestStep("Error Occur", "Fail to type text in contact number", STATUS.FAIL,
+                    DriverAction.takeSnapShot());
         }
     }
 }
