@@ -30,8 +30,8 @@ Feature: Login
     And Click on Sign In Button
     Then Verify error message "<errormessage>"
     Examples:
-      | uname | password   | errormessage          |
-      |       | Gemini@123 | Username is required. |
+      | uname | password         | errormessage          |
+      |       | R2VtaW5pQDEyMw== | Username is required. |
 
   Scenario Outline: User Enters Invalid Credentials
     When User enters "username" as "<uname>"
@@ -41,6 +41,7 @@ Feature: Login
     Examples:
       | uname | password | errormessage                                                         |
       | abc   | Gemini   | The username or password you entered is not valid. Please try again. |
+
   Scenario: User Login to the Application via SSO
     When Click on Login with SSO button
     Then Verify User is on "MIS Home" Page
@@ -51,8 +52,8 @@ Feature: Login
     And Click on Sign In Button
     Then Verify User is on "MIS Home" Page
     Examples:
-      | uname      | password   |
-      | charu.garg | Gemini@123 |
+      | uname      | password         |
+      | charu.garg | R2VtaW5pQDEyMw== |
 
   Scenario Outline: User clicks on Forget Password
     Given User Click on Forget Password link
@@ -89,6 +90,6 @@ Feature: Login
     And Click on Logout button
     Then Verify User is on "Login" Page
     Examples:
-      | uname      | password   |
-      | charu.garg | Gemini@123 |
+      | uname      | password         |
+      | charu.garg | R2VtaW5pQDEyMw== |
 
