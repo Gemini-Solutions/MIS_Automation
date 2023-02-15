@@ -14,7 +14,6 @@ import java.util.Iterator;
 import java.util.Set;
 
 public class AccountsPortalSteps {
-
     public void checkElement(WebElement element) {
         //It's Mandatory
         DriverAction.waitSec(5);
