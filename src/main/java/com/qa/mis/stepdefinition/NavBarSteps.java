@@ -64,6 +64,7 @@ public class NavBarSteps {
 
     @Then("User should be navigated to MIS homepage")
     public void navigateMisHomepage() {
+
         DriverAction.waitSec(8);
         String hidden = DriverAction.getAttributeName(NavBarLocator.SkillPopup, "class");
         if (hidden.equalsIgnoreCase("modal fade in")) {

@@ -20,7 +20,6 @@ Feature: NavBar
     Then Click on Gemini logo
     And User should be navigated to MIS homepage
 
-
   Scenario Outline: Verify Add skill close button after entering all values
     Then Click on Skills menu
     And Enter all the details "<Technology>","<Proficiency Level>","<Skill Type>","<Tech Experience>","<Total Work Exp>"

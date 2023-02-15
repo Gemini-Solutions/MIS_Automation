@@ -27,11 +27,11 @@ public class AccountsPortalSteps {
 
     @Then("Click {string} sub-tab inside {string} tab")
     public void clickSubTabInsideTab(String subtab, String tab) {
+
         DriverAction.waitSec(5);
         DriverAction.click(AccountsPortalLocator.sideTab(tab));
         DriverAction.setImplicitTimeOut(5);
         if (DriverAction.isExist(AccountsPortalLocator.sideTab(subtab))) {
-
             DriverAction.click(AccountsPortalLocator.sideTab(subtab), subtab);
         } else {
             GemTestReporter.addTestStep("Click on SubTab", "Subtab is not clickable", STATUS.FAIL, DriverAction.takeSnapShot());
