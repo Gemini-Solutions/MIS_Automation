@@ -25,19 +25,21 @@ Feature: NavBar
     Then Click on Skills menu
     And Enter all the details "<Technology>","<Proficiency Level>","<Skill Type>","<Tech Experience>","<Total Work Exp>"
     And Click on close button
+
     Examples:
       | Technology | Proficiency Level | Skill Type | Tech Experience | Total Work Exp |
       | Accounting | Beginner          | Secondary  | 24              | 2              |
 
   Scenario Outline: Verify Success Message box when adding new skills
+
     Then Click on Skills menu
     And Enter all the details "<Technology>","<Proficiency Level>","<Skill Type>","<Tech Experience>","<Total Work Exp>"
     And Click on Save button
     And Verify popup with message "<AlertType>" and "<Message>"
 
     Examples:
-      | Technology        | Proficiency Level | Skill Type | Tech Experience | Total Work Exp | AlertType | Message                             |
-      | .NET(Server Side) | Beginner          | Secondary  | 24              | 2              | Success   | Skills has been saved successfully. |
+      | Technology | Proficiency Level | Skill Type | Tech Experience | Total Work Exp | AlertType | Message                             |
+      | C++       | Beginner          | Secondary  | 24              | 2              | Success   | Skills has been saved successfully. |
 
 
   Scenario Outline: Verify Warning Message box when adding duplicate skills
