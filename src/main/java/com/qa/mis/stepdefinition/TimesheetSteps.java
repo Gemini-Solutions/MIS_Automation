@@ -3,7 +3,7 @@ package com.qa.mis.stepdefinition;
 import com.gemini.generic.reporting.GemTestReporter;
 import com.gemini.generic.reporting.STATUS;
 import com.gemini.generic.ui.utils.DriverAction;
-import com.qa.mis.locators.OtherPortalnTimesheetLoctor;
+import com.qa.mis.locators.OtherportalnTimesheetLocator;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import org.slf4j.Logger;
@@ -19,7 +19,7 @@ public class TimesheetSteps {
 
     @Given("Click on Timesheet")
     public void Click_on_Timesheet() {
-        DriverAction.click(OtherPortalnTimesheetLoctor.timesheetbtn);
+        DriverAction.click(OtherportalnTimesheetLocator.timesheetbtn);
     }
 
     @When("^Click on Timesheet option as (.+)")
@@ -27,7 +27,7 @@ public class TimesheetSteps {
         String url = "";
 
         if (timesheet.equals("Configure Timesheet")) {
-            DriverAction.click(OtherPortalnTimesheetLoctor.configutetimesheet);
+            DriverAction.click(OtherportalnTimesheetLocator.configutetimesheet);
             DriverAction.waitSec(2);
             url = DriverAction.getCurrentURL();
             if (url.equals(configureTimesheetURL)) {
@@ -36,7 +36,7 @@ public class TimesheetSteps {
                 GemTestReporter.addTestStep("Navigation Unsuccessful", "Navigation to Configure Timesheet tab failed", STATUS.PASS, DriverAction.takeSnapShot());
 
         } else if (timesheet.equals("Create Timesheet")) {
-            DriverAction.click(OtherPortalnTimesheetLoctor.createtimesheet);
+            DriverAction.click(OtherportalnTimesheetLocator.createtimesheet);
             DriverAction.waitSec(2);
             url = DriverAction.getCurrentURL();
             if (url.equals(createTimesheetURL)) {
@@ -46,7 +46,7 @@ public class TimesheetSteps {
 
 
         } else if (timesheet.equals("Manage Task Template")) {
-            DriverAction.click(OtherPortalnTimesheetLoctor.managetaskTemplate);
+            DriverAction.click(OtherportalnTimesheetLocator.managetaskTemplate);
             DriverAction.waitSec(2);
             url = DriverAction.getCurrentURL();
             if (url.equals(manageTemplateURL)) {

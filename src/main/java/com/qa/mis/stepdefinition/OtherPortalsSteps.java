@@ -4,7 +4,7 @@ import com.gemini.generic.reporting.GemTestReporter;
 import com.gemini.generic.reporting.STATUS;
 import com.gemini.generic.ui.utils.DriverAction;
 import com.gemini.generic.ui.utils.DriverManager;
-import com.qa.mis.locators.OtherPortalnTimesheetLoctor;
+import com.qa.mis.locators.OtherportalnTimesheetLocator;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -27,13 +27,13 @@ public class OtherPortalsSteps {
     public void login_to_mis_with_username_and_password(String user, String pass) {
         try {
             DriverAction.waitSec(5);
-            if (DriverAction.isExist(OtherPortalnTimesheetLoctor.lgnusernm)) {
-                DriverAction.typeText(OtherPortalnTimesheetLoctor.lgnusernm, user, "username");
+            if (DriverAction.isExist(OtherportalnTimesheetLocator.lgnusernm)) {
+                DriverAction.typeText(OtherportalnTimesheetLocator.lgnusernm, user, "username");
             } else {
                 GemTestReporter.addTestStep("Username", "Username field is not present", STATUS.FAIL, DriverAction.takeSnapShot());
             }
-            if (DriverAction.isExist(OtherPortalnTimesheetLoctor.lgnpwd)) {
-                DriverAction.typeText(OtherPortalnTimesheetLoctor.lgnpwd, pass, "password");
+            if (DriverAction.isExist(OtherportalnTimesheetLocator.lgnpwd)) {
+                DriverAction.typeText(OtherportalnTimesheetLocator.lgnpwd, pass, "password");
             } else {
                 GemTestReporter.addTestStep("Password", "Password field is not present", STATUS.FAIL, DriverAction.takeSnapShot());
             }
@@ -46,8 +46,8 @@ public class OtherPortalsSteps {
 
     @When("Click on Signin button")
     public void click_on_signin_button() {
-        if (DriverAction.isExist(OtherPortalnTimesheetLoctor.sgnupbtn)) {
-            DriverAction.click(OtherPortalnTimesheetLoctor.sgnupbtn, "sign in");
+        if (DriverAction.isExist(OtherportalnTimesheetLocator.sgnupbtn)) {
+            DriverAction.click(OtherportalnTimesheetLocator.sgnupbtn, "sign in");
         } else {
             GemTestReporter.addTestStep("SignIn", "SignIn button is not present", STATUS.FAIL, DriverAction.takeSnapShot());
         }
@@ -56,8 +56,8 @@ public class OtherPortalsSteps {
     @Then("Validate login successful")
     public void validate_login_successful() {
         WebDriverWait wait = new WebDriverWait(DriverManager.getWebDriver(), 20);
-        wait.until(ExpectedConditions.presenceOfElementLocated(OtherPortalnTimesheetLoctor.Location));
-        if (DriverAction.isExist(OtherPortalnTimesheetLoctor.Location) && DriverAction.isExist(OtherPortalnTimesheetLoctor.Dashboardheading)) {
+        wait.until(ExpectedConditions.presenceOfElementLocated(OtherportalnTimesheetLocator.Location));
+        if (DriverAction.isExist(OtherportalnTimesheetLocator.Location) && DriverAction.isExist(OtherportalnTimesheetLocator.Dashboardheading)) {
             GemTestReporter.addTestStep("MIS Homepage", "User is on homepage of MIS", STATUS.PASS, DriverAction.takeSnapShot());
         } else {
             GemTestReporter.addTestStep("MIS Homepage", "User is not on homepage of MIS", STATUS.FAIL, DriverAction.takeSnapShot());
@@ -68,14 +68,14 @@ public class OtherPortalsSteps {
 
     @Given("Click on Other Portals")
     public void clickOnOtherPortals() {
-        DriverAction.click(OtherPortalnTimesheetLoctor.otherPortal);
+        DriverAction.click(OtherportalnTimesheetLocator.otherPortal);
     }
 
     @When("^Select portal (.+) from dropdown")
     public void selectPortalPortalFromDropdown(String portal) {
         int flag = 0;
        //DriverAction.scrollIntoView(By.xpath("//div[@class='jspPane']//child::span[text()='Service Desk']"));
-        List<WebElement> portalList = DriverAction.getElements(OtherPortalnTimesheetLoctor.otherPortalList);
+        List<WebElement> portalList = DriverAction.getElements(OtherportalnTimesheetLocator.otherPortalList);
         DriverAction.waitSec(4);
 
         for (int i = 0; i < portalList.size(); i++) {
