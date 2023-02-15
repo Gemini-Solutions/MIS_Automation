@@ -8,6 +8,7 @@ import com.qa.mis.locators.OtherportalnTimesheetLocator;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.apache.commons.codec.binary.Base64;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -32,8 +33,10 @@ public class OtherPortalsSteps {
             } else {
                 GemTestReporter.addTestStep("Username", "Username field is not present", STATUS.FAIL, DriverAction.takeSnapShot());
             }
-            if (DriverAction.isExist(OtherportalnTimesheetLocator.lgnpwd)) {
-                DriverAction.typeText(OtherportalnTimesheetLocator.lgnpwd, pass, "password");
+            if (DriverAction.isExist(OtherportalnTimesheetLocator.lgnpwd)) {   
+                byte[] decodingString = Base64.decodeBase64(pass);
+                String passwordDecoded = new String(decodingString);
+                DriverAction.typeText(OtherportalnTimesheetLocator.lgnpwd, passwordDecoded);
             } else {
                 GemTestReporter.addTestStep("Password", "Password field is not present", STATUS.FAIL, DriverAction.takeSnapShot());
             }
