@@ -71,7 +71,7 @@ public class ReferalStep {
         }
     }
 
-    @And("user click on referral action")
+    @And("^user click on referral action$")
     public void userClickOnReferralAction() {
         try {
             DriverAction.waitSec(5);
@@ -84,7 +84,7 @@ public class ReferalStep {
         }
     }
 
-    @And("validate referral creation")
+    @And("^validate referral creation$")
     public void validateReferralCreation() {
 
         DriverAction.waitUntilElementAppear(referralAction,3);
@@ -94,7 +94,7 @@ public class ReferalStep {
         else GemTestReporter.addTestStep("referral not clicked","referral table not found",STATUS.FAIL,DriverAction.takeSnapShot());
     }
 
-    @Then("click on name under referral")
+    @Then("^click on name under referral$")
     public void clickOnNameUnderReferral() {
         try {
             DriverAction.waitUntilElementAppear(refName, 3);
@@ -103,7 +103,7 @@ public class ReferalStep {
             e.printStackTrace();
         }
     }
-    @Then("referral window is visible")
+    @Then("^referral window is visible$")
     public void referralWindowIsVisible() {
         DriverAction.getElementText(refName);
         String referanceName=DriverAction.getElementText(refName);
@@ -113,7 +113,7 @@ public class ReferalStep {
 
     }
 
-    @When("user checks referral section")
+    @When("^user checks referral section$")
     public void userChecksReferralSection() {
         DriverAction.getElementText(refSection);
         String refferalSection=DriverAction.getElementText(refSection);
@@ -130,25 +130,25 @@ public class ReferalStep {
         }
     }
 
-    @And("click on email under referral")
+    @And("^click on email under referral$")
     public void clickOnEmailUnderReferral() {
         DriverAction.waitUntilElementAppear(refEmail,3);
         DriverAction.click(refEmail,"referral email text");
     }
 
-    @And("enter the email address")
+    @And("^enter the email address$")
     public void enterTheEmailAddress() {
         DriverAction.waitUntilElementAppear(refEmail,2);
         DriverAction.typeText(refEmail,"abcde");
     }
 
-    @And("click on save")
+    @And("^click on save$")
     public void clickOnSave() {
         DriverAction.waitUntilElementAppear(refSaveButton,2);
         DriverAction.click(refSaveButton,"click on save button under referral");
     }
 
-    @Then("verify the warning message in ref section")
+    @Then("^verify the warning message in ref section$")
     public void verifyTheWarningMessageInRefSection() {
         DriverAction.waitUntilElementAppear(refWarning,2);
         DriverAction.getElementText(refWarning);

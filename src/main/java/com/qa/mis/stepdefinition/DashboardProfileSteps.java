@@ -95,7 +95,7 @@ public class DashboardProfileSteps {
         }
     }
 
-    @When("click on change password")
+    @When("^click on change password$")
     public void clickOnChangePassword() {
 
 
@@ -141,12 +141,7 @@ public class DashboardProfileSteps {
         }
         DriverAction.click(okButton);
     }
-    /*@When("click on change password")
-    public void clickOnChangePassword() {
-        DriverAction.waitSec(10);
-        DriverAction.click(changePassword,"change password button");
-        DriverAction.waitSec(10);
-    }*/
+
 
     @When("^enter new password and confirm password$")
     public void enterNewPasswordAndConfirmPassword() {
@@ -306,7 +301,7 @@ public class DashboardProfileSteps {
 
     }
 
-    @When("enter address in the update address tab")
+    @When("^enter address in the update address tab$")
     public void enterAddressInTheUpdateAddressTab() {
         DriverAction.click(clickOnChangeDetails, "change details button");
         DriverAction.click(clickOnUpdateAdd, "update add button");
@@ -317,7 +312,7 @@ public class DashboardProfileSteps {
 
     }
 
-    @And("click on pincode")
+    @And("^click on pincode$")
     public void clickOnPincode() {
         DriverAction.getElementText(enterPincode);
     }
