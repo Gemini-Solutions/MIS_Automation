@@ -18,6 +18,7 @@ Feature: AccountsPortal
     And Verify Hello there! text is present on the current page
     And Verify login button is present on current page
     And Verify forget password link is present on current page
+
     Examples:
       | greytHR username text | gerytHR password text |
       | Login ID              | Password              |

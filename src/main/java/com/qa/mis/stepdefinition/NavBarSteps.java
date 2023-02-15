@@ -22,7 +22,6 @@ import java.util.List;
 public class NavBarSteps {
 
     static int cardnumber = 0;
-
     public void presenceOfElement(By elementXpath, int time) {
         WebDriverWait wait = new WebDriverWait(DriverManager.getWebDriver(), time);
         wait.until(ExpectedConditions.presenceOfElementLocated(elementXpath));

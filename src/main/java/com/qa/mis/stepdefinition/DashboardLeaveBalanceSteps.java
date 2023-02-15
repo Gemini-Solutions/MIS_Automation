@@ -19,9 +19,7 @@ public class DashboardLeaveBalanceSteps {
 
     public void presenceOfElement(By elementXpath,int time) {
         WebDriverWait wait = new WebDriverWait(DriverManager.getWebDriver(), time);
-
         wait.until(ExpectedConditions.presenceOfElementLocated(elementXpath));
-
     }
 
     @Then("Verify leave balance section is present on the current page")

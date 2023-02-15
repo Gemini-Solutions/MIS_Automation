@@ -76,7 +76,6 @@ Feature: NavBar
     And Click on Update button
     And Verify "no" card is shown on the dashboard
 
-
   Scenario: Verify all cards re appear when checked from dashboard setting
     Then Click on Dashboard setting
     And Verify Dashboard setting table is visible on the current screen

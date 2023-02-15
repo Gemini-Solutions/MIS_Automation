@@ -70,7 +70,6 @@ public class AccountsPortalSteps {
     public void verifyGreytHRLogoIsPresentOnTheCurrentPage() {
         //It's Mandatory
         DriverAction.waitSec(5);
-
         WebElement greytHRLogo = DriverAction.getElement(AccountsPortalLocator.greytHRLogo);
         checkElement(greytHRLogo);
     }
