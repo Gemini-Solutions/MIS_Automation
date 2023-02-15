@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 
 public class AccountsPortalLocator {
     public static By sideTab(String tab) {
-
         return By.xpath("//span[text()='" + tab + "']");
     }
 
