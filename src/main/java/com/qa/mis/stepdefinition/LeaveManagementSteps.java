@@ -10,6 +10,8 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.apache.commons.codec.binary.Base64;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -33,6 +35,8 @@ public class LeaveManagementSteps {
         List<Map<String, String>> credentials = credTable.asMaps(String.class, String.class);
         String username = credentials.get(0).get("username");
         String password = credentials.get(0).get("password");
+        byte[] decodingString = Base64.decodeBase64(password);
+        password = new String(decodingString);
         if (DriverAction.isExist(LeaveManagementLocator.input_loginUsername)) {
             DriverAction.typeText(LeaveManagementLocator.input_loginUsername, username, "username");
         } else {
