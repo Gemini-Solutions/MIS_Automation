@@ -60,10 +60,13 @@ public class DashboardProfileSteps {
 
     @When("^click on update address$")
     public void clickOnUpdateAdd() {
+       try {
+           DriverAction.waitUntilElementAppear(clickOnChangeDetails, 7);
+           DriverAction.click(clickOnChangeDetails, "change details");
+       }catch (Exception e) {
+           e.printStackTrace();
+       }
        try{
-        DriverAction.waitUntilElementAppear(clickOnChangeDetails, 5);
-        DriverAction.click(clickOnChangeDetails, "change details");
-
             DriverAction.waitUntilElementAppear(clickOnUpdateAdd, 2);
             DriverAction.click(clickOnUpdateAdd, "update address button");
             //DriverAction.waitSec(10);
@@ -86,8 +89,8 @@ public class DashboardProfileSteps {
     public void enterInvalidPincode() {
         DriverAction.waitUntilElementAppear(invalidPincode, 1);
         DriverAction.getElementText(invalidPincode);
-        String s = DriverAction.getElementText(warning);
-        if (s.equals("Warning")) {
+        String wrng1 = DriverAction.getElementText(warning);
+        if (wrng1.equals("Warning")) {
             GemTestReporter.addTestStep("warning", "warningText", STATUS.PASS, DriverAction.takeSnapShot());
         }
     }
@@ -132,8 +135,8 @@ public class DashboardProfileSteps {
     @And("^verify the the password is incorrect$")
     public void verifyPasswordIncorrect() {
         DriverAction.getElementText(warning);
-        String s = DriverAction.getElementText(warning);
-        if (s.equals("Warning")) {
+        String warng = DriverAction.getElementText(warning);
+        if (warng.equals("Warning")) {
             GemTestReporter.addTestStep("warning", "The old password you entered is not valid. Please try again with correct password.", STATUS.PASS, DriverAction.takeSnapShot());
         }
         DriverAction.click(okButton);
@@ -191,8 +194,8 @@ public class DashboardProfileSteps {
     public void verifyPasswordNotMatch() {
         //DriverAction.click(passwordNotMatch);
         // DriverAction.getElementText(passwordNotMatch)
-        String sl = DriverAction.getElementText(passwordNotMatch);
-        if (sl.equals("Password and confirm password does not match")) ;
+        String pswrdNotmatch = DriverAction.getElementText(passwordNotMatch);
+        if (pswrdNotmatch.equals("Password and confirm password does not match")) ;
         GemTestReporter.addTestStep("Password and confirm password does not match", "Password and confirm password does not match", STATUS.PASS, DriverAction.takeSnapShot());
     }
 

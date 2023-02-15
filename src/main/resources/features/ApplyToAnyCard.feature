@@ -2,7 +2,11 @@ Feature: Dashboard-Apply To Any Card
 
   Background: Login
     When User enters "username" as "charu.garg"
+<<<<<<< HEAD
     When User enters "password" as "Gemini@123"
+=======
+    When User enters "password" as "R2VtaW5pQDEyMw=="
+>>>>>>> 59e8c1bdda6eaad864f255fed3712ca81bdf492a
     And Click on Sign In Button
     Then Verify User is on "MIS Home" Page
 

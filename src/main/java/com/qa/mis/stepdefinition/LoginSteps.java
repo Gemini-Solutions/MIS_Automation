@@ -9,6 +9,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.apache.commons.codec.binary.Base64;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -24,7 +25,9 @@ public class LoginSteps {
         }
         if(field.equals("password"))
         {
-            DriverAction.typeText(LoginLocator.password, text);
+            byte[] decodingString = Base64.decodeBase64(text);
+            String passwordDecoded = new String(decodingString);
+            DriverAction.typeText(LoginLocator.password, passwordDecoded);
         }
     }
 
@@ -195,4 +198,3 @@ public class LoginSteps {
     }
 
 }
-

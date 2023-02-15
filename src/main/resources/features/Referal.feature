@@ -12,7 +12,19 @@ Feature: MIS
       Then verify JD window is visible
 
       Scenario: Validation of referral creation
-        When user click on referral action
+        When user checks referral section
+        And user click on referral action
+        Then click on name under referral
+
+
+        Scenario: Validation of wrong email pop up
+          When user checks referral section
+          And user click on referral action
+          And click on email under referral
+          And enter the email address
+          And click on save
+          Then verify the warning message in ref section
+
 
 
 
