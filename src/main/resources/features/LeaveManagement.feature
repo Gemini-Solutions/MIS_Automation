@@ -3,7 +3,7 @@ Feature: MIS - Leave Management
   Background: Login into MIS
     Given User is logged into MIS using username and password
       | username      | password         |
-      | saloni.nagpal | R2VtaW5pQDEyMw== |
+      | shubham.kumar | R2VtaW5pQDEyMw== |
     When User is on MIS Home Page
 
   # CompOff

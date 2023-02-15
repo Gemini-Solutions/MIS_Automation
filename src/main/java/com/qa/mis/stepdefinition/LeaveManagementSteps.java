@@ -31,7 +31,7 @@ public class LeaveManagementSteps {
     static String totalWorkingDaysBeforeApplyingHalfDay = null;
 
     @Given("User is logged into MIS using username and password")
-    public void userIsLoggedIntoMISUsingUsernameAndPassword(DataTable credTable) {
+    public void enteringUsernameAndPassword(DataTable credTable) {
         List<Map<String, String>> credentials = credTable.asMaps(String.class, String.class);
         String username = credentials.get(0).get("username");
         String password = credentials.get(0).get("password");
