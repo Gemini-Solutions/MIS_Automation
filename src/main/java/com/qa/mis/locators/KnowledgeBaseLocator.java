@@ -39,6 +39,7 @@ public class KnowledgeBaseLocator {
     public static By search = By.xpath("//input[@type='search']");
 
     public static By searchDocument = By.xpath("//*[@id=\"tbldocumentGridViewList\"]/tbody/tr/td[2]");
+    public static By searchDocumentShared = By.xpath("//*[@id=\"tblShareDocumentList\"]/tbody/tr/td[1]");
 
     public static By documentSearch = By.xpath("//*[@id=\"tbldocumentGridViewList\"]/tbody/tr/td");
     public static By rename = By.xpath("//*[@id=\"myMenu\"]/li[4]/a");
@@ -57,5 +58,17 @@ public class KnowledgeBaseLocator {
     public static By titleDescriptionById = By.id("txtFileDiscription");
     public static By tagClick = By.xpath("//*[@id=\"mypopupWindowAddNewDocumentModal\"]/div/div/div[2]/div[4]/div/div[2]/span/span[1]/span/ul");
     public static By tag = By.xpath("//*[@id=\"select2-txtDocumentTags-result-6efv-30035\"]");
+    public static By viewSharedDocument  = By.xpath("//span[text()='View Shared Documents']");
+    public static By dropdownSharedDocument = By.xpath("//*[@id=\"tblShareDocumentList_length\"]/label/select");
 
+    public static By listInfo = By.xpath("//*[@id=\"tblShareDocumentList_info\"]");
+    public static By noMatchFound = By.xpath("//*[@id=\"tblShareDocumentList\"]/tbody/tr/td");
+
+    public static By titleAsc = By.xpath("//*[@id=\"tblShareDocumentList\"]/thead/tr/th[1]");
+
+     public static By titleAscEl = By.xpath("//*[@id=\"tblShareDocumentList\"]/tbody/tr[1]/td[1]");
+    public static By nextList = By.xpath("//a[text()='Next']");
+    public static By previousList = By.xpath("//a[text()='Previous']");
+    public static By viewDocument = By.xpath("//*[@id=\"tblShareDocumentList\"]/tbody/tr/td[5]/button");
+     public static By verifyDocument = By.xpath("//h4[text()='View Document']");
 }
