@@ -15,4 +15,17 @@ Feature: Organization Structure Module Scenarios
       | Tushar Chauhan | Software Engineer L2    |
       | Vishar Malik   | Chief Executive Officer |
       | Hritik Roshan  | Software Engineer L2    |
-      | Hritik Roshan  | Software Engineer L1    |
+      | Tushar Chauhan | Software Engineer L1    |
+
+  Scenario: Search for all the the employees visible first time
+    Given Navigate to Organization Structure
+    Then Count number of senior visible
+
+  Scenario Outline: Zoom-in to employee card through double click
+    Given Navigate to Organization Structure
+    When Entered employee name <empname> in search field
+    Then Double click on employeecard <empname>
+    Examples:
+      | empname        |
+      | Tushar Chauhan |
+      | Shubham Kumar  |

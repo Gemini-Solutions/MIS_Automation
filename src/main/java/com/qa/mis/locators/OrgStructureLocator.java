@@ -9,6 +9,8 @@ public class OrgStructureLocator {
     public static By getemp(String name){
         return By.xpath("//*[name()='svg']//*[local-name()='text' and text()='"+name+"']/..//*[local-name()='text'][2]");
     }
+    public static By visibleEmp=By.xpath("//*[name()='svg']//*[local-name()='text']/..//*[local-name()='text'][1]");
+
 
 
 }
