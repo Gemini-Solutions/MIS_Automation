@@ -1,7 +1,6 @@
 Feature: AccountsPortal
 
   Background: Login
-
     Given User should be on MIS login page and enter smita.mishra and R2VtaW5pQDEyMw==
     When Click on submit button
     Then User should be navigated to MIS homepage
