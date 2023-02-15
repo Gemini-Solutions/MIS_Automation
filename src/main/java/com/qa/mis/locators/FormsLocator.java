@@ -3,6 +3,7 @@ package com.qa.mis.locators;
 import org.openqa.selenium.By;
 
 public class FormsLocator {
+
     public static By userName = By.xpath("//input[@type='text' and @id='username']");
     public static By password = By.xpath("//input[@type='password' and @id='password']");
     public static By bttnSignUp = By.xpath("//input[@type='button' and @id='btnLogin']");

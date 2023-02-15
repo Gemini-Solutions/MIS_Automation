@@ -56,8 +56,8 @@ Feature: Forms Automation
       | parentTab | childTab  | value | element                   |
       | Forms     | View Form | QA    | No matching records found |
 
-   Scenario Outline:User clicks on eye button to view policy
-     When  User clicks on tab "<parentTab>" and "<childTab>"
+  Scenario Outline:User clicks on eye button to view policy
+    When  User clicks on tab "<parentTab>" and "<childTab>"
     And  User clicks on eye button
     Then User views policy
     Examples:
@@ -124,7 +124,7 @@ Feature: Forms Automation
     Then User selects the entries as "<element>"
 
     Examples:
-      | parentTab | childTab | formType                | element | path                                                                                                    |
+      | parentTab | childTab | formType                | element | path                                                |
       | Forms     | My Form  | Loyalty Redemption Form | 25      | \\src\\main\\resources\\Loyalty Redemption Form.pdf |
 
   Scenario Outline: User enters valid value in my forms search field
@@ -172,6 +172,5 @@ Feature: Forms Automation
     Examples:
       | parentTab | childTab | formType                | element                            | path                                                |
       | Forms     | My Form  | Loyalty Redemption Form | File with same name already exists | \\src\\main\\resources\\Loyalty Redemption Form.pdf |
-
 
 

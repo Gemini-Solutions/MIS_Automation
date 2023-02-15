@@ -15,4 +15,3 @@ Feature: Dashboard-Apply To Any Card
     When Check "Referral" card is present in dashboard
     And User clicks on "maximize" button on "Referral" card on dashboard
     Then Verify that "Referral" card is maximized on dashboard
-
