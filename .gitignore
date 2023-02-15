@@ -1,1 +1,5 @@
-Report/
+/target
+/Report
+/.idea
+src/main/resources/gemjar-config.json
+src/main/java/com/qa/mis/stepdefinition/Hook.java

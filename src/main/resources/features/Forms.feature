@@ -5,7 +5,6 @@ Feature: Forms Automation
     And User enters password as "Gemini@123"
     When User clicks on sign in
     And User verifies landing page
-#    Then User clicks on pop up close button
 
 
   Scenario Outline: Open view forms page
@@ -16,6 +15,7 @@ Feature: Forms Automation
     Examples:
       | parentTab | childTab  | firstElement | secondElement |
       | Forms     | View Form | View Forms   | Form Name     |
+
 
   Scenario Outline: User checks the  presence of previous and next Button
     When User clicks on tab "<parent Tab>" and "<child Tab>"
@@ -57,7 +57,7 @@ Feature: Forms Automation
       | Forms     | View Form | QA    | No matching records found |
 
    Scenario Outline:User clicks on eye button to view policy
-    When  User clicks on tab "<parentTab>" and "<childTab>"
+     When  User clicks on tab "<parentTab>" and "<childTab>"
     And  User clicks on eye button
     Then User views policy
     Examples:
@@ -89,7 +89,8 @@ Feature: Forms Automation
       | parentTab | childTab | formType                | path                                                |
       | Forms     | My Form  | Loyalty Redemption Form | \\src\\main\\resources\\Loyalty Redemption Form.pdf |
 
-  Scenario Outline: User uploads incorrect File
+
+  Scenario Outline: User uploads incorrect file
     When  User clicks on the "<parentTab>" and "<childTab>"
     And User clicks on upload button
     And User uploads the undesired document "<formType>" from "<path>"
@@ -106,6 +107,25 @@ Feature: Forms Automation
     Examples:
       | parentTab | childTab | element |
       | Forms     | My Form  | 25      |
+
+  Scenario Outline: User enters valid value in my forms search field
+    When  User clicks on the "<parentTab>" and "<childTab>"
+    Then User enters valid value in my forms search field as "<element>"
+
+    Examples:
+      | parentTab | childTab | element                       |
+      | Forms     | My Form  | Loyal Loyalty Redemption Form |
+
+  Scenario Outline:User uploads file and selects number of entries
+    When  User clicks on the "<parentTab>" and "<childTab>"
+    And User clicks on upload button
+    And User uploads the desired document "<formType>" from "<path>"
+    And User clicks on save button
+    Then User selects the entries as "<element>"
+
+    Examples:
+      | parentTab | childTab | formType                | element | path                                                                                                    |
+      | Forms     | My Form  | Loyalty Redemption Form | 25      | \\src\\main\\resources\\Loyalty Redemption Form.pdf |
 
   Scenario Outline: User enters valid value in my forms search field
     When  User clicks on the "<parentTab>" and "<childTab>"
@@ -152,5 +172,6 @@ Feature: Forms Automation
     Examples:
       | parentTab | childTab | formType                | element                            | path                                                |
       | Forms     | My Form  | Loyalty Redemption Form | File with same name already exists | \\src\\main\\resources\\Loyalty Redemption Form.pdf |
+
 
 

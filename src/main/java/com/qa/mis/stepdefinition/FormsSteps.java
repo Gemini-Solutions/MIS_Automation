@@ -12,7 +12,8 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
 public class FormsSteps {
-    public static String dirPath=System.getProperty("user.dir");
+    public static String dirPath = System.getProperty("user.dir");
+
     @Given("User enters username as {string}")
     public void userEntersUsernameAs(String userName) {
         if (DriverAction.isExist(FormsLocator.userName)) {
@@ -246,9 +247,9 @@ public class FormsSteps {
             DriverAction.waitSec(3);
             DriverAction.click(FormsLocator.formTypeDropDown);
             DriverAction.click(FormsLocator.formType(formType));
-//            DriverAction.waitUntilElementAppear(FormsLocator.chooseFile, 7);
             DriverAction.waitSec(4);
-            DriverAction.fileUpload(FormsLocator.chooseFile, dirPath+path);
+            DriverAction.fileUpload(FormsLocator.chooseFile, dirPath + path);
+
             DriverAction.setImplicitTimeOut(7);
         } catch (Exception e) {
             GemTestReporter.addTestStep("User uploads the document", "Upload is Unsuccessful", STATUS.FAIL);
@@ -275,7 +276,7 @@ public class FormsSteps {
             DriverAction.click(FormsLocator.formTypeDropDown);
             DriverAction.waitUntilElementAppear(FormsLocator.formType(formType), 5);
             DriverAction.click(FormsLocator.formType(formType));
-            DriverAction.fileUpload(FormsLocator.chooseFile, dirPath+path);
+            DriverAction.fileUpload(FormsLocator.chooseFile, dirPath + path);
             DriverAction.setImplicitTimeOut(7);
         } catch (Exception e) {
             GemTestReporter.addTestStep("User uploads invalid document", "Upload is Unsuccessful", STATUS.FAIL);
@@ -303,7 +304,6 @@ public class FormsSteps {
 
         }
     }
-
     @Then("User enters valid value in my forms search field as {string}")
     public void userEntersValidValueInMyFormsSearchFieldAs(String Loyalty) {
         try {
@@ -339,12 +339,12 @@ public class FormsSteps {
 
     @Then("User hovers and clicks on deactivate button")
     public void userHoversAndClicksOnDeactivateBtn() {
-       try {
+        try {
             DriverAction.waitUntilElementAppear(FormsLocator.deactivateBtn, 4);
             DriverAction.click(FormsLocator.deactivateBtn);
-        } catch (Exception e){
+        } catch (Exception e) {
             GemTestReporter.addTestStep("User  clicks on deactivate button", "Click is unsuccessful", STATUS.FAIL);
-       }
+        }
     }
 
     @Then("User clicks on yes button")
@@ -359,10 +359,10 @@ public class FormsSteps {
 
     @And("User hovers and clicks on download button")
     public void userHoversAndClicksOnDownloadBtn() {
-     try {
-         DriverAction.waitUntilElementAppear(FormsLocator.downloadBtn,4);
+        try {
+            DriverAction.waitUntilElementAppear(FormsLocator.downloadBtn, 4);
             DriverAction.click(FormsLocator.downloadBtn);
-        } catch(Exception e){
+        } catch (Exception e) {
             GemTestReporter.addTestStep("User Clicks on Download Button", "Click is Unsuccessful", STATUS.FAIL);
         }
     }
