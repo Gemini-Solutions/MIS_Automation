@@ -7,7 +7,7 @@ Feature: MySkills Automation
     And User verifies landing page
 #    Then User clicks on pop up close button
 
-    Scenario Outline: Verify my skills are updating with Valid Data
+   Scenario Outline: Verify my skills are updating with Valid Data
     When User clicks on user image button
     And User clicks on skills button
     And User clicks on technology dropdown

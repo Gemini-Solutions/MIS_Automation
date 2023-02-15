@@ -6,6 +6,6 @@ import io.cucumber.java.Before;
 
 public class Hook {
     @Before    public void start() throws GemException {
-         DriverManager.setUpBrowser();
+        DriverManager.setUpBrowser();
     }
 }

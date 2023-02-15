@@ -54,14 +54,13 @@ public class FormsSteps {
         }
     }
 
-    @Then("User clicks on close button")
-    public void userClicksOnCloseBtn() {
+    @Then("^User clicks on pop up close button$")
+    public void userClicksOnCloseButton() {
         try {
             DriverAction.waitUntilElementAppear(FormsLocator.skillTypeBtn, 7);
             DriverAction.click(FormsLocator.closeBtn);
         } catch (Exception e) {
             GemTestReporter.addTestStep("User clicks on close button", "Click is Unsuccessful", STATUS.FAIL);
-
         }
     }
 

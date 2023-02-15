@@ -33,14 +33,13 @@ public class MySkillsSteps {
         }
     }
 
-    @Then("User clicks on close button")
+    @Then("^User clicks on close button$")
     public void userClicksOnCloseButton() {
         try {
             DriverAction.waitUntilElementAppear(MySkillsLocator.closeBtn, 3);
             DriverAction.click(MySkillsLocator.closeBtn);
         } catch (Exception e) {
             GemTestReporter.addTestStep("User clicks on close button", "Click is unsuccessful", STATUS.FAIL);
-
         }
     }
 

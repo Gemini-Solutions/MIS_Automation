@@ -26,7 +26,6 @@ public class MySkillsLocator {
 
         return By.xpath("//a[contains(text(),'" + mySkills + "')]");
     }
-
     public static By closeBtn=By.xpath("//button[@id=\"btnskillsEditClose\"]");
 
     //    public static By techExperience = By.xpath("//input[@id=\"expinMonths\"]");
