@@ -5,7 +5,6 @@ Feature: Forms Automation
     And User enters password as "Gemini@123"
     When User clicks on sign in
     And User verifies landing page
-    Then User clicks on close button
 
 
   Scenario Outline: Open view forms page
@@ -17,7 +16,8 @@ Feature: Forms Automation
       | parentTab | childTab  | firstElement | secondElement |
       | Forms     | View Form | View Forms   | Form Name     |
 
-  Scenario Outline: User checks the  presence of previous and next button
+
+  Scenario Outline: User checks the  presence of previous and next Button
     When User clicks on tab "<parent Tab>" and "<child Tab>"
     And User verifies the presence of "<buttonOne>" Button
     Then User verifies the presence of "<buttonTwo>" Button
@@ -27,7 +27,7 @@ Feature: Forms Automation
 
   Scenario Outline: User selects a department
     When User clicks on tab "<parentTab>" and "<childTab>"
-    And  User clicks on department
+    And User clicks on department
     Then User clicks on "<desiredDepartment>"
     Examples:
       | parentTab | childTab  | desiredDepartment |
@@ -56,8 +56,8 @@ Feature: Forms Automation
       | parentTab | childTab  | value | element                   |
       | Forms     | View Form | QA    | No matching records found |
 
-  Scenario Outline:User clicks on eye button to view policy
-    When  User clicks on tab "<parentTab>" and "<childTab>"
+   Scenario Outline:User clicks on eye button to view policy
+     When  User clicks on tab "<parentTab>" and "<childTab>"
     And  User clicks on eye button
     Then User views policy
     Examples:
@@ -86,8 +86,9 @@ Feature: Forms Automation
     And User uploads the desired document "<formType>" from "<path>"
     Then User clicks on save button
     Examples:
-      | parentTab | childTab | formType                | path                                                                                                    |
-      | Forms     | My Form  | Loyalty Redemption Form | C:\Users\sh.singh9\Desktop\MIS_Automation\MIS_Automation\src\main\resources\Loyalty Redemption Form.pdf |
+      | parentTab | childTab | formType                | path                                                |
+      | Forms     | My Form  | Loyalty Redemption Form | \\src\\main\\resources\\Loyalty Redemption Form.pdf |
+
 
   Scenario Outline: User uploads incorrect file
     When  User clicks on the "<parentTab>" and "<childTab>"
@@ -96,8 +97,24 @@ Feature: Forms Automation
     And  Verify the "<warningMsg>"
     Then User clicks on ok button
     Examples:
-      | parentTab | childTab | formType                | warningMsg                                                      | path                                                                                               |
-      | Forms     | My Form  | Loyalty Redemption Form | Invalid file selected. Supported extensions are .xlsx,.xls,.pdf | C:\Users\sh.singh9\Desktop\MIS GemJar\MIS_Automation_GemJar - Final\src\main\resources\17 may.docx |
+      | parentTab | childTab | formType                | warningMsg                                                      | path                                |
+      | Forms     | My Form  | Loyalty Redemption Form | Invalid file selected. Supported extensions are .xlsx,.xls,.pdf | \\src\\main\\resources\\17 may.docx |
+
+  Scenario Outline:User selects number of entries
+    When  User clicks on the "<parentTab>" and "<childTab>"
+    Then User selects the entries as "<element>"
+
+    Examples:
+      | parentTab | childTab | element |
+      | Forms     | My Form  | 25      |
+
+  Scenario Outline: User enters valid value in my forms search field
+    When  User clicks on the "<parentTab>" and "<childTab>"
+    Then User enters valid value in my forms search field as "<element>"
+
+    Examples:
+      | parentTab | childTab | element                       |
+      | Forms     | My Form  | Loyal Loyalty Redemption Form |
 
   Scenario Outline:User uploads file and selects number of entries
     When  User clicks on the "<parentTab>" and "<childTab>"
@@ -108,11 +125,11 @@ Feature: Forms Automation
 
     Examples:
       | parentTab | childTab | formType                | element | path                                                                                                    |
-      | Forms     | My Form  | Loyalty Redemption Form | 25      | C:\Users\sh.singh9\Desktop\MIS_Automation\MIS_Automation\src\main\resources\Loyalty Redemption Form.pdf |
+      | Forms     | My Form  | Loyalty Redemption Form | 25      | \\src\\main\\resources\\Loyalty Redemption Form.pdf |
 
   Scenario Outline: User enters valid value in my forms search field
     When  User clicks on the "<parentTab>" and "<childTab>"
-    Then User enters valid value in My forms search field as "<element>"
+    Then User enters valid value in my forms search field as "<element>"
 
     Examples:
       | parentTab | childTab | element                       |
@@ -153,7 +170,8 @@ Feature: Forms Automation
     Then User clicks on ok button
 
     Examples:
-      | parentTab | childTab | formType                | element                            | path                                                                                                    |
-      | Forms     | My Form  | Loyalty Redemption Form | File with same name already exists | C:\Users\sh.singh9\Desktop\MIS_Automation\MIS_Automation\src\main\resources\Loyalty Redemption Form.pdf |
+      | parentTab | childTab | formType                | element                            | path                                                |
+      | Forms     | My Form  | Loyalty Redemption Form | File with same name already exists | \\src\\main\\resources\\Loyalty Redemption Form.pdf |
+
 
 

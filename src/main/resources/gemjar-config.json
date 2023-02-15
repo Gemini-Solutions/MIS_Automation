@@ -1,5 +1,5 @@
 {
-  "environment": "prod",
+  "environment": "beta",
   "projectName": "MIS",
   "gemjarSubID": "test_id",
   "gemjarUserName": "tchauhan",
