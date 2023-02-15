@@ -9,6 +9,8 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.apache.commons.codec.binary.Base64;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -21,6 +23,11 @@ public class NavBarSteps {
 
     static int cardnumber = 0;
 
+    public void presenceOfElement(By elementXpath, int time) {
+        WebDriverWait wait = new WebDriverWait(DriverManager.getWebDriver(), time);
+        wait.until(ExpectedConditions.presenceOfElementLocated(elementXpath));
+    }
+
     @Given("^User should be on MIS login page and enter (.*) and (.*)$")
     public void enterUserCredentials(String Username, String Password) {
         try {
@@ -31,7 +38,9 @@ public class NavBarSteps {
                 GemTestReporter.addTestStep("Username", "Username field is not present", STATUS.FAIL, DriverAction.takeSnapShot());
             }
             if (DriverAction.isExist(NavBarLocator.Password)) {
-                DriverAction.typeText(NavBarLocator.Password, Password, "password");
+                byte[] decodingString = Base64.decodeBase64(Password);
+                String passwordDecoded = new String(decodingString);
+                DriverAction.typeText(NavBarLocator.Password, passwordDecoded, "password");
             } else {
                 GemTestReporter.addTestStep("Password", "Password field is not present", STATUS.FAIL, DriverAction.takeSnapShot());
             }
@@ -55,8 +64,17 @@ public class NavBarSteps {
 
     @Then("User should be navigated to MIS homepage")
     public void navigateMisHomepage() {
-        WebDriverWait wait = new WebDriverWait(DriverManager.getWebDriver(), 20);
-        wait.until(ExpectedConditions.presenceOfElementLocated(NavBarLocator.Location));
+        DriverAction.waitSec(8);
+        String hidden = DriverAction.getAttributeName(NavBarLocator.SkillPopup, "class");
+        if (hidden.equalsIgnoreCase("modal fade in")) {
+            if (DriverAction.isExist(NavBarLocator.skillClosebtn)) {
+                DriverAction.click(NavBarLocator.skillClosebtn, "Close button");
+            } else {
+                GemTestReporter.addTestStep("Skill Close button", "Skill Close button is not present", STATUS.FAIL, DriverAction.takeSnapShot());
+            }
+
+        }
+        presenceOfElement(NavBarLocator.Location, 20);
         if (DriverAction.isExist(NavBarLocator.Location) && DriverAction.isExist(NavBarLocator.Dashboardheading)) {
             GemTestReporter.addTestStep("MIS Homepage", "User is on homepage of MIS", STATUS.PASS, DriverAction.takeSnapShot());
         } else {
