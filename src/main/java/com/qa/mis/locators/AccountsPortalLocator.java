@@ -20,7 +20,6 @@ public class AccountsPortalLocator {
     public static By forgetpasswordLink = By.xpath("//a[contains(text(),'Forgot password?')]");
 
     public static By message(String message) {
-
         return By.xpath("//form//div[text()=' " + message + " ']");
     }
 }

@@ -20,7 +20,6 @@ import java.util.List;
 public class NavBarSteps {
 
     static int cardnumber = 0;
-
     @Given("^User should be on MIS login page and enter (.*) and (.*)$")
     public void enterUserCredentials(String Username, String Password) {
         try {

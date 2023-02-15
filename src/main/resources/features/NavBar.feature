@@ -48,6 +48,7 @@ Feature: NavBar
     And Click on Save button
     And Verify popup with message "<AlertType>" and "<Message>"
 
+
     Examples:
       | Technology | Proficiency Level | Skill Type | Tech Experience | Total Work Exp | AlertType | Message                       |
       | Accounting | Beginner          | Secondary  | 24              | 2              | Warning   | Duplicate Skills not Allowed. |

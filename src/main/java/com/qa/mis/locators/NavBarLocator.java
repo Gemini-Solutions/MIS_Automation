@@ -56,8 +56,6 @@ public class NavBarLocator {
     public static By skillClosebtn = By.id("btnskillsClose");
 
     public static By skillSavebtn = By.id("btnSaveSkills");
-
-
     public static By heading_alertType = By.xpath("//div[contains(@class,'sweet-alert')]/h2");
     public static By text_alertMessage = By.xpath("//div[contains(@class,'sweet-alert')]/p");
 
