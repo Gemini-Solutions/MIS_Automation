@@ -1,8 +1,8 @@
-package com.qa.MIS.Locators;
+package com.qa.MIS.locators;
 
 import org.openqa.selenium.By;
 
-public class Locators {
+public class LNSA_FeedbackLocator {
     public static By geminiLogo = By.xpath("//img[contains(@src, 'Gemini')]");
     public static By txtUserName = By.xpath("//input[@id='username']");
     public static By txtPassword = By.xpath("//input[@id='password']");
@@ -23,4 +23,14 @@ public class Locators {
     public static By LNSA_WEEK_SELECT = By.xpath("//input[contains(@id,'selectAll')]");
     public static By LNSA_WARNING_POP = By.xpath("//h2[text() = 'Warning']");
 
+    public static By  feedbackHome = By.xpath("//span[text()= 'Feedback']");
+    public static By  feedbackSubmit = By.xpath("//span[text()= 'Submit Feedback']");
+    public static By  feedbackProvideFeedbackButton = By.xpath("//button[contains(text(), 'Provide')]");
+    public static By  feedbackSubmitFeedbackTextbox = By.xpath("//textarea[contains(@placeholder, 'comments')]");
+    public static By  feedbackSubmitFeedbackButton = By.xpath("//div[@class='modal-footer']//button[contains(@onClick, 'Feed')]");
+    public static By feedbackSuccessMsg = By.xpath("//h2[text() ='Success']");
+    public static By feedbackSuccessButton = By.xpath("//div[@class ='sa-confirm-button-container']/button");
+    public static By feedbackNextButton = By.xpath("//a[text()='Next']/..");
+    public static By feedbackPreviousButton = By.xpath("//a[text() ='Previous']/..");
+    public static By feedbackSearchFeedback = By.xpath("//input[@type='search']");
 }
