@@ -1,4 +1,4 @@
-Feature:  MIS  Automation
+Feature:   MIS  Automation
 
   Scenario: Add new document tags icon present and functional in view documents in knowledge base
     Given logged in successfully
@@ -116,6 +116,61 @@ Feature:  MIS  Automation
     Given logged in successfully
     When navigating to view documents page and adding an valid document type
     Then document is added successfully
+
+
+  Scenario Outline: Dropdown functionality for view Shared document
+    Given logged in successfully
+    When navigating to view shared documents page and selecting "<value>" from dropdown
+    Then dropdown is functional in view shared
+    Examples:
+      | value |
+      |25|
+
+    Scenario Outline: Search functionality in view shared document
+      Given logged in successfully
+      When navigating to view shared documents page and searching a "<documentName>"
+      Then search functionlity is working
+      Examples:
+        | documentName |
+        |Mastering Regular Expressions|
+
+  Scenario Outline: Search functionality with absent document in view shared document
+    Given logged in successfully
+    When navigating to view shared documents page and searching an absent  "<documentName>"
+    Then search functionlity is working by displaying no document
+    Examples:
+      | documentName |
+      |Mastering Regular Expressions1|
+
+    Scenario: title sort Acsending
+      Given logged in successfully
+      When navigating to view shared documents page and applying ascending title sort
+      Then list is sorted ascendingly
+
+  Scenario: title sort Decsending
+    Given logged in successfully
+    When navigating to view shared documents page and applying descending title sort
+    Then list is sorted descendingly
+
+    Scenario: next button
+      Given logged in successfully
+      When navigating to view shared documents page and clicking on next button
+      Then next page of list is displayed
+
+  Scenario: previous button
+    Given logged in successfully
+    When navigating to view shared documents page and clicking on previous button
+    Then previous page of list is displayed
+
+
+    Scenario Outline: View functionality
+      Given logged in successfully
+      When navigating to view shared documents page and viewing the "<documentName>"
+      Then document is opened
+      Examples:
+        | documentName |
+        |Autosys tutorial|
+
 
 
 

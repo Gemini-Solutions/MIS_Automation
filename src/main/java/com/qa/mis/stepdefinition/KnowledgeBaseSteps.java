@@ -15,6 +15,8 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.sql.Driver;
+
 public class KnowledgeBaseSteps {
     static WebElement el;
 
@@ -50,11 +52,11 @@ public class KnowledgeBaseSteps {
     }
     @Then("add new document tags icon is present and functional")
     public void add_new_document_tags_icon_is_present_and_functional() {
-        DriverAction.click(KnowledgeBaseLocator.addDocumentTag,"Add document Tag");
-        DriverAction.typeText(KnowledgeBaseLocator.inputDocumentTag,"Test21");
+         DriverAction.click(KnowledgeBaseLocator.addDocumentTag,"Add document Tag");
+        DriverAction.typeText(KnowledgeBaseLocator.inputDocumentTag,"Test31");
         DriverAction.click(KnowledgeBaseLocator.saveDocumentTag,"Document Tag saved");
         String successMessage = DriverAction.getElementText(KnowledgeBaseLocator.documentTagSuccessfullyAdded);
-        System.out.println(successMessage);
+
         if(!successMessage.equalsIgnoreCase("Document tag Added Sucessfully")){
             Assert.fail();
         }
@@ -81,7 +83,7 @@ public class KnowledgeBaseSteps {
         String warningMessage = DriverAction.getElementText(KnowledgeBaseLocator.documentTagWarningMessage);
         System.out.println(warningMessage);
         if(warningMessage.equalsIgnoreCase("Please fill required field")){
-            System.out.println("Warning Message!");
+
 
 
         }
@@ -122,7 +124,7 @@ public class KnowledgeBaseSteps {
 
     @When("navigating to view documents page and adding an invalid document type")
     public void navigating_to_view_documents_page_and_adding_an_invalid_document_type() throws InterruptedException {
-        DriverAction.click(KnowledgeBaseLocator.knowledgeBase,"Knowledge Base");
+         DriverAction.click(KnowledgeBaseLocator.knowledgeBase,"Knowledge Base");
         DriverAction.click(KnowledgeBaseLocator.viewDocuments,"View Documents");
         DriverAction.waitUntilElementAppear(KnowledgeBaseLocator.folder,5);
         Thread.sleep(5000);
@@ -130,8 +132,8 @@ public class KnowledgeBaseSteps {
         Thread.sleep(5000);
         DriverAction.click(KnowledgeBaseLocator.addDocument,"Add Document");
         Thread.sleep(5000);
-        DriverAction.fileUpload(KnowledgeBaseLocator.upload,"C:\\Users\\Prajjwal\\MISAutomaiton2\\MIS_Automation\\src\\main\\resources\\testdocument.txt");
-        //DriverAction.typeText(Locators.upload,"src\\main\\resources\\testdocument.txt");
+        DriverAction.fileUpload(KnowledgeBaseLocator.upload,"C:\\Users\\Prajjwal\\Automation2\\MIS_Automation\\src\\main\\resources\\testdocument2.txt");
+        //DriverAction.typeText(Locators.upload,"src\\main\\resources\\testdocument2.txt");
         Thread.sleep(5000);
 
 
@@ -143,7 +145,7 @@ public class KnowledgeBaseSteps {
     @Then("invalid document type warning should be displayed")
     public void invalid_document_type_warning_should_be_displayed() {
         if(DriverAction.getElementText(KnowledgeBaseLocator.invalidDoc).equalsIgnoreCase("Invalid file selected. supported extensions are .xlsx,.xls,.pdf")){
-            System.out.println("SUCCESS");
+
         }
         else{
             Assert.fail();
@@ -314,7 +316,7 @@ public class KnowledgeBaseSteps {
         DriverAction.click(KnowledgeBaseLocator.titleSort);
         Thread.sleep(5000);
         if(DriverAction.getElementText(KnowledgeBaseLocator.sortValue).equalsIgnoreCase("zyx")){
-            System.out.println("SUCCESS");
+
         }else{
             Assert.fail();
         }
@@ -431,8 +433,8 @@ public class KnowledgeBaseSteps {
         Thread.sleep(5000);
         DriverAction.click(KnowledgeBaseLocator.addDocument,"Add Document");
         Thread.sleep(5000);
-        DriverAction.fileUpload(KnowledgeBaseLocator.upload,"C:\\Users\\Prajjwal\\MISAutomaiton2\\MIS_Automation\\src\\main\\resources\\testdocument.xlsx");
-        //DriverAction.typeText(Locators.upload,"src\\main\\resources\\testdocument.txt");
+        DriverAction.fileUpload(KnowledgeBaseLocator.upload,"C:\\Users\\Prajjwal\\Automation2\\MIS_Automation\\src\\main\\resources\\testdocument1.xlsx");
+        //DriverAction.typeText(Locators.upload,"src\\main\\resources\\testdocument2.txt");
         Thread.sleep(5000);
 
 
@@ -454,6 +456,189 @@ public class KnowledgeBaseSteps {
 //        DriverAction.click(Locators.addDocumentTag);
 
     }
+
+    @When("navigating to view shared documents page and selecting {string} from dropdown")
+    public void navigating_to_view_shared_documents_page_and_selecting_from_dropdown(String string) throws InterruptedException {
+        DriverAction.click(KnowledgeBaseLocator.knowledgeBase,"Knowledge Base");
+        DriverAction.click(KnowledgeBaseLocator.viewSharedDocument,"View Documents");
+        Thread.sleep(5000);
+        WebElement el1 = DriverAction.getElement(KnowledgeBaseLocator.dropdownSharedDocument);
+        Select list = new Select(el1);
+        list.selectByValue(string);
+        Thread.sleep(5000);
+        if(DriverAction.getElementText(KnowledgeBaseLocator.listInfo).contains(string)){
+
+
+        }
+        else{
+            Assert.fail();
+        }
+    }
+    @Then("dropdown is functional in view shared")
+    public void dropdown_is_functional_in_view_shared() {
+
+    }
+
+    @When("navigating to view shared documents page and searching a {string}")
+    public void navigating_to_view_shared_documents_page_and_searching_a(String string) throws InterruptedException {
+        DriverAction.click(KnowledgeBaseLocator.knowledgeBase,"Knowledge Base");
+        DriverAction.click(KnowledgeBaseLocator.viewSharedDocument,"View Documents");
+        Thread.sleep(5000);
+        DriverAction.typeText(KnowledgeBaseLocator.search,string);
+        Thread.sleep(2000);
+        String documentName = DriverAction.getElementText(KnowledgeBaseLocator.searchDocumentShared);
+        if(documentName.equalsIgnoreCase(string)){
+
+        }
+        else{
+            Assert.fail();
+        }
+
+
+    }
+    @Then("search functionlity is working")
+    public void search_functionlity_is_working() {
+
+    }
+
+    @When("navigating to view shared documents page and searching an absent  {string}")
+    public void navigating_to_view_shared_documents_page_and_searching_an_absent(String string) throws InterruptedException {
+        DriverAction.click(KnowledgeBaseLocator.knowledgeBase,"Knowledge Base");
+        DriverAction.click(KnowledgeBaseLocator.viewSharedDocument,"View Documents");
+        Thread.sleep(5000);
+        DriverAction.typeText(KnowledgeBaseLocator.search,string);
+        Thread.sleep(2000);
+        String documentName = DriverAction.getElementText(KnowledgeBaseLocator.noMatchFound);
+        if(documentName.equalsIgnoreCase("No matching records found")){
+
+        }
+        else{
+            Assert.fail();
+        }
+
+    }
+    @Then("search functionlity is working by displaying no document")
+    public void search_functionlity_is_working_by_displaying_no_document() {
+
+    }
+
+    @When("navigating to view shared documents page and applying ascending title sort")
+    public void navigating_to_view_shared_documents_page_and_applying_ascending_title_sort() throws InterruptedException {
+        DriverAction.click(KnowledgeBaseLocator.knowledgeBase,"Knowledge Base");
+        DriverAction.click(KnowledgeBaseLocator.viewSharedDocument,"View Documents");
+        Thread.sleep(5000);
+        DriverAction.click(KnowledgeBaseLocator.titleAsc);
+        if(DriverAction.getElementText(KnowledgeBaseLocator.titleAscEl).equalsIgnoreCase("An introduction to Python for absolute beginners")){
+
+
+        }
+        else{
+            Assert.fail();
+        }
+
+    }
+    @Then("list is sorted ascendingly")
+    public void list_is_sorted_ascendingly() {
+
+    }
+
+    @When("navigating to view shared documents page and applying descending title sort")
+    public void navigating_to_view_shared_documents_page_and_applying_descending_title_sort() throws InterruptedException {
+        DriverAction.click(KnowledgeBaseLocator.knowledgeBase,"Knowledge Base");
+        DriverAction.click(KnowledgeBaseLocator.viewSharedDocument,"View Documents");
+        Thread.sleep(5000);
+        DriverAction.click(KnowledgeBaseLocator.titleAsc);
+        Thread.sleep(2000);
+        DriverAction.click(KnowledgeBaseLocator.titleAsc);
+        if(DriverAction.getElementText(KnowledgeBaseLocator.titleAscEl).equalsIgnoreCase("Unix Tutorials")){
+
+
+        }
+        else{
+            Assert.fail();
+        }
+
+    }
+    @Then("list is sorted descendingly")
+    public void list_is_sorted_descendingly() {
+
+    }
+
+    @When("navigating to view shared documents page and clicking on next button")
+    public void navigating_to_view_shared_documents_page_and_clicking_on_next_button() throws InterruptedException {
+        DriverAction.click(KnowledgeBaseLocator.knowledgeBase,"Knowledge Base");
+        DriverAction.click(KnowledgeBaseLocator.viewSharedDocument,"View Documents");
+        Thread.sleep(5000);
+        DriverAction.click(KnowledgeBaseLocator.nextList);
+        if(DriverAction.getElementText(KnowledgeBaseLocator.listInfo).contains("11")){
+
+
+        }
+        else{
+            Assert.fail();
+        }
+
+
+    }
+    @Then("next page of list is displayed")
+    public void next_page_of_list_is_displayed() {
+
+
+    }
+
+    @When("navigating to view shared documents page and clicking on previous button")
+    public void navigating_to_view_shared_documents_page_and_clicking_on_previous_button() throws InterruptedException {
+        DriverAction.click(KnowledgeBaseLocator.knowledgeBase,"Knowledge Base");
+        DriverAction.click(KnowledgeBaseLocator.viewSharedDocument,"View Documents");
+        Thread.sleep(5000);
+        DriverAction.click(KnowledgeBaseLocator.nextList);
+        if(DriverAction.getElementText(KnowledgeBaseLocator.listInfo).contains("11")){
+            Thread.sleep(2000);
+            DriverAction.click(KnowledgeBaseLocator.previousList);
+            if(DriverAction.getElementText(KnowledgeBaseLocator.listInfo).contains("1")){
+
+            }
+            else{
+                Assert.fail();
+            }
+
+
+        }else{
+            Assert.fail();
+        }
+
+    }
+    @Then("previous page of list is displayed")
+    public void previous_page_of_list_is_displayed() {
+
+    }
+
+    @When("navigating to view shared documents page and viewing the {string}")
+    public void navigating_to_view_shared_documents_page_and_viewing_the(String string) throws InterruptedException {
+        DriverAction.click(KnowledgeBaseLocator.knowledgeBase,"Knowledge Base");
+        DriverAction.click(KnowledgeBaseLocator.viewSharedDocument,"View Documents");
+        Thread.sleep(5000);
+        DriverAction.typeText(KnowledgeBaseLocator.search,string);
+        Thread.sleep(2000);
+
+
+    }
+    @Then("document is opened")
+    public void document_is_opened() throws InterruptedException {
+        DriverAction.click(KnowledgeBaseLocator.viewDocument);
+        Thread.sleep(5000);
+        if(DriverAction.isExist(KnowledgeBaseLocator.verifyDocument)){}
+        else{
+            Assert.fail();
+        }
+
+    }
+
+
+
+
+
+
 
 
 
