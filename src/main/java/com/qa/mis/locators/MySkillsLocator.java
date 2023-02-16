@@ -21,20 +21,15 @@ public class MySkillsLocator {
 
     public static By skillsUpdated=By.xpath("//section[@id='SkillSet']");
 
-
     public static By mySkill(String mySkills) {
 
         return By.xpath("//a[contains(text(),'" + mySkills + "')]");
     }
-
+    public static By skillOkBtn=By.xpath("//button[text()='OK']");
     public static By closeBtn=By.xpath("//button[@id=\"btnskillsEditClose\"]");
 
-    //    public static By techExperience = By.xpath("//input[@id=\"expinMonths\"]");
     public static By totalExperience = By.xpath("//input[@id=\"TotalExp\"]");
     public static By skillSaveBtn = By.xpath("//button[@id=\"btnSaveSkills\"]");
-
-    //////
-    public static By technologySelect = By.xpath("//span[@id='select2-ddlSkills-container']");
 
     public static By technologyOption(String option) {
         return By.xpath("//span[@class='select2-results']//li[text()='" + option + "']");
@@ -48,6 +43,7 @@ public class MySkillsLocator {
     }
 
     public static By techExperience = By.id("expinMonths");
+    public static By skillCloseBtn=By.xpath("//button[@id=\"btnskillsClose\"]");
 
     public static By heading_alertType = By.xpath("//div[contains(@class,'sweet-alert')]/h2");
     public static By text_alertMessage = By.xpath("//div[contains(@class,'sweet-alert')]/p");

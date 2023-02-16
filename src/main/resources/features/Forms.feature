@@ -5,8 +5,6 @@ Feature: Forms Automation
     And User enters password as "Gemini@123"
     When User clicks on sign in
     And User verifies landing page
-#    Then User clicks on close button
-
 
   Scenario Outline: Open view forms page
 

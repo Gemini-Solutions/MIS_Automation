@@ -54,8 +54,8 @@ public class FormsSteps {
         }
     }
 
-    @Then("User clicks on close button")
-    public void userClicksOnCloseBtn() {
+    @Then("^User clicks on pop up close button$")
+    public void userClicksOnCloseButton() {
         try {
             DriverAction.waitUntilElementAppear(FormsLocator.skillTypeBtn, 7);
             DriverAction.click(FormsLocator.closeBtn);
@@ -68,7 +68,7 @@ public class FormsSteps {
     @Given("User clicks on tab {string} and {string}")
     public void userClicksOnTabAnd(String form, String viewForm) {
         if (DriverAction.isExist(FormsLocator.forms)) {
-            DriverAction.waitSec(3);
+            DriverAction.waitSec(5);
             DriverAction.click(FormsLocator.forms);
             DriverAction.isExist(FormsLocator.viewForm);
             DriverAction.click(FormsLocator.viewForm);
@@ -208,11 +208,12 @@ public class FormsSteps {
 
     @Given("User clicks on the {string} and {string}")
     public void userClicksOnTheAnd(String forms, String myForms) {
-        try {
-            DriverAction.waitSec(3);
+        if(DriverAction.isExist(FormsLocator.forms)){
+            DriverAction.waitSec(5);
             DriverAction.click(FormsLocator.forms);
+            DriverAction.isExist(FormsLocator.myForms);
             DriverAction.click(FormsLocator.myForms);
-        } catch (Exception e) {
+        } else {
             GemTestReporter.addTestStep("User clicks on forms button", "Click is Unsuccessful", STATUS.FAIL);
 
         }
@@ -232,7 +233,7 @@ public class FormsSteps {
     @When("User clicks on upload button")
     public void userClicksOnUploadBtn() {
         try {
-            DriverAction.waitUntilElementAppear(FormsLocator.uploadBtn, 7);
+            DriverAction.waitSec(5);
             DriverAction.click(FormsLocator.uploadBtn);
             DriverAction.setImplicitTimeOut(5);
         } catch (Exception e) {
@@ -247,7 +248,6 @@ public class FormsSteps {
             DriverAction.waitSec(3);
             DriverAction.click(FormsLocator.formTypeDropDown);
             DriverAction.click(FormsLocator.formType(formType));
-//            DriverAction.waitUntilElementAppear(FormsLocator.chooseFile, 7);
             DriverAction.waitSec(4);
             DriverAction.fileUpload(FormsLocator.chooseFile, dirPath+path);
             DriverAction.setImplicitTimeOut(7);
@@ -341,7 +341,7 @@ public class FormsSteps {
     @Then("User hovers and clicks on deactivate button")
     public void userHoversAndClicksOnDeactivateBtn() {
        try {
-            DriverAction.waitUntilElementAppear(FormsLocator.deactivateBtn, 4);
+           DriverAction.waitSec(7);
             DriverAction.click(FormsLocator.deactivateBtn);
         } catch (Exception e){
             GemTestReporter.addTestStep("User  clicks on deactivate button", "Click is unsuccessful", STATUS.FAIL);
@@ -361,7 +361,7 @@ public class FormsSteps {
     @And("User hovers and clicks on download button")
     public void userHoversAndClicksOnDownloadBtn() {
      try {
-         DriverAction.waitUntilElementAppear(FormsLocator.downloadBtn,4);
+        DriverAction.waitSec(7);
             DriverAction.click(FormsLocator.downloadBtn);
         } catch(Exception e){
             GemTestReporter.addTestStep("User Clicks on Download Button", "Click is Unsuccessful", STATUS.FAIL);

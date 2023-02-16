@@ -15,7 +15,7 @@ public class MySkillsSteps {
     @Then("Skills are updated with {string}")
     public void verifyTheSkillsAreUpdatedWith(String mySkills) {
         try {
-             DriverAction.waitUntilElementAppear(MySkillsLocator.mySkill(mySkills), 3);
+            DriverAction.waitUntilElementAppear(MySkillsLocator.mySkill(mySkills), 3);
             DriverAction.click(MySkillsLocator.mySkill(mySkills));
         } catch (Exception e) {
             GemTestReporter.addTestStep("Skills are updated with valid data", "Skills not updated", STATUS.FAIL);
@@ -33,7 +33,7 @@ public class MySkillsSteps {
         }
     }
 
-    @Then("User clicks on close button")
+    @Then("^User clicks on close button$")
     public void userClicksOnCloseButton() {
         try {
             DriverAction.waitUntilElementAppear(MySkillsLocator.closeBtn, 3);
@@ -48,7 +48,7 @@ public class MySkillsSteps {
     @Given("User clicks on user image button")
     public void userClicksOnUserImgButton() {
         try {
-            DriverAction.waitSec(3);
+            DriverAction.waitSec(6);
             DriverAction.click(MySkillsLocator.userImg);
         } catch (Exception e) {
             GemTestReporter.addTestStep("User clicks on user image", "Click is Unsuccessful", STATUS.FAIL);
@@ -137,9 +137,34 @@ public class MySkillsSteps {
     @Then("User clicks on skill ok button")
     public void userClicksOnSkillOkButton() {
         try {
-            DriverAction.click(MySkillsLocator.skillSaveBtn);
+            DriverAction.isExist(MySkillsLocator.skillOkBtn);
+            DriverAction.click(MySkillsLocator.skillOkBtn);
         } catch (Exception e) {
             GemTestReporter.addTestStep("User clicks on ok button", "Click is unsuccessful", STATUS.FAIL);
+
+        }
+
+
+    }
+
+    @And("User clicks on skill save button")
+    public void userClicksOnSkillSaveButton() {
+        try {
+            DriverAction.isExist(MySkillsLocator.skillSaveBtn);
+            DriverAction.click(MySkillsLocator.skillSaveBtn);
+        } catch (Exception e) {
+            GemTestReporter.addTestStep("User clicks on save button", "Click is unsuccessful", STATUS.FAIL);
+
+        }
+    }
+
+    @And("User clicks on skill close button")
+    public void userClicksOnSkillCloseButton() {
+        try {
+            DriverAction.isExist(MySkillsLocator.skillCloseBtn);
+            DriverAction.click(MySkillsLocator.skillCloseBtn);
+        } catch (Exception e) {
+            GemTestReporter.addTestStep("User clicks on close button", "Click is unsuccessful", STATUS.FAIL);
 
         }
     }

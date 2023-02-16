@@ -51,10 +51,12 @@ public class FormsLocator {
     public static By chooseFile = By.xpath("//input[@id=\"fuForm\"]");
     public static By warningMsg = By.xpath("//p[contains(text(),'Invalid file selected. Supported extensions are .xlsx,.xls,.pdf')]");
     public static By okBtn = By.xpath("//button[contains(text(),'OK')]");
-    public static By deactivateBtn = By.xpath("//button[@data-original-title=\"DeActivate\"]");
+//    public static By deactivateBtn = By.xpath("//button[@data-original-title=\"DeActivate\"]");
+public static By deactivateBtn = By.xpath("//button[@class=\"btn btn-sm btn-success\"]");
     public static By activeForm = By.xpath("(//td[contains(text(),'Loyalty Redemption Form.pdf')])[1]");
     public static By yesBtn = By.xpath("//button[@class=\"confirm btn btn-lg btn-danger\"]");
-    public static By downloadBtn = By.xpath("//button[@data-original-title='Download']/i");
+//    public static By downloadBtn = By.xpath("//button[@data-original-title=\"Download\"]");
+    public static By downloadBtn=By.xpath("//button[@class=\"btn btn-sm teal\" and @data-original-title=\"Download\"]");
     public static By errorMsg = By.xpath("//p[contains(text(),'File with same name already exists')]");
 
 }
