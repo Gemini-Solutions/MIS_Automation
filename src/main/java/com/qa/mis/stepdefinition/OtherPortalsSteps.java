@@ -9,8 +9,11 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.commons.codec.binary.Base64;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
@@ -33,7 +36,7 @@ public class OtherPortalsSteps {
             } else {
                 GemTestReporter.addTestStep("Username", "Username field is not present", STATUS.FAIL, DriverAction.takeSnapShot());
             }
-            if (DriverAction.isExist(OtherportalnTimesheetLocator.lgnpwd)) {   
+            if (DriverAction.isExist(OtherportalnTimesheetLocator.lgnpwd)) {
                 byte[] decodingString = Base64.decodeBase64(pass);
                 String passwordDecoded = new String(decodingString);
                 DriverAction.typeText(OtherportalnTimesheetLocator.lgnpwd, passwordDecoded);
@@ -77,12 +80,11 @@ public class OtherPortalsSteps {
     @When("^Select portal (.+) from dropdown")
     public void selectPortalPortalFromDropdown(String portal) {
         int flag = 0;
-       //DriverAction.scrollIntoView(By.xpath("//div[@class='jspPane']//child::span[text()='Service Desk']"));
+//       DriverAction.scrollIntoView(By.xpath("//div[@class='jspPane']//child::span[text()='Service Desk']"));
         List<WebElement> portalList = DriverAction.getElements(OtherportalnTimesheetLocator.otherPortalList);
         DriverAction.waitSec(4);
-
         for (int i = 0; i < portalList.size(); i++) {
-//            System.out.println(portalList.get(i).getText());
+            System.out.println(portalList.get(i).getText());
             if (portalList.get(i).getText().equals(portal)) {
                 portalList.get(i).click();
                 DriverAction.waitSec(10);
@@ -90,44 +92,59 @@ public class OtherPortalsSteps {
                 break;
             }
         }
-            if (flag == 1) {
-                GemTestReporter.addTestStep("Portal found", "Portal value is " + portal + ".", STATUS.PASS, DriverAction.takeSnapShot());
-            } else {
-                GemTestReporter.addTestStep("Portal not found", "Portal value is invalid. Kindly check", STATUS.FAIL, DriverAction.takeSnapShot());
-            }
-
+//        for (WebElement webElement : portalList) {
+//            if (webElement.getText().contains(portal)) {
+////                webElement.click();
+//                JsClick(webElement);
+//                DriverAction.waitSec(10);
+//                flag = 1;
+//                break;
+//            }
+//        }
+        if (flag == 1) {
+            GemTestReporter.addTestStep("Portal found", "Portal value is " + portal + ".", STATUS.PASS, DriverAction.takeSnapShot());
+        } else {
+            GemTestReporter.addTestStep("Portal not found", "Portal value is invalid. Kindly check", STATUS.FAIL, DriverAction.takeSnapShot());
         }
 
-        @Then("^Validate Navigation to portal URL (.+) (.+)")
-        public void validateNavigationToPortalURLUrl (String expectedURL, String portal){
-            try {
-                // To handle parent window
-                WebDriver driver = DriverManager.getWebDriver();
-                String MainWindow = driver.getWindowHandle();
-                // To handle child window
-                Set<String> s1 = driver.getWindowHandles();
+    }
 
-                Iterator<String> i1 = s1.iterator();
-                int flag=0;
-                while (i1.hasNext()) {
-                    i1.next();
-                    String ChildWindow = i1.next();
-                    driver.switchTo().window(ChildWindow);
-                    DriverAction.waitSec(4);
-                    String actualURL = driver.getCurrentUrl();
-                    if (actualURL.equals(expectedURL)) {
-                        flag = 1;
-                    }
+    @Then("^Validate Navigation to portal URL (.+) (.+)")
+    public void validateNavigationToPortalURLUrl(String expectedURL, String portal) {
+        try {
+            // To handle parent window
+            WebDriver driver = DriverManager.getWebDriver();
+            String MainWindow = driver.getWindowHandle();
+            // To handle child window
+            Set<String> s1 = driver.getWindowHandles();
+
+            Iterator<String> i1 = s1.iterator();
+            int flag = 0;
+            while (i1.hasNext()) {
+                i1.next();
+                String ChildWindow = i1.next();
+                driver.switchTo().window(ChildWindow);
+                DriverAction.waitSec(4);
+                String actualURL = driver.getCurrentUrl();
+                if (actualURL.equals(expectedURL)) {
+                    flag = 1;
                 }
-
-                if (flag==1) {
-                    GemTestReporter.addTestStep("Navigater to " + portal + " portal", "Successfully Navigated", STATUS.PASS);
-                } else
-                    GemTestReporter.addTestStep("Navigation Failed", "URL Mismatched", STATUS.FAIL);
-            } catch (Exception e) {
-                logger.info("An exception occurred!", e);
-                GemTestReporter.addTestStep("EXCEPTION ERROR", "Getting Exception ", STATUS.FAIL, DriverAction.takeSnapShot());
             }
+
+            if (flag == 1) {
+                GemTestReporter.addTestStep("Navigater to " + portal + " portal", "Successfully Navigated", STATUS.PASS);
+            } else
+                GemTestReporter.addTestStep("Navigation Failed", "URL Mismatched", STATUS.FAIL);
+        } catch (Exception e) {
+            logger.info("An exception occurred!", e);
+            GemTestReporter.addTestStep("EXCEPTION ERROR", "Getting Exception ", STATUS.FAIL, DriverAction.takeSnapShot());
         }
     }
+
+//        public static void JsClick(WebElement nameInputField){
+////            WebElement nameInputField = DriverAction.getElement(Locator);
+//            JavascriptExecutor executor = (JavascriptExecutor)DriverManager.getWebDriver();
+//            executor.executeScript("arguments[0].click();", nameInputField);
+//        }
+}
 
