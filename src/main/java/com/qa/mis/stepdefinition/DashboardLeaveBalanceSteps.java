@@ -16,8 +16,8 @@ import java.time.Duration;
 
 public class DashboardLeaveBalanceSteps {
     String leaveCount;
-
-    public void presenceOfElement(By elementXpath,int time) {
+    public void presenceOfElement(By elementXpath,int time)
+    {
         WebDriverWait wait = new WebDriverWait(DriverManager.getWebDriver(), time);
         wait.until(ExpectedConditions.presenceOfElementLocated(elementXpath));
     }

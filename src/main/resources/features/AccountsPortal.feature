@@ -29,5 +29,3 @@ Feature: AccountsPortal
     Examples:
       | Message                            |
       | Username and password is required. |
-
-

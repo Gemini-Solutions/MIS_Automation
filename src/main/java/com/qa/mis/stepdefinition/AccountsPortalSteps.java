@@ -36,7 +36,6 @@ public class AccountsPortalSteps {
             GemTestReporter.addTestStep("Click on SubTab", "Subtab is not clickable", STATUS.FAIL, DriverAction.takeSnapShot());
         }
     }
-
     @And("Verify new tab is open {string}")
     public void verifyNewTabIsOpen(String title) {
         //It's Mandatory
