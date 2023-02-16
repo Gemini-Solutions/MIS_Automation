@@ -21,6 +21,7 @@ import java.util.List;
 
 public class NavBarSteps {
     static int cardnumber = 0;
+
     public void presenceOfElement(By elementXpath, int time) {
         WebDriverWait wait = new WebDriverWait(DriverManager.getWebDriver(), time);
         wait.until(ExpectedConditions.presenceOfElementLocated(elementXpath));
@@ -37,8 +38,9 @@ public class NavBarSteps {
             }
             if (DriverAction.isExist(NavBarLocator.Password)) {
                 byte[] decodingString = Base64.decodeBase64(Password);
-                String passwordDecoded = new String(decodingString);
-                DriverAction.typeText(NavBarLocator.Password, passwordDecoded, "password");
+                Password = new String(decodingString);
+
+                DriverAction.typeText(NavBarLocator.Password, Password, "password");
             } else {
                 GemTestReporter.addTestStep("Password", "Password field is not present", STATUS.FAIL, DriverAction.takeSnapShot());
             }
@@ -57,6 +59,7 @@ public class NavBarSteps {
         } else {
             GemTestReporter.addTestStep("SignIn", "SignIn button is not present", STATUS.FAIL, DriverAction.takeSnapShot());
         }
+
     }
 
     @Then("User should be navigated to MIS homepage")
@@ -71,6 +74,7 @@ public class NavBarSteps {
             }
 
         }
+        presenceOfElement(NavBarLocator.Location, 20);
         presenceOfElement(NavBarLocator.Location, 20);
         if (DriverAction.isExist(NavBarLocator.Location) && DriverAction.isExist(NavBarLocator.Dashboardheading)) {
             GemTestReporter.addTestStep("MIS Homepage", "User is on homepage of MIS", STATUS.PASS, DriverAction.takeSnapShot());
@@ -461,21 +465,22 @@ public class NavBarSteps {
     @And("Verify {string} card is shown on the dashboard")
     public void verifyCardIsShownOnTheDashboard(String isCardPresent) {
         DriverAction.waitSec(5);
-        List<WebElement> Cardpanel = null;
+        List<WebElement> CardpanelList;
+
         switch (isCardPresent) {
             case "no":
-                Cardpanel = DriverAction.getElements(NavBarLocator.Cardname);
-                if (Cardpanel.size() == 0) {
-                    GemTestReporter.addTestStep("Unchecked all the widget ", "Dashboard setting is updated", STATUS.PASS, DriverAction.takeSnapShot());
-                } else {
-                    GemTestReporter.addTestStep("Unchecked all the widget ", "Dashboard setting is not updated", STATUS.FAIL, DriverAction.takeSnapShot());
 
+                try{
+                    DriverManager.getWebDriver().findElement(NavBarLocator.Cardname);
+                    GemTestReporter.addTestStep("Unchecked all the widget ", "Dashboard setting is not updated", STATUS.FAIL, DriverAction.takeSnapShot());
+                }catch (Exception e){
+                    GemTestReporter.addTestStep("Unchecked all the widget ", "Dashboard setting is updated", STATUS.PASS, DriverAction.takeSnapShot());
                 }
                 break;
             case "all":
-                Cardpanel = DriverAction.getElements(NavBarLocator.Cardname);
+                CardpanelList = DriverAction.getElements(NavBarLocator.Cardname);
 
-                if (Cardpanel.size() == cardnumber - 1) {
+                if (CardpanelList.size() == cardnumber - 1) {
                     GemTestReporter.addTestStep("checked all the widget ", "All the cards are reappear", STATUS.PASS, DriverAction.takeSnapShot());
                 } else {
                     GemTestReporter.addTestStep("checked all the widget ", "All the cards are not reappear", STATUS.FAIL, DriverAction.takeSnapShot());

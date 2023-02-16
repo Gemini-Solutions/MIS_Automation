@@ -7,11 +7,13 @@ import com.gemini.generic.ui.utils.DriverManager;
 import com.qa.mis.locators.AccountsPortalLocator;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 
 import java.time.Duration;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.concurrent.ThreadPoolExecutor;
 
 public class AccountsPortalSteps {
     public void checkElement(WebElement element) {
@@ -36,6 +38,7 @@ public class AccountsPortalSteps {
             GemTestReporter.addTestStep("Click on SubTab", "Subtab is not clickable", STATUS.FAIL, DriverAction.takeSnapShot());
         }
     }
+
     @And("Verify new tab is open {string}")
     public void verifyNewTabIsOpen(String title) {
         //It's Mandatory
@@ -107,7 +110,11 @@ public class AccountsPortalSteps {
     @Then("Click on login button without entering username and password")
     public void clickOnLoginButtonWithoutEnteringUsernameAndPassword() {
         verifyLoginButton();
-        DriverAction.click(AccountsPortalLocator.loginButton);
+        DriverAction.waitSec(5);
+//        DriverAction.click(AccountsPortalLocator.loginButton);
+        JavascriptExecutor js = (JavascriptExecutor) DriverManager.getWebDriver();
+        js.executeScript("arguments[0].click()", AccountsPortalLocator.loginButton);
+
     }
 
     @And("Verify {string} text is present on the current page")

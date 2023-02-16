@@ -38,7 +38,7 @@ Feature: NavBar
 
     Examples:
       | Technology | Proficiency Level | Skill Type | Tech Experience | Total Work Exp | AlertType | Message                             |
-      | JAVA     | Beginner          | Secondary  | 24              | 2              | Success   | Skills has been saved successfully. |
+      | HTML     | Beginner          | Secondary  | 24              | 2              | Success   | Skills has been saved successfully. |
 
 
   Scenario Outline: Verify Warning Message box when adding duplicate skills
@@ -46,7 +46,6 @@ Feature: NavBar
     And Enter all the details "<Technology>","<Proficiency Level>","<Skill Type>","<Tech Experience>","<Total Work Exp>"
     And Click on Save button
     And Verify popup with message "<AlertType>" and "<Message>"
-
 
     Examples:
       | Technology | Proficiency Level | Skill Type | Tech Experience | Total Work Exp | AlertType | Message                       |
@@ -83,8 +82,3 @@ Feature: NavBar
     Then Verify all check boxes are check
     And Click on Update button
     And Verify "all" card is shown on the dashboard
-
-
-
-
-
