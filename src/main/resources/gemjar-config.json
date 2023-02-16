@@ -9,10 +9,9 @@
   "glueCode": "com.qa.MIS.stepdefinition",
   "feature": "src/main/resources/features",
   "reportName": "MIS_Regression",
-  "emailReport": "null",
+  "emailReport": "N",
   "emailTO": "touqeer.subhani@geminisolutions.com",
-  "emailCC": "",
-  "emailBCC": "",
+  "emailCC": "touqeer.subhani@geminisolutions.com",
   "dev": {
     "browserName": "firefox",
     "launchUrl": "url",

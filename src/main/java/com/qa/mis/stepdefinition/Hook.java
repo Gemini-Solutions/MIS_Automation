@@ -1,4 +1,4 @@
-package com.qa.MIS.stepdefinition;
+package com.qa.mis.stepdefinition;
 
 import com.gemini.generic.exception.GemException;
 import com.gemini.generic.ui.utils.DriverAction;

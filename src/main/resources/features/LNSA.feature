@@ -14,3 +14,5 @@ Feature: LNSA Feature - MIS Automation GemJar
     And User selects Apply LNSA from menu panel
     Then User selects a checkbox of any week present on the page
     And User tries to Submit the LNSA without selecting date
+
+  Scenario: User tries to perform search on Feedback page
