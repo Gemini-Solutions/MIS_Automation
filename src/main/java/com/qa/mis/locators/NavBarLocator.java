@@ -85,7 +85,5 @@ public class NavBarLocator {
     public static By ECDCHierarchycolumns(String columns) {
         return By.xpath("//body[contains(@class,'modal-open')]//tr/th/p[contains(text(),'" + columns + "')]");
     }
-
-
 }
 
