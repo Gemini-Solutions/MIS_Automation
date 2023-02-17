@@ -682,6 +682,44 @@ public class KnowledgeBaseSteps {
     }
 
 
+    @When("navigating to view shared documents page and applying ascending date sort")
+    public void navigating_to_view_shared_documents_page_and_applying_ascending_date_sort() throws InterruptedException {
+        DriverAction.click(KnowledgeBaseLocator.knowledgeBase,"Knowledge Base");
+        DriverAction.click(KnowledgeBaseLocator.viewSharedDocument,"View Documents");
+        Thread.sleep(5000);
+        DriverAction.click(KnowledgeBaseLocator.dateAsc);
+        if(!DriverAction.getElementText(KnowledgeBaseLocator.dateAscEl).equalsIgnoreCase("31-Mar-2015")){
+            Assert.fail();
+        }
+
+
+    }
+    @Then("list is sorted by date ascendingly")
+    public void list_is_sorted_by_date_ascendingly() {
+
+    }
+
+    @When("navigating to view shared documents page and applying descending date sort")
+    public void navigating_to_view_shared_documents_page_and_applying_descending_date_sort() throws InterruptedException {
+        DriverAction.click(KnowledgeBaseLocator.knowledgeBase,"Knowledge Base");
+        DriverAction.click(KnowledgeBaseLocator.viewSharedDocument,"View Documents");
+        Thread.sleep(5000);
+        DriverAction.click(KnowledgeBaseLocator.dateAsc);
+        Thread.sleep(2000);
+        DriverAction.click(KnowledgeBaseLocator.dateAsc);
+        if(!DriverAction.getElementText(KnowledgeBaseLocator.dateAscEl).equalsIgnoreCase("12-Sep-2018")){
+            Assert.fail();
+
+        }
+
+    }
+    @Then("list is sorted by date descendingly")
+    public void list_is_sorted_by_date_descendingly() {
+
+    }
+
+
+
 
 
 

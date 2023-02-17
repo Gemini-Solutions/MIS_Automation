@@ -76,5 +76,6 @@ public class KnowledgeBaseLocator {
     public static By sharedAscEl = By.xpath("//*[@id=\"tblShareDocumentList\"]/tbody/tr[1]/td[2]");
     public static By tagAsc = By.xpath("//*[@id=\"tblShareDocumentList\"]/thead/tr/th[3]");
     public static By tagAscEl = By.xpath("//*[@id=\"tblShareDocumentList\"]/tbody/tr[1]/td[3]");
-
+    public static By dateAsc = By.xpath("//*[@id=\"tblShareDocumentList\"]/thead/tr/th[4]");
+    public static By dateAscEl = By.xpath("//*[@id=\"tblShareDocumentList\"]/tbody/tr[1]/td[4]");
 }

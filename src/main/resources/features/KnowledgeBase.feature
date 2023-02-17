@@ -192,6 +192,18 @@ Feature:   MIS  Automation
     When navigating to view shared documents page and applying descending tag  sort
     Then list is sorted by tag descendingly
 
+  Scenario: Date sort Acsending
+    Given logged in successfully
+    When navigating to view shared documents page and applying ascending date sort
+    Then list is sorted by date ascendingly
+
+  Scenario: Date sort Decsending
+    Given logged in successfully
+    When navigating to view shared documents page and applying descending date sort
+    Then list is sorted by date descendingly
+
+
+
 
 
 
