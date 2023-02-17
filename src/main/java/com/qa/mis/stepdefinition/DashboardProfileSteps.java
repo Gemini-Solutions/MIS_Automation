@@ -58,16 +58,16 @@ public class DashboardProfileSteps {
         //   DriverAction.waitSec(5);
     }
 
-    @When("^click on update address$")
+    @And("^click on update address$")
     public void clickOnUpdateAdd() {
-       try {
-           DriverAction.waitUntilElementAppear(clickOnChangeDetails, 7);
-           DriverAction.click(clickOnChangeDetails, "change details");
-       }catch (Exception e) {
-           e.printStackTrace();
-       }
+//       try {
+//           DriverAction.waitSec(5);
+//           DriverAction.click(clickOnChangeDetails, "change details");
+//       }catch (Exception e) {
+//           e.printStackTrace();
+//       }
        try{
-            DriverAction.waitUntilElementAppear(clickOnUpdateAdd, 2);
+            DriverAction.waitUntilElementAppear(clickOnUpdateAdd, 5);
             DriverAction.click(clickOnUpdateAdd, "update address button");
             //DriverAction.waitSec(10);
         } catch (Exception e) {
@@ -95,18 +95,19 @@ public class DashboardProfileSteps {
         }
     }
 
-    @When("^click on change password$")
+    @And("^click on change password$")
     public void clickOnChangePassword() {
 
 
-        try {
-            DriverAction.waitUntilElementAppear(clickOnChangeDetails, 7);
-            DriverAction.click(clickOnChangeDetails, "update details");
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+//            DriverAction.waitUntilElementAppear(clickOnChangeDetails, 7);
+//            DriverAction.click(clickOnChangeDetails, "update details");
+//        }catch (Exception e) {
+//            e.printStackTrace();
+//        }
         try{
-            DriverAction.waitUntilElementAppear(changePassword, 7);
+            DriverAction.waitSec(3);
+            //DriverAction.waitUntilElementAppear(changePassword, 7);
             DriverAction.click(changePassword, "change password");
 
         } catch (Exception e) {
@@ -132,7 +133,7 @@ public class DashboardProfileSteps {
         //DriverAction.waitSec(10);
     }
 
-    @And("^verify the the password is incorrect$")
+    @Then("^verify the the password is incorrect$")
     public void verifyPasswordIncorrect() {
         DriverAction.getElementText(warning);
         String warng = DriverAction.getElementText(warning);
@@ -154,13 +155,10 @@ public class DashboardProfileSteps {
         }
 
         try {
-            DriverAction.waitUntilElementAppear(changePassword, 8);
+            DriverAction.waitSec(5); //(using this wait is mandatory step gets failled without this wait)
+         //   DriverAction.waitUntilElementAppear(changePassword, 5);
             DriverAction.click(changePassword,"chg passwrd button");
-//            if (DriverAction.isExist(changePassword)) {
-//                DriverAction.click(changePassword, "change password button");
-//            } else {
-//                System.out.println("Element not appears");
-//            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -198,7 +196,8 @@ public class DashboardProfileSteps {
     public void clickOnCloseButton() {
 
         try {
-            DriverAction.waitUntilElementAppear(popUpCloseButton, 4);
+            DriverAction.waitSec(5);
+            //DriverAction.waitUntilElementAppear(popUpCloseButton, 5);
             DriverAction.click(popUpCloseButton, "close button");
             // DriverAction.click(clickOnChangeDetails,"change details button");
         } catch (Exception e) {
@@ -333,6 +332,58 @@ public class DashboardProfileSteps {
             GemTestReporter.addTestStep("Old Password", "Old Password", STATUS.PASS, DriverAction.takeSnapShot());
         }
     }
+
+    @When("click on edit details button")
+    public void clickOnEditDetailsButton() {
+        DriverAction.waitUntilElementAppear(clickOnChangeDetails,2);
+        DriverAction.click(clickOnChangeDetails,"click on edit details button");
+    }
+
+    @When("click on change details button")
+    public void clickOnChangeDetailsButton() {
+        DriverAction.waitUntilElementAppear(clickOnChangeDetails,2);
+        DriverAction.click(clickOnChangeDetails,"click on edit details button");
+    }
+
+    @And("enter mobile number")
+    public void enterMobileNumber() {
+        DriverAction.waitUntilElementAppear(enterMobileNo,2);
+        DriverAction.typeText(enterMobileNo,"123456789");
+    }
+
+    @And("click on update mobile number")
+    public void clickOnUpdateMobileNumber() {
+        DriverAction.waitUntilElementAppear(updateMobileNo,2);
+        DriverAction.click(updateMobileNo,"click on update mobile no. button");
+    }
+
+
+    @Then("verify invalid phone number")
+    public void verifyInvalidPhoneNumber() {
+        DriverAction.waitUntilElementAppear(invalidPhNumber,2);
+        DriverAction.getElementText(invalidPhNumber);
+        String invalidNo = DriverAction.getElementText(warning);
+        if (invalidNo.equals("Warning")) {
+            GemTestReporter.addTestStep("warning", "Please put 10 digit mobile number.", STATUS.PASS, DriverAction.takeSnapShot());
+        }
+    }
+
+    @And("enter extension number")
+    public void enterExtensionNumber() {
+        DriverAction.waitUntilElementAppear(enterExtNo,2);
+        DriverAction.typeText(enterExtNo,"11");
+    }
+
+    @Then("verify invalid ext number")
+    public void verifyInvalidExtNumber() {
+        DriverAction.waitUntilElementAppear(invalidPhNumber,2);
+        DriverAction.getElementText(invalidPhNumber);
+        String invalidNo = DriverAction.getElementText(warning);
+        if (invalidNo.equals("Warning")) {
+            GemTestReporter.addTestStep("warning", "Extension number should only be 3 digits.", STATUS.PASS, DriverAction.takeSnapShot());
+        }
+    }
 }
+
 
 

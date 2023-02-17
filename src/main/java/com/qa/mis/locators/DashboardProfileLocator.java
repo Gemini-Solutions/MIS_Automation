@@ -15,6 +15,7 @@ public class DashboardProfileLocator {
     public static By contactNo =By.xpath("//input[@id='contactNo']");
     public static By enterExtNo = By.id("extnNo");
 
+   // public static By editDetails=By.xpath("//i[@class='fa fa-edit']");
     public static By clickOnUpdate = By.xpath("//button[@id='btnUpdate']");
 
     // public static By clickOnUpdate = By.xpath("//button[@id='btnUpdate']");
@@ -29,7 +30,7 @@ public class DashboardProfileLocator {
 
     public static By invalidPincode = By.xpath("//div[@class='sweet-alert  showSweetAlert visible']");
 
-    public static By warning = By.xpath("//h2[text()=\"Warning\"]");
+    public static By warning = By.xpath("//h2[text()='Warning']");
 
     public static By changePassword= By.xpath("//span[text()='Change Password']");
 
@@ -60,5 +61,12 @@ public class DashboardProfileLocator {
     public static By selectLocation=By.xpath("//li[text()='Canaan Tower']");
 
     public static By addLunchButton=By.xpath("//button[@id='BtnsaveDateforLunch']");
+
+    public static By enterMobileNo=By.xpath("//input[@id='contactNo']");
+
+    public static By invalidPhNumber=By.xpath("//div[@class='sweet-alert  showSweetAlert visible']");
+    public static By updateMobileNo=By.xpath("//button[@id='btnUpdate']");
+
+   // public static By enterExtNo=By.xpath("//input[@id='extnNo']");
 
 }

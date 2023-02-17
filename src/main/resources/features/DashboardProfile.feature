@@ -14,8 +14,21 @@ Feature: MIS_Automation
     Then click on SignIn button
     Then click on close button
 
-  Scenario: click on mobile details
-    When Enter mobile number and ext number
+    Scenario: user enter invalid phone number
+      When click on edit details button
+      And enter mobile number
+      And click on update mobile number
+      Then verify invalid phone number
+
+      Scenario: user enters invalid extension number
+        When click on edit details button
+        And enter extension number
+        And click on update mobile number
+        Then verify invalid ext number
+
+
+  #Scenario: click on mobile details
+   #When Enter mobile number and ext number
      # Then click on update
 
     ##  Scenario: user enter invalid pincode
@@ -23,17 +36,20 @@ Feature: MIS_Automation
       ##  When enter address in the update address tab
 
   Scenario:user enter invalid pincode
-    When click on update address
+    When click on edit details button
+    And click on update address
     And enter pinCode
     Then verify invalid pincode
 
   Scenario: user leaves Pin Code field blank
-    When click on update address
+    When click on edit details button
+    And click on update address
     And click on pincode
     Then verify pincode is blank
 
   Scenario: user enters Incorrect Password
-    When click on change password
+    When click on edit details button
+    And click on change password
     And enter old password
     Then verify the the password is incorrect
 
@@ -42,7 +58,8 @@ Feature: MIS_Automation
     Then verify password not match
 
   Scenario: User not fills a field in Change Password section
-    When click on change password
+    When click on edit details button
+    And click on change password
     And click on update password
     Then verify password is blank
 
