@@ -11,7 +11,6 @@
   "emailReport": "null",
   "emailTO": "false",
   "emailCC": "",
-
   "dev": {
     "browserName": "firefox",
     "launchUrl": "https://mymis.geminisolutions.com/",

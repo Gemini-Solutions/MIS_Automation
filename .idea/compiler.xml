@@ -10,8 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="MIS_Automation" target="1.8" />
-
+      <module name="MIS_Automation" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>

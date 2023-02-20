@@ -24,15 +24,18 @@ Feature: AppraisalManagement
     Then Verify Add new KPI-KRA mapping button
 
 
-#    Scenario will be automated later
-#  Scenario: Verify export button functionality
-#    Given Verify button is enabled and clickable
-#    Then Click on Copy option and  and paste it in notepad
-#    Then Click on Excel option and check excel file is downloaded
-#    Then Click on PDF option and check pdf file is downloaded
-#    Then Click on Print option and check print window open in new tab
-#    Then Close Print window
-#    Then Check number of pages in dropdown
+  Scenario: Verify export button functionality
+    When Click on Appraisal Management link
+    Then Click on Add Goals link
+    Then Verify Add goal window
+    And Verify My Goal tab
+    Given Verify button is enabled and clickable
+   # Then Click on Copy option and  and paste it in notepad
+    Then Click on Excel option and check excel file is downloaded
+    Then Click on PDF option and check pdf file is downloaded
+    Then Click on Print option and check print window open in new tab
+    Then Close Print window
+    Then Check number of pages in dropdown
 
   Scenario: Verify searches
     When Click on Appraisal Management link
@@ -65,5 +68,4 @@ Feature: AppraisalManagement
     Then Click on close button of newly added KPI
     Then Click on submit button
     Then Verify Success Popup appeared on screen and click on Ok button
-
 

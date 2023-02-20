@@ -1,8 +1,8 @@
-package com.qa.MIS.Locators;
+package com.qa.mis.locators;
 
 import org.openqa.selenium.By;
 
-public class Locator {
+public class AppraisalManagementLocator {
 
     //login screen
     public static By txtUserName = By.xpath("//input[@id='username']");
@@ -15,7 +15,6 @@ public class Locator {
     public static By lnkApraisalMgmnt = By.xpath("//span[contains(text(),'Appraisal Management')]");
     public static By lnkAddGoals = By.xpath("//span[contains(text(),'Add Goals')]");
     public static By tableGoalSet = By.xpath("//table[@id='tblSelfGoalList']");
-    public static By btnExport = By.xpath("//span[contains(text(),'Export')]");
     public static By addGoalsWindow = By.xpath("//h5[contains(text(),'Add My Goal/Team Goal')]");
     public static By tabMyGoal = By.xpath("//span[contains(text(),'My Goal')]");
     public static By lnkKRA_KPI = By.xpath("//a[contains(text(),'List of KRAs and KPIs')]");
@@ -36,12 +35,15 @@ public class Locator {
     public static By titleAddGoal = By.xpath("(//h4[@id='modalTitle' and contains(text(),'Add goal')])[2]");
     public static By kRAList = By.xpath("//li[@class='select2-results__option']");
     public static By KPISuccessOK = By.xpath("//button[@class='confirm btn btn-lg btn-primary' and contains(text(),'OK')]");
-
     // Verify searches
 
     public static By btnSearch = By.xpath("//input[@type='search']");
     public static By tableRowCount = By.xpath("//tbody//tr[@role='row']");
     public static By searchEntriesCount = By.xpath("//div[@id='tblSelfGoalList_info']");
+    //Export button functionality
+    public static By btnExport = By.xpath("//span[contains(text(),'Export')]");
+    public static By lstExport = By.xpath("//div[@class='dt-button-collection']//a");
+
 
 }
 
