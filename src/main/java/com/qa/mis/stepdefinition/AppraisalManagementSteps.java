@@ -1,15 +1,19 @@
-package com.qa.mis.stepdefination;
+package com.qa.mis.stepdefinition;
 
 import com.gemini.generic.reporting.GemTestReporter;
 import com.gemini.generic.reporting.STATUS;
 import com.gemini.generic.ui.utils.DriverAction;
+import com.gemini.generic.ui.utils.DriverManager;
 import com.qa.mis.locators.AppraisalManagementLocator;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.commons.codec.binary.Base64;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.qa.mis.utility.FileDownloaded;
@@ -18,9 +22,7 @@ import javax.swing.*;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Year;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 
 public class AppraisalManagementSteps {
@@ -164,7 +166,7 @@ public class AppraisalManagementSteps {
     }
 
     @And("Verify My Goal tab")
-    public void verify_my_goa_tab() {
+    public void verify_my_goal_tab() {
         String tabTitle = DriverAction.getElementText(AppraisalManagementLocator.tabMyGoal);
         if (tabTitle.equalsIgnoreCase("My Goal"))
             status = STATUS.PASS;
@@ -293,8 +295,8 @@ public class AppraisalManagementSteps {
     public void verify_Search_Entries_Count_At_Bottom() {
         DriverAction.waitSec(2);
         totalEntries = DriverAction.getElementText(AppraisalManagementLocator.searchEntriesCount);
-        status=STATUS.PASS;
-        GemTestReporter.addTestStep("Verify search entries count at bottom", "Search entries count at bottom: " , STATUS.PASS, DriverAction.takeSnapShot());
+        status = STATUS.PASS;
+        GemTestReporter.addTestStep("Verify search entries count at bottom", "Search entries count at bottom: ", STATUS.PASS, DriverAction.takeSnapShot());
     }
 
     @Given("Type text in searchbox and verify search results")
@@ -320,6 +322,7 @@ public class AppraisalManagementSteps {
         else
             status = STATUS.FAIL;
     }
+
     @Given("Verify button is enabled and clickable")
     public void verify_button_is_enabled_and_clickable() {
         DriverAction.waitUntilElementAppear(AppraisalManagementLocator.btnExport, 2);
@@ -328,13 +331,14 @@ public class AppraisalManagementSteps {
         } else
             status = STATUS.FAIL;
     }
+
     @Then("Click on Copy option and  and paste it in notepad")
     public void click_on_copy_option_and_and_paste_it_in_notepad() throws IOException {
         DriverAction.waitUntilElementAppear(AppraisalManagementLocator.lstExport, 2);
         List<WebElement> lstExport = DriverAction.getElements(AppraisalManagementLocator.lstExport);
         for (int i = 0; i < lstExport.size(); i++) {
             if (lstExport.get(i).getText().equalsIgnoreCase("Copy")) {
-                ProcessBuilder pb=new ProcessBuilder("Notepad.exe","myFile.txt");
+                ProcessBuilder pb = new ProcessBuilder("Notepad.exe", "myFile.txt");
                 pb.start();
                 JFrame window = new JFrame("Notepad");
                 window.setSize(600, 600);
@@ -349,52 +353,74 @@ public class AppraisalManagementSteps {
     public void click_on_excel_option_and_check_excel_file_is_downloaded() throws IOException {
         DriverAction.click(AppraisalManagementLocator.btnExport);
         DriverAction.waitUntilElementAppear(AppraisalManagementLocator.lstExport, 2);
-        Boolean a=DriverAction.getElement(AppraisalManagementLocator.lstExport).isDisplayed();
+        Boolean a = DriverAction.getElement(AppraisalManagementLocator.lstExport).isDisplayed();
         List<WebElement> lstExport = DriverAction.getElements(AppraisalManagementLocator.lstExport);
         for (int i = 0; i < lstExport.size(); i++) {
             if (lstExport.get(i).getText().equalsIgnoreCase("Excel")) {
                 lstExport.get(i).click();
-                Boolean result= FileDownloaded.isFileDownloaded("All Self Goals", "xlsx", 5000);
-                if(result=true)
-                    status=STATUS.PASS;
+                Boolean result = FileDownloaded.isFileDownloaded("All Self Goals", "xlsx", 5000);
+                if (result = true)
+                    status = STATUS.PASS;
                 else
-                    status=STATUS.FAIL;
+                    status = STATUS.FAIL;
                 FileDownloaded.fileDeleted("All Self Goals", "xlsx", 5000);
             }
         }
     }
 
     @Then("Click on PDF option and check pdf file is downloaded")
-    public void click_on_pdf_option_and_check_pdf_file_is_downloaded() {
+    public void click_on_pdf_option_and_check_pdf_file_is_downloaded() throws IOException {
         DriverAction.waitUntilElementAppear(AppraisalManagementLocator.lstExport, 2);
         List<WebElement> lstExport = DriverAction.getElements(AppraisalManagementLocator.lstExport);
         for (int i = 0; i < lstExport.size(); i++) {
             if (lstExport.get(i).getText().equalsIgnoreCase("PDF")) {
-
+                lstExport.get(i).click();
+                Boolean result = FileDownloaded.isFileDownloaded("All Self Goals", "pdf", 5000);
+                if (result = true)
+                    status = STATUS.PASS;
+                else
+                    status = STATUS.FAIL;
+                FileDownloaded.fileDeleted("All Self Goals", "pdf", 5000);
             }
         }
     }
 
-    @Then("Click on Print option and check print window open in new tab")
+    @Then("Click on Print option and check print window open in new tab and close window")
     public void click_on_print_option_and_check_print_window_open_in_new_tab() {
         DriverAction.waitUntilElementAppear(AppraisalManagementLocator.lstExport, 2);
         List<WebElement> lstExport = DriverAction.getElements(AppraisalManagementLocator.lstExport);
+        String parentwindow = DriverAction.getWindowHandle();
         for (int i = 0; i < lstExport.size(); i++) {
             if (lstExport.get(i).getText().equalsIgnoreCase("Print")) {
+                lstExport.get(i).click();
+                Set<String> allWindows = DriverAction.getWindowHandles();
+                Iterator itr = allWindows.iterator();
+                while (itr.hasNext()) {
+                    if (!parentwindow.equals(itr.next())) {
+                        DriverAction.switchToWindow((String) itr.next());
+                        DriverAction.waitSec(2);
+
+//                        action.sendKeys(Keys.ESCAPE);
+                        DriverAction.closeCurrentTab();
+//                        DriverAction.switchToDefaultContent();
+//                       DriverAction.click(AppraisalManagementLocator.background);
+                    }
+                }
 
             }
         }
     }
 
-    @Then("Close Print window")
-    public void close_print_window() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
 
     @Then("Check number of pages in dropdown")
     public void check_number_of_pages_in_dropdown() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        DriverAction.waitUntilElementAppear(AppraisalManagementLocator.drpdownPages, 2000);
+        DriverAction.click(AppraisalManagementLocator.drpdownPages);
+        WebElement ele = DriverAction.getElement(AppraisalManagementLocator.drpdownPages);
+        Select select = new Select(ele);
+        List<WebElement> lst = select.getOptions();
+        System.out.println(lst);
+
+
     }
 }

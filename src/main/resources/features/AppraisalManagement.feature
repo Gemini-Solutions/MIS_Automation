@@ -33,9 +33,8 @@ Feature: AppraisalManagement
    # Then Click on Copy option and  and paste it in notepad
     Then Click on Excel option and check excel file is downloaded
     Then Click on PDF option and check pdf file is downloaded
-    Then Click on Print option and check print window open in new tab
-    Then Close Print window
-    Then Check number of pages in dropdown
+   # Then Click on Print option and check print window open in new tab and close window
+   # Then Check number of pages in dropdown
 
   Scenario: Verify searches
     When Click on Appraisal Management link

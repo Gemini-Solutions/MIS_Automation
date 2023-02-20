@@ -43,7 +43,7 @@ public class AppraisalManagementLocator {
     //Export button functionality
     public static By btnExport = By.xpath("//span[contains(text(),'Export')]");
     public static By lstExport = By.xpath("//div[@class='dt-button-collection']//a");
-
-
+    public static By drpdownPages = By.xpath("//select[@name='tblSelfGoalList_length']");
+    public static By background = By.xpath(" //div[@class='dt-button-background']");
 }
 
