@@ -26,7 +26,7 @@ public class MySkillsSteps {
     @Given("User scrolls to skills view")
     public void userScrollsToSkills() {
         try {
-            DriverAction.waitUntilElementAppear(MySkillsLocator.skillsUpdated, 4);
+            DriverAction.waitSec(7);
             DriverAction.scrollIntoView(MySkillsLocator.skillsUpdated);
         } catch (Exception e) {
             GemTestReporter.addTestStep("User scrolls to skills view area", "Scrolling is unsuccessful", STATUS.FAIL);
