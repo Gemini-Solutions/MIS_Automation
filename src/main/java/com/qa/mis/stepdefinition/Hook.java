@@ -6,9 +6,10 @@ import com.gemini.generic.ui.utils.DriverManager;
 import io.cucumber.java.Before;
 
 public class Hook {
-    @Before (order = 1000)
-    public void start() throws GemException {
+
+    @Before    public void start() throws GemException {
         DriverManager.setUpBrowser();
+        DriverAction.setImplicitTimeOut(2000);
         DriverAction.maximizeBrowser();
     }
 }
