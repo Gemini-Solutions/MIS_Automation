@@ -48,7 +48,7 @@ public class MySkillsSteps {
     @Given("User clicks on user image button")
     public void userClicksOnUserImgButton() {
         try {
-            DriverAction.waitSec(6);
+            DriverAction.waitSec(7);
             DriverAction.click(MySkillsLocator.userImg);
         } catch (Exception e) {
             GemTestReporter.addTestStep("User clicks on user image", "Click is Unsuccessful", STATUS.FAIL);

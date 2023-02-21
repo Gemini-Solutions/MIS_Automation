@@ -69,7 +69,7 @@ Feature: Forms Automation
       | parentTab | childTab  |
       | Forms     | View Form |
 
-#####################################myForms############################################
+######################################myForms############################################
 
   Scenario Outline: User opens my forms page
     When  User clicks on the "<parentTab>" and "<childTab>"

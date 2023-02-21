@@ -68,7 +68,7 @@ public class FormsSteps {
     @Given("User clicks on tab {string} and {string}")
     public void userClicksOnTabAnd(String form, String viewForm) {
         if (DriverAction.isExist(FormsLocator.forms)) {
-            DriverAction.waitSec(5);
+            DriverAction.waitSec(7);
             DriverAction.click(FormsLocator.forms);
             DriverAction.isExist(FormsLocator.viewForm);
             DriverAction.click(FormsLocator.viewForm);
@@ -209,7 +209,7 @@ public class FormsSteps {
     @Given("User clicks on the {string} and {string}")
     public void userClicksOnTheAnd(String forms, String myForms) {
         if(DriverAction.isExist(FormsLocator.forms)){
-            DriverAction.waitSec(5);
+            DriverAction.waitSec(7);
             DriverAction.click(FormsLocator.forms);
             DriverAction.isExist(FormsLocator.myForms);
             DriverAction.click(FormsLocator.myForms);
@@ -233,9 +233,9 @@ public class FormsSteps {
     @When("User clicks on upload button")
     public void userClicksOnUploadBtn() {
         try {
-            DriverAction.waitSec(5);
+            DriverAction.waitSec(7);
             DriverAction.click(FormsLocator.uploadBtn);
-            DriverAction.setImplicitTimeOut(5);
+            DriverAction.setImplicitTimeOut(7);
         } catch (Exception e) {
             GemTestReporter.addTestStep("User clicks on upload button", "Upload is Unsuccessful", STATUS.FAIL);
 
