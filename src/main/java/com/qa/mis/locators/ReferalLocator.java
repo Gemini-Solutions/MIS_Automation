@@ -27,7 +27,8 @@ public class ReferalLocator {
 
     public static By pdfVisible = By.xpath("//div[@id='viewDocumentModal']");
 
-    public static By manualVisible = By.xpath("//a[text()='Manual']");
+    public static By manualVisible = By.xpath("//a[@onclick='showStepsPopup()']");
+        //    By.xpath("//a[text()='Manual']");
 
     public static By resumeUpload = By.xpath("//input[@id='resume']");
 
