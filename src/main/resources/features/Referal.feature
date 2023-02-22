@@ -18,10 +18,6 @@ Feature: MIS
         And enter the correct email
         And enter the correct contact number
 
-      #  And enter contact number
-
-
-
   Scenario: Validation of wrong email pop up
           When user checks referral section
           And user click on referral action

@@ -41,7 +41,8 @@ public class ReferalStep {
     public void clickOnCloseButton() {
 
         try {
-            DriverAction.waitUntilElementAppear(popUpCloseButton, 7);
+          //  DriverAction.waitUntilElementAppear(popUpCloseButton, 7);
+            DriverAction.waitSec(5);
             DriverAction.click(popUpCloseButton, "close button");
             // DriverAction.click(clickOnChangeDetails,"change details button");
         } catch (Exception e) {
@@ -112,7 +113,8 @@ public class ReferalStep {
     @And("^click on name under referral$")
     public void clickOnNameUnderReferral() {
         try {
-            DriverAction.waitUntilElementAppear(refName, 5);
+            //DriverAction.waitUntilElementAppear(refName, 5);
+            DriverAction.waitSec(5);
             DriverAction.click(refName,"click on referal name");
             DriverAction.waitSec(3);
             DriverAction.typeText(refName, "Sahra");
@@ -150,26 +152,30 @@ public class ReferalStep {
 
     @And("^click on email under referral$")
     public void clickOnEmailUnderReferral() {
-        DriverAction.waitUntilElementAppear(refEmail, 3);
+        //DriverAction.waitUntilElementAppear(refEmail, 3);
+        DriverAction.waitSec(5);
         DriverAction.click(refEmail, "referral email text");
     }
 
     @And("^enter the email address$")
     public void enterTheEmailAddress() {
-        DriverAction.waitUntilElementAppear(refEmail, 2);
+      //  DriverAction.waitUntilElementAppear(refEmail, 2);
+        DriverAction.waitSec(5);
         DriverAction.typeText(refEmail, "abcde");
     }
 
     @And("^click on save$")
     public void clickOnSave() {
-        DriverAction.waitUntilElementAppear(refSaveButton, 2);
+       // DriverAction.waitUntilElementAppear(refSaveButton, 2);
+        DriverAction.waitSec(5);
         DriverAction.click(refSaveButton, "click on save button under referral");
     }
 
     @Then("^verify the warning message in ref section$")
     public void verifyTheWarningMessageInRefSection() {
         try {
-            DriverAction.waitUntilElementAppear(refWarning, 2);
+            //DriverAction.waitUntilElementAppear(refWarning, 2);
+            DriverAction.waitSec(5);
             DriverAction.getElementText(refWarning);
             String referralWarning = DriverAction.getElementText(refWarning);
             if (referralWarning.equals(refWarning)) {
@@ -185,7 +191,8 @@ public class ReferalStep {
     @And("click on FAQ")
     public void clickOnFAQ() {
         try {
-            DriverAction.waitUntilElementAppear(clickFAQ, 3);
+           // DriverAction.waitUntilElementAppear(clickFAQ, 3);
+            DriverAction.waitSec(5);
             DriverAction.click(clickFAQ, "click on FAQ");
 
         } catch (Exception e) {
@@ -195,7 +202,8 @@ public class ReferalStep {
 
     @Then("verify the pdf is visible")
     public void verifyThePdfIsVisible() {
-        DriverAction.waitUntilElementAppear(pdfVisible, 10);
+        //DriverAction.waitUntilElementAppear(pdfVisible, 10);
+        DriverAction.waitSec(5);
         DriverAction.isExist(pdfVisible);
         GemTestReporter.addTestStep("pdf visible", "pdf opens and visible", STATUS.PASS, DriverAction.takeSnapShot());
     }
