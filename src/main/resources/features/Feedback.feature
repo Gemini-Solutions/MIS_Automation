@@ -31,5 +31,5 @@ Feature: Feedback Feature - MIS Automation GemJar
     And User clicks on the Export button
 
   Scenario: User tries to view an existing feedback on Feedback Page
-    Then User clicks on the View icon of the Feedback page
+    Then User clicks on the View icon
     And User verifies that the View Feedback pop-up appears
