@@ -32,25 +32,30 @@ public class ReferalStep {
 
     @And("^click on SignIn button referal$")
     public void signIn() {
-        DriverAction.waitUntilElementAppear(signIn, 2);
-        DriverAction.click(signIn);
-        DriverAction.waitSec(10);
-    }
-
-    @Then("^click on close button referal$")
-    public void clickOnCloseButton() {
-
         try {
-          //  DriverAction.waitUntilElementAppear(popUpCloseButton, 7);
+            //DriverAction.waitUntilElementAppear(signIn, 2);
             DriverAction.waitSec(5);
-            DriverAction.click(popUpCloseButton, "close button");
-            // DriverAction.click(clickOnChangeDetails,"change details button");
+            DriverAction.click(signIn);
+            DriverAction.waitSec(10);
         } catch (Exception e) {
-           // e.printStackTrace();
-            GemTestReporter.addTestStep("ERROR", "SOME ERROR OCCURRED" + e, STATUS.FAIL);
+            GemTestReporter.addTestStep("ERROR", "SOME ERROR OCCURRED" + e, STATUS.FAIL, DriverAction.takeSnapShot());
         }
-
     }
+
+        @Then("^click on close button referal$")
+        public void clickOnCloseButton () {
+
+            try {
+                //  DriverAction.waitUntilElementAppear(popUpCloseButton, 7);
+                DriverAction.waitSec(5);
+                DriverAction.click(popUpCloseButton, "close button");
+                // DriverAction.click(clickOnChangeDetails,"change details button");
+            } catch (Exception e) {
+                // e.printStackTrace();
+                GemTestReporter.addTestStep("ERROR", "SOME ERROR OCCURRED" + e, STATUS.FAIL, DriverAction.takeSnapShot());
+            }
+
+        }
 
     @When("^verify dashboard page is loaded properly$")
     public void dashboardPageIsLoadedProperly() {
@@ -63,7 +68,7 @@ public class ReferalStep {
                 DriverAction.waitSec(10);
             }
         } catch (Exception e) {
-            GemTestReporter.addTestStep("ERROR", "SOME ERROR OCCURRED" + e, STATUS.FAIL);
+            GemTestReporter.addTestStep("ERROR", "SOME ERROR OCCURRED" + e, STATUS.FAIL,DriverAction.takeSnapShot());
         }
     }
 
@@ -78,7 +83,7 @@ public class ReferalStep {
                 DriverAction.waitUntilElementAppear(verifyJdWindow, 2);
             }
         } catch (Exception e) {
-            GemTestReporter.addTestStep("ERROR", "SOME ERROR OCCURRED" + e, STATUS.FAIL);
+            GemTestReporter.addTestStep("ERROR", "SOME ERROR OCCURRED" + e, STATUS.FAIL,DriverAction.takeSnapShot());
         }
     }
 

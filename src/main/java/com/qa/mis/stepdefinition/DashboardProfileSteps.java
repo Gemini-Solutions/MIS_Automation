@@ -71,7 +71,7 @@ public class DashboardProfileSteps {
 //           e.printStackTrace();
 //       }
         try {
-           //DriverAction.waitUntilElementAppear(clickOnUpdateAdd, 5);
+            //DriverAction.waitUntilElementAppear(clickOnUpdateAdd, 5);
             DriverAction.waitSec(5);
             DriverAction.click(clickOnUpdateAdd, "update address button");
             //DriverAction.waitSec(10);
@@ -113,12 +113,6 @@ public class DashboardProfileSteps {
     public void clickOnChangePassword() {
 
 
-//        try {
-//            DriverAction.waitUntilElementAppear(clickOnChangeDetails, 7);
-//            DriverAction.click(clickOnChangeDetails, "update details");
-//        }catch (Exception e) {
-//            e.printStackTrace();
-//        }
         try {
             DriverAction.waitSec(3);
             //DriverAction.waitUntilElementAppear(changePassword, 7);
@@ -133,10 +127,7 @@ public class DashboardProfileSteps {
 
     @And("^enter old password$")
     public void enterOldPassword() {
-            /*DriverAction.click(popUpCloseButton,"window close button");
-            DriverAction.waitSec(3);
-            DriverAction.click(clickOnChangeDetails,"update details");
-            DriverAction.waitSec(10);*/
+
         try {
             DriverAction.typeText(enterOldPassword, "12345");
             DriverAction.waitUntilElementAppear(newPassword, 3);
@@ -171,32 +162,28 @@ public class DashboardProfileSteps {
     public void enterNewPasswordAndConfirmPassword() {
 
         try {
-            DriverAction.waitUntilElementAppear(clickOnChangeDetails, 7);
+            //DriverAction.waitUntilElementAppear(clickOnChangeDetails, 7);
+            DriverAction.waitSec(5);
             DriverAction.click(clickOnChangeDetails, "change details button");
-        } catch (Exception e) {
-            // e.printStackTrace();
-            GemTestReporter.addTestStep("ERROR", "SOME ERROR OCCURRED" + e, STATUS.FAIL);
-        }
 
-        try {
             DriverAction.waitSec(5); //(using this wait is mandatory step gets failled without this wait)
             //   DriverAction.waitUntilElementAppear(changePassword, 5);
             DriverAction.click(changePassword, "chg passwrd button");
 
+            // DriverAction.waitUntilElementAppear(newPassword, 2);
+            DriverAction.waitSec(5);
+            DriverAction.typeText(newPassword, "Gemini");
+            //DriverAction.waitUntilElementAppear(confirmPassword, 2);
+            DriverAction.waitSec(5);
+            DriverAction.typeText(confirmPassword, "Gemini123");
+            // DriverAction.waitUntilElementAppear(updatePassword, 2);
+            DriverAction.waitSec(5);
+            DriverAction.click(updatePassword, "update button");
+
         } catch (Exception e) {
             // e.printStackTrace();
             GemTestReporter.addTestStep("ERROR", "SOME ERROR OCCURRED" + e, STATUS.FAIL);
         }
-        // DriverAction.waitUntilElementAppear(newPassword, 2);
-        DriverAction.waitSec(5);
-        DriverAction.typeText(newPassword, "Gemini");
-        //DriverAction.waitUntilElementAppear(confirmPassword, 2);
-        DriverAction.waitSec(5);
-        DriverAction.typeText(confirmPassword, "Gemini123");
-        // DriverAction.waitUntilElementAppear(updatePassword, 2);
-        DriverAction.waitSec(5);
-        DriverAction.click(updatePassword, "update button");
-
     }
 
     @And("^click on update password$")
@@ -214,8 +201,7 @@ public class DashboardProfileSteps {
 
     @Then("^verify password not match$")
     public void verifyPasswordNotMatch() {
-        //DriverAction.click(passwordNotMatch);
-        // DriverAction.getElementText(passwordNotMatch)
+
         try {
             String pswrdNotmatch = DriverAction.getElementText(passwordNotMatch);
             if (pswrdNotmatch.equals("Password and confirm password does not match")) ;
