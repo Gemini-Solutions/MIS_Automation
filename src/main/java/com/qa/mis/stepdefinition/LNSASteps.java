@@ -57,6 +57,7 @@ public class LNSASteps {
         try {
             DriverAction.waitUntilElementAppear(LNSA_FeedbackLocator.LNSA_APPLY_LNSA, 5);
             DriverAction.click(LNSA_FeedbackLocator.LNSA_APPLY_LNSA);
+            DriverAction.waitSec(3);
         } catch (Exception e) {
             logger.info("Unable to find LNSA Home and unable to click on it");
             Assert.fail("Unable to find LNSA Home and unable to click on it");
@@ -171,8 +172,10 @@ public class LNSASteps {
 
     @And("^User enters the reason for LNSA submission$")
     public void userEntersTheReasonForLNSASubmission() {
-        if (DriverAction.isExist(LNSA_FeedbackLocator.LNSA_REASON_POPUP)) {
+        if (DriverAction.isExist(LNSA_FeedbackLocator.LNSA_REASON_TXTBOX)) {
             logger.info("Pop-up to enter reason for LNSA is available");
+            DriverAction.waitUntilElementAppear(LNSA_FeedbackLocator.LNSA_REASON_TXTBOX,3);
+            FeedbackSteps.userClicks("lnsareasontextbox");
             DriverAction.typeText(LNSA_FeedbackLocator.LNSA_REASON_TXTBOX, "This is a reason entered by test-automation");
         } else {
             logger.info("Unable to find Reson pop up.");
@@ -180,7 +183,7 @@ public class LNSASteps {
         }
     }
 
-    @Then("User clicks on the \"(.*?)\" of Reason pop-up")
+    @Then("^User clicks on the \"(.*?)\" of Reason pop-up$")
     public void userClicksOnTheSubmitOfReasonPopUp(String buttonsOfReason) {
         switch (buttonsOfReason) {
             case "Submit":

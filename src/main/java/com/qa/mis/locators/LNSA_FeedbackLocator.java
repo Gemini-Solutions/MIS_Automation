@@ -21,10 +21,10 @@ public class LNSA_FeedbackLocator {
     public static By LNSA_SUBMIT_BUTTON = By.xpath("//button[@id = 'btnReasonPop']");
     public static By LNSA_OK_BUTTON = By.xpath("//button[text() = 'OK']");
     public static By LNSA_WEEK_SELECT = By.xpath("(//input[contains(@id,'selectAll')])[3]");
-    public static By LNSA_ANY_DAY_SELECT = By.xpath("(//div[@class='lnsaNotApplied']");
+    public static By LNSA_ANY_DAY_SELECT = By.xpath("//div[@class='lnsaNotApplied']");
     public static By LNSA_WARNING_POP = By.xpath("//h2[text() = 'Warning']");
     public static By LNSA_REASON_POPUP = By.xpath("//h2[text() = 'Warning']");
-    public static By LNSA_REASON_TXTBOX = By.id("txtLnsaReason");
+    public static By LNSA_REASON_TXTBOX = By.xpath("//div[@class='modal-content']//textarea");
     public static By LNSA_REASON_SUBMIT_BTN = By.xpath("//div[@class='modal-footer']//button[contains(text(), 'Submit')]");
     public static By LNSA_REASON_CANCEL_BTN = By.xpath("//div[@class='modal-footer']//button[@data-dismiss='modal']");
     public static By LNSA_REQUEST_TAB = By.xpath("//li[@class='active']//span[contains(text(), 'View Request')]");
