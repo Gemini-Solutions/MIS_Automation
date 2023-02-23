@@ -38,7 +38,7 @@ public class ReferalStep {
             DriverAction.click(signIn);
             DriverAction.waitSec(10);
         } catch (Exception e) {
-            GemTestReporter.addTestStep("ERROR", "SOME ERROR OCCURRED" + e, STATUS.FAIL, DriverAction.takeSnapShot());
+            GemTestReporter.addTestStep("ERROR", "SignIn error occured" + e, STATUS.FAIL, DriverAction.takeSnapShot());
         }
     }
 
@@ -52,7 +52,7 @@ public class ReferalStep {
                 // DriverAction.click(clickOnChangeDetails,"change details button");
             } catch (Exception e) {
                 // e.printStackTrace();
-                GemTestReporter.addTestStep("ERROR", "SOME ERROR OCCURRED" + e, STATUS.FAIL, DriverAction.takeSnapShot());
+                GemTestReporter.addTestStep("ERROR", "close button error occured" + e, STATUS.FAIL, DriverAction.takeSnapShot());
             }
 
         }

@@ -77,7 +77,7 @@ public class DashboardProfileSteps {
             //DriverAction.waitSec(10);
         } catch (Exception e) {
             // e.printStackTrace();
-            GemTestReporter.addTestStep("ERROR", "SOME ERROR OCCURRED" + e, STATUS.FAIL);
+            GemTestReporter.addTestStep("ERROR", "click on update add error occuredgit" + e, STATUS.FAIL);
         }
     }
 
@@ -91,7 +91,7 @@ public class DashboardProfileSteps {
             DriverAction.click(updateButtonAdd, "update button in add tab");
             //DriverAction.waitSec(7);
         } catch (Exception e) {
-            GemTestReporter.addTestStep("ERROR", "SOME ERROR OCCURRED" + e, STATUS.FAIL);
+            GemTestReporter.addTestStep("ERROR", "click on pincode error occured" + e, STATUS.FAIL);
         }
     }
 
@@ -105,7 +105,7 @@ public class DashboardProfileSteps {
                 GemTestReporter.addTestStep("warning", "warningText", STATUS.PASS, DriverAction.takeSnapShot());
             }
         } catch (Exception e) {
-            GemTestReporter.addTestStep("ERROR", "SOME ERROR OCCURRED" + e, STATUS.FAIL);
+            GemTestReporter.addTestStep("ERROR", "enter invalid pincode error occured" + e, STATUS.FAIL);
         }
     }
 
@@ -120,7 +120,7 @@ public class DashboardProfileSteps {
 
         } catch (Exception e) {
             // e.printStackTrace();
-            GemTestReporter.addTestStep("ERROR", "SOME ERROR OCCURRED" + e, STATUS.FAIL);
+            GemTestReporter.addTestStep("ERROR", "change password error occured" + e, STATUS.FAIL);
         }
 
     }
