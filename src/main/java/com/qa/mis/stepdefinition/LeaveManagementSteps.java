@@ -247,7 +247,7 @@ public class LeaveManagementSteps {
         }
     }
 
-    @And("Verify popup with message {string} and {string}")
+    @And("Verify popup alert with message {string} and {string}")
     public void verifyPopupWithMessageAnd(String alertType, String alertMessage) {
         String expectedAlertType = DriverAction.getElementText(LeaveManagementLocator.heading_alertType);
         String expectedAlertMessage = DriverAction.getElementText(LeaveManagementLocator.text_alertMessage);

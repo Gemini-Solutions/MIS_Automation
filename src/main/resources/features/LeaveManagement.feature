@@ -65,7 +65,7 @@ Feature: MIS - Leave Management
     Then Select compOff date <dateIndex> for "<date>" field
     Then Enter compOff reason "<reasonMessage>" for "<reason>" field
     Then User clicks on submit button for "<tab>"
-    And Verify popup with message "<alertType>" and "<successMessage>"
+    And Verify popup alert with message "<alertType>" and "<successMessage>"
 
     Examples:
       | parentTab        | childTab | tab      | heading                                                  | dateIndex | date        | reasonMessage         | reason        | alertType | successMessage                 |

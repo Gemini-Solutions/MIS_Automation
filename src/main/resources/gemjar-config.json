@@ -7,7 +7,6 @@
   "jewelEntryUrl": "https://apis.gemecosystem.com/enter-point",
   "glueCode":"com.qa.mis.stepdefinition",
   "feature": "src/main/resources/features/LeaveManagement.feature",
-  "scenario": "",
   "dev": {
     "browserName": "firefox",
     "launchUrl": "url",

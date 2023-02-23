@@ -14,8 +14,15 @@ Feature: Organization Structure Module Scenarios
       | empname        | designation             |
       | Tushar Chauhan | Software Engineer L2    |
       | Vishal Malik   | Chief Executive Officer |
-     # | Hritik Roshan  | Software Engineer L2    |
-     # | Tushar Chauhan | Software Engineer L1    |
+
+
+  Scenario Outline: Search for Employee with Incorrect Designation
+    Given Navigate to Organization Structure
+    When Entered employee name <empname> in search field
+    Then Validate unavailability of Employee <empname> and Designation <designation>
+    Examples:
+      | empname        | designation             |
+      | Tushar Chauhan | Software Engineer L1    |
 
   Scenario: Search for all the the employees visible first time
     Given Navigate to Organization Structure
