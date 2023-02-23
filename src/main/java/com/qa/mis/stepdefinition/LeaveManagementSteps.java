@@ -587,7 +587,8 @@ public class LeaveManagementSteps {
                 }
                 case "Work From Home" -> {
                     id = "tabApplyWFH";
-                    expectedFields = Arrays.asList("Period", "Half Day", "Reason", "Remarks", "Status");
+                    expectedFields = Arrays.asList("Period", "Half Day", "Reason", "Remarks", "Status", "Applied " +
+                            "On", "Action");
                 }
                 case "Comp Off" -> {
                     id = "tabApplyCompOff";
