@@ -622,7 +622,7 @@ public class AppraisalManagementSteps {
     }
 
     @Then("verify the validation")
-    public void clickOnSubmitButtonAndVerifyTheValidation() {
+    public void verify_The_Validation() {
         try {
             if (flagDelete) {
 
@@ -640,7 +640,7 @@ public class AppraisalManagementSteps {
     }
 
     @Then("Type remark in textbox and click on submit button")
-    public void typeRemarkInTextboxAndClickOnSubmitButton() {
+    public void type_Remark_In_Textbox_And_Click_On_Submit_Button() {
         try {
             if (flagDelete) {
                 DriverAction.getElement(AppraisalManagementLocator.txtEnterRemarks)
@@ -716,7 +716,7 @@ public class AppraisalManagementSteps {
     }
 
     @Then("Click on Draft button and Verify empty fields")
-    public void click_On_Draft_Button_and_Verify_empty_fields() {
+    public void click_On_Draft_Button_And_Verify_Empty_Fields() {
         try {
             DriverAction.waitUntilElementAppear(AppraisalManagementLocator.btnDraft, 2);
             DriverAction.click(AppraisalManagementLocator.btnDraft);
@@ -739,7 +739,7 @@ public class AppraisalManagementSteps {
     }
 
     @And("Add Goal Description in textbox {string}")
-    public void addGoalDescriptionInTextboxGoalDescription(String goalDescription) {
+    public void add_Goal_Description_In_Textbox_Goal_Description(String goalDescription) {
         try {
             DriverAction.getElement(AppraisalManagementLocator.txtGoalDescription).sendKeys(goalDescription);
         } catch (Exception e) {
@@ -758,7 +758,7 @@ public class AppraisalManagementSteps {
     }
 
     @And("Validate success window and click on ok button")
-    public void Validate_success_window_and_click_on_ok_button() {
+    public void validate_Success_Window_And_Click_On_Ok_Button() {
         try {
             DriverAction.waitUntilElementAppear(AppraisalManagementLocator.windowConfirm, 2);
             if (DriverAction.getElement(AppraisalManagementLocator.windowConfirm).isDisplayed()) {
@@ -772,7 +772,7 @@ public class AppraisalManagementSteps {
     }
 
     @Then("Verify and click on Submit Goal button")
-    public void verifyAndClickOnSubmitGoalButton() {
+    public void verify_And_Click_On_Submit_Goal_Button() {
         try {
             if (DriverAction.getElement(AppraisalManagementLocator.btnSubmitGoal).isDisplayed()
                     && DriverAction.getElement(AppraisalManagementLocator.btnSubmitGoal).isEnabled()) {
