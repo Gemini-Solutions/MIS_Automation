@@ -286,7 +286,7 @@ public class DashboardProfileSteps {
             DriverAction.waitSec(5);
             DriverAction.click(locationContainer, "location container");
         } catch (Exception e) {
-            GemTestReporter.addTestStep("ERROR", "SOME ERROR OCCURRED" + e, STATUS.FAIL);
+            GemTestReporter.addTestStep("ERROR", "click location error occured" + e, STATUS.FAIL);
         }
     }
 
@@ -298,7 +298,7 @@ public class DashboardProfileSteps {
             DriverAction.click(selectLocation, "select location");
             //DriverAction.waitSec(5);
         } catch (Exception e) {
-            GemTestReporter.addTestStep("ERROR", "SOME ERROR OCCURRED" + e, STATUS.FAIL);
+            GemTestReporter.addTestStep("ERROR", "select location error occured" + e, STATUS.FAIL);
         }
     }
 
@@ -318,7 +318,7 @@ public class DashboardProfileSteps {
                 GemTestReporter.addTestStep("warning", "You have already applied for these dates.", STATUS.PASS, DriverAction.takeSnapShot());
             }
         } catch (Exception e) {
-            GemTestReporter.addTestStep("ERROR", "SOME ERROR OCCURRED" + e, STATUS.FAIL);
+            GemTestReporter.addTestStep("ERROR", "verify warning error occured" + e, STATUS.FAIL);
         }
     }
 
@@ -355,7 +355,7 @@ public class DashboardProfileSteps {
 
 
         } catch (Exception e) {
-            GemTestReporter.addTestStep("ERROR", "SOME ERROR OCCURRED" + e, STATUS.FAIL);
+            GemTestReporter.addTestStep("ERROR", "enter address in update add error occured" + e, STATUS.FAIL);
         }
     }
 
@@ -382,7 +382,7 @@ public class DashboardProfileSteps {
                 GemTestReporter.addTestStep("Old Password", "Old Password", STATUS.PASS, DriverAction.takeSnapShot());
             }
         } catch (Exception e) {
-            GemTestReporter.addTestStep("ERROR", "SOME ERROR OCCURRED" + e, STATUS.FAIL);
+            GemTestReporter.addTestStep("ERROR", "verify password error occured" + e, STATUS.FAIL);
         }
     }
 
@@ -426,7 +426,7 @@ public class DashboardProfileSteps {
                 GemTestReporter.addTestStep("warning", "Please put 10 digit mobile number.", STATUS.PASS, DriverAction.takeSnapShot());
             }
         } catch (Exception e) {
-            GemTestReporter.addTestStep("ERROR", "SOME ERROR OCCURRED" + e, STATUS.FAIL);
+            GemTestReporter.addTestStep("ERROR", "invalid phone no. error occured" + e, STATUS.FAIL);
         }
     }
 
@@ -448,7 +448,7 @@ public class DashboardProfileSteps {
                 GemTestReporter.addTestStep("warning", "Extension number should only be 3 digits.", STATUS.PASS, DriverAction.takeSnapShot());
             }
         } catch (Exception e) {
-            GemTestReporter.addTestStep("ERROR", "SOME ERROR OCCURRED" + e, STATUS.FAIL);
+            GemTestReporter.addTestStep("ERROR", "invalid ext no. error occured" + e, STATUS.FAIL);
         }
     }
 }
