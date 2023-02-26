@@ -67,16 +67,22 @@ public class AppraisalManagementLocator {
     public static By drpdownKPIValue = By.xpath("//button[@aria-expanded='true']/following-sibling::ul//input[@value='multiselect-all']");
     public static By btnDraft = By.xpath("(//button[@class='btn btn-success' and contains(text(),'Draft')])[2]");
 
- // public static By txtboxProjectList=By.xpath("//textarea[@value='Project Name']");
-    public static By bodyPath=By.xpath("//body[@class='with-side-menu control-panel control-panel-compact chrome-browser modal-open']");
-    public static By btnDraftClose=By.xpath("(//button[@class='btn btn-default btnClose' and contains(text(),'Close')])[6]");
-    public static By txtboxProject=By.xpath("//textarea[@class='form-control error-validation' and @value='Project Name']");
-    public static By txtGoalDescription=By.xpath("//textarea[@class='form-control error-validation' and @value='Goal Description']");
+    // public static By txtboxProjectList=By.xpath("//textarea[@value='Project Name']");
+    public static By bodyPath = By.xpath("//body[@class='with-side-menu control-panel control-panel-compact chrome-browser modal-open']");
+    public static By btnDraftClose = By.xpath("(//button[@class='btn btn-default btnClose' and contains(text(),'Close')])[6]");
+    public static By txtboxProject = By.xpath("//textarea[@class='form-control error-validation' and @value='Project Name']");
+    public static By txtGoalDescription = By.xpath("//textarea[@class='form-control error-validation' and @value='Goal Description']");
 
     //submit goal
-    public static By btnSubmitGoal=By.xpath("//button[@id='btnSaveGoal']");
-    public static By popupConfirm=By.xpath("//p[contains(text(),'This will submit all the draft goals. They cannot be modified further')]");
-    public static By btnYesConfirmGoal=By.xpath("//button[contains(text(),'Yes')]");
+    public static By btnSubmitGoal = By.xpath("//button[@id='btnSaveGoal']");
+    public static By popupConfirm = By.xpath("//p[contains(text(),'This will submit all the draft goals. They cannot be modified further')]");
+    public static By btnYesConfirmGoal = By.xpath("//button[contains(text(),'Yes')]");
+
+    //Sort Column
+    public static By rowListSort = By.xpath("//thead//tr[@role='row']/th");
+
+
+
 }
 
 

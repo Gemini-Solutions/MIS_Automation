@@ -12,6 +12,7 @@ import io.cucumber.java.en.When;
 import com.qa.mis.utility.*;
 import org.apache.commons.codec.binary.Base64;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -516,7 +517,9 @@ public class AppraisalManagementSteps {
                             DriverAction.switchToWindow((String) itr.next());
                             DriverAction.waitSec(2);
 
-//                        action.sendKeys(Keys.ESCAPE);
+//                            Actions action = new Actions(DriverManager.getWebDriver());
+//                            action.sendKeys(Keys.TAB);
+//                            action.sendKeys(Keys.ENTER);
                             DriverAction.closeCurrentTab();
 //                        DriverAction.switchToDefaultContent();
 //                       DriverAction.click(AppraisalManagementLocator.background);
@@ -778,10 +781,70 @@ public class AppraisalManagementSteps {
                     && DriverAction.getElement(AppraisalManagementLocator.btnSubmitGoal).isEnabled()) {
                 DriverAction.click(AppraisalManagementLocator.btnSubmitGoal);
                 if (DriverAction.getElement(AppraisalManagementLocator.popupConfirm).isDisplayed()) {
-                        DriverAction.click(AppraisalManagementLocator.btnYesConfirmGoal);
+                    DriverAction.click(AppraisalManagementLocator.btnYesConfirmGoal);
                 }
             }
 
+        } catch (Exception e) {
+            GemTestReporter.addTestStep("ERROR", "SOME ERROR OCCURRED" + e, STATUS.FAIL);
+        }
+    }
+
+    @Then("Click on Each column of first row and check the column is sorted")
+    public void click_On_Each_Column_Of_First_Row_And_Check_The_Column_Is_Sorted() {
+        try {
+            status = STATUS.FAIL;
+            List<WebElement> lstRowNames = DriverAction.getElements(AppraisalManagementLocator.rowListSort);
+            for (int i = 0; i < lstRowNames.size(); i++) {
+                if (lstRowNames.get(i).getText().equalsIgnoreCase("Goal Type")) {
+                    DriverAction.click(lstRowNames.get(i));
+                    String ascProp = lstRowNames.get(i).getAttribute("class");
+                    if (ascProp.equalsIgnoreCase("sorting_asc"))
+                        status = STATUS.PASS;
+                }
+                if (lstRowNames.get(i).getText().equalsIgnoreCase("KRA")) {
+                    DriverAction.click(lstRowNames.get(i));
+                    String ascProp = lstRowNames.get(i).getAttribute("class");
+                    if (ascProp.equalsIgnoreCase("sorting_asc"))
+                        status = STATUS.PASS;
+                }
+                if (lstRowNames.get(i).getText().equalsIgnoreCase("KPI")) {
+                    DriverAction.click(lstRowNames.get(i));
+                    String ascProp = lstRowNames.get(i).getAttribute("class");
+                    if (ascProp.equalsIgnoreCase("sorting_asc"))
+                        status = STATUS.PASS;
+                }
+                if (lstRowNames.get(i).getText().equalsIgnoreCase("Project")) {
+                    DriverAction.click(lstRowNames.get(i));
+                    String ascProp = lstRowNames.get(i).getAttribute("class");
+                    if (ascProp.equalsIgnoreCase("sorting_asc"))
+                        status = STATUS.PASS;
+                }
+                if (lstRowNames.get(i).getText().equalsIgnoreCase("Goal Description")) {
+                    DriverAction.click(lstRowNames.get(i));
+                    String ascProp = lstRowNames.get(i).getAttribute("class");
+                    if (ascProp.equalsIgnoreCase("sorting_asc"))
+                        status = STATUS.PASS;
+                }
+                if (lstRowNames.get(i).getText().equalsIgnoreCase("Status")) {
+                    DriverAction.click(lstRowNames.get(i));
+                    String ascProp = lstRowNames.get(i).getAttribute("class");
+                    if (ascProp.equalsIgnoreCase("sorting_asc"))
+                        status = STATUS.PASS;
+                }
+                if (lstRowNames.get(i).getText().equalsIgnoreCase("Action")) {
+                    DriverAction.click(lstRowNames.get(i));
+                    String ascProp = lstRowNames.get(i).getAttribute("class");
+                    if (ascProp.equalsIgnoreCase("sorting_asc"))
+                        status = STATUS.PASS;
+                }
+                if (lstRowNames.get(i).getText().equalsIgnoreCase("log")) {
+                    DriverAction.click(lstRowNames.get(i));
+                    String ascProp = lstRowNames.get(i).getAttribute("class");
+                    if (ascProp.equalsIgnoreCase("sorting_asc"))
+                        status = STATUS.PASS;
+                }
+            }
         } catch (Exception e) {
             GemTestReporter.addTestStep("ERROR", "SOME ERROR OCCURRED" + e, STATUS.FAIL);
         }

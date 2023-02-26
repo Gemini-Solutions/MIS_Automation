@@ -113,6 +113,7 @@ Feature: AppraisalManagement
     When Click Add or Update Goals
     Then Click on plus sign in Actions column
     And Select KPI from Dropdown
+    Then Click on Draft button
     Then Add Project details in textbox "ProjectName"
     And Add Goal Description in textbox 'GoalDescription'
     Then Click on Draft button
@@ -128,3 +129,9 @@ Feature: AppraisalManagement
     And Verify My Goal tab
     Then Verify and click on Submit Goal button
 
+  Scenario:Verify column sorting working or not
+    When Click on Appraisal Management link
+    Then Click on Add Goals link
+    Then Verify Add goal window
+    And Verify My Goal tab
+    Then Click on Each column of first row and check the column is sorted
