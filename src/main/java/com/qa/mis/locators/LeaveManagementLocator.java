@@ -20,7 +20,7 @@ public class LeaveManagementLocator {
     public static By heading_Page = By.xpath("//div[@class='card-block']/h5");
 
     public static By navigation_tabs(String tab) {
-        return By.xpath("//ul[@class='nav']/li//span[text()='" + tab + "']");
+        return By.xpath("//ul[@class='nav']/li//span[contains(text(),'" + tab + "')]");
     }
 
     public static By navigation_ActiveTab(String tab) {
@@ -74,4 +74,48 @@ public class LeaveManagementLocator {
         return By.xpath("//input[@id='" + option + "']");
     }
 
+    public static By title_LeaveViewRequestHeaders(String tab) {
+        return By.xpath("//div[@id='" + tab + "']/section/div/div/div//thead//th[not(contains(" +
+                "@style,'display: none'))]");
+    }
+
+    public static By dropdown_leaveHistoryFY = By.xpath("//span[@id='select2-financialYearScroll-container" +
+            "']");
+    public static By input_dateRangeFY = By.xpath("//input[@class='select2-search__field']");
+    public static By result_dateRangeFY = By.xpath("//ul[@class='select2-results__options']/li");
+
+    public static By button_leaveExport(String tab) {
+        return By.xpath("//div[@id='" + tab + "']/section//div[@class='dt-buttons']/a");
+    }
+
+    public static By options_leaveExport = By.xpath("//div[@class='dt-button-collection']/a/span");
+
+    public static By button_leaveExportOption(String option) {
+        return By.xpath("//div[@class='dt-button-collection']/a/span[text()='" + option + "']");
+    }
+
+    public static By heading_copyToClipboard = By.xpath("//div[@id='datatables_buttons_info']/h2");
+
+    public static By input_viewRequestFilter(String id) {
+        return By.xpath("//div[@id='" + id + "']//input");
+    }
+
+    public static By tableRows_viewRequestStatus(String id) {
+        return By.xpath("//div[@id='" + id + "']/section/div/div/div//tbody//tr");
+    }
+
+    public static By tableRowData_viewRequestStatus(String id) {
+        return By.xpath("//div[@id='" + id + "']/section/div/div/div//tbody//tr/td");
+    }
+
+    public static By label_leaveTableEntries = By.xpath("//div[@id='tblLeaveHistory_info']");
+
+    public static By button_leaveCancel(String id) {
+        return By.xpath("//div[@id='" + id + "']/section/div/div/div//tbody//tr/td/button");
+    }
+
+    public static By button_leaveCancelYes = By.xpath("//div[@class='sa-confirm-button-container']/button");
+    public static By button_outDutyView = By.xpath("//table[@id='tblOnDutyReqHistory']//tbody/tr[1]/td" +
+            "//button[contains(@class,'info')]");
+    public static By header_outDutyViewDetails = By.xpath("//div[@id='dateModal']//h4[@class='modal-title']");
 }

@@ -1,6 +1,7 @@
 {
   "environment": "beta",
   "projectName": "MIS",
+  "tagName" : "",
   "gemjarSubID": "test_id",
   "gemjarUserName": "divya.madan",
   "gemjarToken": "d7bcb817-ba64-4b3d-8519-ad530aa4d5041676271588454",
@@ -13,7 +14,7 @@
   "emailBCC": "",
   "beta": {
     "browserName": "chrome",
-    "launchUrl": "https://mymis.geminisolutions.com/",
+    "launchUrl": "https://mymis.geminisolutions.com",
     "browserTimeout": 100
   },
   "prod": {
