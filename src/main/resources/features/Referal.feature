@@ -1,3 +1,4 @@
+@tag1
 Feature: MIS
 
   Background: Launch MIS url
