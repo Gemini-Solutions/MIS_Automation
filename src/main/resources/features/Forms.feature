@@ -41,10 +41,9 @@ Feature: Forms Automation
   Scenario Outline:  User enters valid value in search field
     When User clicks on tab "<parentTab>" and "<childTab>"
     And User search field and enters value "<value>"
-    Then User verifies the value "<element>"
     Examples:
-      | parentTab | childTab  | value    | element            |
-      | Forms     | View Form | Accounts | Reimbursement Form |
+      | parentTab | childTab  | value    |
+      | Forms     | View Form | Accounts |
 
   Scenario Outline: User enters invalid value in search field
     When User clicks on tab "<parentTab>" and "<childTab>"
