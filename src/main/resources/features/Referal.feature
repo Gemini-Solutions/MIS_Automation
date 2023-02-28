@@ -27,7 +27,7 @@ Feature: MIS
           And click on save
           Then verify the warning message in ref section
 
-          Scenario: Validation of wrong format upload pop
+          Scenario: Validation of wrong format upload pop up
             When user checks referral section
             And user click on referral action
             And click on upload file
