@@ -275,7 +275,7 @@ public class FormsSteps {
                 GemTestReporter.addTestStep("User clicks on search field", "Click is Unsuccessful", STATUS.FAIL, DriverAction.takeSnapShot());
             }
         } catch (Exception e) {
-            GemTestReporter.addTestStep("ERROR", "SOME ERROR OCCURRED" + e, STATUS.FAIL);
+            GemTestReporter.addTestStep("ERROR", "Unable to land on the landing page" + e, STATUS.FAIL,DriverAction.takeSnapShot());
         }
     }
 
@@ -406,7 +406,7 @@ public class FormsSteps {
                 GemTestReporter.addTestStep("User Clicks on Yes Button", "Click is Unsuccessful", STATUS.FAIL, DriverAction.takeSnapShot());
             }
         } catch (Exception e) {
-            GemTestReporter.addTestStep("ERROR", "SOME ERROR OCCURRED" + e, STATUS.FAIL);
+            GemTestReporter.addTestStep("ERROR", "User is unable to click on yes button" + e, STATUS.FAIL,DriverAction.takeSnapShot());
         }
     }
 
